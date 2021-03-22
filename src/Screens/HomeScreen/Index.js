@@ -1,11 +1,15 @@
 import React from 'react'
+import HomeScreenHeroBanner from './HomeScreenHeroBanner'
 import Nav from './Nav'
 
 function Index() {
     return (
         <div>
             {/* navigation bar of Home Screen */}
-            <Nav/>
+            <Nav />
+            
+            {/* Home scrren banner */}
+            <HomeScreenHeroBanner/>
             
         </div>
     )

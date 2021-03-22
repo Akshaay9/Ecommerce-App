@@ -1,6 +1,118 @@
-*{
+* {
   padding: 0%;
   margin: 0%;
   box-sizing: border-box;
 }
+body{
+  height: 200vh;
+}
+li {
+  list-style: none;
+}
+:root {
+  /* home scrren */
+  --grey: #53565a;
+  --line-color: #d2d2d2;
+  --font-monteserrat: Montserrat, Helvetica, Arial, sans-serif;
+  --border: 1px solid black;
+  
+}
 /* NAV BAR */
+.nav{
+  position: sticky !important;
+    top: 0;
+    z-index: 100;
+    background-color: white;
+}
+.nav_name {
+  font-family: var(--font-monteserrat);
+}
+.li-bold {
+  font-weight: bolder;
+  font-size: 20px;
+}
+.nav_left {
+  position: relative;
+  width: 14%;
+  justify-content: space-around;
+}
+.nav_center {
+  width: 55%;
+}
+.mens-li{
+  position: relative;
+}
+
+/* home screen delevery update */
+.shipping-details-update {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  height: 7vh;
+  justify-content: center;
+  border: 1px solid var(--line-color);
+}
+/* {Nav further Hoover Navigation} */
+
+.mens-dropdown{
+  position: absolute;
+  top: 4rem;
+  left: 22rem;
+  background-color: white;
+  display: none;
+  animation: pulse 600ms 1;
+  z-index: 200;
+}
+@keyframes pulse {
+  0% {
+   visibility: 0;
+   transform: translateY(50%);
+
+  }
+  100% {
+    visibility: 1;
+    transform: translateY(0);
+  }
+}
+.womens-dropdown{
+  position: absolute;
+  top: 4rem;
+  left: 50rem;
+  background-color: white;
+  animation: pulse 600ms 1;
+  z-index: 200;
+}
+.nav-hoover-further-links {
+  border: var(--border);
+  width: 12rem;
+  height: 28vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.nav-hoover-further-links li {
+  margin: 1vh 0vh;
+  color: var(--grey);
+}
+.nav-hoover-further-links li:hover {
+  color: black;
+  cursor: pointer;
+}
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid black;
+  outline: 12px ;
+  margin-top: -18px;
+}
+.box-arrow{
+  width: 3.3rem;
+  height: 2rem;
+  position: absolute;
+  top: -25px;
+  cursor: pointer;
+}
