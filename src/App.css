@@ -64,7 +64,7 @@ li {
   left: 22rem;
   background-color: white;
   display: none;
-  animation: pulse 600ms 1;
+  animation: pulse 600ms 1 ease-in-out;
   z-index: 200;
 }
 @keyframes pulse {
@@ -93,6 +93,7 @@ li {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  border-radius: 15px;
 }
 .nav-hoover-further-links li {
   margin: 1vh 0vh;
@@ -107,8 +108,10 @@ li {
   height: 0;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
-  border-bottom: 15px solid black;
+  border-bottom: 15px solid var(--line-color);
+  outline: 2px;
   outline: 12px;
+  
   margin-top: -18px;
 }
 .box-arrow {
@@ -142,13 +145,28 @@ li {
 width: 100%;
 }
 .hero-banner-two .img-desktop {
+  height: 100%;
+  max-height: 610px;
+  min-height: 450px;
+  object-fit: cover;
   width: 100%;
-  object-fit: contain;
-
+  display: block;
 }
 .hero-banner-two .img-mobile {
   display: none !important;
 }
+.hero-banner-three{
+  padding: 12px;
+  display: flex;
+  height: 90vh;
+justify-content: space-between;
+}
+.hero-banner-three *{
+  width: 49.6%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
 
 @media screen and (max-width: 700px) {
   .hero-banner-one {
@@ -175,4 +193,26 @@ width: 100%;
   .hero-banner-two .img-desktop{
 display: none !important
   } 
+  .shipping-details-update {
+   display: none;
+  }
+  .hero-banner-three{
+flex-direction: column;
+justify-content: space-evenly;
+height: 100vh;
+margin: 0%;
+padding: 0%;
+/* background-color: aqua; */
+height: 90vh;
+margin-top: 1.2rem;
+  }
+  .hero-banner-three >img{
+object-fit: cover;
+    width: 100%;
+    height: 43vh;
+   
+  }
+  .yoga-banne{
+    margin-top: 1.2rem;
+  }
 }
