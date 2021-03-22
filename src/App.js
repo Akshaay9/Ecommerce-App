@@ -1,9 +1,11 @@
 import React from 'react'
-
+import HomeScreen from "./Screens/HomeScreen/Index"
 function App() {
   return (
     <div>
-      Hey
+      {/* Home Scrren */}
+      <HomeScreen/>
+     
     </div>
   )
 }
