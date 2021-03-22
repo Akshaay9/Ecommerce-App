@@ -3,7 +3,7 @@
   margin: 0%;
   box-sizing: border-box;
 }
-body{
+body {
   height: 200vh;
 }
 li {
@@ -15,14 +15,16 @@ li {
   --line-color: #d2d2d2;
   --font-monteserrat: Montserrat, Helvetica, Arial, sans-serif;
   --border: 1px solid black;
-  
 }
 /* NAV BAR */
-.nav{
-  position: sticky !important;
-    top: 0;
-    z-index: 100;
-    background-color: white;
+.nav {
+  top: 0;
+  z-index: 100;
+  background-color: white;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
 }
 .nav_name {
   font-family: var(--font-monteserrat);
@@ -39,12 +41,13 @@ li {
 .nav_center {
   width: 55%;
 }
-.mens-li{
+.mens-li {
   position: relative;
 }
 
 /* home screen delevery update */
 .shipping-details-update {
+  margin-top: 64px;
   width: 100%;
   text-align: center;
   display: flex;
@@ -55,7 +58,7 @@ li {
 }
 /* {Nav further Hoover Navigation} */
 
-.mens-dropdown{
+.mens-dropdown {
   position: absolute;
   top: 4rem;
   left: 22rem;
@@ -66,16 +69,15 @@ li {
 }
 @keyframes pulse {
   0% {
-   visibility: 0;
-   transform: translateY(50%);
-
+    visibility: 0;
+    transform: translateY(50%);
   }
   100% {
     visibility: 1;
     transform: translateY(0);
   }
 }
-.womens-dropdown{
+.womens-dropdown {
   position: absolute;
   top: 4rem;
   left: 50rem;
@@ -106,13 +108,75 @@ li {
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
   border-bottom: 15px solid black;
-  outline: 12px ;
+  outline: 12px;
   margin-top: -18px;
 }
-.box-arrow{
+.box-arrow {
   width: 3.3rem;
   height: 2rem;
   position: absolute;
   top: -25px;
   cursor: pointer;
+}
+
+/* hero-banner */
+.hero-banner-one {
+  height: 100%;
+  width: 100%;
+}
+.hero-banner-one .img-desktop {
+  height: 100%;
+  max-height: 610px;
+  min-height: 450px;
+  object-fit: cover;
+  width: 100%;
+  display: block;
+}
+.hero-banner-one .img-mobile {
+  display: none !important;
+}
+
+/* hero banner-two */
+.hero-banner-two {
+  margin-top: 1.2rem;
+width: 100%;
+}
+.hero-banner-two .img-desktop {
+  height: 100%;
+  max-height: 610px;
+  min-height: 450px;
+  object-fit: cover;
+  width: 100%;
+  display: block;
+
+}
+.hero-banner-two .img-mobile {
+  display: none !important;
+}
+
+@media screen and (max-width: 700px) {
+  .hero-banner-one {
+    height: 100%;
+    width: 100%;
+  }
+  .hero-banner-one .img-desktop {
+    display: none !important;
+  }
+  .hero-banner-one .img-mobile {
+    height: 100%;
+    height: 580px;
+    object-fit: cover;
+    width: 100%;
+    display: block !important;
+  }
+  .hero-banner-two .img-mobile {
+    height: 100%;
+    height: 580px;
+    object-fit: cover;
+    width: 100%;
+    display: block !important;
+  }
+  .hero-banner-two .img-desktop{
+display: none !important
+  } 
 }

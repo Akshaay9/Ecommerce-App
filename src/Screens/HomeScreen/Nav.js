@@ -40,6 +40,7 @@ function Nav() {
           </div>
         </div>
       </div>
+      
       {/* shiping details */}
       <div className="shipping-details-update">
         <p>Free Shipping when you spend more than $5</p>
@@ -51,8 +52,7 @@ function Nav() {
         <div className="nav-hoover-further-links mens-dropdown"
         
           onMouseEnter={() => setShowMen(true)} onMouseLeave={() => setShowMen(false)}
-        >
-          <div className="arrow-up"></div>
+        ><div className="arrow-up"></div>
           <div className="box-arrow"></div>
           
           <div className="nav-hoover-further-links-heading">
@@ -72,8 +72,7 @@ function Nav() {
         <div className="nav-hoover-further-links  womens-dropdown"
       onMouseEnter={() => setShowWomen(true)} onMouseLeave={() => setShowWomen(false)}  
       >
-        <div className="arrow-up"></div>
-        <div className="box-arrow"></div>
+          <div className="arrow-up"></div>
           <div className="nav-hoover-further-linksr-heading">
             <h3>Womem's Clothing</h3>
           </div>
