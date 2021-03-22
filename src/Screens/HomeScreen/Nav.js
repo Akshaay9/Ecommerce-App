@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 
 function Nav() {
-  const [showMens, setShowMen] = useState(false)
-  const [showWomen, setShowWomen] = useState(false)
-  const [showCategories, setSgowCategories] = useState(false)
- 
-  
+  const [showMens, setShowMen] = useState(false);
+  const [showWomen, setShowWomen] = useState(false);
+  const [showCategories, setSgowCategories] = useState(false);
 
   return (
     <div>
@@ -23,9 +21,27 @@ function Nav() {
         </div>
         <div className="nav_center">
           <ul>
-            <li className="hr- hr-underline-left li-bold mens-li" onMouseEnter={() => setShowMen(true)} onMouseLeave={() => setShowMen(false)}>Mens</li>
-            <li className="hr-underline-left li-bold">Products</li>
-            <li className="hr-underline-left li-bold womens-li" onMouseEnter={() => setShowWomen(true)} onMouseLeave={() => setShowWomen(false)}>Womens</li>
+            <li
+              className="hr- hr-underline-left li-bold mens-li"
+              onMouseEnter={() => setShowMen(true)}
+              onMouseLeave={() => setShowMen(false)}
+            >
+              Mens
+            </li>
+            <li
+              className="hr-underline-left li-bold"
+              onMouseEnter={() => setSgowCategories(true)}
+              onMouseLeave={() => setSgowCategories(false)}
+            >
+              Products
+            </li>
+            <li
+              className="hr-underline-left li-bold womens-li"
+              onMouseEnter={() => setShowWomen(true)}
+              onMouseLeave={() => setShowWomen(false)}
+            >
+              Womens
+            </li>
           </ul>
         </div>
         <div className="nav_right">
@@ -40,21 +56,21 @@ function Nav() {
           </div>
         </div>
       </div>
-      
+
       {/* shiping details */}
       <div className="shipping-details-update">
         <p>Free Shipping when you spend more than $5</p>
       </div>
       {/* Nav further Hoover Navigation */}
-      {
-        showMens &&
-      
-        <div className="nav-hoover-further-links mens-dropdown"
-        
-          onMouseEnter={() => setShowMen(true)} onMouseLeave={() => setShowMen(false)}
-        ><div className="arrow-up"></div>
+      {showMens && (
+        <div
+          className="nav-hoover-further-links mens-dropdown"
+          onMouseEnter={() => setShowMen(true)}
+          onMouseLeave={() => setShowMen(false)}
+        >
+          <div className="arrow-up"></div>
           <div className="box-arrow"></div>
-          
+
           <div className="nav-hoover-further-links-heading">
             <h3>Mens Clothing</h3>
           </div>
@@ -67,12 +83,16 @@ function Nav() {
               <li>5) Socks</li>
             </ul>
           </div>
-        </div>}
-      {showWomen &&
-        <div className="nav-hoover-further-links  womens-dropdown"
-      onMouseEnter={() => setShowWomen(true)} onMouseLeave={() => setShowWomen(false)}  
-      >
+        </div>
+      )}
+      {showWomen && (
+        <div
+          className="nav-hoover-further-links  womens-dropdown"
+          onMouseEnter={() => setShowWomen(true)}
+          onMouseLeave={() => setShowWomen(false)}
+        >
           <div className="arrow-up"></div>
+          <div className="box-arrow"></div>
           <div className="nav-hoover-further-linksr-heading">
             <h3>Womem's Clothing</h3>
           </div>
@@ -85,7 +105,52 @@ function Nav() {
               <li>5) Socks</li>
             </ul>
           </div>
-        </div>}
+        </div>
+      )}
+      {showCategories && (
+        <div
+          className="nav-hoover-further-links  product-dropdown"
+          onMouseEnter={() => setSgowCategories(true)}
+          onMouseLeave={() => setSgowCategories(false)}
+        >
+          <div className="arrow-up"></div>
+          <div className="box-arrow"></div>
+          <div className="nav-hoover-further-links-container">
+            <div className="nav-hoover-further-linksli">
+              <h3>Trending</h3>
+              <ul>
+                <li>1) Hoodie and Jackets</li>
+                <li>2) Tank Top</li>
+                <li>3) Leggins</li>
+                <li>4) T-shirts</li>
+                <li>5) Socks</li>
+              </ul>
+            </div>
+
+            <div className="nav-hoover-further-linksli">
+            <h3>Accessories</h3>
+              <ul>
+                <li>1) Hoodie and Jackets</li>
+                <li>2) Tank Top</li>
+                <li>3) Leggins</li>
+                <li>4) T-shirts</li>
+                <li>5) Socks</li>
+              </ul>
+            </div>
+
+            <div className="nav-hoover-further-linksli">
+            <h3>Equipments</h3>
+              <ul>
+                <li>1) Hoodie and Jackets</li>
+                <li>2) Tank Top</li>
+                <li>3) Leggins</li>
+                <li>4) T-shirts</li>
+                <li>5) Socks</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

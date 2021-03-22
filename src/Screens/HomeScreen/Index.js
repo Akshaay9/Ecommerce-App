@@ -1,17 +1,20 @@
 import React from 'react'
+import Footer from './Footer'
 import HomeScreenHeroBanner from './HomeScreenHeroBanner'
 import Nav from './Nav'
 
 function Index() {
     return (
-        <div>
+        <>
             {/* navigation bar of Home Screen */}
             <Nav />
+
+            {/* Home scrren banners */}
+            <HomeScreenHeroBanner />
             
-            {/* Home scrren banner */}
-            <HomeScreenHeroBanner/>
-            
-        </div>
+            {/* {footer} */}
+            <Footer/>
+        </>
     )
 }
 
