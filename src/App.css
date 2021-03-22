@@ -11,7 +11,7 @@
   position: fixed !important;
   top: 0;
   left: 0;
-  width: 100%; /* Full width */
+  width: 100%; 
 }
 .nav_name {
   font-family: var(--font-monteserrat);
@@ -32,9 +32,8 @@
   position: relative;
 }
 
-
 /* home screen delevery update */
-.shipping-details-update {
+.shipping-details-update{
   margin-top: 64px;
   width: 100%;
   text-align: center;
@@ -86,6 +85,7 @@
 .hero-banner-one {
   height: 100%;
   width: 100%;
+  position: relative;
 }
 .hero-banner-one .img-desktop {
   height: 100%;
@@ -95,15 +95,82 @@
   width: 100%;
   display: block;
 }
+/* hero banner-Two CTA */
+.hero-banner-call-to-action{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  }
+  .hero-banner-call-to-action h1{
+    color: white;
+    font-weight: bolder;
+    font-size: 40px;
+    font-family: Montserrat, Helvetica, Arial, sans-serif;
+  }
+  .hero-banner-call-to-action h3{
+    color: white;
+    font-weight: lighter;
+    font-size: 20px;
+    font-family: Montserrat, Helvetica, Arial, sans-serif;
+  }
+  .hero-banner-call-to-action{
+    height: 25vh;
+    width: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:center ;
+  }
+  .hero-banner-call-to-action-btns{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+
+.hero-banner-call-to-action-btns .btn-one{
+  padding: 0rem 2rem;
+ color: black;
+ background-color: white;
+ font-weight: bolder;
+ border-radius: 5rem;
+ cursor: pointer;
+ text-align: center;
+}
+.hero-banner-call-to-action-btns .btn-two{
+ color: white;
+ padding: 0.6rem 2rem;
+ font-weight: bolder;
+ background-color: gray;
+ border-radius: 5rem;
+ cursor: pointer;
+ text-align: center;
+}
 .hero-banner-one .img-mobile {
   display: none !important;
 }
+
 
 /* hero banner-two */
 .hero-banner-two {
   margin-top: 1.2rem;
   width: 100%;
+  position: relative;
 }
+/* hero-banner-2-CTA */
+.hero-two-CTA{
+  position: absolute;
+  top: 0%;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.hero-two-CTA h1, .hero-two-CTA h3{
+  color: black;
+}
+
 .hero-banner-two .img-desktop {
   height: 100%;
   max-height: 610px;
@@ -115,6 +182,52 @@
 .hero-banner-two .img-mobile {
   display: none !important;
 }
+/* banner-resistance CTA */
+.hero-banner-three{
+  position: relative;
+}
+.hero-three-one-CTA{
+  position: absolute;
+  top: 29%;
+  left: 13%;
+  width: 30%;
+}
+.hero-three-one-CTA-btn{
+  color: white;
+  padding: 0.3rem 2rem;
+  font-weight: bolder;
+  background-color: gray;
+  border-radius: 5rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* banner-yoga CTA */
+.yoga-banner{
+  position: relative;
+}
+.hero-three-two-CTA{
+  position: absolute;
+  width: 25%;
+  height: 20vh;
+  top: 27%;
+left: 61%;
+}
+.hero-three-two-CTA h1{
+  text-align: center;
+ color: black;
+}
+.hero-three-two-CTA-btn{
+  color: black;
+  padding: 0.3rem 2rem;
+  font-weight: bolder;
+  background-color: white;
+  border-radius: 5rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+
 
 /* footer */
 .footer-p-font{
@@ -150,6 +263,7 @@
 }
 
 
+
 @media screen and (max-width: 700px) {
   .hero-banner-one {
     height: 100%;
@@ -178,4 +292,20 @@
   .shipping-details-update {
     display: none;
   }
+  .hero-three-one-CTA{
+    position: absolute;
+     top: 20%;
+    left: 25%;
+    width: 90%;
+  }
+  .hero-three-two-CTA{
+    position: absolute;
+    
+    width: 25%;
+    height: 20vh;
+    top: 70%;
+  left: 25%;
+  width: 90%;
+  }
+  
 }
