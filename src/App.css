@@ -160,14 +160,14 @@ width: 100%;
   }
   .hero-banner-one .img-mobile {
     height: 100%;
-    height: 780px;
+    height: 700px;
     object-fit: cover;
     width: 100%;
     display: block !important;
   }
   .hero-banner-two .img-mobile {
     height: 100%;
-    height: 680px;
+    height: 700px;
     object-fit: cover;
     width: 100%;
     display: block !important;
