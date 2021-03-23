@@ -296,16 +296,30 @@ left: 61%;
     position: absolute;
      top: 20%;
     left: 25%;
-    width: 80%;
+    width: 90%;
+    /* border: var(--border); */
+    height: 20vh;
+  }
+  .hero-three-one-CTA h1{
+   font-size: 32px;
   }
   .hero-three-two-CTA{
     position: absolute;
-    
     width: 25%;
     height: 20vh;
     top: 70%;
   left: 25%;
   width: 80%;
+  height: 15vh;
   }
+  .hero-banner-call-to-action{
+    border: var(--border);
+    width: 100%;
+height: 23vh;
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); */
+    }
   
 }
