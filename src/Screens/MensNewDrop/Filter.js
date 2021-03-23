@@ -5,6 +5,10 @@ function Filter() {
   const [sortByRating, setSortByRating] = useState();
   const [sortByDelivery, setSortByDelivery] = useState();
     const [priceRange, setPriceRange] = useState(500);
+    // 
+    const [showPriceSortFilter,setShowPriceSortFilter]=useState(false)
+    const [showStarSortFilter,setStarPriceSortFilter]=useState(false)
+    const [showDeliverySortFilter,setDeliveryPriceSortFilter]=useState(false)
     
   return (
     <div className="filter">

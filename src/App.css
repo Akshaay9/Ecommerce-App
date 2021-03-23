@@ -127,7 +127,7 @@
   display: flex;
   justify-content: space-around;
 }
-<<<<<<< HEAD
+
 
 .hero-banner-call-to-action-btns .btn-one {
   padding: 0rem 2rem;
@@ -146,7 +146,7 @@
   border-radius: 5rem;
   cursor: pointer;
   text-align: center;
-=======
+}
 .btn {
   padding: 0.5rem 2rem;
   color: black;
@@ -165,15 +165,13 @@
 .btn-homescreen-grey {
   background-color: var(--gray);
   color: white;
->>>>>>> development
+
 }
 .hero-banner-one .img-mobile {
   display: none !important;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> development
+
 /* hero banner-two */
 .hero-banner-two {
   margin-top: 1.2rem;
@@ -215,7 +213,6 @@
   left: 13%;
   width: 30%;
 }
-<<<<<<< HEAD
 .hero-three-one-CTA-btn {
   color: white;
   padding: 0.3rem 2rem;
@@ -226,8 +223,7 @@
   text-align: center;
 }
 
-=======
->>>>>>> development
+
 /* banner-yoga CTA */
 .yoga-banner {
   position: relative;
@@ -241,18 +237,12 @@
 }
 .hero-three-two-CTA h1 {
   text-align: center;
-<<<<<<< HEAD
   color: black;
 }
 .hero-three-two-CTA-btn {
-=======
->>>>>>> development
   color: black;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> development
 /* footer */
 .footer-p-font {
   font-family: var(--font-sans-serif);
@@ -414,14 +404,13 @@
     top: 70%;
     left: 25%;
     width: 80%;
-<<<<<<< HEAD
+
     height: 10vh;
   }
   .hero-banner-call-to-action {
     width: 90%;
     height: 14vh;
-  }
-=======
+  
     height: 15vh;
   }
   .hero-banner-call-to-action {
@@ -463,5 +452,5 @@
     font-weight: 700;
     color: white;
   }
->>>>>>> development
 }
+
