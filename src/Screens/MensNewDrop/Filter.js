@@ -8,6 +8,7 @@ function Filter() {
     // 
     const [showPriceSortFilter,setShowPriceSortFilter]=useState(false)
     const [showStarSortFilter,setStarPriceSortFilter]=useState(false)
+    const [showDeliverySortFilter,setDeliveryPriceSortFilter]=useState(false)
     
   return (
     <div className="filter">
