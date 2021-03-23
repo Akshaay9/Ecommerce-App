@@ -1,7 +1,7 @@
 :root {
   --font-monteserrat: Montserrat, Helvetica, Arial, sans-serif;
   --border: 1px solid black;
-  --font-sans-serif:sans-serif;
+  --font-sans-serif: sans-serif;
 }
 /* NAV BAR */
 .nav {
@@ -11,7 +11,7 @@
   position: fixed !important;
   top: 0;
   left: 0;
-  width: 100%; 
+  width: 100%;
 }
 .nav_name {
   font-family: var(--font-monteserrat);
@@ -33,7 +33,7 @@
 }
 
 /* home screen delevery update */
-.shipping-details-update{
+.shipping-details-update {
   margin-top: 64px;
   width: 100%;
   text-align: center;
@@ -76,7 +76,7 @@
 .nav-hoover-further-links {
   display: flex;
 }
-.nav-hoover-further-links-container{
+.nav-hoover-further-links-container {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -96,61 +96,59 @@
   display: block;
 }
 /* hero banner-Two CTA */
-.hero-banner-call-to-action{
+.hero-banner-call-to-action {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
-  }
-  .hero-banner-call-to-action h1{
-    color: white;
-    font-weight: bolder;
-    font-size: 40px;
-    font-family: Montserrat, Helvetica, Arial, sans-serif;
-  }
-  .hero-banner-call-to-action h3{
-    color: white;
-    font-weight: lighter;
-    font-size: 20px;
-    font-family: Montserrat, Helvetica, Arial, sans-serif;
-  }
-  .hero-banner-call-to-action{
-    height: 25vh;
-    width: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items:center ;
-  }
-  .hero-banner-call-to-action-btns{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-  }
-
-
-.hero-banner-call-to-action-btns .btn-one{
-  padding: 0rem 2rem;
- color: black;
- background-color: white;
- font-weight: bolder;
- border-radius: 5rem;
- cursor: pointer;
- text-align: center;
+  transform: translate(-50%, -50%);
 }
-.hero-banner-call-to-action-btns .btn-two{
- color: white;
- padding: 0.6rem 2rem;
- font-weight: bolder;
- background-color: gray;
- border-radius: 5rem;
- cursor: pointer;
- text-align: center;
+.hero-banner-call-to-action h1 {
+  color: white;
+  font-weight: bolder;
+  font-size: 40px;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+}
+.hero-banner-call-to-action h3 {
+  color: white;
+  font-weight: lighter;
+  font-size: 20px;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+}
+.hero-banner-call-to-action {
+  height: 25vh;
+  width: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.hero-banner-call-to-action-btns {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.hero-banner-call-to-action-btns .btn-one {
+  padding: 0rem 2rem;
+  color: black;
+  background-color: white;
+  font-weight: bolder;
+  border-radius: 5rem;
+  cursor: pointer;
+  text-align: center;
+}
+.hero-banner-call-to-action-btns .btn-two {
+  color: white;
+  padding: 0.6rem 2rem;
+  font-weight: bolder;
+  background-color: gray;
+  border-radius: 5rem;
+  cursor: pointer;
+  text-align: center;
 }
 .hero-banner-one .img-mobile {
   display: none !important;
 }
-
 
 /* hero banner-two */
 .hero-banner-two {
@@ -159,15 +157,16 @@
   position: relative;
 }
 /* hero-banner-2-CTA */
-.hero-two-CTA{
+.hero-two-CTA {
   position: absolute;
   top: 0%;
   position: absolute;
   top: 70%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
-.hero-two-CTA h1, .hero-two-CTA h3{
+.hero-two-CTA h1,
+.hero-two-CTA h3 {
   color: black;
 }
 
@@ -183,16 +182,16 @@
   display: none !important;
 }
 /* banner-resistance CTA */
-.hero-banner-three{
+.hero-banner-three {
   position: relative;
 }
-.hero-three-one-CTA{
+.hero-three-one-CTA {
   position: absolute;
   top: 29%;
   left: 13%;
   width: 30%;
 }
-.hero-three-one-CTA-btn{
+.hero-three-one-CTA-btn {
   color: white;
   padding: 0.3rem 2rem;
   font-weight: bolder;
@@ -203,21 +202,21 @@
 }
 
 /* banner-yoga CTA */
-.yoga-banner{
+.yoga-banner {
   position: relative;
 }
-.hero-three-two-CTA{
+.hero-three-two-CTA {
   position: absolute;
   width: 25%;
   height: 20vh;
   top: 27%;
-left: 61%;
+  left: 61%;
 }
-.hero-three-two-CTA h1{
+.hero-three-two-CTA h1 {
   text-align: center;
- color: black;
+  color: black;
 }
-.hero-three-two-CTA-btn{
+.hero-three-two-CTA-btn {
   color: black;
   padding: 0.3rem 2rem;
   font-weight: bolder;
@@ -227,14 +226,12 @@ left: 61%;
   text-align: center;
 }
 
-
-
 /* footer */
-.footer-p-font{
+.footer-p-font {
   font-family: var(--font-sans-serif);
   font-size: 15px;
 }
-.footer{
+.footer {
   height: 7vh;
   display: flex;
   width: 100%;
@@ -245,24 +242,23 @@ left: 61%;
   justify-content: space-between;
   align-items: center;
 }
-.footer-left{
+.footer-left {
   width: 34vw;
   display: flex;
   justify-content: flex-end;
 }
-.footer-right{
+.footer-right {
   width: 13vw;
   display: flex;
   justify-content: space-between;
 }
-.footer-right .fab , .footer-right .fas{
+.footer-right .fab,
+.footer-right .fas {
   font-size: 22px;
 }
-.footer-right-container{
+.footer-right-container {
   width: 14vw;
 }
-
-
 
 @media screen and (max-width: 700px) {
   .hero-banner-one {
@@ -292,34 +288,27 @@ left: 61%;
   .shipping-details-update {
     display: none;
   }
-  .hero-three-one-CTA{
+  .hero-three-one-CTA {
     position: absolute;
-     top: 20%;
+    top: 20%;
     left: 25%;
     width: 90%;
     /* border: var(--border); */
-    height: 20vh;
+    height: 1vh;
+   
   }
-  .hero-three-one-CTA h1{
-   font-size: 32px;
+  .hero-three-one-CTA h1 {
+    font-size: 32px;
   }
-  .hero-three-two-CTA{
+  .hero-three-two-CTA {
     position: absolute;
-    width: 25%;
-    height: 20vh;
     top: 70%;
-  left: 25%;
-  width: 80%;
-  height: 15vh;
+    left: 25%;
+    width: 80%;
+    height: 10vh;
   }
-  .hero-banner-call-to-action{
-    border: var(--border);
-    width: 100%;
-height: 23vh;
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%); */
-    }
-  
+  .hero-banner-call-to-action {
+    width: 90%;
+    height: 17vh;
+  }
 }
