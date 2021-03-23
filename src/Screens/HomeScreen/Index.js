@@ -6,14 +6,11 @@ import Nav from './Nav'
 function Index() {
     return (
         <>
-            {/* navigation bar of Home Screen */}
-            <Nav />
+           
 
             {/* Home scrren banners */}
             <HomeScreenHeroBanner />
-            
-            {/* {footer} */}
-            <Footer/>
+          
         </>
     )
 }

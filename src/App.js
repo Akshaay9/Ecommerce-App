@@ -1,14 +1,23 @@
-import React from 'react'
-import "./App.css"
-import HomeScreen from "./Screens/HomeScreen/Index"
+import React from "react";
+import "./App.css";
+import Footer from "./Screens/HomeScreen/Footer";
+import HomeScreen from "./Screens/HomeScreen/Index";
+import Nav from "./Screens/HomeScreen/Nav";
+import HomeScreenComponents from "./Screens/HomeScreen/Index"
+import MensNewDrop from "./Screens/MensNewDrop/Index"
 function App() {
   return (
     <div>
-      {/* Home Scrren */}
-      <HomeScreen/>
-     
+      <Nav />
+
+      {/* <HomeScreenComponents/> */}
+      
+      {/* Mens new Drops */}
+      <MensNewDrop/>
+      
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

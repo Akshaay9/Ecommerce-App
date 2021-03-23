@@ -127,6 +127,7 @@
   display: flex;
   justify-content: space-around;
 }
+<<<<<<< HEAD
 
 .hero-banner-call-to-action-btns .btn-one {
   padding: 0rem 2rem;
@@ -145,11 +146,34 @@
   border-radius: 5rem;
   cursor: pointer;
   text-align: center;
+=======
+.btn {
+  padding: 0.5rem 2rem;
+  color: black;
+  background-color: white;
+  font-weight: bolder;
+  border-radius: 5rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all 100ms ease-in-out;
+}
+.btn:hover,
+.btn:focus {
+  transform: scale(1.0399);
+}
+
+.btn-homescreen-grey {
+  background-color: var(--gray);
+  color: white;
+>>>>>>> development
 }
 .hero-banner-one .img-mobile {
   display: none !important;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> development
 /* hero banner-two */
 .hero-banner-two {
   margin-top: 1.2rem;
@@ -191,6 +215,7 @@
   left: 13%;
   width: 30%;
 }
+<<<<<<< HEAD
 .hero-three-one-CTA-btn {
   color: white;
   padding: 0.3rem 2rem;
@@ -201,6 +226,8 @@
   text-align: center;
 }
 
+=======
+>>>>>>> development
 /* banner-yoga CTA */
 .yoga-banner {
   position: relative;
@@ -214,18 +241,18 @@
 }
 .hero-three-two-CTA h1 {
   text-align: center;
+<<<<<<< HEAD
   color: black;
 }
 .hero-three-two-CTA-btn {
+=======
+>>>>>>> development
   color: black;
-  padding: 0.3rem 2rem;
-  font-weight: bolder;
-  background-color: white;
-  border-radius: 5rem;
-  cursor: pointer;
-  text-align: center;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> development
 /* footer */
 .footer-p-font {
   font-family: var(--font-sans-serif);
@@ -259,8 +286,90 @@
 .footer-right-container {
   width: 14vw;
 }
+/* mens new drops */
+.mensNewDopsPoster-desktop {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+}
+.mensNewDopsPoster-mobile {
+  display: none;
+}
+.mensNewDopsPoster {
+  position: relative;
+}
+.mensNewDopsPoster-desc {
+  position: absolute;
+  top: 45%;
+  left: 7.8%;
+}
+.mensNewDopsPoster-desc h3 {
+  margin: 0px;
+  font-weight: 700;
+  font-family: sans-serif;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+.mensNewDopsPoster-desc h1 {
+  color: rgb(0, 0, 0);
+  margin: 0px;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+/* filters */
+.filter {
+  display: flex;
+  justify-content: space-evenly;
+}
+.filter-heading,
+.filter-heading-sort-prices,
+.filter-heading-sort-rating,
+.filter-heading-sort-delivery,
+.filter-heading-sort-priceRange {
+  font-family: sans-serif;
+  font-weight: lighter;
+  cursor: pointer;
+  color: rgb(78, 78, 78);
+  display: flex;
+  justify-content: space-evenly;
+}
+.filter-heading-sort-prices-container li,
+.filter-heading-sort-rating-container li,
+.filter-heading-sort-delivery-container li,
+.filter-heading-sort-priceRange-contsiner input{
+  border: 1px solid var(--line-color);
+  display: flex;
+  height: 5vh;
+  align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    
+}
+.filter-heading-sort-delivery-container li{
+  height: 5vh;
+}
+.filter-heading-sort-prices-container:hover{
+  animation: filterAnimation 500ms ease-in-out;
+
+}
+@keyframes filterAnimation{
+  0% {
+    visibility: 0;
+    transform: translateY(0%);
+  }
+  100% {
+    visibility: 1;
+    transform: translateY(-70%);
+  }
+}
 
 @media screen and (max-width: 700px) {
+  * {
+    overflow: hidden;
+  }
   .hero-banner-one {
     height: 100%;
     width: 100%;
@@ -305,10 +414,54 @@
     top: 70%;
     left: 25%;
     width: 80%;
+<<<<<<< HEAD
     height: 10vh;
   }
   .hero-banner-call-to-action {
     width: 90%;
     height: 14vh;
   }
+=======
+    height: 15vh;
+  }
+  .hero-banner-call-to-action {
+    border: var(--border);
+    width: 100%;
+    height: 23vh;
+  }
+  .mensNewDopsPoster-desktop {
+    display: none;
+  }
+  .mensNewDopsPoster-mobile {
+    margin-top: 65px;
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    height: 15rem;
+  }
+  .mensNewDopsPoster-desc {
+    text-align: center;
+    top: 70%;
+    left: 18%;
+  }
+  .mensNewDopsPoster-desc h3 {
+    margin: 0px;
+    font-weight: 700;
+    /* font-family: Montserrat, Helvetica, Arial, 
+    fonsans-serif; */
+    font-family: sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: white;
+  }
+  .mensNewDopsPoster-desc h1 {
+    font-family: sans-serif;
+    color: rgb(0, 0, 0);
+    margin: 0px;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: white;
+  }
+>>>>>>> development
 }
