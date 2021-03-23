@@ -10,6 +10,7 @@ function Filter() {
     const [showStarSortFilter,setStarPriceSortFilter]=useState(false)
     const [showDeliverySortFilter, setDeliveryPriceSortFilter] = useState(false)
     const [showPriceRangeFilter, setShowPriceRangeFilter] = useState(false)
+    const [showPriceRangeFilter, setShowPriceRangeFilter] = useState(false)
     
     
   return (
