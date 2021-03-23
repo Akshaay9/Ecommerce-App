@@ -18,7 +18,7 @@ function Filter() {
       <h3 className="filter-heading">Filters : </h3>
       <ul>
         <h3 className="filter-heading-sort-prices">
-          Sort By Price{" "}
+          Sort By Price 
           <>
             {showFilter.priceSort == "" ? (
               <i
@@ -169,7 +169,7 @@ function Filter() {
           <div className="filter-heading-sort-delivery-container">
             <li>
               {" "}
-              <label htmlFor="">Free Home delivery (1 week)</label>{" "}
+              <label htmlFor="">Free Home delivery </label>{" "}
               <input
                 type="radio"
                 name="delivery"
@@ -180,7 +180,7 @@ function Filter() {
             <li>
               {" "}
               <label htmlFor="">
-                Express delivery in 3 days ( charges applicable)
+                Express delivery
               </label>{" "}
               <input
                 type="radio"

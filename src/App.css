@@ -3,6 +3,9 @@
   --border: 1px solid black;
   --font-sans-serif: sans-serif;
 }
+body{
+  height: 200vh;
+}
 /* NAV BAR */
 .nav {
   top: 0;
@@ -337,20 +340,25 @@
     justify-content: space-around;
 }
 
-.filter-heading-sort-delivery-container li{
-  height: 5vh;
-  padding: 0px 9px;
+.filter-heading-sort-delivery-container,
+.filter-heading-sort-rating-container,
+.filter-heading-sort-prices-container,
+.filter-heading-sort-priceRange-contsiner
+{
+  animation: filterAnimation 1 300ms ease-in;
+  animation-fill-mode: forwards;
 }
-@keyframes filterAnimation{
-  0% {
-    visibility: 0;
-    transform: translateY(0%);
+  @keyframes filterAnimation {
+    from {
+      visibility: 0;
+      transform: translateY(-50%);
+    }
+    to {
+      visibility: 1;
+      transform: translateY(0);
+    }
   }
-  100% {
-    visibility: 1;
-    transform: translateY(-70%);
-  }
-}
+
 
 @media screen and (max-width: 700px) {
   * {
