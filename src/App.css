@@ -335,14 +335,11 @@
   height: 5vh;
   align-items: center;
     justify-content: space-around;
-    background-color: white;
-    
 }
+
 .filter-heading-sort-delivery-container li{
   height: 5vh;
-}
-.filter-heading-sort-prices-container:hover{
-  animation: filterAnimation 500ms ease-in-out;
+  padding: 0px 9px;
 }
 @keyframes filterAnimation{
   0% {
