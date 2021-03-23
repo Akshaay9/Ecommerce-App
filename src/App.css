@@ -137,7 +137,8 @@
   text-align: center;
   transition: all 100ms ease-in-out;
 }
-.btn:hover,.btn:focus{
+.btn:hover,
+.btn:focus {
   transform: scale(1.0399);
 }
 
@@ -238,30 +239,30 @@
   width: 14vw;
 }
 /* mens new drops */
-.mensNewDopsPoster-desktop{
-width: 100%;
-height: 80vh;
-object-fit: cover;
+.mensNewDopsPoster-desktop {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
 }
-.mensNewDopsPoster-mobile{
-display: none;
+.mensNewDopsPoster-mobile {
+  display: none;
 }
-.mensNewDopsPoster{
+.mensNewDopsPoster {
   position: relative;
 }
-.mensNewDopsPoster-desc{
+.mensNewDopsPoster-desc {
   position: absolute;
-  top: 30%;
-  left: 6%;
+  top: 45%;
+  left: 7.8%;
 }
-.mensNewDopsPoster-desc h3{
+.mensNewDopsPoster-desc h3 {
   margin: 0px;
   font-weight: 700;
   font-family: sans-serif;
   font-size: 1.4rem;
   text-transform: uppercase;
 }
-.mensNewDopsPoster-desc h1{
+.mensNewDopsPoster-desc h1 {
   color: rgb(0, 0, 0);
   margin: 0px;
   font-family: sans-serif;
@@ -270,9 +271,57 @@ display: none;
   font-weight: 700;
 }
 
+/* filters */
+.filter {
+  display: flex;
+  justify-content: space-evenly;
+}
+.filter-heading,
+.filter-heading-sort-prices,
+.filter-heading-sort-rating,
+.filter-heading-sort-delivery,
+.filter-heading-sort-priceRange {
+  font-family: sans-serif;
+  font-weight: lighter;
+  cursor: pointer;
+  color: rgb(78, 78, 78);
+  display: flex;
+  justify-content: space-evenly;
+}
+.filter-heading-sort-prices-container li,
+.filter-heading-sort-rating-container li,
+.filter-heading-sort-delivery-container li,
+.filter-heading-sort-priceRange-contsiner input{
+  border: 1px solid var(--line-color);
+  display: flex;
+  height: 5vh;
+  align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    
+}
+.filter-heading-sort-delivery-container li{
+  height: 5vh;
+}
+.filter-heading-sort-prices-container:hover{
+  animation: filterAnimation 500ms ease-in-out;
+
+}
+@keyframes filterAnimation{
+  0% {
+    visibility: 0;
+    transform: translateY(0%);
+  }
+  100% {
+    visibility: 1;
+    transform: translateY(-70%);
+  }
+}
+
+
 
 @media screen and (max-width: 700px) {
-  *{
+  * {
     overflow: hidden;
   }
   .hero-banner-one {
@@ -327,22 +376,22 @@ display: none;
     width: 100%;
     height: 23vh;
   }
-  .mensNewDopsPoster-desktop{
+  .mensNewDopsPoster-desktop {
     display: none;
   }
-  .mensNewDopsPoster-mobile{
+  .mensNewDopsPoster-mobile {
     margin-top: 65px;
     display: block;
     width: 100%;
     object-fit: cover;
     height: 15rem;
   }
-  .mensNewDopsPoster-desc{
+  .mensNewDopsPoster-desc {
     text-align: center;
-   top: 70%;
-   left: 18%;
+    top: 70%;
+    left: 18%;
   }
-  .mensNewDopsPoster-desc h3{
+  .mensNewDopsPoster-desc h3 {
     margin: 0px;
     font-weight: 700;
     /* font-family: Montserrat, Helvetica, Arial, 
@@ -352,14 +401,13 @@ display: none;
     text-transform: uppercase;
     color: white;
   }
-  .mensNewDopsPoster-desc h1{
+  .mensNewDopsPoster-desc h1 {
     font-family: sans-serif;
     color: rgb(0, 0, 0);
     margin: 0px;
     text-transform: uppercase;
     font-size: 1.7rem;
     font-weight: 700;
-    color: white; 
+    color: white;
   }
-
 }
