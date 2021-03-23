@@ -343,7 +343,6 @@
 }
 .filter-heading-sort-prices-container:hover{
   animation: filterAnimation 500ms ease-in-out;
-
 }
 @keyframes filterAnimation{
   0% {
@@ -392,7 +391,6 @@
     top: 20%;
     left: 25%;
     width: 90%;
-    /* border: var(--border); */
     height: 1vh;
    
   }
@@ -436,8 +434,6 @@
   .mensNewDopsPoster-desc h3 {
     margin: 0px;
     font-weight: 700;
-    /* font-family: Montserrat, Helvetica, Arial, 
-    fonsans-serif; */
     font-family: sans-serif;
     font-size: 1rem;
     text-transform: uppercase;
