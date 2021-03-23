@@ -237,8 +237,44 @@
 .footer-right-container {
   width: 14vw;
 }
+/* mens new drops */
+.mensNewDopsPoster-desktop{
+width: 100%;
+height: 80vh;
+object-fit: cover;
+}
+.mensNewDopsPoster-mobile{
+display: none;
+}
+.mensNewDopsPoster{
+  position: relative;
+}
+.mensNewDopsPoster-desc{
+  position: absolute;
+  top: 30%;
+  left: 6%;
+}
+.mensNewDopsPoster-desc h3{
+  margin: 0px;
+  font-weight: 700;
+  font-family: sans-serif;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+.mensNewDopsPoster-desc h1{
+  color: rgb(0, 0, 0);
+  margin: 0px;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
 
 @media screen and (max-width: 700px) {
+  *{
+    overflow: hidden;
+  }
   .hero-banner-one {
     height: 100%;
     width: 100%;
@@ -291,4 +327,39 @@
     width: 100%;
     height: 23vh;
   }
+  .mensNewDopsPoster-desktop{
+    display: none;
+  }
+  .mensNewDopsPoster-mobile{
+    margin-top: 65px;
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    height: 15rem;
+  }
+  .mensNewDopsPoster-desc{
+    text-align: center;
+   top: 70%;
+   left: 18%;
+  }
+  .mensNewDopsPoster-desc h3{
+    margin: 0px;
+    font-weight: 700;
+    /* font-family: Montserrat, Helvetica, Arial, 
+    fonsans-serif; */
+    font-family: sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: white;
+  }
+  .mensNewDopsPoster-desc h1{
+    font-family: sans-serif;
+    color: rgb(0, 0, 0);
+    margin: 0px;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: white; 
+  }
+
 }
