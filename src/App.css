@@ -246,39 +246,7 @@ body{
   color: black;
 }
 
-/* footer */
-.footer-p-font {
-  font-family: var(--font-sans-serif);
-  font-size: 15px;
-}
-.footer {
-  height: 7vh;
-  display: flex;
-  width: 100%;
-  padding: 0%;
-  margin: 0%;
-  display: flex;
-  border-top: 1px solid var(--line-color);
-  justify-content: space-between;
-  align-items: center;
-}
-.footer-left {
-  width: 34vw;
-  display: flex;
-  justify-content: flex-end;
-}
-.footer-right {
-  width: 13vw;
-  display: flex;
-  justify-content: space-between;
-}
-.footer-right .fab,
-.footer-right .fas {
-  font-size: 22px;
-}
-.footer-right-container {
-  width: 14vw;
-}
+
 /* mens new drops */
 .mensNewDopsPoster-desktop {
   width: 100%;
