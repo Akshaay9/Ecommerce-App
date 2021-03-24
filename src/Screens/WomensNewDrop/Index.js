@@ -1,5 +1,5 @@
 import React from 'react'
-import Filter from './Filter'
+import Filter from '../MensNewDrop/Filter'
 import WeomensNewDropPoster from './WeomensNewDropPoster'
 
 function Index() {

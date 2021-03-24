@@ -15,10 +15,10 @@ function App() {
       {/* <HomeScreenComponents/> */}
       
       {/* Mens new Drops */}
-      <MensNewDrop/>
+      {/* <MensNewDrop/> */}
 
       {/* {Womens new drop} */}
-      {/* <WomensNewDrop/> */}
+      <WomensNewDrop/>
       
       <Footer />
     </>
