@@ -46,10 +46,12 @@ body{
   justify-content: center;
   border: 1px solid var(--line-color);
 }
-/* {Nav further Hoover Navigation} */
 
-.mens-dropdown,
-.womens-dropdown,
+/* {Nav further Hoover Navigation} */
+.positionRelative{
+  position: relative;
+}
+
 .product-dropdown {
   position: absolute;
   top: 4rem;
@@ -69,12 +71,13 @@ body{
     transform: translateY(0);
   }
 }
-.womens-dropdown {
-  left: 50rem;
+.arrow-up{
+  margin-top: -22px;
 }
 .product-dropdown {
-  left: 19.5rem;
-  width: 50%;
+  left: 28rem;
+  width: 30%;
+  height: 35vh;
 }
 .nav-hoover-further-links {
   display: flex;
@@ -397,8 +400,14 @@ body{
 
 
 @media screen and (max-width: 700px) {
-  * {
+  /* * {
   overflow-x: hidden;
+  } */
+  .product-dropdown {
+    left: 8rem;
+    margin-top: 7px;
+    width: 50%;
+    height: 35vh;
   }
   .hero-banner-one {
     height: 100%;

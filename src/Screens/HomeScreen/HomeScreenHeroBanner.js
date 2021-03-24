@@ -82,7 +82,7 @@ function HomeScreenHeroBanner() {
           />
 
           <div className="hero-banner-call-to-action hero-four-CTA">
-            <h1>Resistace Training</h1>
+            <h1>Gym Accessories</h1>
             <div className="hero-banner-call-to-action-btns">
               <button className="btn btn-homescreen-white">Shop Now</button>
             </div>
