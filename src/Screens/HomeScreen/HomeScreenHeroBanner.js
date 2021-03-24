@@ -16,7 +16,6 @@ function HomeScreenHeroBanner() {
           <h1>New Drops</h1>
           <h3>In Adapt & Critical</h3>
           <div className="hero-banner-call-to-action-btns">
-          
             <button className="btn btn-homescreen-white">Show Womens</button>
             <button className="btn btn-homescreen-grey">Show mens</button>
           </div>
@@ -65,6 +64,27 @@ function HomeScreenHeroBanner() {
             <h1>Yoga</h1>
             <div className="hero-banner-call-to-action-btns">
               <button className="btn btn-homescreen-grey">Shop Now</button>
+            </div>
+          </div>
+        </>
+      </div>
+      <div className="hero-banner-four">
+        <>
+          <img
+            className="gym-accessories-desktop"
+            src="https://cdn.shopify.com/s/files/1/1367/5201/files/DUAL_GENDER_HOME_WORKOUT_1440x.jpg?v=1615366281"
+            alt=""
+          />
+          <img
+            className="gym-accessories-mobile"
+            src="https://cdn.shopify.com/s/files/1/1367/5201/files/Amended_Home_Workout_MobileArtboard_10_640x.jpg?v=1615366300"
+            alt=""
+          />
+
+          <div className="hero-banner-call-to-action hero-four-CTA">
+            <h1>Resistace Training</h1>
+            <div className="hero-banner-call-to-action-btns">
+              <button className="btn btn-homescreen-white">Shop Now</button>
             </div>
           </div>
         </>

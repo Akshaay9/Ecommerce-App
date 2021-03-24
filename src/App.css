@@ -197,7 +197,7 @@ body{
 
 .hero-banner-two .img-desktop {
   height: 100%;
-  max-height: 610px;
+  max-height: 580px;
   min-height: 450px;
   object-fit: cover;
   width: 100%;
@@ -244,6 +244,30 @@ body{
 }
 .hero-three-two-CTA-btn {
   color: black;
+}
+/* gym accessories- hero banner four */
+.hero-banner-four{
+  position: relative;
+  height: 89vh;
+}
+
+.hero-four-CTA{
+  position: absolute;
+  top: 70%;
+  height: 20vh;
+}
+
+.gym-accessories-desktop{
+  width: 100%;
+  object-fit: cover;
+  height: 89vh;
+  filter: brightness(50%);
+}
+.gym-accessories-mobile{
+  display: none !important
+}
+.hero-four-CTA .btn{
+  width: 12rem;
 }
 
 
@@ -429,10 +453,36 @@ body{
     height: 15vh;
   }
   .hero-banner-call-to-action {
-    border: var(--border);
     width: 100%;
     height: 23vh;
   }
+  /* Home Screen image four */
+  /* gym accessories- hero banner four */
+.hero-banner-four{
+  position: relative;
+}
+
+.hero-four-CTA{
+  position: absolute;
+  top: 70%;
+  height: 20vh;
+}
+
+.gym-accessories-desktop{
+  display: none !important;
+ 
+}
+.gym-accessories-mobile{
+  margin-top: 9px;
+  height: 100%;
+  height: 590px;
+  object-fit: cover;
+  width: 100%;
+  display: block !important;
+  filter: brightness(90%);
+}
+  /* screen two mens new drop */
+/*  */
   .mensNewDopsPoster-desktop {
     display: none;
   }
@@ -443,6 +493,8 @@ body{
     object-fit: cover;
     height: 15rem;
   }
+
+
   .mensNewDopsPoster-desc,.womensNewDropPoster-desc {
     text-align: center;
     top: 70%;

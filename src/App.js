@@ -12,13 +12,13 @@ function App() {
       <Nav />
 
       {/* HomeScreenComponents */}
-      {/* <HomeScreenComponents/> */}
+      <HomeScreenComponents/>
       
       {/* Mens new Drops */}
       {/* <MensNewDrop/> */}
 
       {/* {Womens new drop} */}
-      <WomensNewDrop/>
+      {/* <WomensNewDrop/> */}
       
       <Footer />
     </>
