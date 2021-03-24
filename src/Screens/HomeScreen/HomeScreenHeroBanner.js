@@ -31,11 +31,9 @@ function HomeScreenHeroBanner() {
         <img className="img-mobile" src={imgTwo} alt="" />
 
         <div className="hero-banner-call-to-action hero-two-CTA">
-          <h1>Home Workout</h1>
-          <h3>Our Comfiest fits</h3>
+          <h1>Home Workouts</h1>
           <div className="hero-banner-call-to-action-btns">
-            <button className="btn btn-homescreen-white">Show Womens</button>
-            <button className="btn btn-homescreen-grey">Show mens</button>
+            <button className="btn btn-homescreen-grey">Show Now</button>
           </div>
         </div>
       </div>
