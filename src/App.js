@@ -17,7 +17,7 @@ function App() {
       {/* <HomeScreenComponents/> */}
       
       {/* Mens new Drops */}
-      {/* <MensNewDrop/> */}
+      <MensNewDrop/>
 
       {/* {Womens new drop} */}
       {/* <WomensNewDrop/> */}
@@ -26,7 +26,7 @@ function App() {
       {/* <HomeWorkoutEquipments/> */}
 
       {/* ResistanceTrainingEquipments */}
-      <ResistanceTrainingEquipments/>
+      {/* <ResistanceTrainingEquipments/> */}
       
       <Footer />
     </>
