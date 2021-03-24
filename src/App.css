@@ -297,6 +297,32 @@ body{
   display: flex;
   justify-content: space-evenly;
 }
+
+.filter-heading-sort-prices{
+  position: relative;
+}
+.filter-heading-sort-rating{
+  position: relative;
+}
+.filter-heading-sort-delivery{
+  position: relative;
+}
+.filter-heading-sort-priceRange{
+  position: relative;
+}
+.filter-heading-sort-prices-container {
+  position: absolute;
+}
+.filter-heading-sort-rating-container {
+  position: absolute;
+}
+.filter-heading-sort-delivery-container{
+  position: absolute;
+} 
+.filter-heading-sort-priceRange-contsiner {
+  position: absolute;
+}
+
 .filter-heading-sort-prices-container li,
 .filter-heading-sort-rating-container li,
 .filter-heading-sort-delivery-container li,
@@ -306,6 +332,8 @@ body{
   height: 5vh;
   align-items: center;
     justify-content: space-around;
+    background-color: white;
+    padding: 0px 15px;
 }
 
 .filter-heading-sort-delivery-container,
@@ -327,10 +355,12 @@ body{
     }
   }
 
+  /* Womens new Drop */
+
 
 @media screen and (max-width: 700px) {
   * {
-    overflow: hidden;
+  overflow-x: hidden;
   }
   .hero-banner-one {
     height: 100%;

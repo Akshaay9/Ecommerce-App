@@ -12,13 +12,13 @@ function Filter() {
     deliverySort: "",
     priceRange: "",
   });
-  console.log(showFilter);
   return (
+    <>
     <div className="filter">
       <h3 className="filter-heading">Filters : </h3>
       <ul>
         <h3 className="filter-heading-sort-prices">
-          Sort By Price 
+          Sort By Price
           <>
             {showFilter.priceSort == "" ? (
               <i
@@ -179,9 +179,7 @@ function Filter() {
             </li>
             <li>
               {" "}
-              <label htmlFor="">
-                Express delivery
-              </label>{" "}
+              <label htmlFor="">Express delivery</label>{" "}
               <input
                 type="radio"
                 name="delivery"
@@ -228,7 +226,9 @@ function Filter() {
           </div>
         )}
       </div>
-    </div>
+    
+      </div>
+      </>
   );
 }
 
