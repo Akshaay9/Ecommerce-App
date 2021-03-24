@@ -7,6 +7,7 @@ import HomeScreenComponents from "./Screens/HomeScreen/Index"
 import MensNewDrop from "./Screens/MensNewDrop/Index"
 import WomensNewDrop from "./Screens/WomensNewDrop/Index"
 import HomeWorkoutEquipments from "./Screens/HomeWorkoutEquipments/Index"
+import ResistanceTrainingEquipments from "./Screens/ResistanceTrainingEquipments/Index"
 function App() {
   return (
     <>
@@ -22,7 +23,10 @@ function App() {
       {/* <WomensNewDrop/> */}
 
       {/* Home Workout Equipments */}
-      <HomeWorkoutEquipments/>
+      {/* <HomeWorkoutEquipments/> */}
+
+      {/* ResistanceTrainingEquipments */}
+      <ResistanceTrainingEquipments/>
       
       <Footer />
     </>

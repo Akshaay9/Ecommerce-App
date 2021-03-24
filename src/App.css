@@ -430,6 +430,15 @@ body{
     font-weight: 700;
   }
 
+ /* Resistance training */
+ .resisitance-training-desc{
+  left: 33%;
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
  
 
 @media screen and (max-width: 700px) {
@@ -601,6 +610,22 @@ body{
     text-transform: uppercase;
     font-size: 1.5rem;
     font-weight: 700;
+  }
+  .resisitance-training-poster-mobile{
+    display: block !important;
+    width: 100%;
+    margin-top: 65px;
+height: 24rem !important;
+    object-fit: cover;
+    width: 100%;
+  
+  }
+  .resisitance-training-desc{
+    left: 22%;
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
 
