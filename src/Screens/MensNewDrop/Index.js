@@ -1,12 +1,14 @@
 import React from 'react'
 import Filter from './Filter'
 import ScreenTwoPoster from './MensNewDropPoster'
+import MensNewDropProductList from './MensNewDropProductList'
 
 function Index() {
     return (
         <>
             <ScreenTwoPoster />
-            <Filter/>
+            <Filter />
+            <MensNewDropProductList/>
         </>
     )
 }

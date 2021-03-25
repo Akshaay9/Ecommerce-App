@@ -8,10 +8,18 @@ import MensNewDrop from "./Screens/MensNewDrop/Index"
 import WomensNewDrop from "./Screens/WomensNewDrop/Index"
 import HomeWorkoutEquipments from "./Screens/HomeWorkoutEquipments/Index"
 import ResistanceTrainingEquipments from "./Screens/ResistanceTrainingEquipments/Index"
+import CartComponent from "./Components/CartComponent/Index"
+import WishListComponent from "./Components/WishListComponent/Index"
 function App() {
   return (
     <>
       <Nav />
+
+      {/* {CartComponent} */}
+      {/* <CartComponent /> */}
+      
+      {/* Wishlists */}
+      {/* <WishListComponent/> */}
 
       {/* HomeScreenComponents */}
       {/* <HomeScreenComponents/> */}

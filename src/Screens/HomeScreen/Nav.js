@@ -47,6 +47,9 @@ function Nav() {
             <i className="fas fa-user"></i>
           </div>
           <div className="nav_cart">
+          <i class="fas fa-heart"></i>
+          </div>
+          <div className="nav_cart">
             <i className="fas fa-shopping-cart"></i>
           </div>
         </div>

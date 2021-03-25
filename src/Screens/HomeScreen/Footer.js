@@ -4,7 +4,7 @@ function Footer() {
   return (
     <div>
       <div className="footer">
-        <div className="footer-left">
+        <div style={{marginLeft:"8px"}}>
           <p className="footer-p-font">
             © 2021 | Fit-Shaark Limited | All Rights Reserved @Akshay | About me
           </p>
