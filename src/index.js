@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import  RoutingContextProvider  from './Contexts/RoutingContext/routingContextProvider';
+import { MensNewDropProductListsFunction } from './Contexts/ProductListContext/MensNewDropProductListing';
+import  RoutingContextFunction  from './Contexts/RoutingContext/routingContextProvider';
 
 ReactDOM.render(
   <React.StrictMode>
-    <RoutingContextProvider>
+    
+
+    <MensNewDropProductListsFunction>
+      {/* for Mens New Drop products Listing */}
+
+      <RoutingContextFunction>
+        {/* for routing */}
+
       <App />
-      </RoutingContextProvider>
+      </RoutingContextFunction>
+    </MensNewDropProductListsFunction>
   </React.StrictMode>,
   document.getElementById('root')
 );

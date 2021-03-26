@@ -59,7 +59,6 @@ body{
   background-color:var(--light);
   display: none;
   animation: pulse 300ms 1 ease-in-out;
-  z-index: 200;
 }
 @keyframes pulse {
   0% {
@@ -339,19 +338,24 @@ body{
   position: relative;
 }
 .filter-heading-sort-priceRange{
+  z-index: 399;
   position: relative;
 }
 .filter-heading-sort-prices-container {
+  z-index: 399;
   position: absolute;
 }
 .filter-heading-sort-rating-container {
+  z-index: 399;
   position: absolute;
 }
 .filter-heading-sort-delivery-container{
+  z-index: 399;
   position: absolute;
 } 
 .filter-heading-sort-priceRange-contsiner {
   position: absolute;
+  z-index: 399;
 }
 
 .filter-heading-sort-prices-container li,
@@ -365,6 +369,8 @@ body{
     justify-content: space-around;
     background-color: var(--light);
     padding: 0px 1rem;
+
+    
 }
 
 .filter-heading-sort-delivery-container,

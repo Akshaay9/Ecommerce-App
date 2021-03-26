@@ -14,7 +14,6 @@ import { useRoutingContext } from "./Contexts/RoutingContext/routingContextProvi
 function App() {
 
   const { route, setRoute } = useRoutingContext()
-  console.log(route);
 
   return (
     <>
@@ -30,8 +29,8 @@ function App() {
         <WishListComponent/> 
       }
 
-      
 
+      
       {/* HomeScreenComponents */}
       {route == "HomeScreenComponents" &&
         <HomeScreenComponents />
@@ -65,6 +64,9 @@ function App() {
       <Footer />
     </>
   );
+
+  // 
+
 }
 
 export default App;

@@ -1,7 +1,7 @@
 const { createContext, useState, useContext } = require("react");
 
 export const RoutingContext = createContext()
-export default function RoutingContextProvider({ children }) {
+export default function RoutingContextFunction({ children }) {
     
     const [route, setRoute] = useState("HomeScreenComponents")
     

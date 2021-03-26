@@ -1,0 +1,90 @@
+/* cards */
+.grid-container{
+    width: 96.5%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-column-gap: 25px;
+  grid-row-gap: 18px;
+  margin-top: 22px;
+}
+.card-container-header img{
+    width: 100%;
+    object-fit: contain;
+}
+.card-container-footer-row-one{
+    font-family: var(--font-sans-serif);
+    display: flex;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    text-transform: uppercase;
+    margin: 0px 0px 0.3rem;
+    padding-left: 0.5rem;
+    border-left: 0.3rem solid rgb(0, 0, 0);
+}
+.card-container-footer-row-one span{
+    font-size: 0.8rem;
+}
+.card-container-footer-row-two h2{
+    font-size: 1rem;
+    font-family: var(--font-sans-serif);
+    line-height: 2rem;
+    color: rgb(68, 68, 68);
+    margin: 0px 0px 0.3rem;
+    padding-right: 0px;
+}
+.card-container-footer-row-two p{
+    font-family: var(--font-sans-serif);
+    display: block;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    color: rgb(110, 110, 110);
+}
+.card-add-to-cart-action{
+    position: absolute;
+    display: none !important;
+    bottom: 3%;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 0.0625rem solid  rgb(160, 160, 160);
+    padding: 0.5rem 0.3rem;
+   animation: hooverAddToCartAnimation 300ms 1 ease-in-out;;
+    
+}
+@keyframes hooverAddToCartAnimation{
+    0%{
+opacity: 0;
+    }
+    100%{
+opacity: 1;
+    }
+}
+.card-add-to-cart-action button{
+    padding: 0.2rem 1rem;
+    font-size: 1rem;
+    font-family: var(--font-sans-serif);
+    font-weight: bolder;  
+}
+.card-add-to-cart-action h3{
+    font-size: 1rem;
+    text-align: center;
+    font-family: var(--font-sans-serif);
+    line-height: 2rem;
+    color: rgb(68, 68, 68);
+    margin: 0px 0px 0.3rem;
+    padding-right: 0px;
+}
+.card-container-header{
+    position: relative;
+    
+}
+.card-container-header:hover .card-add-to-cart-action{
+    display: flex !important;
+   
+}
+
+
+

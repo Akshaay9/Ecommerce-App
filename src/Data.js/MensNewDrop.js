@@ -86,7 +86,7 @@ export const mensNewDrop = [
   },
   {
     id: uuidv4(),
-    name: "ESSENTIAL Light Gray Oversized T-SHIRT",
+    name: "ESSENTIAL Light Gray T-SHIRT",
     tag: "t-shirt",
     price: 380,
     color: "Light Gray",
