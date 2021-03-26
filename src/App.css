@@ -1,6 +1,6 @@
 :root {
   --font-monteserrat: Montserrat, Helvetica, Arial, sans-serif;
-  --border: 1px solid black;
+  --border: 0.0625rem solid black;
   --font-sans-serif: sans-serif;
 }
 body{
@@ -10,7 +10,7 @@ body{
 .nav {
   top: 0;
   z-index: 100;
-  background-color: white;
+  background-color: var(--light);
   position: fixed !important;
   top: 0;
   left: 0;
@@ -21,7 +21,7 @@ body{
 }
 .li-bold {
   font-weight: bolder;
-  font-size: 20px;
+  font-size: 1.3rem;
 }
 .nav_left {
   position: relative;
@@ -37,14 +37,14 @@ body{
 
 /* home screen delevery update */
 .shipping-details-update {
-  margin-top: 64px;
+  margin-top: 4rem;
   width: 100%;
   text-align: center;
   display: flex;
   align-items: center;
   height: 7vh;
   justify-content: center;
-  border: 1px solid var(--line-color);
+  border: 0.0625rem solid var(--line-color);
 }
 
 /* {Nav further Hoover Navigation} */
@@ -56,7 +56,7 @@ body{
   position: absolute;
   top: 4rem;
   left: 22rem;
-  background-color: white;
+  background-color:var(--light);
   display: none;
   animation: pulse 300ms 1 ease-in-out;
   z-index: 200;
@@ -72,7 +72,7 @@ body{
   }
 }
 .arrow-up{
-  margin-top: -22px;
+  margin-top: -1.4rem;
 }
 .product-dropdown {
   left: 28rem;
@@ -95,8 +95,8 @@ body{
 }
 .hero-banner-one .img-desktop {
   height: 100%;
-  max-height: 610px;
-  min-height: 450px;
+  max-height: 38.125rem;
+  min-height: 28.125rem;
   object-fit: cover;
   width: 100%;
   display: block;
@@ -109,16 +109,16 @@ body{
   transform: translate(-50%, -50%);
 }
 .hero-banner-call-to-action h1 {
-  color: white;
+  color: var(--light);
   font-weight: bolder;
-  font-size: 40px;
-  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 2.5rem;
+  font-family: var(--font-monteserrat);
 }
 .hero-banner-call-to-action h3 {
-  color: white;
+  color: var(--light);
   font-weight: lighter;
-  font-size: 20px;
-  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 1.25rem;
+  font-family: var(--font-monteserrat)
 }
 .hero-banner-call-to-action {
   height: 25vh;
@@ -137,26 +137,26 @@ body{
 
 .hero-banner-call-to-action-btns .btn-one {
   padding: 0rem 2rem;
-  color: black;
-  background-color: white;
+  color: var(--dark);
+  background-color: var(--light);
   font-weight: bolder;
   border-radius: 5rem;
   cursor: pointer;
   text-align: center;
 }
 .hero-banner-call-to-action-btns .btn-two {
-  color: white;
+  color: var(--light);;
   padding: 0.6rem 2rem;
   font-weight: bolder;
-  background-color: gray;
+  background-color:var(--gray);
   border-radius: 5rem;
   cursor: pointer;
   text-align: center;
 }
 .btn {
   padding: 0.5rem 2rem;
-  color: black;
-  background-color: white;
+  color: var(--dark);
+  background-color: var(--light);
   font-weight: bolder;
   border-radius: 5rem;
   cursor: pointer;
@@ -170,7 +170,7 @@ body{
 
 .btn-homescreen-grey {
   background-color: var(--gray);
-  color: white;
+  color: var(--light);
 
 }
 .hero-banner-one .img-mobile {
@@ -195,13 +195,13 @@ body{
 }
 .hero-two-CTA h1,
 .hero-two-CTA h3 {
-  color: black;
+  color: var(--dark);
 }
 
 .hero-banner-two .img-desktop {
   height: 100%;
-  max-height: 580px;
-  min-height: 450px;
+  max-height: 36.25rem;
+  min-height: 28.125rem;
   object-fit: cover;
   width: 100%;
   display: block;
@@ -220,10 +220,10 @@ body{
   width: 30%;
 }
 .hero-three-one-CTA-btn {
-  color: white;
+  color: var(--light);
   padding: 0.3rem 2rem;
   font-weight: bolder;
-  background-color: gray;
+  background-color: var(--gray);
   border-radius: 5rem;
   cursor: pointer;
   text-align: center;
@@ -243,15 +243,15 @@ body{
 }
 .hero-three-two-CTA h1 {
   text-align: center;
-  color: black;
+  color: var(--dark);
 }
 .hero-three-two-CTA-btn {
-  color: black;
+  color: var(--dark);
 }
 /* gym accessories- hero banner four */
 .hero-banner-four{
   position: relative;
-  height: 89vh;
+  height: 81vh;
 }
 
 .hero-four-CTA{
@@ -263,7 +263,7 @@ body{
 .gym-accessories-desktop{
   width: 100%;
   object-fit: cover;
-  height: 89vh;
+  height: 81vh;
   filter: brightness(50%);
 }
 .gym-accessories-mobile{
@@ -271,6 +271,10 @@ body{
 }
 .hero-four-CTA .btn{
   width: 12rem;
+}
+/* footer */
+.footer-bottom-p-font{
+  font-size: 0.92rem;
 }
 
 
@@ -294,14 +298,14 @@ body{
 .mensNewDopsPoster-desc h3,.womensNewDropPoster-desc h3{
   margin: 0px;
   font-weight: 700;
-  font-family: sans-serif;
+  font-family: var(--font-sans-serif);
   font-size: 1.4rem;
   text-transform: uppercase;
 }
 .mensNewDopsPoster-desc h1,.womensNewDropPoster-desc h1 {
-  color: rgb(0, 0, 0);
+  color: var(--dark);
   margin: 0px;
-  font-family: sans-serif;
+  font-family: var(--font-sans-serif);
   text-transform: uppercase;
   font-size: 2.5rem;
   font-weight: 700;
@@ -317,7 +321,7 @@ body{
 .filter-heading-sort-rating,
 .filter-heading-sort-delivery,
 .filter-heading-sort-priceRange {
-  font-family: sans-serif;
+  font-family: var(--font-sans-serif);
   font-weight: lighter;
   cursor: pointer;
   color: rgb(78, 78, 78);
@@ -354,13 +358,13 @@ body{
 .filter-heading-sort-rating-container li,
 .filter-heading-sort-delivery-container li,
 .filter-heading-sort-priceRange-contsiner input{
-  border: 1px solid var(--line-color);
+  border: 0.0625rem solid var(--line-color);
   display: flex;
   height: 5vh;
   align-items: center;
     justify-content: space-around;
-    background-color: white;
-    padding: 0px 15px;
+    background-color: var(--light);
+    padding: 0px 1rem;
 }
 
 .filter-heading-sort-delivery-container,
@@ -395,7 +399,7 @@ body{
     display: none !important
   }
   .womensNewDropPoster-desc h3,.womensNewDropPoster-desc h1{
-    color: white;
+    color: var(--light);
   }
 
   /* Home Workout */
@@ -417,14 +421,14 @@ body{
   .page-desc-content h3{
     margin: 0px;
     font-weight: 700;
-    font-family: sans-serif;
+    font-family: var(--font-sans-serif);
     font-size: 1.2rem;
     text-transform: uppercase;
   }
   .page-desc-content h1{
-    color: rgb(0, 0, 0);
+    color: var(--dark);
     margin: 0px;
-    font-family: sans-serif;
+    font-family: var(--font-sans-serif);
     text-transform: uppercase;
     font-size: 2rem;
     font-weight: 700;
@@ -441,13 +445,13 @@ body{
 
  
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 43.25rem) {
   /* * {
   overflow-x: hidden;
   } */
   .product-dropdown {
     left: 8rem;
-    margin-top: 7px;
+    margin-top: 0.5rem;
     width: 50%;
     height: 35vh;
   }
@@ -460,14 +464,14 @@ body{
   }
   .hero-banner-one .img-mobile {
     height: 100%;
-    height: 700px;
+    height: 43.75rem;
     object-fit: cover;
     width: 100%;
     display: block !important;
   }
   .hero-banner-two .img-mobile {
     height: 100%;
-    height: 700px;
+    height: 43.75rme;
     object-fit: cover;
     width: 100%;
     display: block !important;
@@ -487,7 +491,7 @@ body{
    
   }
   .hero-three-one-CTA h1 {
-    font-size: 32px;
+    font-size: 2rem;
   }
   .hero-three-two-CTA {
     position: absolute;
@@ -524,12 +528,12 @@ body{
  
 }
 .gym-accessories-mobile{
-  margin-top: 9px;
-  height: 100%;
-  height: 590px;
+  display: block !important;
+  margin-top: 0.5625rem;
+  height: 32.5rem;
   object-fit: cover;
   width: 100%;
-  display: block !important;
+ 
   filter: brightness(90%);
 }
   /* screen two mens new drop */
@@ -538,7 +542,7 @@ body{
     display: none;
   }
   .mensNewDopsPoster-mobile {
-    margin-top: 65px;
+    margin-top: 4rem;
     display: block;
     width: 100%;
     object-fit: cover;
@@ -554,18 +558,18 @@ body{
   .mensNewDopsPoster-desc h3,.womensNewDropPoster-desc h3 {
     margin: 0px;
     font-weight: 700;
-    font-family: sans-serif;
+    font-family: var(--font-sans-serif);
     font-size: 1rem;
     text-transform: uppercase;
-    color: white;
+    color: var(--light);
   }
   .mensNewDopsPoster-desc h1,.womensNewDropPoster-desc h1 {
-    font-family: sans-serif;
-    color: rgb(0, 0, 0);
+    font-family:  var(--font-sans-serif);
+    color: var(--dark);
     margin: 0px;
     text-transform: uppercase;
     font-size: 1.5rem;
-    color: white;
+    color: var(--light);
     text-align: center;
   }
   .womensNewReleases-desktop{
@@ -574,16 +578,16 @@ body{
   .womensNewReleases-mobile{
     display: block !important;
     width: 100%;
-    margin-top: 65px;
+    margin-top: 4rem;
   height: 15rem;
   object-fit: cover;
   }
   /* home workout */
   
   .page-desc{
-    margin-top: 68px;
+    margin-top: 4.2rem;
     height: 10rem;
-    background-color: #f5f5f5;
+    background-color: var(--light);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -599,14 +603,14 @@ body{
   .page-desc-content h3{
     margin: 0px;
     font-weight: 700;
-    font-family: sans-serif;
+    font-family:  var(--font-sans-serif);
     font-size: 1rem;
     text-transform: uppercase;
   }
   .page-desc-content h1{
-    color: rgb(0, 0, 0);
+    color: var(--dark);
     margin: 0px;
-    font-family: sans-serif;
+    font-family: var(--font-sans-serif);
     text-transform: uppercase;
     font-size: 1.5rem;
     font-weight: 700;
@@ -614,7 +618,7 @@ body{
   .resisitance-training-poster-mobile{
     display: block !important;
     width: 100%;
-    margin-top: 65px;
+    margin-top: 4rem;
 height: 24rem !important;
     object-fit: cover;
     width: 100%;

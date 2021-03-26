@@ -10,31 +10,57 @@ import HomeWorkoutEquipments from "./Screens/HomeWorkoutEquipments/Index"
 import ResistanceTrainingEquipments from "./Screens/ResistanceTrainingEquipments/Index"
 import CartComponent from "./Components/CartComponent/Index"
 import WishListComponent from "./Components/WishListComponent/Index"
+import { useRoutingContext } from "./Contexts/RoutingContext/routingContextProvider";
 function App() {
+
+  const { route, setRoute } = useRoutingContext()
+  console.log(route);
+
   return (
     <>
       <Nav />
 
       {/* {CartComponent} */}
-      {/* <CartComponent /> */}
+      {route === "CartComponent" &&
+        <CartComponent/> 
+        }
       
       {/* Wishlists */}
-      {/* <WishListComponent/> */}
+      {route === "WishListComponent" &&
+        <WishListComponent/> 
+      }
+
+      
 
       {/* HomeScreenComponents */}
-      {/* <HomeScreenComponents/> */}
+      {route == "HomeScreenComponents" &&
+        <HomeScreenComponents />
+      }
+      
+
       
       {/* Mens new Drops */}
-      <MensNewDrop/>
+      {route == "MensNewDrop" &&
+        <MensNewDrop/>  
+      }
+
 
       {/* {Womens new drop} */}
-      {/* <WomensNewDrop/> */}
+      {route === "WomensNewDrop" &&
+         <WomensNewDrop/> 
+      }
 
+      
       {/* Home Workout Equipments */}
-      {/* <HomeWorkoutEquipments/> */}
+      {route === "HomeWorkoutEquipments" &&
+         <HomeWorkoutEquipments/> 
+      }
+
 
       {/* ResistanceTrainingEquipments */}
-      {/* <ResistanceTrainingEquipments/> */}
+      {route === "ResistanceTrainingEquipments" &&
+         <ResistanceTrainingEquipments/> 
+      }
       
       <Footer />
     </>

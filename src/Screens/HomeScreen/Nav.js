@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useRoutingContext } from "../../Contexts/RoutingContext/routingContextProvider";
 
 function Nav() {
   const [showCategories, setSgowCategories] = useState(false);
+  const { setRoute } = useRoutingContext();
 
   return (
     <div>
@@ -9,11 +11,15 @@ function Nav() {
         <div className="nav_left">
           <div className="nav_logo">
             <img
+              onClick={() => setRoute("HomeScreenComponents")}
               src="https://static.cure.fit/assets/images/curefit-v-man.svg"
               alt=""
             />
           </div>
-          <div className="nav_name">
+          <div
+            className="nav_name"
+            onClick={() => setRoute("HomeScreenComponents")}
+          >
             <h2>Fit Sharkk</h2>
           </div>
         </div>
@@ -21,6 +27,7 @@ function Nav() {
           <ul>
             <li
               className="hr- hr-underline-left li-bold mens-li"
+              onClick={() => setRoute("MensNewDrop")}
             >
               Mens
             </li>
@@ -32,11 +39,11 @@ function Nav() {
               Products
             </li>
             <li
+              onClick={() => setRoute("WomensNewDrop")}
               className="hr-underline-left li-bold womens-li"
             >
               Womens
             </li>
-            
           </ul>
         </div>
         <div className="nav_right">
@@ -46,58 +53,58 @@ function Nav() {
           <div className="nav_logi">
             <i className="fas fa-user"></i>
           </div>
-          <div className="nav_cart">
-          <i class="fas fa-heart"></i>
+          <div className="nav_cart"
+          onClick={()=>setRoute("WishListComponent")} 
+          >
+            <i class="fas fa-heart"></i>
           </div>
-          <div className="nav_cart">
+          <div className="nav_cart"
+          onClick={()=>setRoute("CartComponent")}
+          >
             <i className="fas fa-shopping-cart"></i>
           </div>
         </div>
         {showCategories && (
-        <div
-          className="nav-hoover-further-links  product-dropdown"
-          onMouseEnter={() => setSgowCategories(true)}
-          onMouseLeave={() => setSgowCategories(false)}
-        >
-          <div className="arrow-up"></div>
-          <div className="box-arrow"></div>
-          <div className="nav-hoover-further-links-container">
-            <div className="nav-hoover-further-linksli">
-            <h3>Accessories</h3>
-              <ul>
-                <li>1) Bags</li>
-                <li>2) Bottles</li>
-                <li>3) Mats</li>
-                <li>4) Straps</li>
-                <li>5) Glouse</li>
-                <li>6) Belts</li>
-              </ul>
-            </div>
+          <div
+            className="nav-hoover-further-links  product-dropdown"
+            onMouseEnter={() => setSgowCategories(true)}
+            onMouseLeave={() => setSgowCategories(false)}
+          >
+            <div className="arrow-up"></div>
+            <div className="box-arrow"></div>
+            <div className="nav-hoover-further-links-container">
+              <div className="nav-hoover-further-linksli">
+                <h3>Accessories</h3>
+                <ul>
+                  <li>1) Bags</li>
+                  <li>2) Bottles</li>
+                  <li>3) Mats</li>
+                  <li>4) Straps</li>
+                  <li>5) Glouse</li>
+                  <li>6) Belts</li>
+                </ul>
+              </div>
 
-            <div className="nav-hoover-further-linksli">
-            <h3>Equipments</h3>
-              <ul>
-                <li>1) Dumbells</li>
-                <li>2) Barbells</li>
-                <li>3) Weights</li>
-                <li>4)Benches</li>
-                <li>5) Squat-racks</li>
-              </ul>
+              <div className="nav-hoover-further-linksli">
+                <h3>Equipments</h3>
+                <ul>
+                  <li>1) Dumbells</li>
+                  <li>2) Barbells</li>
+                  <li>3) Weights</li>
+                  <li>4)Benches</li>
+                  <li>5) Squat-racks</li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
       </div>
-      
 
       {/* shiping details */}
       <div className="shipping-details-update">
         <p>Free Shipping when you spend more than $5</p>
       </div>
       {/* Nav further Hoover Navigation */}
-    
-     
-     
     </div>
   );
 }

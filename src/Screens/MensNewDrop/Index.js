@@ -1,9 +1,11 @@
 import React from 'react'
+import { mensNewDropProductList } from '../../API/MensNewDropProducts'
 import Filter from './Filter'
 import ScreenTwoPoster from './MensNewDropPoster'
 import MensNewDropProductList from './MensNewDropProductList'
 
 function Index() {
+    mensNewDropProductList()
     return (
         <>
             <ScreenTwoPoster />
