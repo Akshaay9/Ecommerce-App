@@ -16,7 +16,6 @@ const mensNewDropProductReduceFun = (state, action) => {
   const { type, payload } = action;
   switch (type) {
     case "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS":
- 
       return {
         ...state,
         initialHomeScrrenProducts: payload,
@@ -31,7 +30,7 @@ export const MensNewDropProductListsFunction = ({ children }) => {
   const [state, dispatch] = useReducer(mensNewDropProductReduceFun, initialStateOfMensNewDropProducts);
  
   return (
-    <mensNewDropProductListsContext.Provider value={{state,dispatch}}>
+    <mensNewDropProductListsContext.Provider value={{state,homeScreenProductDispatch:dispatch}}>
       {children}
     </mensNewDropProductListsContext.Provider>
   );

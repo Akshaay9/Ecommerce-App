@@ -1,5 +1,6 @@
 /* cards */
 .grid-container{
+    cursor: pointer;
     width: 96.5%;
   margin: auto;
   display: grid;
@@ -83,7 +84,26 @@ opacity: 1;
 }
 .card-container-header:hover .card-add-to-cart-action{
     display: flex !important;
-   
+}
+.card-container-header:hover img{
+    filter: brightness(80%);
+}
+.card-ad-to-cart-action-qty{
+    width: 40%;
+margin: auto;
+display: flex;
+justify-content: space-between;
+align-items: center;    
+}
+.card-ad-to-cart-action-qty button{
+    padding: .1rem 1rem;
+}
+.btn-secondary-hr-outline-in span{
+   font-size: 1.2rem;
+}
+.secondary-disabled:disabled{
+   background-color: rgb(184, 179, 179);
+
 }
 
 

@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { CartContextFunction } from './Contexts/CartContext/CartContext';
 import { MensNewDropProductListsFunction } from './Contexts/ProductListContext/MensNewDropProductListing';
 import  RoutingContextFunction  from './Contexts/RoutingContext/routingContextProvider';
 
 ReactDOM.render(
+  
   <React.StrictMode>
     
 
@@ -14,9 +16,14 @@ ReactDOM.render(
       <RoutingContextFunction>
         {/* for routing */}
 
-      <App />
+        <CartContextFunction>
+          {/* {Cart Context} */}
+
+          <App />
+          </CartContextFunction>
       </RoutingContextFunction>
     </MensNewDropProductListsFunction>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
+
 );
