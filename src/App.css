@@ -357,11 +357,17 @@ body{
   position: absolute;
   z-index: 399;
 }
+.filter-heading-sort-priceRange-sub-contsiner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
 
 .filter-heading-sort-prices-container li,
 .filter-heading-sort-rating-container li,
-.filter-heading-sort-delivery-container li,
-.filter-heading-sort-priceRange-contsiner input{
+.filter-heading-sort-delivery-container li
+{
   border: 0.0625rem solid var(--line-color);
   display: flex;
   height: 5vh;

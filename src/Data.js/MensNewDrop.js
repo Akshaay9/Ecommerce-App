@@ -173,7 +173,7 @@ export const mensNewDrop = [
   {
     id: uuidv4(),
     name: "Chalk Tank",
-    tag: "tank",
+    tag: "tanks",
     price: 700,
     color: "Light Sky Blue",
     images: [
@@ -537,7 +537,7 @@ export const mensNewDrop = [
   {
     id: uuidv4(),
     name: "ONYX LONG SLEEVE T-SHIRT",
-    tag: "tshirt",
+    tag: "t-shirt",
     price: 2000,
     color: "Charcoal/Lime",
     images: [
@@ -556,7 +556,7 @@ export const mensNewDrop = [
     ],
     desc:
       "Powerful performance begins with empowerment, that’s what led the design of the Onyx Long Sleeve T-Shirt, with its strong muscle fit, physique-accentuating shades and seamless material. Onyx has been created to instil confidence and self-belief every time you pull it on, because we believe that if you feel strong, you’ll lift strong too.",
-    inStock: 2,
+    inStock: 0,
     rating: 4.5,
     freeDelivery: true,
     deliveredBy: 12,
