@@ -2,13 +2,12 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useMensNewProductListsContext } from "../../Contexts/ProductListContext/MensNewDropProductListing";
-function MensNewDropProductList() {
+function MensNewDropProductList({newFilteredList}) {
   const {
     state: { initialHomeScrrenProducts, loading },
     homeScreenProductDispatch,
   } = useMensNewProductListsContext();
   const { state: { cartItems },cartContextDispatch} = useCartContextProvider();
-console.log(cartItems);
 
   useEffect(() => {
     (async () => {
@@ -72,7 +71,7 @@ console.log(cartItems);
 
   return (
     <div className="grid-container">
-      {initialHomeScrrenProducts.map((ele) => (
+      {newFilteredList.map((ele) => (
         <div className="card-container" key={ele.id}>
           <div className="card-container-header">
             <img src={ele.images[0].img1} alt="" />

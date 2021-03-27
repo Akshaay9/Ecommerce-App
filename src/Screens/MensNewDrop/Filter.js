@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
-import mensNewDropProductList from "./MensNewDropProductList"
+import MensNewDropProductList from "./MensNewDropProductList"
 import { useMensNewProductListsContext } from "../../Contexts/ProductListContext/MensNewDropProductListing";
+import { mensNewDropProductList } from '../../API/MensNewDropProducts'
+
+
+mensNewDropProductList()
 
 function Filter() {
 // for checking the ckeckboxes
@@ -84,6 +88,7 @@ function Filter() {
     }
 return mutatedProductList
   }
+  // invoking the function
 const newFilteredList=filterData(initialHomeScrrenProducts)
  
 
@@ -375,7 +380,7 @@ const newFilteredList=filterData(initialHomeScrrenProducts)
         </div>
       </div>
 
-      
+      <MensNewDropProductList newFilteredList={newFilteredList}  />
       
     
       
