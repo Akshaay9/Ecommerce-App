@@ -57,9 +57,7 @@ function MensNewDropProductList({ newFilteredList }) {
                     })
               }
 
-              // onClick={() =>
-              //   cartContextDispatch({ type: "DECREASE_QTY", payload: product })
-              // }
+            
             >
               <span>-</span>
             </button>{" "}
@@ -96,7 +94,7 @@ function MensNewDropProductList({ newFilteredList }) {
 
   return (
     <div className="grid-container">
-      {newFilteredList&&newFilteredList.length>0 &&newFilteredList.map((ele) => (
+      {newFilteredList.map((ele) => (
         <div className="card-container" key={ele.id}>
           <div className="card-container-header">
             <img src={ele.images[0].img1} alt="" />

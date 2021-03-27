@@ -14,8 +14,6 @@ export const cartContextReducerFun = (state, action) => {
                 ...state,cartItems:state.cartItems.map((ele)=>ele.id==payload.id ? {...ele,inCartQty:ele.inCartQty-1}:ele)
 }
         case "REMOVE_FROM_CART":
-            console.log(type);
-            console.log(payload);
             return {
                 ...state,cartItems:state.cartItems.filter((ele)=>ele.id!==payload.id)
 }

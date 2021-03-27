@@ -1,9 +1,20 @@
 import React, { useState } from "react";
+import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useRoutingContext } from "../../Contexts/RoutingContext/routingContextProvider";
 
 function Nav() {
   const [showCategories, setSgowCategories] = useState(false);
   const { setRoute } = useRoutingContext();
+  const {state:{cartItems,loading}} =useCartContextProvider()
+
+  console.log(cartItems);
+  const lengthOfCartItems = () => {
+    const length = cartItems.reduce((acc, ele) => acc + ele.inCartQty, 0)
+    return length  
+  }
+ 
+ 
+  
 
   return (
     <div>
@@ -56,12 +67,18 @@ function Nav() {
           <div className="nav_cart"
           onClick={()=>setRoute("WishListComponent")} 
           >
+          
             <i class="fas fa-heart"></i>
           </div>
           <div className="nav_cart"
           onClick={()=>setRoute("CartComponent")}
           >
-            <i className="fas fa-shopping-cart"></i>
+           <div className="badgeContainer1 badge-skyBlue">
+        <i class="fas fa-shopping-cart"></i>
+              {/* <span>1</span> */}
+              { cartItems.length> 0 && <span>{lengthOfCartItems()}</span>}
+              
+      </div>
           </div>
         </div>
         {showCategories && (

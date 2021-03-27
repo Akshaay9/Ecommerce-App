@@ -74,7 +74,6 @@ function Filter() {
       mutatedProductList=JSON.parse(
         JSON.stringify(initialHomeScrrenProducts)
       );
-      console.log(mutatedProductList);
     }
     if (filterItems.sort === "lowToHigh") {
       mutatedProductList.sort((a, b) => a.price - b.price);
@@ -120,10 +119,8 @@ function Filter() {
     return mutatedProductList;
   };
 
-
+console.log(initialHomeScrrenProducts);
   const newFilteredList = filterData(initialHomeScrrenProducts);
- console.log("newFilteredList",newFilteredList);
-
   return (
     <>
       <div className="filter">
