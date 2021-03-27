@@ -2,20 +2,28 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useMensNewProductListsContext } from "../../Contexts/ProductListContext/MensNewDropProductListing";
-function MensNewDropProductList({newFilteredList}) {
+function MensNewDropProductList({ newFilteredList }) {
   const {
     state: { initialHomeScrrenProducts, loading },
     homeScreenProductDispatch,
   } = useMensNewProductListsContext();
-  const { state: { cartItems },cartContextDispatch} = useCartContextProvider();
+  const {
+    state: { cartItems },
+    cartContextDispatch,
+  } = useCartContextProvider();
 
   useEffect(() => {
     (async () => {
-      const data = await axios.get("/api/products/mensNewDrop");
-      homeScreenProductDispatch({
-        type: "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS",
-        payload: data.data.products,
-      });
+      try {
+        const data = await axios.get("/api/products/mensNewDrops");
+     
+        homeScreenProductDispatch({
+          type: "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS",
+          payload: data.data.products,
+        });
+      } catch (error) {
+        console.log(error);
+      }
     })();
   }, []);
 
@@ -26,13 +34,29 @@ function MensNewDropProductList({newFilteredList}) {
       return (
         <div className="card-add-to-cart-action">
           {" "}
-          <h3>{ isItemOnTheCart[0].inCartQty===isItemOnTheCart[0].inStock?<span style={{color:"red"}}>Out Of Stock</span>:"Quick Add"}</h3>{" "}
+          <h3>
+            {isItemOnTheCart[0].inCartQty === isItemOnTheCart[0].inStock ? (
+              <span style={{ color: "red" }}>Out Of Stock</span>
+            ) : (
+              "Quick Add"
+            )}
+          </h3>{" "}
           <div className="card-ad-to-cart-action-qty">
             {" "}
             <button
               className="btn-secondary btn-secondary-hr-outline-in"
-              onClick={() => isItemOnTheCart[0].inCartQty==1 ?cartContextDispatch({ type: "REMOVE_FROM_CART", payload: product }):   cartContextDispatch({ type: "DECREASE_QTY", payload: product })}
-              
+              onClick={() =>
+                isItemOnTheCart[0].inCartQty == 1
+                  ? cartContextDispatch({
+                      type: "REMOVE_FROM_CART",
+                      payload: product,
+                    })
+                  : cartContextDispatch({
+                      type: "DECREASE_QTY",
+                      payload: product,
+                    })
+              }
+
               // onClick={() =>
               //   cartContextDispatch({ type: "DECREASE_QTY", payload: product })
               // }
@@ -41,7 +65,9 @@ function MensNewDropProductList({newFilteredList}) {
             </button>{" "}
             {isItemOnTheCart[0].inCartQty}{" "}
             <button
-              disabled={isItemOnTheCart[0].inCartQty===isItemOnTheCart[0].inStock}
+              disabled={
+                isItemOnTheCart[0].inCartQty === isItemOnTheCart[0].inStock
+              }
               className="btn-secondary btn-secondary-hr-outline-in secondary-disabled"
               onClick={() =>
                 cartContextDispatch({ type: "INCREASE_QTY", payload: product })
@@ -49,7 +75,6 @@ function MensNewDropProductList({newFilteredList}) {
             >
               <span>+</span>
             </button>{" "}
-          
           </div>{" "}
         </div>
       );
@@ -71,13 +96,12 @@ function MensNewDropProductList({newFilteredList}) {
 
   return (
     <div className="grid-container">
-      {newFilteredList.map((ele) => (
+      {newFilteredList&&newFilteredList.length>0 &&newFilteredList.map((ele) => (
         <div className="card-container" key={ele.id}>
           <div className="card-container-header">
             <img src={ele.images[0].img1} alt="" />
             {/* calling the program so that it  automatiaaly renders ADD to cart button or increase the qty buttons */}
             {checkIfTheProductIsInCart(ele)}
-            
           </div>
           <div className="card-container-footer">
             <div className="card-container-footer-row-one">

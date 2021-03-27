@@ -11,7 +11,7 @@ const initialStateOfMensNewDropProducts = {
     rating: false,
  delivery:"",
     productTags: [],
-    price_range:false
+    price_range:null
   }
 };
 

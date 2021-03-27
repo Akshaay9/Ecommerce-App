@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import MensNewDropProductList from "./MensNewDropProductList"
+import MensNewDropProductList from "./MensNewDropProductList";
 import { useMensNewProductListsContext } from "../../Contexts/ProductListContext/MensNewDropProductListing";
-import { mensNewDropProductList } from '../../API/MensNewDropProducts'
+import { mensNewDropProductList } from "../../API/MensNewDropProducts";
 
-
-mensNewDropProductList()
+mensNewDropProductList();
 
 function Filter() {
-// for checking the ckeckboxes
+  // for checking the ckeckboxes
   const [sortByPrice, setSortByPrice] = useState();
   const [sortByRating, setSortByRating] = useState();
   const [sortByDelivery, setSortByDelivery] = useState();
@@ -26,10 +25,9 @@ function Filter() {
 
   // grabbing context API
   const {
-    state: { initialHomeScrrenProducts,loading,filterItems },
+    state: { initialHomeScrrenProducts, loading, filterItems },
     homeScreenProductDispatch,
   } = useMensNewProductListsContext();
- 
 
   // get max price of a product
   const maxPriceofProductPresent = Math.max.apply(
@@ -54,44 +52,77 @@ function Filter() {
   // ietrate the set inside empty array to convert set into array
   const setOfAllTheTagsOfProduct = [...setOfAllTheTagsOfProducts];
 
-  // useEffect(() => {
-  //   homeScreenProductDispatch({type:"FILTER_MENS_NEW_DROP_SCRREN_PRODUCTS_BY_PRODUCT_TAG",payload:productTags})
-  // },[productTags])
-
-
+  useEffect(() => {
+    homeScreenProductDispatch({
+      type: "FILTER_BY_PRODUCT_TAGS",
+      payload: productTags,
+    });
+  }, [productTags]);
 
   const filterData = (initialHomeScrrenProducts) => {
-    let mutatedProductList = JSON.parse(JSON.stringify(initialHomeScrrenProducts));
+    let mutatedProductList=[]
+    if (filterItems.productTags.length > 0) {
+     const newData=JSON.parse(
+        JSON.stringify(initialHomeScrrenProducts)
+      );
+      const newFilteredData = filterItems.productTags.map((ele) => newData.filter((prod) => prod.tag === ele))
+      for (let i = 0; i < newFilteredData.length; i++){
+        mutatedProductList=mutatedProductList.concat(newFilteredData[i])
+      }
+    }
+    else {
+      mutatedProductList=JSON.parse(
+        JSON.stringify(initialHomeScrrenProducts)
+      );
+      console.log(mutatedProductList);
+    }
     if (filterItems.sort === "lowToHigh") {
-      mutatedProductList.sort((a,b)=>a.price-b.price)
+      mutatedProductList.sort((a, b) => a.price - b.price);
     }
+  
     if (filterItems.sort === "HighToLow") {
-     mutatedProductList.sort((b,a)=>a.price-b.price)
+      mutatedProductList.sort((b, a) => a.price - b.price);
     }
-    if (filterItems.stock === "in") {
-      mutatedProductList=  mutatedProductList.filter((ele)=>ele.inStock>=0)
-    }
-    if (filterItems.stock === "out") {
-      mutatedProductList=  mutatedProductList.filter((ele)=>ele.inStock===0)
-    }
-    if (filterItems.rating !== false) {
-      mutatedProductList = mutatedProductList.filter((ele) => ele.rating >= filterItems.rating)
-    }
-    if (filterItems.price_range !== false) {
-      mutatedProductList = mutatedProductList.filter((ele) => ele.price <= filterItems.price_range)
-    }
-    if (filterItems.delivery ==="free") {
-      mutatedProductList= mutatedProductList.filter((ele)=>ele.freeDelivery===true)
-    }
-    if (filterItems.delivery ==="express") {
-      mutatedProductList= mutatedProductList.filter((ele)=>ele.freeDelivery===false)
-    }
-return mutatedProductList
-  }
-  // invoking the function
-const newFilteredList=filterData(initialHomeScrrenProducts)
- 
 
+    if (filterItems.stock === "in") {
+      mutatedProductList = mutatedProductList.filter((ele) => ele.inStock >= 0);
+    }
+    
+    if (filterItems.stock === "out") {
+      mutatedProductList = mutatedProductList.filter(
+        (ele) => ele.inStock === 0
+      );
+    }
+  
+    if (filterItems.rating !== false) {
+      mutatedProductList = mutatedProductList.filter(
+        (ele) => ele.rating >= filterItems.rating
+      );
+    }
+   
+    if (filterItems.price_range !== null) {
+      mutatedProductList = mutatedProductList.filter(
+        (ele) => ele.price <= filterItems.price_range
+      );
+    }
+    
+    if (filterItems.delivery === "free") {
+      mutatedProductList = mutatedProductList.filter(
+        (ele) => ele.freeDelivery === true
+      );
+    }
+    
+    if (filterItems.delivery === "express") {
+      mutatedProductList = mutatedProductList.filter(
+        (ele) => ele.freeDelivery === false
+      );
+    }
+    return mutatedProductList;
+  };
+
+
+  const newFilteredList = filterData(initialHomeScrrenProducts);
+ console.log("newFilteredList",newFilteredList);
 
   return (
     <>
@@ -135,7 +166,9 @@ const newFilteredList=filterData(initialHomeScrrenProducts)
                   name="price"
                   checked={sortByPrice === "priceLowToHigh" ? true : false}
                   onChange={() => setSortByPrice("priceLowToHigh")}
-                  onClick={() => homeScreenProductDispatch({type:"LOW_TO_HIGH"})}
+                  onClick={() =>
+                    homeScreenProductDispatch({ type: "LOW_TO_HIGH" })
+                  }
                 />
               </li>
               <li>
@@ -146,7 +179,9 @@ const newFilteredList=filterData(initialHomeScrrenProducts)
                   name="price"
                   checked={sortByPrice === "priceHighToLow" ? true : false}
                   onChange={() => setSortByPrice("priceHighToLow")}
-                  onClick={() => homeScreenProductDispatch({type:"HIGH_TO_LOW"})}
+                  onClick={() =>
+                    homeScreenProductDispatch({ type: "HIGH_TO_LOW" })
+                  }
                 />
               </li>
             </div>
@@ -173,8 +208,7 @@ const newFilteredList=filterData(initialHomeScrrenProducts)
                 <i
                   class="fas fa-chevron-up"
                   style={{ marginTop: "3px", marginLeft: "3px" }}
-                    onClick={() => setShowFilter({ ...showFilter, starSort: "" })}
-                  
+                  onClick={() => setShowFilter({ ...showFilter, starSort: "" })}
                 ></i>
               )}
             </>
@@ -189,7 +223,9 @@ const newFilteredList=filterData(initialHomeScrrenProducts)
                   name="star"
                   checked={sortByRating === "fourStar" ? true : false}
                   onChange={() => setSortByRating("fourStar")}
-                  onClick={()=>homeScreenProductDispatch({type:"RATING",payload:4})}
+                  onClick={() =>
+                    homeScreenProductDispatch({ type: "RATING", payload: 4 })
+                  }
                 />
               </li>
               <li>
@@ -200,7 +236,9 @@ const newFilteredList=filterData(initialHomeScrrenProducts)
                   name="star"
                   checked={sortByRating === "threeStar" ? true : false}
                   onChange={() => setSortByRating("threeStar")}
-                  onClick={()=>homeScreenProductDispatch({type:"RATING",payload:3})}
+                  onClick={() =>
+                    homeScreenProductDispatch({ type: "RATING", payload: 3 })
+                  }
                 />
               </li>
               <li>
@@ -211,7 +249,9 @@ const newFilteredList=filterData(initialHomeScrrenProducts)
                   name="star"
                   checked={sortByRating === "twoStar" ? true : false}
                   onChange={() => setSortByRating("twoStar")}
-                  onClick={()=>homeScreenProductDispatch({type:"RATING",payload:2})}
+                  onClick={() =>
+                    homeScreenProductDispatch({ type: "RATING", payload: 2 })
+                  }
                 />
               </li>
               <li>
@@ -222,7 +262,9 @@ const newFilteredList=filterData(initialHomeScrrenProducts)
                   name="star"
                   checked={sortByRating === "oneStar" ? true : false}
                   onChange={() => setSortByRating("oneStar")}
-                  onClick={()=>homeScreenProductDispatch({type:"RATING",payload:1})}
+                  onClick={() =>
+                    homeScreenProductDispatch({ type: "RATING", payload: 1 })
+                  }
                 />
               </li>
             </div>
@@ -265,7 +307,9 @@ const newFilteredList=filterData(initialHomeScrrenProducts)
                   name="delivery"
                   checked={sortByDelivery === "freeHomeDelivery" ? true : false}
                   onChange={() => setSortByDelivery("freeHomeDelivery")}
-                  onClick={()=>homeScreenProductDispatch({type:"FREE_DELIVERY"})}
+                  onClick={() =>
+                    homeScreenProductDispatch({ type: "FREE_DELIVERY" })
+                  }
                 />
               </li>
               <li>
@@ -276,7 +320,9 @@ const newFilteredList=filterData(initialHomeScrrenProducts)
                   name="delivery"
                   checked={sortByDelivery === "expressDelivery" ? true : false}
                   onChange={() => setSortByDelivery("expressDelivery")}
-                  onClick={()=>homeScreenProductDispatch({type:"EXPRESS_DELIVERY"})}
+                  onClick={() =>
+                    homeScreenProductDispatch({ type: "EXPRESS_DELIVERY" })
+                  }
                 />
               </li>
             </div>
@@ -318,7 +364,7 @@ const newFilteredList=filterData(initialHomeScrrenProducts)
                   <input
                     type="checkbox"
                     checked={productTags.indexOf(ele) >= 0}
-                    onClick={() => {  
+                    onClick={() => {
                       const isTagAlredyChecked = productTags.indexOf(ele);
                       if (isTagAlredyChecked >= 0)
                         setProductTags((items) =>
@@ -367,23 +413,29 @@ const newFilteredList=filterData(initialHomeScrrenProducts)
                 max={maxPriceofProductPresent}
                 value={priceRange}
                 onChange={(e) => setPriceRange(e.target.value)}
-                onClick={() => homeScreenProductDispatch({type:"PRICE_RANGE",payload:priceRange})}
+                onClick={() =>
+                  homeScreenProductDispatch({
+                    type: "PRICE_RANGE",
+                    payload: priceRange,
+                  })
+                }
               />
             </div>
           )}
-        
         </div>
         <div className="button-filter">
           <h3 className="filter-heading-sort-priceRange">
-           <button style={{borderRadius:"0px",padding:"0rem 0.4rem"}} className="btn btn-secondary btn-secondary-hr-outline-in">Clear Filter</button>
+            <button
+              style={{ borderRadius: "0px", padding: "0rem 0.4rem" }}
+              className="btn btn-secondary btn-secondary-hr-outline-in"
+            >
+              Clear Filter
+            </button>
           </h3>
         </div>
       </div>
 
-      <MensNewDropProductList newFilteredList={newFilteredList}  />
-      
-    
-      
+      <MensNewDropProductList newFilteredList={newFilteredList} />
     </>
   );
 }

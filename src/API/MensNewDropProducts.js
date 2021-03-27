@@ -1,12 +1,21 @@
-import { mensNewDrop } from "../Data.js/MensNewDrop"
+import { mensNewDrop } from "../Data.js/MensNewDrop";
 import { createServer } from "miragejs"
 
-export const mensNewDropProductList =()=> {
+export const mensNewDropProductList = () => {
+  
+
   createServer({
     routes() {
-      this.get("/api/products/mensNewDrop", () => ({
-        products: mensNewDrop,
-      }))
+      this.namespace = "api"
+  
+      this.get("/products/mensNewDrops", () => {
+        return {
+          products:mensNewDrop
+        }
+        
+      })
     },
   })
 }
+
+

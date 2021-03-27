@@ -514,7 +514,7 @@ export const mensNewDrop = [
     color: "light Blue",
     images: [
       {
-        img1:
+        img1: 
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CriticalPantsAshTealGMBT4252.A-Edit_AS_885x.jpg?v=1613989806",
       },
       {
