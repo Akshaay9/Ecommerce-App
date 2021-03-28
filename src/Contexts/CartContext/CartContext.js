@@ -1,21 +1,27 @@
 import { createContext, useContext, useReducer } from "react";
 import { cartContextReducerFun } from "./CartContextReducer";
-import { v4 as uuidv4 } from "uuid";
+import { useEffect } from "react"
+
 
 export const cartContextProvider = createContext();
-
 const initialStateOfCart = {
-  cartItems: localStorage.getItem("cart-itmes")
+  cartItems: localStorage.getItem("cart-items")
     ? JSON.parse(localStorage.getItem("cart-items"))
     : [],
   loading: false,
 };
+
+
 
 export const CartContextFunction = ({ children }) => {
   const [state, dispatch] = useReducer(
     cartContextReducerFun,
     initialStateOfCart
   );
+
+  useEffect(() => {
+    localStorage.setItem("cart-items",JSON.stringify(state.cartItems))
+  },[state.cartItems])
 
   return (
     <cartContextProvider.Provider
