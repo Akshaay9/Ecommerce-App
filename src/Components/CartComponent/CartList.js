@@ -13,7 +13,7 @@ function CartList() {
         <div className="cart-componrnt-container">
           <div className="cart-component-left">
             <div className="cart-component-left-img">
-              <img src={ele.images[0].img1} alt="" />
+              <img src={ele.images[0].img} alt="" />
             </div>
             <div className="cart-component-left-desc">
               <h2>{ele.name}</h2>

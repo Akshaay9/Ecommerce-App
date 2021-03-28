@@ -13,7 +13,7 @@ function WishLists() {
           <div className="wishlist-component-container">
             <div className="wishlist-component-container-left">
             <div className="cart-component-left-img">
-              <img src={ele.images[0].img1} alt="" />
+              <img src={ele.images[0].img} alt="" />
                     </div>
                 <div className="wishlist-component-container-left-desc">
                 <h2>{ele.name}</h2>

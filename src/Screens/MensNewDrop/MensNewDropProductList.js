@@ -3,9 +3,15 @@ import React, { useEffect } from "react";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useMensNewProductListsContext } from "../../Contexts/ProductListContext/MensNewDropProductListing";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
+import {useRoutingContext} from "../../Contexts/RoutingContext/routingContextProvider"
+import { useSingleProductCOntextFun } from "../../Contexts/SingleProductContext/SingleProductContext";
+
 function MensNewDropProductList({ newFilteredList }) {
+  // single product view
+  const {  singleProductContextDispatch } = useSingleProductCOntextFun()
+  // routing
+  const { setRoute } = useRoutingContext();
   const {
-    state: { loading },
     homeScreenProductDispatch,
   } = useMensNewProductListsContext();
   const {
@@ -118,12 +124,17 @@ function MensNewDropProductList({ newFilteredList }) {
       wishListContextDispatch({type:"REMOVE_FROM_WISHLIST",payload:ele})
     } 
   }
+  const setRouteToSingleProductAndDispatchSingleProductContext = (ele) => {
+    setRoute("singleProductView")
+    singleProductContextDispatch({type:"ADD_TO_SINGLE_PRODUCT",payload:ele})
+    
+  }
   return (
     <div className="grid-container">
       {newFilteredList.map((ele) => (
         <div className="card-container" key={ele.id}>
           <div className="card-container-header">
-            <img src={ele.images[0].img1} alt="" />
+            <img src={ele.images[0].img} alt=""  onClick={()=>setRouteToSingleProductAndDispatchSingleProductContext(ele)}/>
             {/* calling the program so that it  automatiaaly renders ADD to cart button or increase the qty buttons */}
             {checkIfTheProductIsInCart(ele)}
           </div>

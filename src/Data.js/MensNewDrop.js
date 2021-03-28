@@ -8,15 +8,15 @@ export const mensNewDrop = [
     color: "Light Green",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/OVERSIZEDESSENTIALSST-SHIRTSAGEGREEN.D1-Edit_BK_438x.jpg?v=1615305736",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/OVERSIZEDESSENTIALSST-SHIRTSAGEGREEN.C-Edit_BK_290x.jpg?v=1615148613",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/OVERSIZEDESSENTIALSST-SHIRTSAGEGREEN.B-Edit_BK_290x.jpg?v=1615148613",
       },
     ],
@@ -36,15 +36,15 @@ export const mensNewDrop = [
     color: "Light Black",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/OVERSIZEDESSENTIALSST-SHIRTBLACK.A-Edit_BK_885x.jpg?v=1615148603",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/OVERSIZEDESSENTIALSST-SHIRTBLACK.C-Edit_BK_290x.jpg?v=1615148603",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/OVERSIZEDESSENTIALSST-SHIRTBLACK.B-Edit_BK_290x.jpg?v=1615148603",
       },
     ],
@@ -64,15 +64,15 @@ export const mensNewDrop = [
     color: "White",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/OVERSIZEDESSENTIALSST-SHIRTWHITE.A-Edit_BK_885x.jpg?v=1615148617",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/OVERSIZEDESSENTIALSST-SHIRTWHITE.C-Edit_BK_290x.jpg?v=1615148617",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/OVERSIZEDESSENTIALSST-SHIRTWHITE.B-Edit_BK_290x.jpg?v=1615148617",
       },
     ],
@@ -92,15 +92,15 @@ export const mensNewDrop = [
     color: "Light Gray",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/OVERSIZEDESSENTIALSST-SHIRTCHARCOALGREY.A-Edit_ZH_ZH_885x.jpg?v=1615148608",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/OVERSIZEDESSENTIALSST-SHIRTCHARCOALGREY.C-Edit_ZH_ZH_290x.jpg?v=1615148608",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/OVERSIZEDESSENTIALSST-SHIRTCHARCOALGREY.B-Edit_ZH_ZH_290x.jpg?v=1615148608",
       },
     ],
@@ -121,15 +121,15 @@ export const mensNewDrop = [
     color: "Black/Gray camo",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/ArrivalSST-ShirtBlackGreyCamoGMST5638.A-Edit_ZH_ZH_885x.jpg?v=1613989664",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/ArrivalSST-ShirtBlackGreyCamoGMST5638.C-Edit_ZH_ZH_290x.jpg?v=1613989664",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/ArrivalSST-ShirtBlackGreyCamoGMST5638.B-Edit_ZH_ZH_290x.jpg?v=1613989664",
       },
     ],
@@ -149,15 +149,15 @@ export const mensNewDrop = [
     color: "Red",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/APOLLOMUSCLEFITSST-SHIRTSPORTSRED.A-Edit_AS_885x.jpg?v=1613989635",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/APOLLOMUSCLEFITSST-SHIRTSPORTSRED.B-Edit_AS_290x.jpg?v=1613989635",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/APOLLOMUSCLEFITSST-SHIRTSPORTSRED.C-Edit_AS_290x.jpg?v=1613989635",
       },
     ],
@@ -178,15 +178,15 @@ export const mensNewDrop = [
     color: "Light Sky Blue",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CHALKDROPARMTANKSPRINGafGREENPRINT.A-Edit_ZH_885x.jpg?v=1607946413",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CHALKDROPARMTANKSPRINGGREENPRINT.C-Edit_ZH_bddca51d-eccf-4fb8-a54d-287c90d0c396_290x.jpg?v=1607946413",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CHALKDROPARMTANKSPRINGGREENPRINT.B-Edit_ZH_f7b8c941-1249-4866-90e0-b96e5ecc9f9b_290x.jpg?v=1607946413",
       },
     ],
@@ -206,15 +206,15 @@ export const mensNewDrop = [
     color: "Navy Black",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CRESTSWEATZIPUPHOODIEBLACK.A-Edit_ZH_885x.jpg?v=1600271914",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/https://cdn.shopify.com/s/files/1/1367/5207/products/CRESTSWEATZIPUPHOODIEBLACK.C-Edit_ZH_290x.jpg?v=1600271914.C-Edit_ZH_bddca51d-eccf-4fb8-a54d-287c90d0c396_290x.jpg?v=1607946413",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CRESTSWEATZIPUPHOODIEBLACK.B-Edit_ZH_290x.jpg?v=1600271914",
       },
     ],
@@ -234,15 +234,15 @@ export const mensNewDrop = [
     color: "Charcoal Marl",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CRESTPANTSCHARCOALMARL.A-Edit_ZH_885x.jpg?v=1599234466",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CRESTPANTSCHARCOALMARL.C-Edit_ZH_290x.jpg?v=1599234466",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CRESTPANTSCHARCOALMARL.B-Edit_ZH_290x.jpg?v=1599234466",
       },
     ],
@@ -262,15 +262,15 @@ export const mensNewDrop = [
     color: "Charcoal Marl",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CRESTPULLOVERCHARCOALMARL.A-Edit_AS_885x.jpg?v=1599234486",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CRESTPULLOVERCHARCOALMARL.C-Edit_AS_290x.jpg?v=1599234486",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CRESTPULLOVERCHARCOALMARL.B-Edit_AS_290x.jpg?v=1599234486",
       },
     ],
@@ -290,15 +290,15 @@ export const mensNewDrop = [
     color: "Charcoal Marl",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CriticalPantsBlack2GMBT4252.A-Edit_AS_885x.jpg?v=1614251515",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CriticalPantsBlack2GMBT4252.C-Edit_AS_290x.jpg?v=1614251515",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CriticalPantsBlack2GMBT4252.B-Edit_AS_290x.jpg?v=1614251515",
       },
     ],
@@ -318,15 +318,15 @@ export const mensNewDrop = [
     color: "White",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CriticalDropArmholeT-ShirtWhiteGMST3249.A-Edit_CM_885x.jpg?v=1614251453",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CriticalDropArmholeT-ShirtWhiteGMST3249.C-Edit_CM_290x.jpg?v=1614251453",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CriticalDropArmholeT-ShirtWhiteGMST3249.B-Edit_CM_290x.jpg?v=1614251453",
       },
     ],
@@ -346,15 +346,15 @@ export const mensNewDrop = [
     color: "black",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/SportShortGraphicBlack_GMSH4744-BK_.C-Edit_BK_885x.jpg?v=1615199850",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/SportShortGraphicBlack_GMSH4744-BK_.A-Edit_BK_290x.jpg?v=1615199850",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/SportShortGraphicBlack_GMSH4744-BK_.B-Edit_BK_290x.jpg?v=1615199850",
       },
     ],
@@ -374,15 +374,15 @@ export const mensNewDrop = [
     color: "Charcoal",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/SPORT_SHORTS-_CHARCOAL.A-Edit_HK_885x.jpg?v=1581617440",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/SPORT_SHORTS-_CHARCOAL.C-Edit_HK_290x.jpg?v=1581617440",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/SPORT_SHORTS-_CHARCOAL.B-Edit_HK_290x.jpg?v=1581617440",
       },
     ],
@@ -402,15 +402,15 @@ export const mensNewDrop = [
     color: "CRITICAL WINDBREAKER",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CRITICALWINDBREAKERBLACK.A-Edit_BK_b6bd1f74-a135-45aa-a55f-a2a067e52e96_885x.jpg?v=1600887604",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CRITICALWINDBREAKERBLACK.C-Edit_BK_47019ac0-5e76-436b-a0d3-f13eb461f6db_290x.jpg?v=1600887604",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CRITICALWINDBREAKERBLACK.B-Edit_BK_fccdefc4-80d1-4d85-b491-90d0503d1271_290x.jpg?v=1600887604",
       },
     ],
@@ -430,15 +430,15 @@ export const mensNewDrop = [
     color: "Charcoal Gray",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/APEXPERFORMZIPUPHOODIECHARCOALGREY-LIMEGREEN15404.A-Edit_ZH_885x.jpg?v=1607006906",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/APEXPERFORMZIPUPHOODIECHARCOALGREY-LIMEGREEN15399.C-Edit_ZH_290x.jpg?v=1607006906",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/APEXPERFORMZIPUPHOODIECHARCOALGREY-LIMEGREEN15413.B-Edit_ZH_290x.jpg?v=1607006906",
       },
     ],
@@ -458,15 +458,15 @@ export const mensNewDrop = [
     color: "White",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/BOLDDROPARMTANKWHITE.A-Edit_BK_29f6e9c7-dadb-4fe8-afc4-f70f9b2fb855_885x.jpg?v=1600887456",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/BOLDDROPARMTANKWHITE.C-Edit_BK_4eafa147-f176-4d25-bcbf-dff94f7316ab_290x.jpg?v=1600887456",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/BOLDDROPARMTANKWHITE.B-Edit_BK_9ce23188-cb13-455a-9559-ff5f5ceab049_290x.jpg?v=1600887456",
       },
     ],
@@ -486,15 +486,15 @@ export const mensNewDrop = [
     color: "light Blue",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CriticalPantsAshTealGMBT4252.A-Edit_AS_885x.jpg?v=1613989806",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CriticalPantsAshTealGMBT4252.C-Edit_AS_290x.jpg?v=1613989806",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CriticalPantsAshTealGMBT4252.B-Edit_AS_290x.jpg?v=1613989806",
       },
     ],
@@ -514,15 +514,15 @@ export const mensNewDrop = [
     color: "light Blue",
     images: [
       {
-        img1: 
+        img: 
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CriticalPantsAshTealGMBT4252.A-Edit_AS_885x.jpg?v=1613989806",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CriticalPantsAshTealGMBT4252.C-Edit_AS_290x.jpg?v=1613989806",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/CriticalPantsAshTealGMBT4252.B-Edit_AS_290x.jpg?v=1613989806",
       },
     ],
@@ -542,15 +542,15 @@ export const mensNewDrop = [
     color: "Charcoal/Lime",
     images: [
       {
-        img1:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/ONYXXLONGSLEEVET-SHIRTCHARCOALGREYLIMEGREEN..A-Edit_ZH_cee65567-6b88-483c-a36d-7fba2d233823_885x.jpg?v=1603375439",
       },
       {
-        img2:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/ONYXXLONGSLEEVET-SHIRTCHARCOALGREYLIMEGREEN..C-Edit_ZH_32c3a189-a66e-47bc-9998-9a626bbf9d32_290x.jpg?v=1603375439",
       },
       {
-        img3:
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/ONYXXLONGSLEEVET-SHIRTCHARCOALGREYLIMEGREEN..B-Edit_ZH_82077584-da3f-43d2-8364-c2ac3abd0a0c_290x.jpg?v=1603375439",
       },
     ],

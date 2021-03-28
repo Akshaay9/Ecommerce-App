@@ -11,6 +11,7 @@ import ResistanceTrainingEquipments from "./Screens/ResistanceTrainingEquipments
 import CartComponent from "./Components/CartComponent/Index"
 import WishListComponent from "./Components/WishListComponent/Index"
 import { useRoutingContext } from "./Contexts/RoutingContext/routingContextProvider";
+import SingleProductViewer from "./Components/SIngleProductViewer/Index"
 function App() {
 
   const { route, setRoute } = useRoutingContext()
@@ -59,6 +60,10 @@ function App() {
       {/* ResistanceTrainingEquipments */}
       {route === "ResistanceTrainingEquipments" &&
          <ResistanceTrainingEquipments/> 
+      }
+
+      {route === "singleProductView" && 
+      <SingleProductViewer/>
       }
       
       {/* <Footer /> */}

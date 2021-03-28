@@ -4,6 +4,7 @@ import App from "./App";
 import { CartContextFunction } from "./Contexts/CartContext/CartContext";
 import { MensNewDropProductListsFunction } from "./Contexts/ProductListContext/MensNewDropProductListing";
 import RoutingContextFunction from "./Contexts/RoutingContext/routingContextProvider";
+import { SinglePRoductContextFun } from "./Contexts/SingleProductContext/SingleProductContext";
 import { WishListContextFun } from "./Contexts/WishListContext/WishListContext";
 
 ReactDOM.render(
@@ -20,8 +21,11 @@ ReactDOM.render(
           <WishListContextFun>
             {/* {WishList Context} */}
 
-            
-            <App />
+            <SinglePRoductContextFun>
+              {/* {Single Product View COntext} */}
+
+              <App />
+              </SinglePRoductContextFun>
           </WishListContextFun>
         </CartContextFunction>
       </RoutingContextFunction>
