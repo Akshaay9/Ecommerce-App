@@ -61,7 +61,7 @@ function App() {
          <ResistanceTrainingEquipments/> 
       }
       
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 

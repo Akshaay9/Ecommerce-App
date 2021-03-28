@@ -11,6 +11,8 @@ function Filter() {
   const [sortByRating, setSortByRating] = useState();
   const [sortByDelivery, setSortByDelivery] = useState();
   const [priceRange, setPriceRange] = useState(500);
+  // to store checked tags, further this array will be sent to useReducer to map and filter all elements whose tags present here
+  const [productTags, setProductTags] = useState([]);
 
   //  to Hide or show dropdow filters
   const [showFilter, setShowFilter] = useState({
@@ -20,8 +22,7 @@ function Filter() {
     priceRange: "",
     productTags: "",
   });
-  // to store checked tags, further this array will be sent to useReducer to map and filter all elements whose tags present here
-  const [productTags, setProductTags] = useState([]);
+  
 
   // grabbing context API
   const {
@@ -118,8 +119,17 @@ function Filter() {
     }
     return mutatedProductList;
   };
+  const clearFilter = () => {
+    homeScreenProductDispatch({
+      type: "CLEAR_FILTERS"
+    })
+    setSortByPrice()
+    setSortByRating()
+    setSortByRating()
+    setProductTags([])
+    
+  }
 
-console.log(initialHomeScrrenProducts);
   const newFilteredList = filterData(initialHomeScrrenProducts);
   return (
     <>
@@ -425,6 +435,7 @@ console.log(initialHomeScrrenProducts);
             <button
               style={{ borderRadius: "0px", padding: "0rem 0.4rem" }}
               className="btn btn-secondary btn-secondary-hr-outline-in"
+              onClick={()=>clearFilter()}
             >
               Clear Filter
             </button>

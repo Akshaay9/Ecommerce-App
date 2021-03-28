@@ -3,8 +3,9 @@ import "./App.css";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 function CartList() {
   const {
-    state: { cartItems, loading },
+    state: { cartItems, loading },cartContextDispatch
   } = useCartContextProvider();
+ 
   return (
     <div className="cart-component">
       {cartItems.map((ele) => (
@@ -13,25 +14,51 @@ function CartList() {
             <div className="cart-component-left-img">
               <img src={ele.images[0].img1} alt="" />
             </div>
-            <div className="cart component-left-desc">
+            <div className="cart-component-left-desc">
               <h2>{ele.name}</h2>
               <h4>{ele.price}.00₹</h4>
             </div>
           </div>
           <div className="cart-component-mid">
-            <div className="card-add-to-cart-action">
-              <div className="card-ad-to-cart-action-qty">
-                <button className="btn-secondary btn-secondary-hr-outline-in">
-                  <span>-</span>
-                </button>
-                <button className="btn-secondary btn-secondary-hr-outline-in secondary-disabled">
-                  <span>+</span>
-                </button>
-              </div>
+            {ele.inCartQty === ele.inStock && <span style={{ color: "red" }}>Out Of Stock</span>}
+            <div className="cart-component-CTA">
+             
+              <button className="btn-secondary btn-secondary-hr-outline-in secondary-disabled btn-cart-cta"
+                onClick={() => ele.inCartQty == 1
+                  ? cartContextDispatch({
+                      type: "REMOVE_FROM_CART",
+                      payload: ele,
+                    })
+                  : cartContextDispatch({
+                      type: "DECREASE_QTY",
+                      payload: ele,
+                    })
+              }
+              >-</button>
+              <span>{ele.inCartQty}</span>
+              <button className="btn-secondary btn-secondary-hr-outline-in secondary-disabled
+              btn-cart-cta
+              "
+              disabled={
+                ele.inCartQty === ele.inStock
+              }
+              onClick={() =>
+                cartContextDispatch({ type: "INCREASE_QTY", payload: ele })
+              }
+              >+</button>
+            </div>
+            <div className="cart-component-CTA-bottom">
+              <button className="btn-secondary btn-secondary-hr-outline-in secondary-disabled btn-cart-cta "
+              onClick={()=>cartContextDispatch({
+                      type: "REMOVE_FROM_CART",
+                      payload: ele,
+                    })}
+              >Remove</button>
             </div>
           </div>
           <div className="cart-component-right">
-            <h4>{ele.price}.00₹</h4>
+            <h4>Total Price : {ele.inCartQty*ele.price}.00₹</h4>
+            <h4 style={{marginTop:"1rem"}}>Total Quantity : {ele.inCartQty}</h4>
           </div>
         </div>
       ))}
