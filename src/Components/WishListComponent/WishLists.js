@@ -3,7 +3,7 @@ import { useWishListContextProvider } from "../../Contexts/WishListContext/WishL
 
 function WishLists() {
   const {
-    state: { wishListItems },
+    state: { wishListItems },wishListContextDispatch
   } = useWishListContextProvider();
   return (
     <div>
@@ -23,7 +23,9 @@ function WishLists() {
                        
             </div>
                 <div className="wishlist-component-container-right">
-                <i class="fas fa-trash"></i>
+              <i class="fas fa-trash"
+              onClick={()=>wishListContextDispatch({type:"REMOVE_FROM_WISHLIST",payload:ele})}
+              ></i>
             </div>
           </div>
         ))}
