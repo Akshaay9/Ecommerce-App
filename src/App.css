@@ -39,6 +39,11 @@
 .mens-li {
   position: relative;
 }
+.badge-skyBlue span{
+  left: 1.2rem;
+  top: 0.4em;
+
+}
 
 /* home screen delevery update */
 .shipping-details-update {

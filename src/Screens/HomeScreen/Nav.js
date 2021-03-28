@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useRoutingContext } from "../../Contexts/RoutingContext/routingContextProvider";
+import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 
 function Nav() {
   const [showCategories, setSgowCategories] = useState(false);
   const { setRoute } = useRoutingContext();
-  const {state:{cartItems,loading}} =useCartContextProvider()
+  const { state: { cartItems, loading } } = useCartContextProvider()
+  
+  const {state:{wishListItems}}=useWishListContextProvider()
 
-  console.log(cartItems);
+
   const lengthOfCartItems = () => {
     const length = cartItems.reduce((acc, ele) => acc + ele.inCartQty, 0)
     return length  
@@ -67,8 +70,12 @@ function Nav() {
           <div className="nav_cart"
           onClick={()=>setRoute("WishListComponent")} 
           >
-          
-            <i class="fas fa-heart"></i>
+          <div className="badge badge-skyBlue">
+              <i class="fas fa-heart"></i>
+              {wishListItems.length>0 && <span>{ wishListItems.length}</span> }
+      
+      </div>
+           
           </div>
           <div className="nav_cart"
           onClick={()=>setRoute("CartComponent")}

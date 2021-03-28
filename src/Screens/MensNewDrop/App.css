@@ -56,6 +56,20 @@
    animation: hooverAddToCartAnimation 300ms 1 ease-in-out;;
     
 }
+.card-container-footer-row-three{
+    display: flex;
+    width: 90%;
+justify-content: space-between;
+}
+
+.wish-heart-icon:hover{
+   transition: all 200ms ease-in-out;
+transform: scale(1.3);
+color: red !important;
+overflow: hidden;
+}
+
+
 @keyframes hooverAddToCartAnimation{
     0%{
 opacity: 0;

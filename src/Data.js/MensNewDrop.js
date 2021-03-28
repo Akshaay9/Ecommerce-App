@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 export const mensNewDrop = [
   {
-    id: uuidv4(),
+    id: 1,
     name: "ESSENTIAL OVERSIZED T-SHIRT",
     tag: "t-shirt",
     price: 250,
@@ -29,7 +29,7 @@ export const mensNewDrop = [
     newArrival: true,
   },
   {
-    id: uuidv4(),
+    id: 2,
     name: "ESSENTIAL Black T-SHIRT",
     tag: "t-shirt",
     price: 250,
@@ -57,7 +57,7 @@ export const mensNewDrop = [
     newArrival: false,
   },
   {
-    id: uuidv4(),
+    id: 3,
     name: "ESSENTIAL White Oversized T-SHIRT",
     tag: "t-shirt",
     price: 350,
@@ -85,7 +85,7 @@ export const mensNewDrop = [
     newArrival: true,
   },
   {
-    id: uuidv4(),
+    id: 4,
     name: "ESSENTIAL Light Gray T-SHIRT",
     tag: "t-shirt",
     price: 380,
@@ -114,7 +114,7 @@ export const mensNewDrop = [
   },
 
   {
-    id: uuidv4(),
+    id: 5,
     name: "Arrival T-Shirt",
     tag: "t-shirt",
     price: 400,
@@ -142,7 +142,7 @@ export const mensNewDrop = [
     newArrival: false,
   },
   {
-    id: uuidv4(),
+    id: 6,
     name: "Appolo T-Shirt",
     tag: "t-shirt",
     price: 500,
@@ -171,7 +171,7 @@ export const mensNewDrop = [
   },
 
   {
-    id: uuidv4(),
+    id: 7,
     name: "Chalk Tank",
     tag: "tanks",
     price: 700,
@@ -199,7 +199,7 @@ export const mensNewDrop = [
     newArrival: true,
   },
   {
-    id: uuidv4(),
+    id: 8,
     name: "CREST ZIP UP HOODIE",
     tag: "hoodie",
     price: 790,
@@ -227,7 +227,7 @@ export const mensNewDrop = [
     newArrival: false,
   },
   {
-    id: uuidv4(),
+    id: 9,
     name: "CREST JOGGERS",
     tag: "joggers",
     price: 999,
@@ -255,7 +255,7 @@ export const mensNewDrop = [
     newArrival: false,
   },
   {
-    id: uuidv4(),
+    id:10,
     name: "CREST HOODIE",
     tag: "hoodie",
     price: 1299,
@@ -283,7 +283,7 @@ export const mensNewDrop = [
     newArrival: false,
   },
   {
-    id: uuidv4(),
+    id: 11,
     name: "CRITICAL ZIP JOGGERS",
     tag: "joggers",
     price: 1299,
@@ -311,7 +311,7 @@ export const mensNewDrop = [
     newArrival: true,
   },
   {
-    id: uuidv4(),
+    id:12,
     name: "CRITICAL DROP ARM TANK",
     tag: "tanks",
     price: 1599,
@@ -339,7 +339,7 @@ export const mensNewDrop = [
     newArrival: true,
   },
   {
-    id: uuidv4(),
+    id: 13,
     name: "GRAPHIC SPORT SHORTS",
     tag: "Shorts",
     price: 599,
@@ -367,7 +367,7 @@ export const mensNewDrop = [
     newArrival: false,
   },
   {
-    id: uuidv4(),
+    id:14,
     name: "SPORT SHORTS",
     tag: "Shorts",
     price: 899,
@@ -395,7 +395,7 @@ export const mensNewDrop = [
     newArrival: false,
   },
   {
-    id: uuidv4(),
+    id: 15,
     name: "CRITICAL WINDBREAKER",
     tag: "hoodie",
     price: 899,
@@ -423,7 +423,7 @@ export const mensNewDrop = [
     newArrival: true,
   },
   {
-    id: uuidv4(),
+    id: 16,
     name: "APEX ZIP UP JACKET",
     tag: "jacket",
     price: 1800,
@@ -451,7 +451,7 @@ export const mensNewDrop = [
     newArrival: false,
   },
   {
-    id: uuidv4(),
+    id: 17,
     name: "BOLD DROP ARM TANK",
     tag: "tanks",
     price: 800,
@@ -479,7 +479,7 @@ export const mensNewDrop = [
     newArrival: false,
   },
   {
-    id: uuidv4(),
+    id:18,
     name: "CRITICAL ZIP JOGGERS",
     tag: "joggers",
     price: 1999,
@@ -507,7 +507,7 @@ export const mensNewDrop = [
     newArrival: true,
   },
   {
-    id: uuidv4(),
+    id: 19,
     name: "CRITICAL ZIP JOGGERS",
     tag: "joggers",
     price: 1999,
@@ -535,7 +535,7 @@ export const mensNewDrop = [
     newArrival: true,
   },
   {
-    id: uuidv4(),
+    id:20,
     name: "ONYX LONG SLEEVE T-SHIRT",
     tag: "t-shirt",
     price: 2000,

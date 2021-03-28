@@ -2,9 +2,10 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useMensNewProductListsContext } from "../../Contexts/ProductListContext/MensNewDropProductListing";
+import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 function MensNewDropProductList({ newFilteredList }) {
   const {
-    state: { initialHomeScrrenProducts, loading },
+    state: { loading },
     homeScreenProductDispatch,
   } = useMensNewProductListsContext();
   const {
@@ -12,11 +13,15 @@ function MensNewDropProductList({ newFilteredList }) {
     cartContextDispatch,
   } = useCartContextProvider();
 
+  const {
+    state: { wishListItems },wishListContextDispatch
+  } = useWishListContextProvider();
+
   useEffect(() => {
     (async () => {
       try {
         const data = await axios.get("/api/products/mensNewDrops");
-     
+
         homeScreenProductDispatch({
           type: "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS",
           payload: data.data.products,
@@ -26,6 +31,7 @@ function MensNewDropProductList({ newFilteredList }) {
       }
     })();
   }, []);
+
 
   const checkIfTheProductIsInCart = (product) => {
     const newItems = [...cartItems];
@@ -56,8 +62,6 @@ function MensNewDropProductList({ newFilteredList }) {
                       payload: product,
                     })
               }
-
-            
             >
               <span>-</span>
             </button>{" "}
@@ -92,6 +96,28 @@ function MensNewDropProductList({ newFilteredList }) {
       );
   };
 
+  const checkIfTheProductIsWished = (ele) => {
+    const isItemsWished = wishListItems.filter((prod) => prod.id == ele.id);
+    let heartColor;
+    if (isItemsWished.length > 0) {
+     return heartColor = {
+        color: "red",
+      };
+    } else {
+     return heartColor = {
+        color: " rgb(172, 161, 161)",
+      };
+    }
+  };
+  const dispatchBasedOnBroductWishedOrNot = (ele) => {
+    const isItemsWished = wishListItems.filter((prod) => prod.id == ele.id);
+    if (isItemsWished.length ==0) {
+      wishListContextDispatch({type:"ADD_TO_WISHLIST",payload:ele})
+    }
+    else {
+      wishListContextDispatch({type:"REMOVE_FROM_WISHLIST",payload:ele})
+    } 
+  }
   return (
     <div className="grid-container">
       {newFilteredList.map((ele) => (
@@ -108,7 +134,15 @@ function MensNewDropProductList({ newFilteredList }) {
             </div>
             <div className="card-container-footer-row-two">
               <h2>{ele.name}</h2>
-              <p>{ele.color}</p>
+
+              <div className="card-container-footer-row-three">
+                <p>{ele.color}</p>
+                <i
+                  class="fas fa-heart wish-heart-icon "
+                  style={checkIfTheProductIsWished(ele)}
+                  onClick={()=>dispatchBasedOnBroductWishedOrNot(ele)}
+                > </i>
+              </div>
             </div>
           </div>
         </div>

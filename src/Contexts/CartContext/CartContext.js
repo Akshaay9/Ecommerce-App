@@ -11,8 +11,6 @@ const initialStateOfCart = {
   loading: false,
 };
 
-
-
 export const CartContextFunction = ({ children }) => {
   const [state, dispatch] = useReducer(
     cartContextReducerFun,

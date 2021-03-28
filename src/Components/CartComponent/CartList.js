@@ -8,6 +8,7 @@ function CartList() {
  
   return (
     <div className="cart-component">
+         <div className="cart-heading">Your Cart</div>
       {cartItems.map((ele) => (
         <div className="cart-componrnt-container">
           <div className="cart-component-left">
