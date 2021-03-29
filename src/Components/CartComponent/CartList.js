@@ -63,6 +63,13 @@ function CartList() {
           </div>
         </div>
       ))}
+      <div className="cart-component-finalDetials">
+  
+      <h4>Sub-Total Price : {cartItems.reduce((acc,ele)=>acc+(ele.inCartQty*1)*(ele.price*1),1)}.00₹</h4>
+          <h4 style={{ marginTop: "1rem" }}>Sub-Total Quantity : {cartItems.reduce((acc, ele) => acc + ele.inCartQty, 0)}</h4>
+      
+
+      </div>
     </div>
   );
 }

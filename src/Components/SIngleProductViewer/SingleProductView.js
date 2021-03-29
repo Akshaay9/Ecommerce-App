@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useSingleProductCOntextFun } from "../../Contexts/SingleProductContext/SingleProductContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
-
+const todaysDate=new Date()
 
 
 
@@ -167,7 +167,8 @@ function SingleProductView() {
                 
               </div>
             </div>
-          
+            {console.log(singleProduct[0].deliveredBy)}
+            {/* <h3>Delivered By :{todaysDate.getDate()+(singleProduct[0].deliveredBy) +"/"+todaysDate.getMonth()+"/"+todaysDate.getFullYear()}</h3> */}
             {checkIfTheProductIsInCart(singleProduct[0])}
             <button className="btn-secondary btn-secondary-hr-outline-in singleproductpage"
             onClick={()=>dispatchBasedOnBroductWishedOrNot(singleProduct[0])}
