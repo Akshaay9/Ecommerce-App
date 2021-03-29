@@ -66,7 +66,7 @@ function App() {
       <SingleProductViewer/>
       }
       
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 
