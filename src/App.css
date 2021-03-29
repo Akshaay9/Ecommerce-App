@@ -550,12 +550,11 @@
  
 }
 .gym-accessories-mobile{
+  height: 80vh;
   display: block !important;
   margin-top: 0.5625rem;
-  height: 32.5rem;
   object-fit: cover;
   width: 100%;
- 
   filter: brightness(90%);
 }
   /* screen two mens new drop */
