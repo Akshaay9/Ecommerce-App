@@ -27,7 +27,6 @@ function MensNewDropProductList({ newFilteredList }) {
     (async () => {
       try {
         const data = await axios.get("/api/products/mensNewDrops");
-
         homeScreenProductDispatch({
           type: "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS",
           payload: data.data.products,
@@ -37,7 +36,6 @@ function MensNewDropProductList({ newFilteredList }) {
       }
     })();
   }, []);
-
 
   const checkIfTheProductIsInCart = (product) => {
     const newItems = [...cartItems];
