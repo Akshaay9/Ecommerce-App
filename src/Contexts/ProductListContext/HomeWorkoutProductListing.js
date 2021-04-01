@@ -1,6 +1,6 @@
 const { createContext, useContext, useReducer } = require("react");
 // created context for home scrren products
-export const mensNewDropProductListsContext = createContext();
+export const workoutProductListContext = createContext();
 // initial state
 const initialStateOfMensNewDropProducts = {
   initialHomeScrrenProducts: [],
