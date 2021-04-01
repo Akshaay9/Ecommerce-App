@@ -1,6 +1,7 @@
 import { mensNewDrop } from "../Data.js/MensNewDrop";
 import { womensDrop } from "../Data.js/WomensNewDrop";
 import { createServer } from "miragejs";
+import {homeWorkoutEquipments} from "../Data.js/HomeWorkoutEquipments"
 
 export const mensNewDropProductListAPI = () => {
   createServer({
@@ -15,6 +16,12 @@ export const mensNewDropProductListAPI = () => {
       this.get("/products/womensNewDrop", () => {
         return {
           products: womensDrop,
+        };
+      });
+      this.namespace = "api2";
+      this.get("/products/homeWorkout", () => {
+        return {
+          products: homeWorkoutEquipments,
         };
       });
     },
