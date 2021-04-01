@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import MensNewDropProductList from "./MensNewDropProductList";
 import { useMensNewProductListsContext } from "../../Contexts/ProductListContext/MensNewDropProductListing";
-import { mensNewDropProductList } from "../../API/MensNewDropProducts";
+import { mensNewDropProductListAPI } from "../../API/MensNewDropProducts";
 
-mensNewDropProductList();
+mensNewDropProductListAPI();
 
 function Filter() {
   // for checking the ckeckboxes
@@ -60,21 +60,10 @@ function Filter() {
     });
   }, [productTags]);
 
-  const filterData = (initialHomeScrrenProducts) => {
-    let mutatedProductList=[]
+   const filterData = (initialHomeScrrenProducts) => {
+    let mutatedProductList=JSON.parse(JSON.stringify(initialHomeScrrenProducts))
     if (filterItems.productTags.length > 0) {
-     const newData=JSON.parse(
-        JSON.stringify(initialHomeScrrenProducts)
-      );
-      const newFilteredData = filterItems.productTags.map((ele) => newData.filter((prod) => prod.tag === ele))
-      for (let i = 0; i < newFilteredData.length; i++){
-        mutatedProductList=mutatedProductList.concat(newFilteredData[i])
-      }
-    }
-    else {
-      mutatedProductList=JSON.parse(
-        JSON.stringify(initialHomeScrrenProducts)
-      );
+      mutatedProductList=mutatedProductList.filter((ele)=>filterItems.productTags.includes(ele.tag))
     }
     if (filterItems.sort === "lowToHigh") {
       mutatedProductList.sort((a, b) => a.price - b.price);
@@ -119,6 +108,8 @@ function Filter() {
     }
     return mutatedProductList;
   };
+
+// clear the filyer
   const clearFilter = () => {
     homeScreenProductDispatch({
       type: "CLEAR_FILTERS"
@@ -127,10 +118,16 @@ function Filter() {
     setSortByRating()
     setSortByRating()
     setProductTags([])
-    
+    setShowFilter({
+      priceSort: "",
+      starSort: "",
+      deliverySort: "",
+      priceRange: "",
+      productTags: "",
+    });
   }
 
-  const newFilteredList = filterData(initialHomeScrrenProducts);
+
   return (
     <>
       <div className="filter">
@@ -442,10 +439,11 @@ function Filter() {
           </h3>
         </div>
       </div>
-
-      <MensNewDropProductList newFilteredList={newFilteredList} />
+      <MensNewDropProductList filterData={filterData} />
+     
     </>
   );
 }
 
 export default Filter;
+

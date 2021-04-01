@@ -5,19 +5,22 @@ import { useMensNewProductListsContext } from "../../Contexts/ProductListContext
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 import {useRoutingContext} from "../../Contexts/RoutingContext/routingContextProvider"
 import { useSingleProductCOntextFun } from "../../Contexts/SingleProductContext/SingleProductContext";
+import { useWomensNewProductListsContext } from "../../Contexts/ProductListContext/WomensNewDropProductListing";
 
 
 
 
-function MensNewDropProductList({ filterData }) {
+function WomensNewDropProductListing({ filterData }) {
+
   // single product view
   const {  singleProductContextDispatch } = useSingleProductCOntextFun()
   // routing
   const { setRoute } = useRoutingContext();
-  const {
-    homeScreenProductDispatch,
-    state:{initialHomeScrrenProducts}
-  } = useMensNewProductListsContext();
+ // grabbing context API
+ const {
+    state: { initialHomeScreenProductWomens, loading, filterItems },
+    womensNewProductDispatch,
+  } = useWomensNewProductListsContext();
   const {
     state: { cartItems },
     cartContextDispatch,
@@ -30,8 +33,8 @@ function MensNewDropProductList({ filterData }) {
   useEffect(() => {
     (async () => {
       try {
-        const data = await axios.get("/api/products/mensNewDrops"); 
-        homeScreenProductDispatch({
+        const data = await axios.get("/api1/products/womensNewDrop");
+        womensNewProductDispatch({
           type: "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS",
           payload: data.data.products,
         });
@@ -133,7 +136,7 @@ function MensNewDropProductList({ filterData }) {
   }
   return (
     <div className="grid-container">
-      {filterData(initialHomeScrrenProducts).map((ele) => (
+      {filterData(initialHomeScreenProductWomens).map((ele) => (
         <div className="card-container" key={ele.id}>
           <div className="card-container-header">
             <img src={ele.images[0].img} alt=""  onClick={()=>setRouteToSingleProductAndDispatchSingleProductContext(ele)}/>
@@ -164,4 +167,7 @@ function MensNewDropProductList({ filterData }) {
   ) 
 }
 
-export default MensNewDropProductList;
+export default WomensNewDropProductListing;
+
+
+

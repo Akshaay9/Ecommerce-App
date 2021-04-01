@@ -1,21 +1,22 @@
 import { mensNewDrop } from "../Data.js/MensNewDrop";
-import { createServer } from "miragejs"
+import { womensDrop } from "../Data.js/WomensNewDrop";
+import { createServer } from "miragejs";
 
-export const mensNewDropProductList = () => {
-  
-
+export const mensNewDropProductListAPI = () => {
   createServer({
     routes() {
-      this.namespace = "api"
-  
+      this.namespace = "api";
       this.get("/products/mensNewDrops", () => {
         return {
-          products:mensNewDrop
-        }
-        
-      })
+          products: mensNewDrop,
+        };
+      });
+      this.namespace = "api1";
+      this.get("/products/womensNewDrop", () => {
+        return {
+          products: womensDrop,
+        };
+      });
     },
-  })
-}
-
-
+  });
+};

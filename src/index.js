@@ -7,12 +7,16 @@ import { MensNewDropProductListsFunction } from "./Contexts/ProductListContext/M
 import RoutingContextFunction from "./Contexts/RoutingContext/routingContextProvider";
 import { SinglePRoductContextFun } from "./Contexts/SingleProductContext/SingleProductContext";
 import { WishListContextFun } from "./Contexts/WishListContext/WishListContext";
+import { WomensNewDropProductListsFunction } from "./Contexts/ProductListContext/WomensNewDropProductListing";
 
 const container = document.getElementById("root");
 ReactDOM.render(
   <React.StrictMode>
     <MensNewDropProductListsFunction>
       {/* for Mens New Drop products Listing */}
+
+      <WomensNewDropProductListsFunction>
+         {/* for womens New Drop products Listing */}
 
       <RoutingContextFunction>
         {/* for routing */}
@@ -30,7 +34,8 @@ ReactDOM.render(
               </SinglePRoductContextFun>
           </WishListContextFun>
         </CartContextFunction>
-      </RoutingContextFunction>
+        </RoutingContextFunction>
+        </WomensNewDropProductListsFunction>
     </MensNewDropProductListsFunction>
   </React.StrictMode>,
  container

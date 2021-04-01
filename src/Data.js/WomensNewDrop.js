@@ -31,7 +31,7 @@ export const womensDrop = [
   {
     id: 22,
     name: "ADAPT MARL SEAMLESS LEGGINGS",
-    tag: "leggins",
+    tag: "leggings",
     price: 250,
     color: "Light purple",
     images: [
@@ -257,7 +257,7 @@ export const womensDrop = [
   {
     id:30,
     name: "FRACTION CROP TOP",
-    tag: "hoocrop-top",
+    tag: "crop-top",
     price: 1299,
     color: "Charcoal Marl",
     images: [
