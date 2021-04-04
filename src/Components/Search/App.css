@@ -1,0 +1,15 @@
+.search-comp-input{
+    width: 30%;
+    margin: 1rem auto;
+    display: block;
+    padding: .6rem;
+    border-radius: 1rem;
+    outline: none;
+    transition: all 100ms ease-in-out;
+    border: 1px solid rgb(136, 133, 133);
+}
+
+
+  .search-comp-input:focus{
+      border: 1px solid blue;
+  }

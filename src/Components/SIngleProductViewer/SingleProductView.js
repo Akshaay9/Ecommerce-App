@@ -9,6 +9,7 @@ const todaysDate=new Date()
 
 
 function SingleProductView() {
+  // context grabber
     const { id } = useParams()
     const { state: { initialAllProducts }, allProductsDispatch }=useAllProductsContextContext()
     

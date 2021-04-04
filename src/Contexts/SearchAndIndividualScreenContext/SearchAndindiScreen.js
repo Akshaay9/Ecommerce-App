@@ -27,17 +27,21 @@ const AllProductsReduceFun = (state, action) => {
         loading: false,
       };
     case "SEARCH_RESULTS":
+      console.log(payload);
       return {
         ...state,
         searchResult:
           state.initialAllProducts.filter((ele) =>
-            ele.tag.toLowerCase().includes(payload.toLowerCase())
-          ) ||
-          state.initialAllProducts.filter((ele) =>
-            ele.name.toLowerCase().includes(payload.toLowerCase())
+            ele.tag.toString().toLowerCase().includes(payload.toString().toLowerCase())
+            ||  ele.name.toString().toLowerCase().includes(payload.toString().toLowerCase())
           ),
         loading: false,
       };
+    case "CLEAR_SEARCH":
+      return {
+        ...state,
+        searchResult:[]
+      }
     case "LOW_TO_HIGH":
       return {
         ...state,
