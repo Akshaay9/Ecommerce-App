@@ -47,9 +47,11 @@ function Nav() {
           </ul>
         </div>
         <div className="nav_right">
-          <div className="nav_search">
-            <i className="fas fa-search"></i>
-          </div>
+          <NavLink to="/search">
+            <div className="nav_search">
+              <i className="fas fa-search"></i>
+            </div>
+          </NavLink>
           <div className="nav_logi">
             <i className="fas fa-user"></i>
           </div>

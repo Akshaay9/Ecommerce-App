@@ -36,6 +36,11 @@
     margin: 0px 0px 0.3rem;
     padding-right: 0px;
 }
+.card-container-footer-row-two h2:hover{
+  
+    color: rgb(14, 13, 13);
+  
+}
 
 .card-container-footer-row-two p{
     font-family: var(--font-sans-serif);

@@ -6,7 +6,6 @@ import { useWishListContextProvider } from "../../Contexts/WishListContext/WishL
 import { NavLink } from "react-router-dom";
 
 function MensNewDropProductList({ filterData }) {
-
   const {
     homeScreenProductDispatch,
     state: { initialHomeScrrenProducts },
@@ -132,24 +131,25 @@ function MensNewDropProductList({ filterData }) {
             {checkIfTheProductIsInCart(ele)}
           </div>
           <div className="card-container-footer">
-            <div className="card-container-footer-row-one">
-              <span>New</span>
-              <h4>{ele.price}.00₹</h4>
-            </div>
-            <div className="card-container-footer-row-two">
-              <h2>{ele.name}</h2>
-
-              <div className="card-container-footer-row-three">
-                <p>{ele.color}</p>
-                <i
-                  class="fas fa-heart wish-heart-icon "
-                  style={checkIfTheProductIsWished(ele)}
-                  onClick={() => dispatchBasedOnBroductWishedOrNot(ele)}
-                >
-                  {" "}
-                </i>
+        
+              <div className="card-container-footer-row-one">
+                <span>New</span>
+                <h4>{ele.price}.00₹</h4>
               </div>
-            </div>
+              <div className="card-container-footer-row-two">
+              <NavLink to={`/products/${ele.id}`}>   <h2>{ele.name}</h2>    </NavLink>
+                <div className="card-container-footer-row-three">
+                  <p>{ele.color}</p>
+                  <i
+                    class="fas fa-heart wish-heart-icon "
+                    style={checkIfTheProductIsWished(ele)}
+                    onClick={() => dispatchBasedOnBroductWishedOrNot(ele)}
+                  >
+                    {" "}
+                  </i>
+                </div>
+              </div>
+        
           </div>
         </div>
       ))}

@@ -10,6 +10,7 @@ import { HomeWorkoutProductListsFunction } from "./Contexts/ProductListContext/H
 import { ResistanceProductListsFunction } from "./Contexts/ProductListContext/ResistanceTrainingProductListing";
 import { YogaProductListsFunction } from "./Contexts/ProductListContext/YogaEquipmentLists";
 import { GymAccessoriesFunction } from "./Contexts/ProductListContext/GymAccessories";
+import { AllProductsContextFun } from "./Contexts/SearchAndIndividualScreenContext/SearchAndindiScreen";
 
 const container = document.getElementById("root");
 ReactDOM.render(
@@ -36,8 +37,10 @@ ReactDOM.render(
 
                   <WishListContextFun>
                     {/* {WishList Context} */}
+                    <AllProductsContextFun>
 
-                    <App />
+                      <App />
+                      </AllProductsContextFun>
                   </WishListContextFun>
                 </CartContextFunction>
               </GymAccessoriesFunction>

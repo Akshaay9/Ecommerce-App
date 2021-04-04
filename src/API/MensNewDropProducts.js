@@ -6,6 +6,8 @@ import { resistanceTrainingEquipment } from "../Data.js/ResistanceTrainingEquipm
 import { yogaEquipment } from "../Data.js/YogaEquipments";
 import { gymAccesories } from "../Data.js/GymAccessories";
 
+const allProducts=[...mensNewDrop,...womensDrop,...homeWorkoutEquipments,...resistanceTrainingEquipment,...yogaEquipment,...gymAccesories]
+
 export const mensNewDropProductListAPI = () => {
   createServer({
     routes() {
@@ -43,6 +45,12 @@ export const mensNewDropProductListAPI = () => {
       this.get("/products/gymAccessories", () => {
         return {
           products: gymAccesories,
+        };
+      });
+      this.namespace = "api6";
+      this.get("/products/all", () => {
+        return {
+          products: allProducts,
         };
       });
     },

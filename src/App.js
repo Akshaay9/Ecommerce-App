@@ -13,7 +13,8 @@ import WishListComponent from "./Components/WishListComponent/Index";
 import SingleProductViewer from "./Components/SIngleProductViewer/Index";
 import YogaComponent from "./Screens/YogaEquipments/index";
 import GymAccessoriesComponent from "./Screens/GymAccessoriesScreen/Index";
-import {BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SearchComponent from "./Components/Search/Index"
 function App() {
  
 
@@ -32,6 +33,7 @@ function App() {
       <Route path="/cart" element={<CartComponent />} />
       <Route path="/wishlist" element={<WishListComponent />} />
       <Route path="/products/:id" element={<SingleProductViewer />} />
+      <Route path="/search" element={<SearchComponent />} />
       </Routes>
       </BrowserRouter>
   );

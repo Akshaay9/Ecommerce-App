@@ -137,7 +137,8 @@ function ResistanceTrainingProductList({ filterData }) {
               <h4>{ele.price}.00₹</h4>
             </div>
             <div className="card-container-footer-row-two">
-              <h2>{ele.name}</h2>
+             
+            <NavLink to={`/products/${ele.id}`}> <h2>{ele.name}</h2> </NavLink>
 
               <div className="card-container-footer-row-three">
                 <p>{ele.color}</p>
