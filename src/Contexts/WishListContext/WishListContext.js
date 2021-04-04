@@ -29,7 +29,6 @@ export const WishListContextFun = ({ children }) => {
     
     useEffect(() => {
         localStorage.setItem("wishList-items", JSON.stringify(state.wishListItems))
-        console.log(localStorage.getItem("wishList-items"));
       },[state.wishListItems])
 
     return (

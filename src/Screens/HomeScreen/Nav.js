@@ -40,7 +40,10 @@ function Nav() {
             <NavLink to="/products/mensnewdrop">
               <li className="hr- hr-underline-left li-bold mens-li">Mens</li>
             </NavLink>
-            <li className="hr-underline-left li-bold">Products</li>
+            <NavLink to="/products">
+              <li className="hr-underline-left li-bold">Products</li>
+            </NavLink>
+
             <NavLink to="/products/womensnewdrop">
               <li className="hr-underline-left li-bold womens-li">Womens</li>
             </NavLink>

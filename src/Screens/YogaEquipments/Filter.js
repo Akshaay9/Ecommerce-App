@@ -35,7 +35,7 @@ function Filter() {
       return o.price;
     })
   );
-  console.log(maxPriceofProductPresent);
+
   // get min price of a product
   const minPriceofProductPresent = Math.min.apply(
     Math,

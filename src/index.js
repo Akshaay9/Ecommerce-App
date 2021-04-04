@@ -11,6 +11,7 @@ import { ResistanceProductListsFunction } from "./Contexts/ProductListContext/Re
 import { YogaProductListsFunction } from "./Contexts/ProductListContext/YogaEquipmentLists";
 import { GymAccessoriesFunction } from "./Contexts/ProductListContext/GymAccessories";
 import { AllProductsContextFun } from "./Contexts/SearchAndIndividualScreenContext/SearchAndindiScreen";
+import { ProductsFunction } from "./Contexts/ProductListContext/Products";
 
 const container = document.getElementById("root");
 ReactDOM.render(
@@ -30,19 +31,24 @@ ReactDOM.render(
               {/* Yoga Products */}
 
               <GymAccessoriesFunction>
-            {/* </gym accesories product> */}
-                
+                {/* </gym accesories product> */}
+                <ProductsFunction>
+                  {/* products category */}
+
                 <CartContextFunction>
                   {/* {Cart Context} */}
 
                   <WishListContextFun>
                     {/* {WishList Context} */}
+
                     <AllProductsContextFun>
+                      {/* All products for search and single view */}
 
                       <App />
-                      </AllProductsContextFun>
+                    </AllProductsContextFun>
                   </WishListContextFun>
-                </CartContextFunction>
+                  </CartContextFunction>
+                  </ProductsFunction>
               </GymAccessoriesFunction>
             </YogaProductListsFunction>
           </ResistanceProductListsFunction>

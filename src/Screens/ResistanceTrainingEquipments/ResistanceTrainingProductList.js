@@ -99,7 +99,6 @@ function ResistanceTrainingProductList({ filterData }) {
   };
 
   const checkIfTheProductIsWished = (ele) => {
-    console.log(wishListItems);
     const isItemsWished = wishListItems.filter((prod) => prod.id == ele.id);
     let heartColor;
     if (isItemsWished.length > 0) {

@@ -15,6 +15,7 @@ import YogaComponent from "./Screens/YogaEquipments/index";
 import GymAccessoriesComponent from "./Screens/GymAccessoriesScreen/Index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SearchComponent from "./Components/Search/Index"
+import Products from "./Screens/ProductScreen/Index"
 function App() {
  
 
@@ -24,6 +25,7 @@ function App() {
     <Routes>
    
       <Route path="/" element={<HomeScreenComponents />} />
+      <Route path="/products" element={<Products />} />
       <Route path="/products/mensnewdrop" element={<MensNewDrop />} />
       <Route path="/products/womensnewdrop" element={<WomensNewDrop />} />
       <Route path="/products/homeworkout" element={<HomeWorkoutEquipments />} />
