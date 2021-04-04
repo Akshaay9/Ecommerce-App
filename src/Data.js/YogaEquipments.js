@@ -59,7 +59,7 @@ export const yogaEquipment = [
       id: 74,
       name: "AmazonBasics 13mm Extra Thick Yoga and Exercise Mat with Carrying Strap",
       tag: "mat",
-      price: "black",
+      price: 1220,
       color: "pink",
       images: [
         {
@@ -82,7 +82,36 @@ export const yogaEquipment = [
       freeDelivery: true,
       deliveredBy: 6,
       newArrival: true,
-    },
+  },
+  {
+    id: 76,
+    name: "AmazonBasics 6 mm Thick TPE Yoga Mat",
+    tag: "mat",
+    price: 1400,
+    color: "Black/Gray",
+    images: [
+      {
+        img:
+          "https://images-na.ssl-images-amazon.com/images/I/711I1HY4FjL._SL1500_.jpg",
+      },
+      {
+        img:
+          "https://images-na.ssl-images-amazon.com/images/I/71oFuWTAbBL._SL1500_.jpg",
+      },
+      {
+        img:
+          "https://images-na.ssl-images-amazon.com/images/I/71-6HIdOofL._SL1500_.jpg",
+      },
+    ],
+    desc:
+    "Use alcohol based cleaner or use washing up liquid with towel to wipe clean the mat; Keep the mat away from strong sunshine and sharp objects for longer life.",
+    inStock: 4,
+    rating: 2.5,
+    freeDelivery: false,
+    deliveredBy: 2,
+    newArrival: false,
+  },
+ 
     {
       id: 75,
       name: "Fitness Mantra® Yoga Mat ",
@@ -112,34 +141,6 @@ export const yogaEquipment = [
       newArrival: true,
     },
   
-    {
-      id: 76,
-      name: "AmazonBasics 6 mm Thick TPE Yoga Mat",
-      tag: "mat",
-      price: 1400,
-      color: "Black/Gray",
-      images: [
-        {
-          img:
-            "https://images-na.ssl-images-amazon.com/images/I/711I1HY4FjL._SL1500_.jpg",
-        },
-        {
-          img:
-            "https://images-na.ssl-images-amazon.com/images/I/71oFuWTAbBL._SL1500_.jpg",
-        },
-        {
-          img:
-            "https://images-na.ssl-images-amazon.com/images/I/71-6HIdOofL._SL1500_.jpg",
-        },
-      ],
-      desc:
-      "Use alcohol based cleaner or use washing up liquid with towel to wipe clean the mat; Keep the mat away from strong sunshine and sharp objects for longer life.",
-      inStock: 4,
-      rating: 2.5,
-      freeDelivery: false,
-      deliveredBy: 2,
-      newArrival: false,
-    },
-   
+  
   ];
   

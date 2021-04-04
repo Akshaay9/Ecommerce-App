@@ -32,16 +32,19 @@ function Filter() {
  const maxPriceofProductPresent = Math.max.apply(
    Math,
    initialResistanceProducts.map(function (o) {
-     return o.price;
+     return o.price*1;
    })
- );
+  );
+console.log("price",maxPriceofProductPresent);
+
  // get min price of a product
  const minPriceofProductPresent = Math.min.apply(
    Math,
    initialResistanceProducts.map(function (o) {
      return o.price;
    })
- );
+  );
+
  // get all tags of the cloth
  const allTheTagsOfProducts = [
    ...initialResistanceProducts.map((ele) => ele.tag),

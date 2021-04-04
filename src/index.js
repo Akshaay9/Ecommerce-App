@@ -8,7 +8,8 @@ import { WishListContextFun } from "./Contexts/WishListContext/WishListContext";
 import { WomensNewDropProductListsFunction } from "./Contexts/ProductListContext/WomensNewDropProductListing";
 import { HomeWorkoutProductListsFunction } from "./Contexts/ProductListContext/HomeWorkoutProductListing";
 import { ResistanceProductListsFunction } from "./Contexts/ProductListContext/ResistanceTrainingProductListing";
-
+import { YogaProductListsFunction } from "./Contexts/ProductListContext/YogaEquipmentLists";
+import { GymAccessoriesFunction } from "./Contexts/ProductListContext/GymAccessories";
 
 const container = document.getElementById("root");
 ReactDOM.render(
@@ -23,22 +24,24 @@ ReactDOM.render(
 
           <ResistanceProductListsFunction>
             {/* {For resiatnce equipments} */}
-        
 
-              <CartContextFunction>
-                {/* {Cart Context} */}
+            <YogaProductListsFunction>
+              {/* Yoga Products */}
 
-                <WishListContextFun>
-                  {/* {WishList Context} */}
-
+              <GymAccessoriesFunction>
+            {/* </gym accesories product> */}
                 
-                  
-                      <App />
-                    
-               
-                </WishListContextFun>
-              </CartContextFunction>
-         
+                <CartContextFunction>
+                  {/* {Cart Context} */}
+
+                  <WishListContextFun>
+                    {/* {WishList Context} */}
+
+                    <App />
+                  </WishListContextFun>
+                </CartContextFunction>
+              </GymAccessoriesFunction>
+            </YogaProductListsFunction>
           </ResistanceProductListsFunction>
         </HomeWorkoutProductListsFunction>
       </WomensNewDropProductListsFunction>

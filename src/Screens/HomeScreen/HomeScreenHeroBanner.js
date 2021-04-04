@@ -93,7 +93,8 @@ function HomeScreenHeroBanner() {
           <div className="hero-banner-call-to-action hero-four-CTA">
             <h1>Gym Accessories</h1>
             <div className="hero-banner-call-to-action-btns">
-              <NavLink to="">
+              <NavLink to="products/gymAccessories">
+              
               <button className="btn btn-homescreen-white">Shop Now</button>
 </NavLink>
             </div>

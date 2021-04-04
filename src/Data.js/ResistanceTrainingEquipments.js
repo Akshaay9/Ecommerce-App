@@ -59,7 +59,7 @@ export const resistanceTrainingEquipment = [
       id: 64,
       name: "AmazonBasics Rubber Encased Hex Dumbbell Weight",
       tag: "dumbell",
-      price: "black",
+      price: 1800,
       color: "grey",
       images: [
         {

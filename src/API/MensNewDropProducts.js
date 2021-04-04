@@ -4,6 +4,7 @@ import { createServer } from "miragejs";
 import {homeWorkoutEquipments} from "../Data.js/HomeWorkoutEquipments"
 import { resistanceTrainingEquipment } from "../Data.js/ResistanceTrainingEquipments";
 import { yogaEquipment } from "../Data.js/YogaEquipments";
+import { gymAccesories } from "../Data.js/GymAccessories";
 
 export const mensNewDropProductListAPI = () => {
   createServer({
@@ -36,6 +37,12 @@ export const mensNewDropProductListAPI = () => {
       this.get("/products/yogaEquipment", () => {
         return {
           products: yogaEquipment,
+        };
+      });
+      this.namespace = "api5";
+      this.get("/products/gymAccessories", () => {
+        return {
+          products: gymAccesories,
         };
       });
     },

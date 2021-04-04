@@ -225,34 +225,7 @@ export const gymAccesories = [
       deliveredBy: 2,
       newArrival: false,
     },
-    {
-      id: 60,
-      name: "Kobo Cross Fitness Training Gym Gloves/Functional Hand Protector",
-      tag: "glouse",
-      price: 999,
-      color: "Charcoal Marl",
-      images: [
-        {
-          img:
-            "https://images-na.ssl-images-amazon.com/images/I/91es1k%2B0zXL._SL1500_.jpg5",
-        },
-        {
-          img:
-            "https://images-na.ssl-images-amazon.com/images/I/91UFdW2oMVL._SL1500_.jpg",
-        },
-        {
-          img:
-            "https://images-na.ssl-images-amazon.com/images/I/91V-fO8-91L._SL1500_.jpg",
-        },
-      ],
-      desc:
-      "FULL PALM PROTECTION: Our exercise gloves are made with soft EVA material that covers your entire palm and provides soft padding to protect your hands from calluses.",
-      inStock: 2,
-      rating: 4.5,
-      freeDelivery: true,
-      deliveredBy: 9,
-      newArrival: false,
-    },
+   
     {
       id:61,
       name: "Adroitz Gloves Protective Full Finger Hand Riding, Cycling, Bike Motorcycle Gym Gloves for Men",

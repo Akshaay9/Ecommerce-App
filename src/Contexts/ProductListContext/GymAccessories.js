@@ -1,10 +1,9 @@
-
 const { createContext, useContext, useReducer } = require("react");
 // created context for home scrren products
-export const womensNewDropProductListsContext = createContext();
+export const gymAccessoriesContext = createContext();
 // initial state
-const initialStateOfWomensNewDropProducts = {
-  initialHomeScreenProductWomens: [],
+const initialStateOfGymAccessories = {
+  initialGymAccessories: [],
   loading:true,
   filterItems: {
    sort:"",
@@ -17,13 +16,13 @@ const initialStateOfWomensNewDropProducts = {
 };
 
 // usereducer finctions
-const womensNewDropProductReduceFun = (state, action) => {
+const GymAccessoriesReduceFun = (state, action) => {
   const { type, payload } = action;
   switch (type) {
     case "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS":
       return {
         ...state, 
-        initialHomeScreenProductWomens: payload,
+        initialGymAccessories: payload,
         loading: false,
       };
     case "LOW_TO_HIGH":
@@ -129,22 +128,22 @@ const womensNewDropProductReduceFun = (state, action) => {
   }
 };
 
-export const WomensNewDropProductListsFunction = ({ children }) => {
+export const GymAccessoriesFunction = ({ children }) => {
   const [state, dispatch] = useReducer(
-    womensNewDropProductReduceFun,
-    initialStateOfWomensNewDropProducts
+    GymAccessoriesReduceFun,
+    initialStateOfGymAccessories
   );
 
   return (
-    <womensNewDropProductListsContext.Provider
-      value={{ state, womensNewProductDispatch: dispatch }}
+    <gymAccessoriesContext.Provider
+      value={{ state, gymAccessoriesDispatch: dispatch }}
     >
       {children}
-    </womensNewDropProductListsContext.Provider>
+    </gymAccessoriesContext.Provider>
   );
 };
 
 // function to use context
-export const useWomensNewProductListsContext = () => {
-  return useContext(womensNewDropProductListsContext);
+export const useGymAccessoriesContext = () => {
+  return useContext(gymAccessoriesContext);
 };

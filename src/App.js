@@ -12,6 +12,7 @@ import CartComponent from "./Components/CartComponent/Index";
 import WishListComponent from "./Components/WishListComponent/Index";
 import SingleProductViewer from "./Components/SIngleProductViewer/Index";
 import YogaComponent from "./Screens/YogaEquipments/index";
+import GymAccessoriesComponent from "./Screens/GymAccessoriesScreen/Index";
 import {BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
  
@@ -27,6 +28,7 @@ function App() {
       <Route path="/products/homeworkout" element={<HomeWorkoutEquipments />} />
       <Route path="/products/resistancetrainingequipment" element={<ResistanceTrainingEquipments />} />
       <Route path="/products/yogaequipment" element={<YogaComponent />} />
+      <Route path="/products/gymAccessories" element={<GymAccessoriesComponent />} />
       <Route path="/cart" element={<CartComponent />} />
       <Route path="/wishlist" element={<WishListComponent />} />
       <Route path="/products/:id" element={<SingleProductViewer />} />
