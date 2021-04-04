@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
-import { useRoutingContext } from "../../Contexts/RoutingContext/routingContextProvider";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
+import { NavLink } from "react-router-dom";
 
 function Nav() {
-  const { setRoute } = useRoutingContext();
   const {
     state: { cartItems, loading },
   } = useCartContextProvider();
@@ -23,34 +22,28 @@ function Nav() {
       <div className="nav">
         <div className="nav_left">
           <div className="nav_logo">
-            <img
-              onClick={() => setRoute("HomeScreenComponents")}
-              src="https://static.cure.fit/assets/images/curefit-v-man.svg"
-              alt=""
-            />
+            <NavLink to="/">
+              <img
+                src="https://static.cure.fit/assets/images/curefit-v-man.svg"
+                alt=""
+              />
+            </NavLink>
           </div>
-          <div
-            className="nav_name"
-            onClick={() => setRoute("HomeScreenComponents")}
-          >
-            <h2>Fit Sharkk</h2>
+          <div className="nav_name">
+            <NavLink to="/">
+              <h2>Fit Sharkk</h2>
+            </NavLink>
           </div>
         </div>
         <div className="nav_center">
           <ul>
-            <li
-              className="hr- hr-underline-left li-bold mens-li"
-              onClick={() => setRoute("MensNewDrop")}
-            >
-              Mens
-            </li>
+            <NavLink to="/products/mensnewdrop">
+              <li className="hr- hr-underline-left li-bold mens-li">Mens</li>
+            </NavLink>
             <li className="hr-underline-left li-bold">Products</li>
-            <li
-              onClick={() => setRoute("WomensNewDrop")}
-              className="hr-underline-left li-bold womens-li"
-            >
-              Womens
-            </li>
+            <NavLink to="/products/womensnewdrop">
+              <li className="hr-underline-left li-bold womens-li">Womens</li>
+            </NavLink>
           </ul>
         </div>
         <div className="nav_right">
@@ -60,22 +53,25 @@ function Nav() {
           <div className="nav_logi">
             <i className="fas fa-user"></i>
           </div>
-          <div
-            className="nav_cart"
-            onClick={() => setRoute("WishListComponent")}
-          >
-            <div className="badge badge-skyBlue">
-              <i class="fas fa-heart"></i>
-              {wishListItems.length > 0 && <span>{wishListItems.length}</span>}
+          <NavLink to="/wishlist">
+            <div className="nav_cart">
+              <div className="badge badge-skyBlue">
+                <i class="fas fa-heart"></i>
+                {wishListItems.length > 0 && (
+                  <span>{wishListItems.length}</span>
+                )}
+              </div>
             </div>
-          </div>
-          <div className="nav_cart" onClick={() => setRoute("CartComponent")}>
-            <div className="badgeContainer1 badge-skyBlue">
-              <i class="fas fa-shopping-cart"></i>
-              {/* <span>1</span> */}
-              {cartItems.length > 0 && <span>{lengthOfCartItems()}</span>}
+          </NavLink>
+          <NavLink to="/cart">
+            <div className="nav_cart">
+              <div className="badgeContainer1 badge-skyBlue">
+                <i class="fas fa-shopping-cart"></i>
+                {/* <span>1</span> */}
+                {cartItems.length > 0 && <span>{lengthOfCartItems()}</span>}
+              </div>
             </div>
-          </div>
+          </NavLink>
         </div>
       </div>
 

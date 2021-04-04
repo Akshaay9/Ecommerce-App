@@ -4,12 +4,11 @@ import App from "./App";
 import { debugContextDevtool } from "react-context-devtool";
 import { CartContextFunction } from "./Contexts/CartContext/CartContext";
 import { MensNewDropProductListsFunction } from "./Contexts/ProductListContext/MensNewDropProductListing";
-import RoutingContextFunction from "./Contexts/RoutingContext/routingContextProvider";
-import { SinglePRoductContextFun } from "./Contexts/SingleProductContext/SingleProductContext";
 import { WishListContextFun } from "./Contexts/WishListContext/WishListContext";
 import { WomensNewDropProductListsFunction } from "./Contexts/ProductListContext/WomensNewDropProductListing";
 import { HomeWorkoutProductListsFunction } from "./Contexts/ProductListContext/HomeWorkoutProductListing";
 import { ResistanceProductListsFunction } from "./Contexts/ProductListContext/ResistanceTrainingProductListing";
+
 
 const container = document.getElementById("root");
 ReactDOM.render(
@@ -24,8 +23,7 @@ ReactDOM.render(
 
           <ResistanceProductListsFunction>
             {/* {For resiatnce equipments} */}
-            <RoutingContextFunction>
-              {/* for routing */}
+        
 
               <CartContextFunction>
                 {/* {Cart Context} */}
@@ -33,14 +31,14 @@ ReactDOM.render(
                 <WishListContextFun>
                   {/* {WishList Context} */}
 
-                  <SinglePRoductContextFun>
-                    {/* {Single Product View COntext} */}
-
-                    <App />
-                  </SinglePRoductContextFun>
+                
+                  
+                      <App />
+                    
+               
                 </WishListContextFun>
               </CartContextFunction>
-            </RoutingContextFunction>
+         
           </ResistanceProductListsFunction>
         </HomeWorkoutProductListsFunction>
       </WomensNewDropProductListsFunction>

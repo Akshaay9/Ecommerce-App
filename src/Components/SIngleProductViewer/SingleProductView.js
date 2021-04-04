@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
-import { useSingleProductCOntextFun } from "../../Contexts/SingleProductContext/SingleProductContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 const todaysDate=new Date()
 
@@ -17,10 +16,7 @@ function SingleProductView() {
     state: { wishListItems },wishListContextDispatch
   } = useWishListContextProvider();
   const [imageSlider, setImageSlider] = useState(0);
-  const {
-    state: { singleProduct },
-  } = useSingleProductCOntextFun();
-
+ 
   // carousal
   useEffect(() => {
     const next = (imageSlider + 1) % singleProduct[0].images.length;

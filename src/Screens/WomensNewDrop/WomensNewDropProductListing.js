@@ -2,20 +2,13 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
-import {useRoutingContext} from "../../Contexts/RoutingContext/routingContextProvider"
-import { useSingleProductCOntextFun } from "../../Contexts/SingleProductContext/SingleProductContext";
 import { useWomensNewProductListsContext } from "../../Contexts/ProductListContext/WomensNewDropProductListing";
-
+import { NavLink } from "react-router-dom";
 
 
 
 function WomensNewDropProductListing({ filterData }) {
 
-  // single product view
-  const {  singleProductContextDispatch } = useSingleProductCOntextFun()
-  // routing
-  const { setRoute } = useRoutingContext();
- // grabbing context API
  const {
     state: { initialHomeScreenProductWomens, loading, filterItems },
     womensNewProductDispatch,
@@ -128,17 +121,14 @@ function WomensNewDropProductListing({ filterData }) {
       wishListContextDispatch({type:"REMOVE_FROM_WISHLIST",payload:ele})
     } 
   }
-  const setRouteToSingleProductAndDispatchSingleProductContext = (ele) => {
-    setRoute("singleProductView")
-    singleProductContextDispatch({type:"ADD_TO_SINGLE_PRODUCT",payload:ele})
-    
-  }
   return (
     <div className="grid-container">
       {filterData(initialHomeScreenProductWomens).map((ele) => (
         <div className="card-container" key={ele.id}>
           <div className="card-container-header">
-            <img src={ele.images[0].img} alt=""  onClick={()=>setRouteToSingleProductAndDispatchSingleProductContext(ele)}/>
+            <NavLink to={`/products/${ele.id}`}>
+              <img src={ele.images[0].img} alt="" />
+              </NavLink>
             {/* calling the program so that it  automatiaaly renders ADD to cart button or increase the qty buttons */}
             {checkIfTheProductIsInCart(ele)}
           </div>

@@ -1,9 +1,8 @@
 import React from "react";
 import img from "../../Assets/HomeScreenAssests/homeScreenMobile.jpg";
 import imgTwo from "../../Assets/HomeScreenAssests/homeScreenImageTwo.jpg";
-import { useRoutingContext } from "../../Contexts/RoutingContext/routingContextProvider";
+import { NavLink } from "react-router-dom";
 function HomeScreenHeroBanner() {
-  const { setRoute } = useRoutingContext();
   return (
     <div>
       <div className="hero-banner-one">
@@ -18,12 +17,12 @@ function HomeScreenHeroBanner() {
           <h1>New Drops</h1>
           <h3>In Adapt & Critical</h3>
           <div className="hero-banner-call-to-action-btns">
-            <button className="btn btn-homescreen-white"
-            onClick={() => setRoute("WomensNewDrop")}
-            >Show Womens</button>
-            <button className="btn btn-homescreen-grey"
-              onClick={() => setRoute("MensNewDrop")}
-            >Show mens</button>
+            <NavLink to="/products/womensnewdrop">
+              <button className="btn btn-homescreen-white">Show Womens</button>
+            </NavLink>
+            <NavLink to="/products/mensnewdrop">
+              <button className="btn btn-homescreen-grey">Show mens</button>
+            </NavLink>
           </div>
         </div>
       </div>
@@ -39,9 +38,9 @@ function HomeScreenHeroBanner() {
         <div className="hero-banner-call-to-action hero-two-CTA">
           <h1>Home Workouts</h1>
           <div className="hero-banner-call-to-action-btns">
-            <button className="btn btn-homescreen-grey"
-            onClick={() => setRoute("HomeWorkoutEquipments")}
-            >Show Now</button>
+            <NavLink to="/products/homeworkout">
+              <button className="btn btn-homescreen-grey">Show Now</button>
+            </NavLink>
           </div>
         </div>
       </div>
@@ -56,9 +55,9 @@ function HomeScreenHeroBanner() {
           <div className="hero-banner-call-to-action hero-three-one-CTA">
             <h1>Resistace Training</h1>
             <div className="hero-banner-call-to-action-btns">
-              <button className="btn btn-homescreen-white"
-              onClick={() => setRoute("ResistanceTrainingEquipments")} 
-              >Shop Now</button>
+              <NavLink to="/products/resistancetrainingequipment">
+                <button className="btn btn-homescreen-white">Shop Now</button>
+              </NavLink>
             </div>
           </div>
         </>
@@ -71,9 +70,9 @@ function HomeScreenHeroBanner() {
           <div className="hero-banner-call-to-action hero-three-two-CTA">
             <h1>Yoga</h1>
             <div className="hero-banner-call-to-action-btns">
-              <button className="btn btn-homescreen-grey"
-              onClick={()=>setRoute("YogaEquipment")}
-              >Shop Now</button>
+              <NavLink to="/products/yogaequipment">
+                <button className="btn btn-homescreen-grey">Shop Now</button>
+              </NavLink>
             </div>
           </div>
         </>
@@ -94,7 +93,9 @@ function HomeScreenHeroBanner() {
           <div className="hero-banner-call-to-action hero-four-CTA">
             <h1>Gym Accessories</h1>
             <div className="hero-banner-call-to-action-btns">
+              <NavLink to="">
               <button className="btn btn-homescreen-white">Shop Now</button>
+</NavLink>
             </div>
           </div>
         </>

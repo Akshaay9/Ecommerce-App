@@ -1,19 +1,13 @@
-import axios from 'axios';
-import React, { useEffect } from 'react'
-import { useCartContextProvider } from '../../Contexts/CartContext/CartContext';
-import { useResistanceProductListsContext } from '../../Contexts/ProductListContext/ResistanceTrainingProductListing';
-import { useRoutingContext } from '../../Contexts/RoutingContext/routingContextProvider';
-import { useSingleProductCOntextFun } from '../../Contexts/SingleProductContext/SingleProductContext';
-import { useWishListContextProvider } from '../../Contexts/WishListContext/WishListContext';
+import axios from "axios";
+import React, { useEffect } from "react";
+import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
+import { useResistanceProductListsContext } from "../../Contexts/ProductListContext/ResistanceTrainingProductListing";
+import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
+import { NavLink } from "react-router-dom";
 
-function ResistanceTrainingProductList({filterData}) {
-
-  // single product view
-  const {  singleProductContextDispatch } = useSingleProductCOntextFun()
-  // routing
-  const { setRoute } = useRoutingContext();
- // grabbing context API
- const {
+function ResistanceTrainingProductList({ filterData }) {
+  // grabbing context API
+  const {
     state: { initialResistanceProducts, loading, filterItems },
     ResistanceProductDispatch,
   } = useResistanceProductListsContext();
@@ -23,14 +17,15 @@ function ResistanceTrainingProductList({filterData}) {
   } = useCartContextProvider();
 
   const {
-    state: { wishListItems },wishListContextDispatch
+    state: { wishListItems },
+    wishListContextDispatch,
   } = useWishListContextProvider();
 
   useEffect(() => {
     (async () => {
       try {
-          const data = await axios.get("/api3/products/resistanceEquipments");
-          ResistanceProductDispatch({
+        const data = await axios.get("/api3/products/resistanceEquipments");
+        ResistanceProductDispatch({
           type: "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS",
           payload: data.data.products,
         });
@@ -108,35 +103,31 @@ function ResistanceTrainingProductList({filterData}) {
     const isItemsWished = wishListItems.filter((prod) => prod.id == ele.id);
     let heartColor;
     if (isItemsWished.length > 0) {
-     return heartColor = {
+      return (heartColor = {
         color: "red",
-      };
+      });
     } else {
-     return heartColor = {
+      return (heartColor = {
         color: " rgb(172, 161, 161)",
-      };
+      });
     }
   };
   const dispatchBasedOnBroductWishedOrNot = (ele) => {
     const isItemsWished = wishListItems.filter((prod) => prod.id == ele.id);
-    if (isItemsWished.length ==0) {
-      wishListContextDispatch({type:"ADD_TO_WISHLIST",payload:ele})
+    if (isItemsWished.length == 0) {
+      wishListContextDispatch({ type: "ADD_TO_WISHLIST", payload: ele });
+    } else {
+      wishListContextDispatch({ type: "REMOVE_FROM_WISHLIST", payload: ele });
     }
-    else {
-      wishListContextDispatch({type:"REMOVE_FROM_WISHLIST",payload:ele})
-    } 
-  }
-  const setRouteToSingleProductAndDispatchSingleProductContext = (ele) => {
-    setRoute("singleProductView")
-    singleProductContextDispatch({type:"ADD_TO_SINGLE_PRODUCT",payload:ele})
-    
-  }
+  };
   return (
     <div className="grid-container">
       {filterData(initialResistanceProducts).map((ele) => (
         <div className="card-container" key={ele.id}>
           <div className="card-container-header">
-            <img src={ele.images[0].img} alt=""  onClick={()=>setRouteToSingleProductAndDispatchSingleProductContext(ele)}/>
+            <NavLink  to={`/products/${ele.id}`}>
+              <img src={ele.images[0].img} alt="" />
+            </NavLink>
             {/* calling the program so that it  automatiaaly renders ADD to cart button or increase the qty buttons */}
             {checkIfTheProductIsInCart(ele)}
           </div>
@@ -153,16 +144,17 @@ function ResistanceTrainingProductList({filterData}) {
                 <i
                   class="fas fa-heart wish-heart-icon "
                   style={checkIfTheProductIsWished(ele)}
-                  onClick={()=>dispatchBasedOnBroductWishedOrNot(ele)}
-                > </i>
+                  onClick={() => dispatchBasedOnBroductWishedOrNot(ele)}
+                >
+                  {" "}
+                </i>
               </div>
             </div>
           </div>
         </div>
       ))}
     </div>
-  ) 
+  );
 }
 
 export default ResistanceTrainingProductList;
-
