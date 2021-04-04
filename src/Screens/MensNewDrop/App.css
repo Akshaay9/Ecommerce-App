@@ -11,7 +11,8 @@
 }
 .card-container-header img{
     width: 100%;
-    object-fit: contain;
+    /* height: 20rem; */
+    object-fit: cover;
 }
 .card-container-footer-row-one{
     font-family: var(--font-sans-serif);

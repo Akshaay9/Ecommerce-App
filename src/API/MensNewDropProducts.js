@@ -2,6 +2,8 @@ import { mensNewDrop } from "../Data.js/MensNewDrop";
 import { womensDrop } from "../Data.js/WomensNewDrop";
 import { createServer } from "miragejs";
 import {homeWorkoutEquipments} from "../Data.js/HomeWorkoutEquipments"
+import { resistanceTrainingEquipment } from "../Data.js/ResistanceTrainingEquipments";
+import { yogaEquipment } from "../Data.js/YogaEquipments";
 
 export const mensNewDropProductListAPI = () => {
   createServer({
@@ -22,6 +24,18 @@ export const mensNewDropProductListAPI = () => {
       this.get("/products/homeWorkout", () => {
         return {
           products: homeWorkoutEquipments,
+        };
+      });
+      this.namespace = "api3";
+      this.get("/products/resistanceEquipments", () => {
+        return {
+          products: resistanceTrainingEquipment,
+        };
+      });
+      this.namespace = "api4";
+      this.get("/products/yogaEquipment", () => {
+        return {
+          products: yogaEquipment,
         };
       });
     },

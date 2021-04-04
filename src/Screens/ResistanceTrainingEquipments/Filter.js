@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useWomensNewProductListsContext } from '../../Contexts/ProductListContext/WomensNewDropProductListing';
-import WomensNewDropProductListing from './WomensNewDropProductListing';
+import ResistanceTrainingProductList from './ResistanceTrainingProductList'
 import { mensNewDropProductListAPI } from "../../API/MensNewDropProducts";
+import { useResistanceProductListsContext } from '../../Contexts/ProductListContext/ResistanceTrainingProductListing';
 
-mensNewDropProductListAPI(); 
+mensNewDropProductListAPI();
 function Filter() {
- // for checking the ckeckboxes
- const [sortByPrice, setSortByPrice] = useState();
+    const [sortByPrice, setSortByPrice] = useState();
  const [sortByRating, setSortByRating] = useState();
  const [sortByDelivery, setSortByDelivery] = useState();
  const [priceRange, setPriceRange] = useState(500);
@@ -25,27 +24,27 @@ function Filter() {
 
  // grabbing context API
  const {
-   state: { initialHomeScreenProductWomens, loading, filterItems },
-   womensNewProductDispatch,
- } = useWomensNewProductListsContext();
+   state: { initialResistanceProducts, loading, filterItems },
+   ResistanceProductDispatch,
+    } = useResistanceProductListsContext();
 
  // get max price of a product
  const maxPriceofProductPresent = Math.max.apply(
    Math,
-   initialHomeScreenProductWomens.map(function (o) {
+   initialResistanceProducts.map(function (o) {
      return o.price;
    })
  );
  // get min price of a product
  const minPriceofProductPresent = Math.min.apply(
    Math,
-   initialHomeScreenProductWomens.map(function (o) {
+   initialResistanceProducts.map(function (o) {
      return o.price;
    })
  );
  // get all tags of the cloth
  const allTheTagsOfProducts = [
-   ...initialHomeScreenProductWomens.map((ele) => ele.tag),
+   ...initialResistanceProducts.map((ele) => ele.tag),
  ];
  // add it inside set or map or anything to avoid duplication
  const setOfAllTheTagsOfProducts = new Set(allTheTagsOfProducts);
@@ -53,14 +52,14 @@ function Filter() {
  const setOfAllTheTagsOfProduct = [...setOfAllTheTagsOfProducts];
 
  useEffect(() => {
-    womensNewProductDispatch({
+    ResistanceProductDispatch({
      type: "FILTER_BY_PRODUCT_TAGS",
      payload: productTags,
    });
  }, [productTags]);
 
-  const filterData = (initialHomeScrrenProducts) => {
-    console.log("hey111",initialHomeScrrenProducts);
+    const filterData = (initialHomeScrrenProducts) => {
+      
    let mutatedProductList=JSON.parse(JSON.stringify(initialHomeScrrenProducts))
    if (filterItems.productTags.length > 0) {
      mutatedProductList=mutatedProductList.filter((ele)=>filterItems.productTags.includes(ele.tag))
@@ -111,7 +110,7 @@ function Filter() {
 
 // clear the filyer
  const clearFilter = () => {
-    womensNewProductDispatch({
+    ResistanceProductDispatch({
      type: "CLEAR_FILTERS"
    })
    setSortByPrice()
@@ -170,7 +169,7 @@ function Filter() {
                     checked={sortByPrice === "priceLowToHigh" ? true : false}
                     onChange={() => setSortByPrice("priceLowToHigh")}
                     onClick={() =>
-                      womensNewProductDispatch({ type: "LOW_TO_HIGH" })
+                      ResistanceProductDispatch({ type: "LOW_TO_HIGH" })
                     }
                   />
                 </li>
@@ -183,7 +182,7 @@ function Filter() {
                     checked={sortByPrice === "priceHighToLow" ? true : false}
                     onChange={() => setSortByPrice("priceHighToLow")}
                     onClick={() =>
-                      womensNewProductDispatch({ type: "HIGH_TO_LOW" })
+                      ResistanceProductDispatch({ type: "HIGH_TO_LOW" })
                     }
                   />
                 </li>
@@ -227,7 +226,7 @@ function Filter() {
                     checked={sortByRating === "fourStar" ? true : false}
                     onChange={() => setSortByRating("fourStar")}
                     onClick={() =>
-                      womensNewProductDispatch({ type: "RATING", payload: 4 })
+                      ResistanceProductDispatch({ type: "RATING", payload: 4 })
                     }
                   />
                 </li>
@@ -240,7 +239,7 @@ function Filter() {
                     checked={sortByRating === "threeStar" ? true : false}
                     onChange={() => setSortByRating("threeStar")}
                     onClick={() =>
-                      womensNewProductDispatch({ type: "RATING", payload: 3 })
+                      ResistanceProductDispatch({ type: "RATING", payload: 3 })
                     }
                   />
                 </li>
@@ -253,7 +252,7 @@ function Filter() {
                     checked={sortByRating === "twoStar" ? true : false}
                     onChange={() => setSortByRating("twoStar")}
                     onClick={() =>
-                      womensNewProductDispatch({ type: "RATING", payload: 2 })
+                      ResistanceProductDispatch({ type: "RATING", payload: 2 })
                     }
                   />
                 </li>
@@ -266,7 +265,7 @@ function Filter() {
                     checked={sortByRating === "oneStar" ? true : false}
                     onChange={() => setSortByRating("oneStar")}
                     onClick={() =>
-                      womensNewProductDispatch({ type: "RATING", payload: 1 })
+                      ResistanceProductDispatch({ type: "RATING", payload: 1 })
                     }
                   />
                 </li>
@@ -311,7 +310,7 @@ function Filter() {
                     checked={sortByDelivery === "freeHomeDelivery" ? true : false}
                     onChange={() => setSortByDelivery("freeHomeDelivery")}
                     onClick={() =>
-                      womensNewProductDispatch({ type: "FREE_DELIVERY" })
+                      ResistanceProductDispatch({ type: "FREE_DELIVERY" })
                     }
                   />
                 </li>
@@ -324,7 +323,7 @@ function Filter() {
                     checked={sortByDelivery === "expressDelivery" ? true : false}
                     onChange={() => setSortByDelivery("expressDelivery")}
                     onClick={() =>
-                      womensNewProductDispatch({ type: "EXPRESS_DELIVERY" })
+                      ResistanceProductDispatch({ type: "EXPRESS_DELIVERY" })
                     }
                   />
                 </li>
@@ -417,7 +416,7 @@ function Filter() {
                   value={priceRange}
                   onChange={(e) => setPriceRange(e.target.value)}
                   onClick={() =>
-                    womensNewProductDispatch({
+                    ResistanceProductDispatch({
                       type: "PRICE_RANGE",
                       payload: priceRange,
                     })
@@ -439,10 +438,11 @@ function Filter() {
           </div>
         </div>
         
-        <WomensNewDropProductListing filterData={filterData} />
+        <ResistanceTrainingProductList filterData={filterData} />
        
       </>
     )
 }
 
 export default Filter
+

@@ -9,6 +9,7 @@ import { SinglePRoductContextFun } from "./Contexts/SingleProductContext/SingleP
 import { WishListContextFun } from "./Contexts/WishListContext/WishListContext";
 import { WomensNewDropProductListsFunction } from "./Contexts/ProductListContext/WomensNewDropProductListing";
 import { HomeWorkoutProductListsFunction } from "./Contexts/ProductListContext/HomeWorkoutProductListing";
+import { ResistanceProductListsFunction } from "./Contexts/ProductListContext/ResistanceTrainingProductListing";
 
 const container = document.getElementById("root");
 ReactDOM.render(
@@ -21,23 +22,26 @@ ReactDOM.render(
         <HomeWorkoutProductListsFunction>
           {/* {Home Workout} */}
 
-          <RoutingContextFunction>
-            {/* for routing */}
+          <ResistanceProductListsFunction>
+            {/* {For resiatnce equipments} */}
+            <RoutingContextFunction>
+              {/* for routing */}
 
-            <CartContextFunction>
-              {/* {Cart Context} */}
+              <CartContextFunction>
+                {/* {Cart Context} */}
 
-              <WishListContextFun>
-                {/* {WishList Context} */}
+                <WishListContextFun>
+                  {/* {WishList Context} */}
 
-                <SinglePRoductContextFun>
-                  {/* {Single Product View COntext} */}
+                  <SinglePRoductContextFun>
+                    {/* {Single Product View COntext} */}
 
-                  <App />
-                </SinglePRoductContextFun>
-              </WishListContextFun>
-            </CartContextFunction>
-          </RoutingContextFunction>
+                    <App />
+                  </SinglePRoductContextFun>
+                </WishListContextFun>
+              </CartContextFunction>
+            </RoutingContextFunction>
+          </ResistanceProductListsFunction>
         </HomeWorkoutProductListsFunction>
       </WomensNewDropProductListsFunction>
     </MensNewDropProductListsFunction>

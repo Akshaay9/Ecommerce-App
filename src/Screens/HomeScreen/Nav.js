@@ -4,20 +4,19 @@ import { useRoutingContext } from "../../Contexts/RoutingContext/routingContextP
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 
 function Nav() {
-  const [showCategories, setSgowCategories] = useState(false);
   const { setRoute } = useRoutingContext();
-  const { state: { cartItems, loading } } = useCartContextProvider()
-  
-  const {state:{wishListItems}}=useWishListContextProvider()
+  const {
+    state: { cartItems, loading },
+  } = useCartContextProvider();
 
+  const {
+    state: { wishListItems },
+  } = useWishListContextProvider();
 
   const lengthOfCartItems = () => {
-    const length = cartItems.reduce((acc, ele) => acc + ele.inCartQty, 0)
-    return length  
-  }
- 
- 
-  
+    const length = cartItems.reduce((acc, ele) => acc + ele.inCartQty, 0);
+    return length;
+  };
 
   return (
     <div>
@@ -45,13 +44,7 @@ function Nav() {
             >
               Mens
             </li>
-            <li
-              className="hr-underline-left li-bold"
-              onMouseEnter={() => setSgowCategories(true)}
-              onMouseLeave={() => setSgowCategories(false)}
-            >
-              Products
-            </li>
+            <li className="hr-underline-left li-bold">Products</li>
             <li
               onClick={() => setRoute("WomensNewDrop")}
               className="hr-underline-left li-bold womens-li"
@@ -67,61 +60,23 @@ function Nav() {
           <div className="nav_logi">
             <i className="fas fa-user"></i>
           </div>
-          <div className="nav_cart"
-          onClick={()=>setRoute("WishListComponent")} 
-          >
-          <div className="badge badge-skyBlue">
-              <i class="fas fa-heart"></i>
-              {wishListItems.length>0 && <span>{ wishListItems.length}</span> }
-      
-      </div>
-           
-          </div>
-          <div className="nav_cart"
-          onClick={()=>setRoute("CartComponent")}
-          >
-           <div className="badgeContainer1 badge-skyBlue">
-        <i class="fas fa-shopping-cart"></i>
-              {/* <span>1</span> */}
-              { cartItems.length> 0 && <span>{lengthOfCartItems()}</span>}
-              
-      </div>
-          </div>
-        </div>
-        {showCategories && (
           <div
-            className="nav-hoover-further-links  product-dropdown"
-            onMouseEnter={() => setSgowCategories(true)}
-            onMouseLeave={() => setSgowCategories(false)}
+            className="nav_cart"
+            onClick={() => setRoute("WishListComponent")}
           >
-            <div className="arrow-up"></div>
-            <div className="box-arrow"></div>
-            <div className="nav-hoover-further-links-container">
-              <div className="nav-hoover-further-linksli">
-                <h3>Accessories</h3>
-                <ul>
-                  <li>1) Bags</li>
-                  <li>2) Bottles</li>
-                  <li>3) Mats</li>
-                  <li>4) Straps</li>
-                  <li>5) Glouse</li>
-                  <li>6) Belts</li>
-                </ul>
-              </div>
-
-              <div className="nav-hoover-further-linksli">
-                <h3>Equipments</h3>
-                <ul>
-                  <li>1) Dumbells</li>
-                  <li>2) Barbells</li>
-                  <li>3) Weights</li>
-                  <li>4)Benches</li>
-                  <li>5) Squat-racks</li>
-                </ul>
-              </div>
+            <div className="badge badge-skyBlue">
+              <i class="fas fa-heart"></i>
+              {wishListItems.length > 0 && <span>{wishListItems.length}</span>}
             </div>
           </div>
-        )}
+          <div className="nav_cart" onClick={() => setRoute("CartComponent")}>
+            <div className="badgeContainer1 badge-skyBlue">
+              <i class="fas fa-shopping-cart"></i>
+              {/* <span>1</span> */}
+              {cartItems.length > 0 && <span>{lengthOfCartItems()}</span>}
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* shiping details */}

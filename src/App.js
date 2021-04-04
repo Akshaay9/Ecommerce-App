@@ -12,6 +12,7 @@ import CartComponent from "./Components/CartComponent/Index"
 import WishListComponent from "./Components/WishListComponent/Index"
 import { useRoutingContext } from "./Contexts/RoutingContext/routingContextProvider";
 import SingleProductViewer from "./Components/SIngleProductViewer/Index"
+import YogaComponent from "./Screens/YogaEquipments/index"
 function App() {
 
   const { route, setRoute } = useRoutingContext()
@@ -64,6 +65,9 @@ function App() {
 
       {route === "singleProductView" && 
       <SingleProductViewer/>
+      }
+      {route === "YogaEquipment" && 
+      <YogaComponent/>
       }
       
       <Footer />

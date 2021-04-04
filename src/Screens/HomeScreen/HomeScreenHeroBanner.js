@@ -71,7 +71,9 @@ function HomeScreenHeroBanner() {
           <div className="hero-banner-call-to-action hero-three-two-CTA">
             <h1>Yoga</h1>
             <div className="hero-banner-call-to-action-btns">
-              <button className="btn btn-homescreen-grey">Shop Now</button>
+              <button className="btn btn-homescreen-grey"
+              onClick={()=>setRoute("YogaEquipment")}
+              >Shop Now</button>
             </div>
           </div>
         </>

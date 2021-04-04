@@ -1,15 +1,12 @@
-import axios from "axios";
-import React, { useEffect } from "react";
-import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
-import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
-import {useRoutingContext} from "../../Contexts/RoutingContext/routingContextProvider"
-import { useSingleProductCOntextFun } from "../../Contexts/SingleProductContext/SingleProductContext";
-import { useWomensNewProductListsContext } from "../../Contexts/ProductListContext/WomensNewDropProductListing";
+import axios from 'axios';
+import React, { useEffect } from 'react'
+import { useCartContextProvider } from '../../Contexts/CartContext/CartContext';
+import { useResistanceProductListsContext } from '../../Contexts/ProductListContext/ResistanceTrainingProductListing';
+import { useRoutingContext } from '../../Contexts/RoutingContext/routingContextProvider';
+import { useSingleProductCOntextFun } from '../../Contexts/SingleProductContext/SingleProductContext';
+import { useWishListContextProvider } from '../../Contexts/WishListContext/WishListContext';
 
-
-
-
-function WomensNewDropProductListing({ filterData }) {
+function ResistanceTrainingProductList({filterData}) {
 
   // single product view
   const {  singleProductContextDispatch } = useSingleProductCOntextFun()
@@ -17,9 +14,9 @@ function WomensNewDropProductListing({ filterData }) {
   const { setRoute } = useRoutingContext();
  // grabbing context API
  const {
-    state: { initialHomeScreenProductWomens, loading, filterItems },
-    womensNewProductDispatch,
-  } = useWomensNewProductListsContext();
+    state: { initialResistanceProducts, loading, filterItems },
+    ResistanceProductDispatch,
+  } = useResistanceProductListsContext();
   const {
     state: { cartItems },
     cartContextDispatch,
@@ -32,8 +29,8 @@ function WomensNewDropProductListing({ filterData }) {
   useEffect(() => {
     (async () => {
       try {
-        const data = await axios.get("/api1/products/womensNewDrop");
-        womensNewProductDispatch({
+          const data = await axios.get("/api3/products/resistanceEquipments");
+          ResistanceProductDispatch({
           type: "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS",
           payload: data.data.products,
         });
@@ -107,6 +104,7 @@ function WomensNewDropProductListing({ filterData }) {
   };
 
   const checkIfTheProductIsWished = (ele) => {
+    console.log(wishListItems);
     const isItemsWished = wishListItems.filter((prod) => prod.id == ele.id);
     let heartColor;
     if (isItemsWished.length > 0) {
@@ -135,7 +133,7 @@ function WomensNewDropProductListing({ filterData }) {
   }
   return (
     <div className="grid-container">
-      {filterData(initialHomeScreenProductWomens).map((ele) => (
+      {filterData(initialResistanceProducts).map((ele) => (
         <div className="card-container" key={ele.id}>
           <div className="card-container-header">
             <img src={ele.images[0].img} alt=""  onClick={()=>setRouteToSingleProductAndDispatchSingleProductContext(ele)}/>
@@ -166,7 +164,5 @@ function WomensNewDropProductListing({ filterData }) {
   ) 
 }
 
-export default WomensNewDropProductListing;
-
-
+export default ResistanceTrainingProductList;
 

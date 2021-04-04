@@ -69,6 +69,7 @@
         border: 1px solid var(--line-height);
         display: grid;
         grid-template-columns: 1fr;
+    
     }
     .wishlist-component-container-left{
         display: block;
