@@ -4,6 +4,7 @@ import { useCartContextProvider } from '../../Contexts/CartContext/CartContext';
 import {useGymAccessoriesContext} from "../../Contexts/ProductListContext/GymAccessories"
 import { useWishListContextProvider } from '../../Contexts/WishListContext/WishListContext';
 import { NavLink } from "react-router-dom";
+import {makeAnAPICall} from "../../UtilityFunctions/APiCalls"
 
 function GymAccessoriesProductList({filterData}) {
     // grabbing Context API
@@ -20,18 +21,7 @@ function GymAccessoriesProductList({filterData}) {
     wishListContextDispatch,
   } = useWishListContextProvider();
     useEffect(() => {
-        (async () => {
-          try {
-            const data = await axios.get("/api5/products/gymAccessories");
-            gymAccessoriesDispatch({
-              type: "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS",
-              payload: data.data.products,
-            });
-         
-          } catch (error) {
-            console.log(error);
-          }
-        })();
+        makeAnAPICall("GET","/api5/products/gymAccessories",gymAccessoriesDispatch,"LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS" )
     }, []);
     const checkIfTheProductIsInCart = (product) => {
       const newItems = [...cartItems];

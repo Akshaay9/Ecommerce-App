@@ -4,6 +4,7 @@ import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useResistanceProductListsContext } from "../../Contexts/ProductListContext/ResistanceTrainingProductListing";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 import { NavLink } from "react-router-dom";
+import {makeAnAPICall} from "../../UtilityFunctions/APiCalls"
 
 function ResistanceTrainingProductList({ filterData }) {
   // grabbing context API
@@ -22,17 +23,7 @@ function ResistanceTrainingProductList({ filterData }) {
   } = useWishListContextProvider();
 
   useEffect(() => {
-    (async () => {
-      try {
-        const data = await axios.get("/api3/products/resistanceEquipments");
-        ResistanceProductDispatch({
-          type: "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS",
-          payload: data.data.products,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    })();
+    makeAnAPICall("GET","/api3/products/resistanceEquipments",ResistanceProductDispatch,"LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS" )
   }, []);
 
   const checkIfTheProductIsInCart = (product) => {

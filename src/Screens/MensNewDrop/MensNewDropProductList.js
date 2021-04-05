@@ -4,6 +4,7 @@ import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useMensNewProductListsContext } from "../../Contexts/ProductListContext/MensNewDropProductListing";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 import { NavLink } from "react-router-dom";
+import {makeAnAPICall} from "../../UtilityFunctions/APiCalls"
 
 function MensNewDropProductList({ filterData }) {
   const {
@@ -21,17 +22,7 @@ function MensNewDropProductList({ filterData }) {
   } = useWishListContextProvider();
 
   useEffect(() => {
-    (async () => {
-      try {
-        const data = await axios.get("/api/products/mensNewDrops");
-        homeScreenProductDispatch({
-          type: "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS",
-          payload: data.data.products,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    })();
+    makeAnAPICall("GET","/api/products/mensNewDrops",homeScreenProductDispatch,"LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS" )
   }, []);
 
   const checkIfTheProductIsInCart = (product) => {

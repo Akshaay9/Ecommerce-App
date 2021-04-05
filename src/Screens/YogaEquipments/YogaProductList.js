@@ -4,6 +4,7 @@ import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 import { NavLink } from "react-router-dom";
 import { useYogaProductListsContext } from "../../Contexts/ProductListContext/YogaEquipmentLists";
+import {makeAnAPICall} from "../../UtilityFunctions/APiCalls"
 function YogaProductList({filterData}) {
   // grabbing context API
   const {
@@ -21,18 +22,7 @@ function YogaProductList({filterData}) {
     wishListContextDispatch,
   } = useWishListContextProvider();
   useEffect(() => {
-    (async () => {
-      try {
-        const data = await axios.get("/api4/products/yogaEquipment");
-        console.log(data);
-        yogaProductDispatch({
-          type: "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS",
-          payload: data.data.products,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    })();
+    makeAnAPICall("GET","/api4/products/yogaEquipment",yogaProductDispatch,"LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS" )
   }, []);
   const checkIfTheProductIsInCart = (product) => {
     const newItems = [...cartItems];

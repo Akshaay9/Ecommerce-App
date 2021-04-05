@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAllProductsContextContext } from "../../Contexts/SearchAndIndividualScreenContext/SearchAndindiScreen";
+import {makeAnAPICall} from "../../UtilityFunctions/APiCalls"
 function SearchBarProducts() {
   const {
     state: { searchResult },
@@ -16,17 +17,7 @@ function SearchBarProducts() {
     }, [])
       // to dispatch all prods
     useEffect(() => {
-    (async () => {
-      try {
-        const data = await axios.get("/api6/products/all");
-        allProductsDispatch({
-          type: "initialAllProducts",
-          payload: data.data.products,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    })();
+    makeAnAPICall("GET","/api6/products/all",allProductsDispatch,"initialAllProducts" )
   }, []);
 
   useEffect(() => {

@@ -267,6 +267,13 @@ a{
 .hero-three-two-CTA-btn {
   color: var(--dark);
 }
+.hero-three-two-CTA button{
+  width: 100%;
+}
+.hero-three-one-CTA button{
+  width: 100%;
+}
+
 /* gym accessories- hero banner four */
 .hero-banner-four{
   position: relative;

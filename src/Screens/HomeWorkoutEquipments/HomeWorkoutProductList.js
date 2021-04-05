@@ -4,7 +4,7 @@ import { useCartContextProvider } from '../../Contexts/CartContext/CartContext';
 import { useWorkoutNewProductListsContext } from '../../Contexts/ProductListContext/HomeWorkoutProductListing';
 import { useWishListContextProvider } from '../../Contexts/WishListContext/WishListContext';
 import { NavLink } from "react-router-dom";
-
+import {makeAnAPICall} from "../../UtilityFunctions/APiCalls"
 function HomeWorkoutProductList({ filterData }) {
     
 
@@ -22,20 +22,11 @@ function HomeWorkoutProductList({ filterData }) {
   const {
     state: { wishListItems },wishListContextDispatch
   } = useWishListContextProvider();
+
     useEffect(() => {
-        (async () => {
-          try {
-              const data = await axios.get("/api2/products/homeWorkout");
-              homeWorkoutDispatch({
-                type: "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS",
-                payload: data.data.products,
-              });
-       
-          } catch (error) {
-            console.log(error);
-          }
-        })();
+          makeAnAPICall("GET","/api2/products/homeWorkout",homeWorkoutDispatch,"LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS" )
     }, []);
+  
     const checkIfTheProductIsInCart = (product) => {
         const newItems = [...cartItems];
         const isItemOnTheCart = newItems.filter((ele) => ele.id == product.id);
