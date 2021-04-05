@@ -3,8 +3,8 @@ import React, { useEffect } from "react";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useMensNewProductListsContext } from "../../Contexts/ProductListContext/MensNewDropProductListing";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
-import { makeAnAPICall } from "../../UtilityFunctions/APiCalls"
-import ProductListingComponentUtility from "../../UtilityFunctions/ProductListingComponentUtility";
+import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls"
+import ProductListingComponentUtility from "../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility";
 
 
 

@@ -4,8 +4,8 @@ import {
   checkIfTheProductIsWished,
   dispatchBasedOnBroductWishedOrNot,
 } from "./ProductListingFunctionsUtility";
-import { useCartContextProvider } from "../Contexts/CartContext/CartContext";
-import { useWishListContextProvider } from "../Contexts/WishListContext/WishListContext";
+import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
+import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 import { NavLink } from "react-router-dom";
 
 function ProductListingComponentUtility({ filterData, products }) {

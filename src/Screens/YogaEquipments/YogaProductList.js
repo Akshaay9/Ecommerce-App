@@ -4,8 +4,8 @@ import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 import { NavLink } from "react-router-dom";
 import { useYogaProductListsContext } from "../../Contexts/ProductListContext/YogaEquipmentLists";
-import { makeAnAPICall } from "../../UtilityFunctions/APiCalls"
-import ProductListingComponentUtility from "../../UtilityFunctions/ProductListingComponentUtility";
+import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls"
+import ProductListingComponentUtility from "../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility";
 
 
 function YogaProductList({filterData}) {

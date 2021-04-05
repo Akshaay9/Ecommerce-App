@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useEffect } from 'react'
 import { useWorkoutNewProductListsContext } from '../../Contexts/ProductListContext/HomeWorkoutProductListing';
-import { makeAnAPICall } from "../../UtilityFunctions/APiCalls"
-import ProductListingComponentUtility from '../../UtilityFunctions/ProductListingComponentUtility';
+import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls"
+import ProductListingComponentUtility from '../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility';
 
 
 

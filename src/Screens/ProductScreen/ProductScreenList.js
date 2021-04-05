@@ -1,6 +1,6 @@
 import React from "react";
 import { useProductContext } from "../../Contexts/ProductListContext/Products";
-import ProductListingComponentUtility from "../../UtilityFunctions/ProductListingComponentUtility";
+import ProductListingComponentUtility from "../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility";
 
 function ProductScreenList({ filterData }) {
   const {
