@@ -3,7 +3,7 @@ import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 import { NavLink } from "react-router-dom";
 
-function Nav() {
+function Nav({showMobileNavNar,setShowMobileNavBar}) {
   const {
     state: { cartItems, loading },
   } = useCartContextProvider();
@@ -29,10 +29,20 @@ function Nav() {
               />
             </NavLink>
           </div>
+          <NavLink to="/search">
+            <div className="nav_search desktop-hide-it">
+              <i className="fas fa-search"></i>
+            </div>
+          </NavLink>
           <div className="nav_name">
             <NavLink to="/">
               <h2>Fit Sharkk</h2>
             </NavLink>
+          </div>
+          <div className="nav_hamberger">
+            <i class="fas fa-bars"
+            onClick={()=>setShowMobileNavBar(true)}
+            ></i>
           </div>
         </div>
         <div className="nav_center">
@@ -51,7 +61,7 @@ function Nav() {
         </div>
         <div className="nav_right">
           <NavLink to="/search">
-            <div className="nav_search">
+            <div className="nav_search mobile-hide-it">
               <i className="fas fa-search"></i>
             </div>
           </NavLink>
@@ -78,6 +88,27 @@ function Nav() {
             </div>
           </NavLink>
         </div>
+      </div>
+
+      <div className={`nav_ul_desktop desktop-hide-it ${showMobileNavNar ? "show_nav":""}`}>
+      {/* <div className="nav_ul_desktop desktop-hide-it"> */}
+        <div className="login">
+          <div className="nav_login">
+            <i className="fas fa-user"></i>
+          </div>
+          <i class="fas fa-times"
+          onClick={()=>setShowMobileNavBar(false)}
+          ></i>
+        </div>
+        <ul>
+          <li>Mens</li>
+          <li>Products</li>
+          <li>Womens</li>
+          <li>Home Workout</li>
+          <li>Gym Accessories</li>
+          <li>Resistance Training</li>
+          <li>Yoga accessories</li>
+        </ul>
       </div>
 
       {/* shiping details */}

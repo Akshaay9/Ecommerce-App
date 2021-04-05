@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import MensNewDropProductList from "./MensNewDropProductList";
 import { useMensNewProductListsContext } from "../../Contexts/ProductListContext/MensNewDropProductListing";
 import { mensNewDropProductListAPI } from "../../API/MensNewDropProducts";
-
 mensNewDropProductListAPI();
 
 function Filter() {
@@ -10,7 +9,6 @@ function Filter() {
   const [sortByPrice, setSortByPrice] = useState();
   const [sortByRating, setSortByRating] = useState();
   const [sortByDelivery, setSortByDelivery] = useState();
-  const [priceRange, setPriceRange] = useState(500);
   // to store checked tags, further this array will be sent to useReducer to map and filter all elements whose tags present here
   const [productTags, setProductTags] = useState([]);
 
@@ -415,14 +413,7 @@ function Filter() {
                 type="range"
                 min={minPriceofProductPresent}
                 max={maxPriceofProductPresent}
-                value={priceRange}
-                onChange={(e) => setPriceRange(e.target.value)}
-                onClick={() =>
-                  homeScreenProductDispatch({
-                    type: "PRICE_RANGE",
-                    payload: priceRange,
-                  })
-                }
+                onChange={(e) => homeScreenProductDispatch({type:"PRICE_RANGE",payload:e.target.value})}
               />
             </div>
           )}

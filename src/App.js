@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Footer from "./Screens/HomeScreen/Footer";
 import HomeScreen from "./Screens/HomeScreen/Index";
@@ -17,11 +17,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SearchComponent from "./Components/Search/Index"
 import Products from "./Screens/ProductScreen/Index"
 function App() {
- 
+ const[showMobileNavNar,setShowMobileNavBar]=useState(false)
 
   return (
+    <div style={showMobileNavNar?{height:"93.4vh",overflow:"hidden"}:{}}>
     <BrowserRouter>
-         <Nav/>
+        <Nav showMobileNavNar={showMobileNavNar} setShowMobileNavBar={setShowMobileNavBar} />
     <Routes>
    
       <Route path="/" element={<HomeScreenComponents />} />
@@ -38,6 +39,7 @@ function App() {
       <Route path="/search" element={<SearchComponent />} />
       </Routes>
       </BrowserRouter>
+      </div>
   );
 }
 
