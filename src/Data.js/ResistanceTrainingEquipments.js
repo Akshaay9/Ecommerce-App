@@ -157,7 +157,7 @@ export const resistanceTrainingEquipment = [
         },
         {
           img:
-            "https://images-na.ssl-images-amazon.com/images/I/51suvZnM34L._SL1500_.jpg",
+            "https://images-na.ssl-images-amazon.com/images/I/61RlsSjmJrL._SL1500_.jpg",
         },
       ],
       desc:

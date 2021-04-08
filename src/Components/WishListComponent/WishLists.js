@@ -1,6 +1,7 @@
 import React from "react";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
+import {NavLink} from "react-router-dom"
 
 function WishLists() {
   const {
@@ -81,6 +82,7 @@ function WishLists() {
       <div className="wishList-components">
         {wishListItems.map((ele) => (
           <div className="wishlist-component-container">
+          <NavLink to={`/products/${ele.id}`}>
             <div className="wishlist-component-container-left">
               <div className="cart-component-left-img">
                 <img src={ele.images[0].img} alt="" />
@@ -90,7 +92,8 @@ function WishLists() {
                 <h4>{ele.price}.00₹</h4>
                 <p>{ele.desc}</p>
               </div>
-            </div>
+              </div>
+              </NavLink>
             <div className="wishlist-component-container-right">
               <i
                 class="fas fa-trash"

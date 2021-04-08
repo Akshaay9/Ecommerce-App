@@ -25,6 +25,7 @@ function ProductListingComponentUtility({ filterData, products }) {
           <div className="card-container-header">
             <NavLink to={`/products/${ele.id}`}>
               <img src={ele.images[0].img} alt="" />
+              {ele.newArrival && <span className="cardBadge">New Arrival</span>}
             </NavLink>
             {/* calling the program so that it  automatiaaly renders ADD to cart button or increase the qty buttons */}
             {checkIfTheProductIsInCart(ele, cartItems, cartContextDispatch)}

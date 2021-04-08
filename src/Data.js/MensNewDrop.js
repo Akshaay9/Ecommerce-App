@@ -555,7 +555,7 @@ export const mensNewDrop = [
     ],
     desc:
       "Powerful performance begins with empowerment, that’s what led the design of the Onyx Long Sleeve T-Shirt, with its strong muscle fit, physique-accentuating shades and seamless material. Onyx has been created to instil confidence and self-belief every time you pull it on, because we believe that if you feel strong, you’ll lift strong too.",
-    inStock: 0,
+    inStock: 5,
     rating: 4.5,
     freeDelivery: true,
     deliveredBy: 12,

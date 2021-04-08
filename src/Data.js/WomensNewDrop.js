@@ -556,7 +556,7 @@ export const womensDrop = [
     ],
     desc:
       "Your comfort just reached maximum capacity. It's time to relax in the Release Hoodie, with an oversized fit, dropped shoulders and kangaroo pocket to bring that laid-back look to your workout wardrobe. Perfect for a day of recovery, arm pockets add functionality to this fit, so you can stash away your stuff and stay sleek at the same time.",
-    inStock: 0,
+    inStock: 3,
     rating: 4.5,
     freeDelivery: true,
     deliveredBy: 12,

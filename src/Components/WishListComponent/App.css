@@ -14,11 +14,22 @@
     margin: auto;
     border: 1px solid var(--line-height);
     display: grid;
-    grid-template-columns: 1fr .12fr;
+    grid-template-columns: 1fr .17fr;
+    grid-column-gap: 1rem;
+    grid-row-gap: 18px;
+    margin-top: 22px
 }
 .wishlist-component-container-left,
 .wishlist-component-container-right{
     border: 1px solid var(--line-color);
+    cursor: pointer;
+}
+
+.wishlist-component-container-left:hover{
+    background-color: #e0d7d7;
+}
+.wishlist-component-container-left:hover .cart-component-left-img {
+    filter: brightness(80%);
 }
 .wishlist-component-container-left{
     display: flex;
