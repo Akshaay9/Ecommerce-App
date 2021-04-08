@@ -20,6 +20,7 @@ function Filter() {
     deliverySort: "",
     priceRange: "",
     productTags: "",
+    mobileFilter: "",
   });
 
   // grabbing context API
@@ -131,11 +132,34 @@ function Filter() {
 
   return (
     <>
-      <div className="filter">
-        <h3 className="filter-heading">Filters : </h3>
+      <div className="filter-mobile-heading">
+        <h3>Filters</h3>
+        <>
+          {showFilter.mobileFilter === "" ? (
+            <i
+              class="fas fa-chevron-down"
+              style={{ marginTop: "3px", marginLeft: "3px" }}
+              onClick={() =>
+                setShowFilter({
+                  ...showFilter,
+                  mobileFilter: "price-container",
+                })
+              }
+            ></i>
+          ) : (
+            <i
+              class="fas fa-chevron-up"
+              style={{ marginTop: "3px", marginLeft: "3px" }}
+              onClick={() => setShowFilter({ ...showFilter, mobileFilter: "" })}
+            ></i>
+          )}
+        </>{" "}
+      </div>
 
-        {/* price filter */}
-        <ul>
+      <div className={`filter ${showFilter.mobileFilter==""?"filter-mobile-hide":"filter-mobile"}`}>
+        <h3 className="filter-heading">Filters : </h3>
+      {/* price filter */}
+      <ul>
           <h3 className="filter-heading-sort-prices">
             Sort By Price
             <>
@@ -356,7 +380,8 @@ function Filter() {
             </>
           </h3>
           {showFilter.productTags === "productTag-container" && (
-            <div className="filter-heading-sort-delivery-container">
+            <div
+             className="filter-heading-sort-delivery-container filter-tags-mobile mobile-tags-filter">
               {setOfAllTheTagsOfProduct.map((ele) => (
                 <li style={{ width: "7rem" }}>
                   <label htmlFor="">{ele}</label>

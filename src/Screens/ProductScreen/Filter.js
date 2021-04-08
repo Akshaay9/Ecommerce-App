@@ -17,6 +17,7 @@ function Filter() {
       deliverySort: "",
       priceRange: "",
       productTags: "",
+      mobileFilter: "",
     });
     // grab contxt
     const {
@@ -122,10 +123,33 @@ function Filter() {
    });
  }
  return (
-    <>
-    <div className="filter">
-      <h3 className="filter-heading">Filters : </h3>
-      <h3 className="filter-heading">Filters : </h3>
+  <>
+      <div className="filter-mobile-heading">
+        <h3>Filters</h3>
+        <>
+          {showFilter.mobileFilter === "" ? (
+            <i
+              class="fas fa-chevron-down"
+              style={{ marginTop: "3px", marginLeft: "3px" }}
+              onClick={() =>
+                setShowFilter({
+                  ...showFilter,
+                  mobileFilter: "price-container",
+                })
+              }
+            ></i>
+          ) : (
+            <i
+              class="fas fa-chevron-up"
+              style={{ marginTop: "3px", marginLeft: "3px" }}
+              onClick={() => setShowFilter({ ...showFilter, mobileFilter: "" })}
+            ></i>
+          )}
+        </>{" "}
+      </div>
+
+      <div className={`filter ${showFilter.mobileFilter==""?"filter-mobile-hide":"filter-mobile"}`}>
+        <h3 className="filter-heading">Filters : </h3>
       {/* price filter */}
       <ul>
         <h3 className="filter-heading-sort-prices">
@@ -354,7 +378,8 @@ function Filter() {
           </>
         </h3>
         {showFilter.productTags === "productTag-container" && (
-          <div className="filter-heading-sort-delivery-container">
+           <div
+             className="filter-heading-sort-delivery-container filter-tags-mobile mobile-tags-filter">
             {setOfAllTheTagsOfProduct.map((ele) => (
               <li style={{ width: "12rem",marginLeft:"-42px" }}>
                 <label htmlFor="">{ele}</label>
@@ -421,15 +446,15 @@ function Filter() {
         )}
       </div>
       <div className="button-filter">
-        <h3 className="filter-heading-sort-priceRange">
-          <button
-            style={{ borderRadius: "0px"}}
-            className="btn btn-secondary btn-secondary-hr-outline-in clear-filter-btn"
-            onClick={()=>clearFilter()}
-          >
-            Clear Filter
-          </button>
-        </h3>
+      <h3 className="filter-heading-sort-priceRange">
+      <button
+              style={{ borderRadius: "0px" }}
+              className="btn-secondary btn-secondary-hr-outline-in clear-filter-btn"
+              onClick={() => clearFilter()}
+            >
+              Clear Filter
+            </button>
+          </h3>
       </div>
     </div>
     

@@ -416,7 +416,7 @@ a {
     transform: translateY(0);
   }
 }
-.filter-mobile-heading{
+.filter-mobile-heading {
   display: none;
 }
 
@@ -439,11 +439,11 @@ a {
 .filter-heading-1 {
   display: none;
 }
-.clear-filter-btn{
-  padding: .3rem 1rem;
+.clear-filter-btn {
+  padding: 0.3rem 1rem;
 }
 
-.filter-tags-mobile{
+.filter-tags-mobile {
   width: 8rem;
 }
 /* Home Workout */
@@ -494,7 +494,6 @@ a {
 }
 
 @media screen and (max-width: 43.25rem) {
- 
   * {
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   }
@@ -746,21 +745,20 @@ a {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 1rem;
-    grid-row-gap: 1rem; 
-     /* transform: translateX(0%); */
-   animation: mobileFilter 300ms ease-in-out; 
+    grid-row-gap: 1rem;
+    /* transform: translateX(0%); */
+    animation: mobileFilter 300ms ease-in-out;
     /* display: none; */
-    
   }
-  .filter-mobile-hide{
+  .filter-mobile-hide {
     display: none;
   }
   @keyframes mobileFilter {
     from {
-opacity: 0;
+      opacity: 0;
     }
-    to{
-opacity: 1;
+    to {
+      opacity: 1;
     }
   }
   .filter-heading-sort-prices,
@@ -781,47 +779,51 @@ opacity: 1;
     display: none;
     padding: 1rem;
   }
-  .filter-heading-sort-prices-container li{
-  z-index: 199;
+  .filter-heading-sort-prices-container li {
+    z-index: 199;
     background-color: white;
     margin-left: 1.7rem;
     width: 100%;
   }
-  .filter-heading-sort-rating-container li{
+  .filter-heading-sort-rating-container li {
     background-color: white;
     margin-left: 1.7rem;
     width: 100%;
   }
-  .filter-heading-sort-delivery-container li{
+  .filter-heading-sort-delivery-container li {
     z-index: 599 !important;
     background-color: white;
     margin-left: 1.2rem;
     width: 100%;
   }
-  .filter-heading-sort-priceRange{
+  .filter-heading-sort-priceRange {
     z-index: 0;
   }
-  .filter-mobile-heading{
+  .filter-mobile-heading {
     display: block;
-width: 70%;
-/* border: 1px solid red; */
-align-items: center;
-justify-content: space-between;
-margin: auto;
-padding: .5rem;
-display: flex;    
-font-family: var(--font-sans-serif);
-font-weight: lighter;
-cursor: pointer;
-color: rgb(78, 78, 78);
-display: flex;
+    width: 70%;
+    /* border: 1px solid red; */
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    padding: 0.5rem;
+    display: flex;
+    font-family: var(--font-sans-serif);
+    font-weight: lighter;
+    cursor: pointer;
+    color: rgb(78, 78, 78);
+    display: flex;
   }
-  .filter-tags-mobile li{
-    width: 12rem;
+  .filter-tags-mobile li {
+    width: 12rem !important;
     margin-left: 1.5rem;
   }
-  .filter-heading-sort-priceRange-contsiner input{
+  .filter-heading-sort-priceRange-contsiner input {
     margin-left: 2rem;
   }
+  .mobile-tags-filter li{
+    margin-left: 1rem !important;
   
+   
+  }
 }
