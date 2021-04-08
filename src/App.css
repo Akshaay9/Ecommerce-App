@@ -35,13 +35,14 @@ a {
 }
 .nav_left {
   position: relative;
-  width: 14%;
+  width: 16%;
   justify-content: space-around;
 }
 .nav_right {
-  /* border: var(--border); */
-  width: 17%;
-  justify-content: space-between;
+
+  width: 18%;
+
+  justify-content: space-around;
 }
 .nav_center {
   width: 55%;
