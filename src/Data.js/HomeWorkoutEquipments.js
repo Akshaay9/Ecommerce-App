@@ -318,7 +318,7 @@ export const homeWorkoutEquipments = [
     images: [
       {
         img:
-          "https://images-na.ssl-images-amazon.com/images/I/51ydJE6r8WL._SL1280_.jpg",
+          "https://www.decathlon.in/_next/image?url=https%3A%2F%2Fcontents.mediadecathlon.com%2Fp1134412%2Fk%24a7f08ac52151c148b9158f09396e9968%2Fstrength-training-pull-up-bar-900.jpg%3F%26f%3D250x250%26format%3Dauto&w=384&q=75",
       },
       {
         img:

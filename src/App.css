@@ -203,6 +203,7 @@ a {
 .hero-two-CTA {
   position: absolute;
   top: 0%;
+  height: 10rem !important;
   position: absolute;
   top: 70%;
   left: 50%;
@@ -243,6 +244,7 @@ a {
   cursor: pointer;
   text-align: center;
 }
+
 
 /* banner-yoga CTA */
 .yoga-banner {
@@ -293,28 +295,27 @@ a {
 .hero-four-CTA .btn {
   width: 12rem;
 }
-.footer-fit{
+.footer-fit {
   display: flex;
   height: 3rem;
   align-items: center;
   justify-content: space-between;
-  padding: 0rem 0rem 0rem .5rem;
+  padding: 0rem 0rem 0rem 0.5rem;
   border-top: 1px solid var(--line-color);
-
 }
-.footer-fit-bottom{
+.footer-fit-bottom {
   position: fixed;
   bottom: 0%;
   background-color: white;
   width: 100%;
 }
 
-.footer-bottom-righ i{
-padding: 0rem .9rem;
-font-size: 1.6rem;
+.footer-bottom-righ i {
+  padding: 0rem 0.9rem;
+  font-size: 1.6rem;
 }
-.footer-bottom-p-font{
-  word-spacing: .5rem;
+.footer-bottom-p-font {
+  word-spacing: 0.5rem;
 }
 
 /* mens new drops */
@@ -610,36 +611,58 @@ font-size: 1.6rem;
   .hero-banner-two .img-desktop {
     display: none !important;
   }
+  .hero-banner-three{
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100vh;
+    margin: 0%;
+    padding: 0%;
+    /* background-color: aqua; */
+    height: 90vh;
+    margin-top: 1.2rem;
+      }
+  .hero-banner-three > img {
+   
+    width: 100%;
+    height: 32rem;
+    
+  }
   .shipping-details-update {
     display: none;
   }
   .hero-three-one-CTA {
     position: absolute;
     top: 20%;
-    left: 25%;
+    left: 28%;
     width: 90%;
-    height: 1vh;
+    height: 10rem !important;
+   
   }
   .hero-three-one-CTA h1 {
     font-size: 2rem;
   }
   .hero-three-two-CTA {
+    /* display: block; */
     position: absolute;
     top: 70%;
-    left: 25%;
-    width: 80%;
-
-    height: 10vh;
+    left: 20%;
+    width: 70% !important;
+    text-align: left;
+   height: 7rem !important;
+   
   }
   .hero-banner-call-to-action {
     width: 90%;
-    height: 14vh;
-
-    height: 15vh;
+    height: 10vh;
+    
   }
   .hero-banner-call-to-action {
     width: 100%;
     height: 23vh;
+  }
+  .btn-rBanner-show{
+ padding: .5rem 1rem !important;
+ width: 70% !important;
   }
   /* Home Screen image four */
   /* gym accessories- hero banner four */
@@ -649,8 +672,9 @@ font-size: 1.6rem;
 
   .hero-four-CTA {
     position: absolute;
-    top: 70%;
+    top: 60%;
     height: 20vh;
+   
   }
 
   .gym-accessories-desktop {
@@ -840,20 +864,19 @@ font-size: 1.6rem;
   .filter-heading-sort-priceRange-contsiner input {
     margin-left: 2rem;
   }
-  .mobile-tags-filter li{
+  .mobile-tags-filter li {
     margin-left: 1rem !important;
-  
-   
   }
-  .footer-fit{
+  .footer-fit {
     border-top: 1px solid white;
-    height: 11rem;
+    height: 6rem;
     display: block;
     text-align: center;
   }
-  .footer-bottom-p-font{
+  .footer-bottom-p-font {
     line-height: 1.5rem;
     font-family: sans-serif;
-    padding-bottom: .5rem;
+    padding-bottom: 0.5rem;
   }
+
 }

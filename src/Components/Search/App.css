@@ -9,7 +9,12 @@
     border: 1px solid rgb(136, 133, 133);
 }
 
-
   .search-comp-input:focus{
       border: 1px solid blue;
+  }
+  @media screen and (max-width: 43.25rem) {
+    .search-comp-input{
+        margin-top: 4rem;
+        width: 70%;
+    }
   }

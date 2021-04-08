@@ -106,6 +106,7 @@
 
 .singleProductPage {
   display: block !important;
+  
 }
 .singleproductpage-cta {
   padding: 0.5rem 4rem;
@@ -119,9 +120,11 @@
   padding: 0.5rem 2rem;
   display: block;
   margin: 1rem auto;
+  margin-bottom: 7rem;
 }
 .single-cta {
   padding: 0.1rem 1.3rem !important;
+ 
 }
 
 @media screen and (max-width: 700px) {

@@ -1,7 +1,8 @@
 import React from "react";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
-import {NavLink} from "react-router-dom"
+import { NavLink } from "react-router-dom";
+import emptyWISHLISTimage from "../../Assets/wish.svg";
 
 function WishLists() {
   const {
@@ -21,15 +22,14 @@ function WishLists() {
       return (
         <div className="card-add-to-cart">
           {" "}
-          <h3 style={{textAlign:"center"}} >
+          <h3 style={{ textAlign: "center" }}>
             {isItemOnTheCart[0].inCartQty === isItemOnTheCart[0].inStock ? (
-              <span style={{color:"red"}}>Out Of Stock</span>
-           
+              <span style={{ color: "red" }}>Out Of Stock</span>
             ) : (
               "Quick Add"
             )}
           </h3>{" "}
-          <div >
+          <div>
             {" "}
             <button
               className="btn-secondary btn-secondary-hr-outline-in wishlist-cta"
@@ -79,21 +79,24 @@ function WishLists() {
   return (
     <div>
       <div className="wishList-heading">Your WishList</div>
+      {wishListItems.length == 0 && (
+        <img className="emptyWishIMG" src={emptyWISHLISTimage} alt="" />
+      )}
       <div className="wishList-components">
         {wishListItems.map((ele) => (
           <div className="wishlist-component-container">
-          <NavLink to={`/products/${ele.id}`}>
-            <div className="wishlist-component-container-left">
-              <div className="cart-component-left-img">
-                <img src={ele.images[0].img} alt="" />
+            <NavLink to={`/products/${ele.id}`}>
+              <div className="wishlist-component-container-left">
+                <div className="cart-component-left-img">
+                  <img src={ele.images[0].img} alt="" />
+                </div>
+                <div className="wishlist-component-container-left-desc">
+                  <h2>{ele.name}</h2>
+                  <h4>{ele.price}.00₹</h4>
+                  <p>{ele.desc}</p>
+                </div>
               </div>
-              <div className="wishlist-component-container-left-desc">
-                <h2>{ele.name}</h2>
-                <h4>{ele.price}.00₹</h4>
-                <p>{ele.desc}</p>
-              </div>
-              </div>
-              </NavLink>
+            </NavLink>
             <div className="wishlist-component-container-right">
               <i
                 class="fas fa-trash"
@@ -104,7 +107,7 @@ function WishLists() {
                   })
                 }
               ></i>
-             {checkIfTheProductIsInCart(ele)}
+              {checkIfTheProductIsInCart(ele)}
             </div>
           </div>
         ))}

@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { NavLink } from "react-router-dom";
+import cartEmptyIMG from "../../Assets/undraw_empty_cart_co35.svg"
 function CartList() {
   const {
     state: { cartItems, loading },
@@ -9,8 +10,11 @@ function CartList() {
   } = useCartContextProvider();
 
   return (
+    <>
+     
     <div className="cart-component">
-      <div className="cart-heading">Your Cart</div>
+        <div className="cart-heading">Your Cart</div>
+     { cartItems.length==0 &&  <img className="emptyCartIMG" src={cartEmptyIMG} alt=""/>}
       {cartItems.map((ele) => (
         <div className="cart-componrnt-container">
           <NavLink to={`/products/${ele.id}`}>
@@ -98,7 +102,8 @@ function CartList() {
           <button className="btn-primary btn-primary-hr-outline-out checkout-cta">Check Out</button>
         </div>
       )}
-    </div>
+      </div>
+      </>
   );
 }
 

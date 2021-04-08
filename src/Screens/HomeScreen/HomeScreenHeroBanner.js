@@ -56,7 +56,7 @@ function HomeScreenHeroBanner() {
             <h1>Resistace Training</h1>
             <div className="hero-banner-call-to-action-btns">
               <NavLink to="/products/resistancetrainingequipment">
-                <button className="btn btn-homescreen-white">Shop Now</button>
+                <button className="btn btn-homescreen-white btn-rBanner-show">Shop Now</button>
               </NavLink>
             </div>
           </div>
@@ -71,7 +71,8 @@ function HomeScreenHeroBanner() {
             <h1>Yoga</h1>
             <div className="hero-banner-call-to-action-btns">
               <NavLink to="/products/yogaequipment">
-                <button className="btn btn-homescreen-grey">Shop Now</button>
+                <button className="btn btn-homescreen-grey
+               ">Shop Now</button>
               </NavLink>
             </div>
           </div>

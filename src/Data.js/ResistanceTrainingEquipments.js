@@ -64,7 +64,7 @@ export const resistanceTrainingEquipment = [
       images: [
         {
           img:
-            "https://images-na.ssl-images-amazon.com/images/I/81YvGI3D0HL._SL1500_.jpg",
+            "https://rukminim1.flixcart.com/image/612/612/jms25jk0/dumbbell/e/p/r/pvc-combo16-na-8-krx-original-imaepy3rcgm3nsva.jpeg?q=70",
         },
         {
           img:
@@ -92,11 +92,11 @@ export const resistanceTrainingEquipment = [
       images: [
         {
           img:
-            "https://images-na.ssl-images-amazon.com/images/I/71O3MHBswQL._SL1500_.jpg",
+            "https://rukminim1.flixcart.com/image/612/612/jsqe7bk0/home-gym-combo/y/9/r/10kg-adjustable-dumbbells-with-string-bag-protoner-original-imafe8hyhyvqjhvh.jpeg?q=70",
         },
         {
           img:
-            "https://images-na.ssl-images-amazon.com/images/I/71xPREZufiL._SL1500_.jpg",
+            "https://rukminim1.flixcart.com/image/612/612/kl421e80/dumbbell/w/4/h/pair-of-2-5kg-x-2-steel-dumbbells-5-kiraro-original-imagyb5ttwvqhmhz.jpeg?q=70",
         },
         {
           img:
@@ -149,7 +149,7 @@ export const resistanceTrainingEquipment = [
       images: [
         {
           img:
-            "https://images-na.ssl-images-amazon.com/images/I/61RlsSjmJrL._SL1500_.jpg",
+            "https://rukminim1.flixcart.com/image/612/612/jwzabgw0/bar/b/n/z/3-ft-curl-bar-for-biceps-and-triceps-medium-3-xportus-original-imaf3hghzr5whvyt.jpeg?q=70",
         },
         {
           img:
@@ -178,7 +178,7 @@ export const resistanceTrainingEquipment = [
       images: [
         {
           img:
-            "https://images-na.ssl-images-amazon.com/images/I/618aSfDT4sL._SL1500_.jpg",
+            "https://rukminim1.flixcart.com/image/612/612/kkvhea80/bar/c/6/r/gym-curl-rod-4-feet-weight-lifting-rod-4-long-willage-original-imagy4rvszj24h2t.jpeg?q=70",
         },
         {
           img:
@@ -206,7 +206,7 @@ export const resistanceTrainingEquipment = [
       images: [
         {
           img:
-            "https://images-na.ssl-images-amazon.com/images/I/618aSfDT4sL._SL1500_.jpg",
+            "https://rukminim1.flixcart.com/image/612/612/jtx9evk0/bar/4/q/e/strong-heavy-4ft-straight-3ft-bend-curl-rod-23mm-each-with-rod-original-imafexg2yhqyga9m.jpeg?q=70",
         },
         {
           img:
