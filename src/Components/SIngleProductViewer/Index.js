@@ -1,10 +1,12 @@
 import React from 'react'
 import SingleProductView from './SingleProductView'
 import "./App.css"
+import Footerbottom from '../Search/Footer-bottom'
 function Index() {
     return (
         <div>
-            <SingleProductView/>
+            <SingleProductView />
+            <Footerbottom/> 
         </div>
     )
 }

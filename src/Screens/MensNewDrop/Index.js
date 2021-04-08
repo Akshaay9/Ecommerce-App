@@ -2,6 +2,7 @@ import React from 'react'
 import Filter from './Filter'
 import ScreenTwoPoster from './MensNewDropPoster'
 import "./App.css"
+import Footer from '../HomeScreen/Footer'
 
 function Index() {
     return (
@@ -9,6 +10,7 @@ function Index() {
         
             <ScreenTwoPoster />
             <Filter />
+            <Footer/>
           
         </>
     )

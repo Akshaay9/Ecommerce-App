@@ -24,7 +24,6 @@ function App() {
     <BrowserRouter>
         <Nav showMobileNavNar={showMobileNavNar} setShowMobileNavBar={setShowMobileNavBar} />
     <Routes>
-   
       <Route path="/" element={<HomeScreenComponents />} />
       <Route path="/products" element={<Products />} />
       <Route path="/products/mensnewdrop" element={<MensNewDrop />} />

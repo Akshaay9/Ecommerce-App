@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '../HomeScreen/Footer'
 import Filter from './Filter'
 function Index() {
     return (
@@ -11,7 +12,8 @@ function Index() {
           </div>
         </div>
       </div>
-            <Filter/>
+        <Filter />
+        <Footer/>
         </div>
     )
 }

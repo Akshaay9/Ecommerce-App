@@ -293,9 +293,28 @@ a {
 .hero-four-CTA .btn {
   width: 12rem;
 }
-/* footer */
-.footer-bottom-p-font {
-  font-size: 0.92rem;
+.footer-fit{
+  display: flex;
+  height: 3rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0rem 0rem 0rem .5rem;
+  border-top: 1px solid var(--line-color);
+
+}
+.footer-fit-bottom{
+  position: fixed;
+  bottom: 0%;
+  background-color: white;
+  width: 100%;
+}
+
+.footer-bottom-righ i{
+padding: 0rem .9rem;
+font-size: 1.6rem;
+}
+.footer-bottom-p-font{
+  word-spacing: .5rem;
 }
 
 /* mens new drops */
@@ -825,5 +844,16 @@ a {
     margin-left: 1rem !important;
   
    
+  }
+  .footer-fit{
+    border-top: 1px solid white;
+    height: 11rem;
+    display: block;
+    text-align: center;
+  }
+  .footer-bottom-p-font{
+    line-height: 1.5rem;
+    font-family: sans-serif;
+    padding-bottom: .5rem;
   }
 }

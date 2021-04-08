@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 
-function Footer() {
-  return (
-    <div className="footer-fit">
+function Footerbottom() {
+    return (
+        <div className="footer-fit footer-fit-bottom">
     <div className="footer-bottom-left">
       <p className="footer-bottom-p-font">
         © 2021 | Fit-Shaark Limited | All Rights Reserved @Akshay | About me
@@ -17,7 +17,7 @@ function Footer() {
      
     </div>
   </div>
-  );
+    )
 }
 
-export default Footer;
+export default Footerbottom
