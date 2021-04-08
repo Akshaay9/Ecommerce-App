@@ -19,8 +19,8 @@ function Filter() {
     deliverySort: "",
     priceRange: "",
     productTags: "",
+    mobileFilter: "",
   });
-  
 
   // grabbing context API
   const {
@@ -58,15 +58,19 @@ function Filter() {
     });
   }, [productTags]);
 
-   const filterData = (initialHomeScrrenProducts) => {
-    let mutatedProductList=JSON.parse(JSON.stringify(initialHomeScrrenProducts))
+  const filterData = (initialHomeScrrenProducts) => {
+    let mutatedProductList = JSON.parse(
+      JSON.stringify(initialHomeScrrenProducts)
+    );
     if (filterItems.productTags.length > 0) {
-      mutatedProductList=mutatedProductList.filter((ele)=>filterItems.productTags.includes(ele.tag))
+      mutatedProductList = mutatedProductList.filter((ele) =>
+        filterItems.productTags.includes(ele.tag)
+      );
     }
     if (filterItems.sort === "lowToHigh") {
       mutatedProductList.sort((a, b) => a.price - b.price);
     }
-  
+
     if (filterItems.sort === "HighToLow") {
       mutatedProductList.sort((b, a) => a.price - b.price);
     }
@@ -74,31 +78,31 @@ function Filter() {
     if (filterItems.stock === "in") {
       mutatedProductList = mutatedProductList.filter((ele) => ele.inStock >= 0);
     }
-    
+
     if (filterItems.stock === "out") {
       mutatedProductList = mutatedProductList.filter(
         (ele) => ele.inStock === 0
       );
     }
-  
+
     if (filterItems.rating !== false) {
       mutatedProductList = mutatedProductList.filter(
         (ele) => ele.rating >= filterItems.rating
       );
     }
-   
+
     if (filterItems.price_range !== null) {
       mutatedProductList = mutatedProductList.filter(
         (ele) => ele.price <= filterItems.price_range
       );
     }
-    
+
     if (filterItems.delivery === "free") {
       mutatedProductList = mutatedProductList.filter(
         (ele) => ele.freeDelivery === true
       );
     }
-    
+
     if (filterItems.delivery === "express") {
       mutatedProductList = mutatedProductList.filter(
         (ele) => ele.freeDelivery === false
@@ -107,15 +111,15 @@ function Filter() {
     return mutatedProductList;
   };
 
-// clear the filyer
+  // clear the filyer
   const clearFilter = () => {
     homeScreenProductDispatch({
-      type: "CLEAR_FILTERS"
-    })
-    setSortByPrice()
-    setSortByRating()
-    setSortByRating()
-    setProductTags([])
+      type: "CLEAR_FILTERS",
+    });
+    setSortByPrice();
+    setSortByRating();
+    setSortByRating();
+    setProductTags([]);
     setShowFilter({
       priceSort: "",
       starSort: "",
@@ -123,14 +127,36 @@ function Filter() {
       priceRange: "",
       productTags: "",
     });
-  }
-
+  };
 
   return (
     <>
-      <div className="filter">
-        <h3 className="filter-heading">Filters : </h3>
+      <div className="filter-mobile-heading">
+        <h3>Filters</h3>
+        <>
+          {showFilter.mobileFilter === "" ? (
+            <i
+              class="fas fa-chevron-down"
+              style={{ marginTop: "3px", marginLeft: "3px" }}
+              onClick={() =>
+                setShowFilter({
+                  ...showFilter,
+                  mobileFilter: "price-container",
+                })
+              }
+            ></i>
+          ) : (
+            <i
+              class="fas fa-chevron-up"
+              style={{ marginTop: "3px", marginLeft: "3px" }}
+              onClick={() => setShowFilter({ ...showFilter, mobileFilter: "" })}
+            ></i>
+          )}
+        </>{" "}
+      </div>
 
+      <div className={`filter ${showFilter.mobileFilter==""?"filter-mobile-hide":"filter-mobile"}`}>
+        <h3 className="filter-heading">Filters : </h3>
         {/* price filter */}
         <ul>
           <h3 className="filter-heading-sort-prices">
@@ -359,9 +385,9 @@ function Filter() {
             </>
           </h3>
           {showFilter.productTags === "productTag-container" && (
-            <div className="filter-heading-sort-delivery-container">
+            <div className="filter-heading-sort-delivery-container filter-tags-mobile">
               {setOfAllTheTagsOfProduct.map((ele) => (
-                <li style={{ width: "7rem" }}>
+                <li>
                   <label htmlFor="">{ele}</label>
                   <input
                     type="checkbox"
@@ -413,7 +439,12 @@ function Filter() {
                 type="range"
                 min={minPriceofProductPresent}
                 max={maxPriceofProductPresent}
-                onChange={(e) => homeScreenProductDispatch({type:"PRICE_RANGE",payload:e.target.value})}
+                onChange={(e) =>
+                  homeScreenProductDispatch({
+                    type: "PRICE_RANGE",
+                    payload: e.target.value,
+                  })
+                }
               />
             </div>
           )}
@@ -421,9 +452,9 @@ function Filter() {
         <div className="button-filter">
           <h3 className="filter-heading-sort-priceRange">
             <button
-              style={{ borderRadius: "0px", padding: "0rem 0.4rem" }}
-              className="btn btn-secondary btn-secondary-hr-outline-in"
-              onClick={()=>clearFilter()}
+              style={{ borderRadius: "0px" }}
+              className="btn-secondary btn-secondary-hr-outline-in clear-filter-btn"
+              onClick={() => clearFilter()}
             >
               Clear Filter
             </button>
@@ -431,10 +462,8 @@ function Filter() {
         </div>
       </div>
       <MensNewDropProductList filterData={filterData} />
-     
     </>
   );
 }
 
 export default Filter;
-

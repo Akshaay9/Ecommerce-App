@@ -115,7 +115,7 @@ export const resistanceTrainingEquipment = [
     {
       id: 66,
       name: "AmazonBasics Adjustable Barbell Lifting Dumbells",
-      tag: "dubmbell",
+      tag: "dumbell",
       price: 400,
       color: "Black/Gray",
       images: [

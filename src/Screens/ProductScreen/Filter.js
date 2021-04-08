@@ -125,7 +125,7 @@ function Filter() {
     <>
     <div className="filter">
       <h3 className="filter-heading">Filters : </h3>
-
+      <h3 className="filter-heading">Filters : </h3>
       {/* price filter */}
       <ul>
         <h3 className="filter-heading-sort-prices">
@@ -170,7 +170,7 @@ function Filter() {
             </li>
             <li>
               {" "}
-              <label htmlFor="">High To Low</label>{" "}
+              <label htmlFor="">High To Low .</label>{" "}
               <input
                 type="radio"
                 name="price"
@@ -253,7 +253,7 @@ function Filter() {
             </li>
             <li>
               {" "}
-              <label htmlFor="">1 Star and above</label>{" "}
+              <label htmlFor="">1 Star and above  . </label>{" "}
               <input
                 type="radio"
                 name="star"
@@ -298,7 +298,7 @@ function Filter() {
           <div className="filter-heading-sort-delivery-container">
             <li>
               {" "}
-              <label htmlFor="">Free Home delivery </label>{" "}
+              <label htmlFor="">Free Home delivery  .</label>{" "}
               <input
                 type="radio"
                 name="delivery"
@@ -356,7 +356,7 @@ function Filter() {
         {showFilter.productTags === "productTag-container" && (
           <div className="filter-heading-sort-delivery-container">
             {setOfAllTheTagsOfProduct.map((ele) => (
-              <li style={{ width: "7rem" }}>
+              <li style={{ width: "12rem",marginLeft:"-42px" }}>
                 <label htmlFor="">{ele}</label>
                 <input
                   type="checkbox"
@@ -423,8 +423,8 @@ function Filter() {
       <div className="button-filter">
         <h3 className="filter-heading-sort-priceRange">
           <button
-            style={{ borderRadius: "0px", padding: "0rem 0.4rem" }}
-            className="btn btn-secondary btn-secondary-hr-outline-in"
+            style={{ borderRadius: "0px"}}
+            className="btn btn-secondary btn-secondary-hr-outline-in clear-filter-btn"
             onClick={()=>clearFilter()}
           >
             Clear Filter
