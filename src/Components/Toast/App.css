@@ -1,0 +1,19 @@
+.toast {
+  position: fixed;
+  width: 20rem !important;
+  min-width: 20rem !important;
+  right: 5%;
+  z-index: 10;
+  bottom: 9%;
+  animation: toastAnimation 300ms ease-in-out;
+}
+@keyframes toastAnimation {
+  from {
+    opacity: 0;
+    bottom: 0%;
+  }
+  to {
+    opacity: 1;
+    bottom: 9%;
+  }
+}

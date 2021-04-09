@@ -61,7 +61,6 @@ function Filter() {
  }, [productTags]);
 
   const filterData = (initialHomeScrrenProducts) => {
-    console.log("hey111",initialHomeScrrenProducts);
    let mutatedProductList=JSON.parse(JSON.stringify(initialHomeScrrenProducts))
    if (filterItems.productTags.length > 0) {
      mutatedProductList=mutatedProductList.filter((ele)=>filterItems.productTags.includes(ele.tag))

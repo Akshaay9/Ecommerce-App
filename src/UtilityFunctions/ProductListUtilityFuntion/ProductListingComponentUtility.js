@@ -7,6 +7,8 @@ import {
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 import { NavLink } from "react-router-dom";
+import { useToastContext } from "../../Contexts/ToastContext/ToastContext"
+
 
 function ProductListingComponentUtility({ filterData, products }) {
   const {
@@ -18,6 +20,10 @@ function ProductListingComponentUtility({ filterData, products }) {
     state: { wishListItems },
     wishListContextDispatch,
   } = useWishListContextProvider();
+
+  const { toastDispatch } = useToastContext();
+ 
+
   return (
     <div className="grid-container">
       {filterData(products).map((ele) => (
@@ -28,7 +34,7 @@ function ProductListingComponentUtility({ filterData, products }) {
               {ele.newArrival && <span className="cardBadge">New Arrival</span>}
             </NavLink>
             {/* calling the program so that it  automatiaaly renders ADD to cart button or increase the qty buttons */}
-            {checkIfTheProductIsInCart(ele, cartItems, cartContextDispatch)}
+            {checkIfTheProductIsInCart(ele, cartItems, cartContextDispatch,toastDispatch)}
           </div>
           <div className="card-container-footer">
             <div className="card-container-footer-row-one">

@@ -16,6 +16,7 @@ import GymAccessoriesComponent from "./Screens/GymAccessoriesScreen/Index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SearchComponent from "./Components/Search/Index"
 import Products from "./Screens/ProductScreen/Index"
+import Toast from "./Components/Toast/Toast";
 function App() {
  const[showMobileNavNar,setShowMobileNavBar]=useState(false)
 
@@ -23,6 +24,7 @@ function App() {
     <div style={showMobileNavNar?{height:"93.4vh",overflow:"hidden"}:{}}>
     <BrowserRouter>
         <Nav showMobileNavNar={showMobileNavNar} setShowMobileNavBar={setShowMobileNavBar} />
+        <Toast/>
     <Routes>
       <Route path="/" element={<HomeScreenComponents />} />
       <Route path="/products" element={<Products />} />

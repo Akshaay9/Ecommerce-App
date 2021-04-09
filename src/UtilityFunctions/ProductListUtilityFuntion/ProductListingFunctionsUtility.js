@@ -1,6 +1,7 @@
-  
-export const  checkIfTheProductIsInCart = (product,cartItems,cartContextDispatch) => {
-    const newItems = [...cartItems];
+import { setAlert } from "../../Contexts/ToastContext/ToastAction"
+
+export const  checkIfTheProductIsInCart = (product,cartItems,cartContextDispatch,toastDispatch) => {
+  const newItems = [...cartItems];
     const isItemOnTheCart = newItems.filter((ele) => ele.id == product.id);
     if (isItemOnTheCart.length > 0) {
       return (
@@ -19,7 +20,7 @@ export const  checkIfTheProductIsInCart = (product,cartItems,cartContextDispatch
               className="btn-secondary btn-secondary-hr-outline-in"
               onClick={() =>
                 isItemOnTheCart[0].inCartQty == 1
-                  ? cartContextDispatch({
+                  ?cartContextDispatch({
                       type: "REMOVE_FROM_CART",
                       payload: product,
                     })
@@ -53,8 +54,7 @@ export const  checkIfTheProductIsInCart = (product,cartItems,cartContextDispatch
           <button
             className="btn-primary btn-primary-hr-outline-out"
             onClick={() =>
-              cartContextDispatch({ type: "ADD_TO_CART", payload: product })
-            }
+            { cartContextDispatch({ type: "ADD_TO_CART", payload: product });setAlert("Product has been Added to cart","success",toastDispatch)}}
           >
             Add To Cart
           </button>
