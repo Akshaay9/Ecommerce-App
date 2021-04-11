@@ -1,5 +1,14 @@
 import { setAlert } from "../../Contexts/ToastContext/ToastAction"
 
+
+const removeFromCart = (cartContextDispatch,product,toastDispatch) => {
+  cartContextDispatch({
+    type: "REMOVE_FROM_CART",
+    payload: product,
+  })
+  setAlert("Product has removed from the cart","danger",toastDispatch)
+}
+
 export const  checkIfTheProductIsInCart = (product,cartItems,cartContextDispatch,toastDispatch) => {
   const newItems = [...cartItems];
     const isItemOnTheCart = newItems.filter((ele) => ele.id == product.id);
@@ -20,10 +29,12 @@ export const  checkIfTheProductIsInCart = (product,cartItems,cartContextDispatch
               className="btn-secondary btn-secondary-hr-outline-in"
               onClick={() =>
                 isItemOnTheCart[0].inCartQty == 1
-                  ?cartContextDispatch({
-                      type: "REMOVE_FROM_CART",
-                      payload: product,
-                    })
+                   ?
+                  // cartContextDispatch({
+                  //     type: "REMOVE_FROM_CART",
+                  //     payload: product,
+                  //   })
+                  removeFromCart(cartContextDispatch,product,toastDispatch)
                   : cartContextDispatch({
                       type: "DECREASE_QTY",
                       payload: product,

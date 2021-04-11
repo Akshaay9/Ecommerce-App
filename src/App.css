@@ -17,6 +17,9 @@ a {
   height: 110vh;
 } */
 /* NAV BAR */
+.is-active{
+ color: rgb(9, 9, 201);
+}
 .nav {
   top: 0;
   z-index: 100;

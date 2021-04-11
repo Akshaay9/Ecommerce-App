@@ -48,7 +48,7 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
         </div>
         <div className="nav_center">
           <ul>
-            <NavLink to="/products/mensnewdrop">
+            <NavLink to="/products/mensnewdrop" >
               <li className="hr- hr-underline-left li-bold mens-li">Mens</li>
             </NavLink>
             <NavLink to="/products">
