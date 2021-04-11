@@ -64,7 +64,7 @@ export const yogaEquipment = [
       images: [
         {
           img:
-            "https://images-na.ssl-images-amazon.com/images/I/91KpEPi1LUL._SL1500_.jpg",
+            "https://cdn.shopify.com/s/files/1/0477/1358/3267/products/Lilac_d3bdb8f7-3d17-4434-9778-3f0916155ce4_180x.jpg?v=1601847689",
         },
         {
           img:
@@ -121,7 +121,7 @@ export const yogaEquipment = [
       images: [
         {
           img:
-            "https://images-na.ssl-images-amazon.com/images/I/61-w1cccjwL._SL1500_.jpg",
+            "https://cdn.shopify.com/s/files/1/0477/1358/3267/products/Templatecoloredfinal2_180x.jpg?v=1601889286",
         },
         {
           img:

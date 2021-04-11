@@ -36,7 +36,7 @@ export const gymAccesories = [
       images: [
         {
           img:
-            "https://images-na.ssl-images-amazon.com/images/I/81LpEHc8s2L._UL1500_.jpg",
+            "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR9nKjaAD_EzhcVLCEL9_OtnO7E7f1ZlkRV56bHVQXN_VXNBsiWl1qGcAOFUeBeuBv7aPk6JsEUmA&usqp=CAc",
         },
         {
           img:
@@ -149,7 +149,7 @@ export const gymAccesories = [
       images: [
         {
           img:
-            "https://images-na.ssl-images-amazon.com/images/I/41KB5ndxrRL.jpg",
+            "https://images-na.ssl-images-amazon.com/images/I/61uhhm6yt-L._SL1500_.jpg",
         },
         {
           img:
@@ -178,7 +178,7 @@ export const gymAccesories = [
       images: [
         {
           img:
-            "https://images-na.ssl-images-amazon.com/images/I/61qcg7DuMIL._SL1000_.jpg",
+            "https://images-na.ssl-images-amazon.com/images/I/71GZggU%2Bu9L._SL1500_.jpg",
         },
         {
           img:
@@ -228,7 +228,7 @@ export const gymAccesories = [
    
     {
       id:61,
-      name: "Adroitz Gloves Protective Full Finger Hand Riding, Cycling, Bike Motorcycle Gym Gloves for Men",
+      name: "Adroitz Gloves Protective Full Finger Hand Riding",
       tag: "resistance-tube",
       price: 1299,
       color: "Charcoal Marl",

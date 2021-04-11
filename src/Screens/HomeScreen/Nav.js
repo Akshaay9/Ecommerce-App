@@ -3,7 +3,7 @@ import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 import { NavLink } from "react-router-dom";
 
-function Nav({showMobileNavNar,setShowMobileNavBar}) {
+function Nav({ showMobileNavNar, setShowMobileNavBar }) {
   const {
     state: { cartItems, loading },
   } = useCartContextProvider();
@@ -40,8 +40,9 @@ function Nav({showMobileNavNar,setShowMobileNavBar}) {
             </NavLink>
           </div>
           <div className="nav_hamberger">
-            <i class="fas fa-bars"
-            onClick={()=>setShowMobileNavBar(true)}
+            <i
+              class="fas fa-bars"
+              onClick={() => setShowMobileNavBar(!showMobileNavNar)}
             ></i>
           </div>
         </div>
@@ -90,24 +91,45 @@ function Nav({showMobileNavNar,setShowMobileNavBar}) {
         </div>
       </div>
 
-      <div className={`nav_ul_desktop desktop-hide-it ${showMobileNavNar ? "show_nav":""}`}>
-      {/* <div className="nav_ul_desktop desktop-hide-it"> */}
+      <div
+        className={`nav_ul_desktop desktop-hide-it ${
+          showMobileNavNar ? "show_nav" : ""
+        }`}
+      >
+        {/* <div className="nav_ul_desktop desktop-hide-it"> */}
         <div className="login">
           <div className="nav_login">
             <i className="fas fa-user"></i>
           </div>
-          <i class="fas fa-times"
-          onClick={()=>setShowMobileNavBar(false)}
-          ></i>
+         
         </div>
         <ul>
-          <li>Mens</li>
-          <li>Products</li>
-          <li>Womens</li>
-          <li>Home Workout</li>
-          <li>Gym Accessories</li>
-          <li>Resistance Training</li>
-          <li>Yoga accessories</li>
+          <NavLink to="/products/mensnewdrop">
+            {" "}
+            <li onClick={() => setShowMobileNavBar(false)}>Mens</li>
+          </NavLink>
+
+          <NavLink to="/products">
+            <li onClick={() => setShowMobileNavBar(false)}>Products</li>
+          </NavLink>
+          <NavLink to="/products/womensnewdrop">
+            <li onClick={() => setShowMobileNavBar(false)}>Womens</li>
+          </NavLink>
+          <NavLink to="/products/homeworkout">
+            <li onClick={() => setShowMobileNavBar(false)}>Home Workout</li>
+          </NavLink>
+          <NavLink to="/products/gymAccessories">
+            <li onClick={() => setShowMobileNavBar(false)}>Gym Accessories</li>
+          </NavLink>
+
+          <NavLink to="/products/resistancetrainingequipment">
+            <li onClick={() => setShowMobileNavBar(false)}>
+              Resistance Training
+            </li>
+          </NavLink>
+          <NavLink to="/products/yogaequipment">
+            <li onClick={() => setShowMobileNavBar(false)}>Yoga accessories</li>
+          </NavLink>
         </ul>
       </div>
 

@@ -5,11 +5,11 @@ export const womensDrop = [
     tag: "leggings",
     price: 550,
     color: "Light orange",
-        images: [
-            {
-                img:
-                  "https://cdn.shopify.com/s/files/1/1367/5207/products/AdaptMarlSeamlessLeggingsDustyOrangeGLLG4114.A-Edit_ZH_ZH_885x.jpg?v=1613989937",
-              },
+    images: [
+      {
+        img:
+          "https://cdn.shopify.com/s/files/1/1367/5207/products/AdaptMarlSeamlessLeggingsDustyOrangeGLLG4114.A-Edit_ZH_ZH_885x.jpg?v=1613989937",
+      },
       {
         img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/AdaptMarlSeamlessLeggingsDustyOrangeGLLG4114.B-Edit_ZH_ZH_290x.jpg?v=1613989937",
@@ -18,7 +18,6 @@ export const womensDrop = [
         img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/AdaptMarlSeamlessLeggingsDustyOrangeGLLG4114.C-Edit_ZH_ZH_290x.jpg?v=1613989937",
       },
-     
     ],
     desc:
       "Everyone needs some brilliant basics, and the Adapt Marl Seamless Leggings are just that. Flattering high-waisted fit with a ribbed waistband and all over marl, perfect for teaming up with your favourite Gymshark crop top, tank or tee. Plus, the seamless fabric makes them super comfortable and breathable..",
@@ -171,34 +170,6 @@ export const womensDrop = [
   },
 
   {
-    id: 27,
-    name: "ADAPT MARL SEAMLESS LONG SLEEVE CROP TOP",
-    tag: "crop-top",
-    price: 700,
-    color: "Light Sky Blue",
-    images: [
-      {
-        img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/CHALKDROPARMTANKSPRINGafGREENPRINT.A-Edit_ZH_885x.jpg?v=1607946413",
-      },
-      {
-        img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/CHALKDROPARMTANKSPRINGGREENPRINT.C-Edit_ZH_bddca51d-eccf-4fb8-a54d-287c90d0c396_290x.jpg?v=1607946413",
-      },
-      {
-        img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/CHALKDROPARMTANKSPRINGGREENPRINT.B-Edit_ZH_f7b8c941-1249-4866-90e0-b96e5ecc9f9b_290x.jpg?v=1607946413",
-      },
-    ],
-    desc:
-      "A crop top that goes with everything, meet the Adapt Marl Seamless Long Sleeve Crop Top. It has a super flattering fit with a crew neck and raglan sleeves, it’s made for the gym with flexible seamless fabric and mesh panel to back and underarm, and its all-over marl makes it easy to style your way..",
-    inStock: 3,
-    rating: 5,
-    freeDelivery: true,
-    deliveredBy: 9,
-    newArrival: true,
-  },
-  {
     id: 28,
     name: "PULSE CROP TOP",
     tag: "crop-top",
@@ -255,7 +226,7 @@ export const womensDrop = [
     newArrival: false,
   },
   {
-    id:30,
+    id: 30,
     name: "FRACTION CROP TOP",
     tag: "crop-top",
     price: 1299,
@@ -311,7 +282,7 @@ export const womensDrop = [
     newArrival: true,
   },
   {
-    id:32,
+    id: 32,
     name: "CTY JOGGERS",
     tag: "joggers",
     price: 1599,
@@ -367,7 +338,7 @@ export const womensDrop = [
     newArrival: false,
   },
   {
-    id:34,
+    id: 34,
     name: "PAUSE JOGGERS",
     tag: "joggers",
     price: 899,
@@ -479,7 +450,7 @@ export const womensDrop = [
     newArrival: false,
   },
   {
-    id:38,
+    id: 38,
     name: "PAUSE HOODIE",
     tag: "hoodie",
     price: 1999,
@@ -514,7 +485,7 @@ export const womensDrop = [
     color: "brown",
     images: [
       {
-        img: 
+        img:
           "https://cdn.shopify.com/s/files/1/1367/5207/products/PippaTrainingPulloverCherryBrowndjnv.A-Edit_CM_885x.jpg?v=1607541538",
       },
       {
@@ -535,7 +506,7 @@ export const womensDrop = [
     newArrival: true,
   },
   {
-    id:40,
+    id: 40,
     name: "RELEASE HOODIE",
     tag: "hoodie",
     price: 2000,

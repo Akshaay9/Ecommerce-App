@@ -92,7 +92,7 @@ export const resistanceTrainingEquipment = [
       images: [
         {
           img:
-            "https://rukminim1.flixcart.com/image/612/612/jsqe7bk0/home-gym-combo/y/9/r/10kg-adjustable-dumbbells-with-string-bag-protoner-original-imafe8hyhyvqjhvh.jpeg?q=70",
+            "https://cdn.shopify.com/s/files/1/0477/1358/3267/products/40lb_image_720x.jpg?v=1613309822",
         },
         {
           img:

@@ -92,11 +92,13 @@
 
 @media screen and (max-width: 700px) {
   .wishlist-component-container {
-    width: 80%;
+    width: 90%;
     margin: auto;
     border: 1px solid var(--line-height);
     display: grid;
     grid-template-columns: 1fr;
+  
+    margin-bottom: 8rem;
   }
   .wishlist-component-container-left {
     display: block;
@@ -106,6 +108,7 @@
   }
   .wishList-heading {
     margin-top: 5rem;
+    width: 90%;
   }
   .wishlist-component-container-right {
     display: flex;

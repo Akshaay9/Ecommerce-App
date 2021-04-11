@@ -188,7 +188,7 @@ filter: brightness(90%);
     
     padding: 1rem 0rem;
     border: 0.0625rem solid var(--line-color);
-    width: 90%;
+    width: 95%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -200,4 +200,9 @@ filter: brightness(90%);
     width: 90%;
     margin: 3rem 0rem 0rem 0rem;
   }
+  .cart-component-finalDetials{
+    margin-top: 1rem;
+    padding: .3rem 1.5rem;
+    margin-bottom: 8rem;
+}
 }
