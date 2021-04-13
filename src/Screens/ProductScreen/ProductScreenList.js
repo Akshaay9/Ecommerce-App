@@ -2,14 +2,14 @@ import React from "react";
 import { useProductContext } from "../../Contexts/ProductListContext/Products";
 import ProductListingComponentUtility from "../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility";
 
-function ProductScreenList({ filterData }) {
+function ProductScreenList() {
   const {
-    state: { initialProducts, loading,},
+    state: { initialProducts, loading,filterItems},
     productsDispatch,
     } = useProductContext();
    
   return (
-    <ProductListingComponentUtility filterData={filterData} products={ initialProducts}/>
+    <ProductListingComponentUtility products={initialProducts} filterItems={filterItems}/>
       
       );
 }

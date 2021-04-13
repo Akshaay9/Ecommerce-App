@@ -5,10 +5,10 @@ import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/
 import ProductListingComponentUtility from "../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility";
 
 
-function ResistanceTrainingProductList({ filterData }) {
+function ResistanceTrainingProductList() {
   // grabbing context API
   const {
-    state: { initialResistanceProducts, loading,},
+    state: { initialResistanceProducts, loading,filterItems},
     ResistanceProductDispatch,
   } = useResistanceProductListsContext();
 
@@ -23,7 +23,7 @@ function ResistanceTrainingProductList({ filterData }) {
   }, []);
 
   return (
-    <ProductListingComponentUtility filterData={filterData} products={ initialResistanceProducts}/>
+    <ProductListingComponentUtility filterItems={filterItems} products={ initialResistanceProducts}/>
   );
 }
 

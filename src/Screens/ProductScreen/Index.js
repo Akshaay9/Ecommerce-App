@@ -1,9 +1,11 @@
 import React from 'react'
 import Footer from '../HomeScreen/Footer'
 import Filter from './Filter'
+import ProductScreenList from './ProductScreenList'
 function Index() {
     return (
-        <div>
+      <div>
+        {/* poster */}
               <div>
         <div className="page-desc">
           <div className="page-desc-content">
@@ -11,9 +13,12 @@ function Index() {
             <h1>WOrkout</h1>
           </div>
         </div>
-      </div>
+        </div>
+        
         <Filter />
-        <Footer/>
+        <ProductScreenList  />
+        <Footer />
+        
         </div>
     )
 }

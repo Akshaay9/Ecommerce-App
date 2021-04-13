@@ -6,7 +6,7 @@ import ProductListingComponentUtility from '../../UtilityFunctions/ProductListUt
 
 
 
-function HomeWorkoutProductList({ filterData }) {
+function HomeWorkoutProductList() {
     
  // grabbing context API
  const {
@@ -20,7 +20,7 @@ function HomeWorkoutProductList({ filterData }) {
   
    
     return (
-    <ProductListingComponentUtility filterData={filterData} products={initialHomeWorkoutProducts} />
+    <ProductListingComponentUtility filterItems={filterItems} products={initialHomeWorkoutProducts} />
     )
 }
 

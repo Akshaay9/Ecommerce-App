@@ -8,9 +8,9 @@ import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 import { NavLink } from "react-router-dom";
 import { useToastContext } from "../../Contexts/ToastContext/ToastContext"
+import {filterData} from "../Filter/FilterFunctions"
 
-
-function ProductListingComponentUtility({ filterData, products }) {
+function ProductListingComponentUtility({ products,filterItems }) {
   const {
     state: { cartItems },
     cartContextDispatch,
@@ -26,7 +26,7 @@ function ProductListingComponentUtility({ filterData, products }) {
 
   return (
     <div className="grid-container">
-      {filterData(products).map((ele) => (
+      {filterData(products,filterItems).map((ele) => (
         <div className="card-container" key={ele.id}>
           <div className="card-container-header">
             <NavLink to={`/products/${ele.id}`}>

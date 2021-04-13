@@ -363,6 +363,9 @@ a {
   display: flex;
   justify-content: space-evenly;
 }
+.fa-chevron-up:before,.fa-chevron-down:before{
+margin-left: .5rem;
+}
 .filter-heading,
 .filter-heading-sort-prices,
 .filter-heading-sort-rating,

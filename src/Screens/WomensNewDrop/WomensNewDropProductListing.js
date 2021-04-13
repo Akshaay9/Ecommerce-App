@@ -5,12 +5,14 @@ import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/
 import ProductListingComponentUtility from "../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility";
 
 
-function WomensNewDropProductListing({ filterData }) {
+function WomensNewDropProductListing() {
 
  const {
-    state: { initialHomeScreenProductWomens, loading,},
+    state: { initialHomeScreenProductWomens, loading,filterItems},
     womensNewProductDispatch,
   } = useWomensNewProductListsContext();
+
+  console.log(filterItems);
 
   useEffect(() => {
     makeAnAPICall("GET","/api1/products/womensNewDrop",womensNewProductDispatch,"LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS" )
@@ -18,7 +20,7 @@ function WomensNewDropProductListing({ filterData }) {
 
   
   return (
-    <ProductListingComponentUtility filterData={filterData} products={ initialHomeScreenProductWomens}/>
+    <ProductListingComponentUtility filterItems={filterItems} products={ initialHomeScreenProductWomens}/>
   ) 
 }
 

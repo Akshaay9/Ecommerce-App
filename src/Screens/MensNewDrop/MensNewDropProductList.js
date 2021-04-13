@@ -8,11 +8,11 @@ import ProductListingComponentUtility from "../../UtilityFunctions/ProductListUt
 
 
 
-function MensNewDropProductList({ filterData }) {
+function MensNewDropProductList() {
 
   const {
     homeScreenProductDispatch,
-    state: { initialHomeScrrenProducts },
+    state: { initialHomeScrrenProducts,filterItems },
   } = useMensNewProductListsContext();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function MensNewDropProductList({ filterData }) {
 
 
   return (
-    <ProductListingComponentUtility filterData={filterData} products={ initialHomeScrrenProducts}/>
+    <ProductListingComponentUtility products={initialHomeScrrenProducts} filterItems={filterItems}/>
   );
 }
 

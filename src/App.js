@@ -14,33 +14,45 @@ import SingleProductViewer from "./Components/SIngleProductViewer/Index";
 import YogaComponent from "./Screens/YogaEquipments/index";
 import GymAccessoriesComponent from "./Screens/GymAccessoriesScreen/Index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SearchComponent from "./Components/Search/Index"
-import Products from "./Screens/ProductScreen/Index"
+import SearchComponent from "./Components/Search/Index";
+import Products from "./Screens/ProductScreen/Index";
 import Toast from "./Components/Toast/Toast";
 function App() {
- const[showMobileNavNar,setShowMobileNavBar]=useState(false)
+  const [showMobileNavNar, setShowMobileNavBar] = useState(false);
 
   return (
-    <div style={showMobileNavNar?{height:"93.4vh",overflow:"hidden"}:{}}>
-    <BrowserRouter>
-        <Nav showMobileNavNar={showMobileNavNar} setShowMobileNavBar={setShowMobileNavBar} />
-        <Toast/>
-    <Routes>
-      <Route path="/" element={<HomeScreenComponents />} />
-      <Route path="/products" element={<Products />} />
-      <Route path="/products/mensnewdrop" element={<MensNewDrop />} />
-      <Route path="/products/womensnewdrop" element={<WomensNewDrop />} />
-      <Route path="/products/homeworkout" element={<HomeWorkoutEquipments />} />
-      <Route path="/products/resistancetrainingequipment" element={<ResistanceTrainingEquipments />} />
-      <Route path="/products/yogaequipment" element={<YogaComponent />} />
-      <Route path="/products/gymAccessories" element={<GymAccessoriesComponent />} />
-      <Route path="/cart" element={<CartComponent />} />
-      <Route path="/wishlist" element={<WishListComponent />} />
-      <Route path="/products/:id" element={<SingleProductViewer />} />
-      <Route path="/search" element={<SearchComponent />} />
-      </Routes>
+    <div
+      style={showMobileNavNar ? { height: "93.4vh", overflow: "hidden" } : {}}
+    >
+      <BrowserRouter>
+        <Nav
+          showMobileNavNar={showMobileNavNar}
+          setShowMobileNavBar={setShowMobileNavBar}
+        />
+        <Toast />
+        <Routes>
+          <Route path="/" element={<HomeScreenComponents />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/mensnewdrop" element={<MensNewDrop />} />
+          <Route path="/products/womensnewdrop" element={<WomensNewDrop />} />
+          <Route
+            path="/products/homeworkout"
+            element={<HomeWorkoutEquipments />}
+          />
+          <Route
+            path="/products/resistancetrainingequipment"
+            element={<ResistanceTrainingEquipments />}
+          />
+          <Route path="/products/yogaequipment" element={<YogaComponent />} />
+
+        <Route path="/products/gymAccessories" element={<GymAccessoriesComponent />} /> 
+          <Route path="/cart" element={<CartComponent />} />
+          <Route path="/wishlist" element={<WishListComponent />} />
+          <Route path="/products/:id" element={<SingleProductViewer />} />
+          <Route path="/search" element={<SearchComponent />} />
+        </Routes>
       </BrowserRouter>
-      </div>
+    </div>
   );
 }
 

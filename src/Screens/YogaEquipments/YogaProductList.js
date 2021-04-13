@@ -8,10 +8,10 @@ import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/
 import ProductListingComponentUtility from "../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility";
 
 
-function YogaProductList({filterData}) {
+function YogaProductList() {
   // grabbing context API
   const {
-    state: { initialYogaProducts, loading},
+    state: { initialYogaProducts, loading,filterItems},
     yogaProductDispatch,
   } = useYogaProductListsContext();
 
@@ -21,7 +21,7 @@ function YogaProductList({filterData}) {
  
 
   return (
-    <ProductListingComponentUtility filterData={filterData} products={ initialYogaProducts}/>
+    <ProductListingComponentUtility filterItems={filterItems} products={ initialYogaProducts}/>
    
   );
 }
