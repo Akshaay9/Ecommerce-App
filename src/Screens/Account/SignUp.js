@@ -11,7 +11,7 @@ function SignUp() {
           />
 
           <div className="login-left-bottom">
-            <h2>One stop destination for healthier life</h2>
+            <h2>One stop destination for healthier life.</h2>
             <ul>
               <li>30 Day return policy </li>
               <li>Fast delivery across the world</li>
