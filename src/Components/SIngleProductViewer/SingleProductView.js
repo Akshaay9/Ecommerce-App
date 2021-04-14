@@ -116,7 +116,7 @@ function SingleProductView() {
     if (isItemsWished.length > 0) {
       return "Remove From WishList";
     } else {
-      return "Add From WishList";
+      return "Add to WishList";
     }
   };
   // dispatching wishlist

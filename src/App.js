@@ -17,6 +17,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SearchComponent from "./Components/Search/Index";
 import Products from "./Screens/ProductScreen/Index";
 import Toast from "./Components/Toast/Toast";
+import Login from "./Screens/Account/Login";
+import SignUp from "./Screens/Account/SignUp";
 function App() {
   const [showMobileNavNar, setShowMobileNavBar] = useState(false);
 
@@ -44,12 +46,15 @@ function App() {
             element={<ResistanceTrainingEquipments />}
           />
           <Route path="/products/yogaequipment" element={<YogaComponent />} />
-
         <Route path="/products/gymAccessories" element={<GymAccessoriesComponent />} /> 
           <Route path="/cart" element={<CartComponent />} />
           <Route path="/wishlist" element={<WishListComponent />} />
           <Route path="/products/:id" element={<SingleProductViewer />} />
           <Route path="/search" element={<SearchComponent />} />
+          {/* account */}
+    
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </BrowserRouter>
     </div>

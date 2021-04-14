@@ -36,7 +36,7 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
           </NavLink>
           <div className="nav_name">
             <NavLink to="/">
-              <h2>Fit Sharkk</h2>
+              <h2> <span style={{color:"blue"}}>Fit</span> Sharkk</h2>
             </NavLink>
           </div>
           <div className="nav_hamberger">
@@ -137,7 +137,7 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
       <div className="shipping-details-update">
         <p>Free Shipping when you spend more than $5</p>
       </div>
-      {/* Nav further Hoover Navigation */}
+  
     </div>
   );
 }
