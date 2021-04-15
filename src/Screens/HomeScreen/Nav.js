@@ -66,9 +66,11 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
               <i className="fas fa-search"></i>
             </div>
           </NavLink>
+          <NavLink to="/signup">
           <div className="nav_logi">
             <i className="fas fa-user"></i>
           </div>
+          </NavLink>
           <NavLink to="/wishlist">
             <div className="nav_cart">
               <div className="badge badge-skyBlue">
