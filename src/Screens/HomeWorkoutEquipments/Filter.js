@@ -17,7 +17,7 @@ function Filter() {
 
   return (
     <>
-       <FilterUtility  dispatch={homeWorkoutDispatch} products={initialHomeWorkoutProducts} />
+       <FilterUtility  dispatch={homeWorkoutDispatch} products={initialHomeWorkoutProducts} filterItems={filterItems} />
      </>
   );
 }

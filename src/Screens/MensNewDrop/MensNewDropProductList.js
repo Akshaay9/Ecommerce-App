@@ -19,7 +19,6 @@ function MensNewDropProductList() {
     makeAnAPICall("GET","/api/products/mensNewDrops",homeScreenProductDispatch,"LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS" )
   }, []);
 
-
   return (
     <ProductListingComponentUtility products={initialHomeScrrenProducts} filterItems={filterItems}/>
   );

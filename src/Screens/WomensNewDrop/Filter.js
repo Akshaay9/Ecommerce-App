@@ -15,7 +15,7 @@ function Filter() {
 
     return (
       <>
-       <FilterUtility  dispatch={womensNewProductDispatch} products={initialHomeScreenProductWomens} />
+       <FilterUtility  dispatch={womensNewProductDispatch} products={initialHomeScreenProductWomens}  filterItems={filterItems} />
       </>
     )
 }

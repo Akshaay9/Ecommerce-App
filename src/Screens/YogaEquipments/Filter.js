@@ -13,7 +13,7 @@ function Filter() {
  
     return (
       <>
-       <FilterUtility  dispatch={yogaProductDispatch} products={initialYogaProducts} />
+       <FilterUtility  dispatch={yogaProductDispatch} products={initialYogaProducts} filterItems={filterItems} />
       </>
     )
 }

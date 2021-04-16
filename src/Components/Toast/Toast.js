@@ -27,7 +27,6 @@ function Toast() {
       );
     }
   };
-  console.log(toast);
   return (
     <div>
       {toast.length > 0 &&

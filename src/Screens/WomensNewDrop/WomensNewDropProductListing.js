@@ -12,7 +12,6 @@ function WomensNewDropProductListing() {
     womensNewProductDispatch,
   } = useWomensNewProductListsContext();
 
-  console.log(filterItems);
 
   useEffect(() => {
     makeAnAPICall("GET","/api1/products/womensNewDrop",womensNewProductDispatch,"LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS" )

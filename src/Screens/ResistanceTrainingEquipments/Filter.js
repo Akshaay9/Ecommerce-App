@@ -17,7 +17,7 @@ function Filter() {
  
     return (
       <>
-      <FilterUtility  dispatch={ResistanceProductDispatch} products={initialResistanceProducts} />
+      <FilterUtility  dispatch={ResistanceProductDispatch} products={initialResistanceProducts} filterItems={filterItems} />
        
       </>
     )

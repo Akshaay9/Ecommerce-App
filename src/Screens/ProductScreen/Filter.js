@@ -12,7 +12,7 @@ function Filter() {
 
  return (
   <>
-      <FilterUtility  dispatch={productsDispatch} products={initialProducts} />
+      <FilterUtility  dispatch={productsDispatch} products={initialProducts}  filterItems={filterItems}/>
    
   </>
 )

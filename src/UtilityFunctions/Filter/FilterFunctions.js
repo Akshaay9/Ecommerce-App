@@ -28,7 +28,6 @@ export const allTheProductTags = (products) => {
 export const filterData = (products, filterItems) => {
     let mutatedProductList = JSON.parse(JSON.stringify(products));
  
-
   if (filterItems.productTags.length > 0) {
     mutatedProductList = mutatedProductList.filter((ele) =>
       filterItems.productTags.includes(ele.tag)

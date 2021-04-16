@@ -23,7 +23,6 @@ const mensNewDropProductReduceFun = (state, action) => {
       return {
         ...state, 
         initialHomeScrrenProducts: payload,
-        loading: false,
       };
     case "LOW_TO_HIGH":
       return {
@@ -32,7 +31,6 @@ const mensNewDropProductReduceFun = (state, action) => {
           ...state.filterItems,
           sort:"lowToHigh"
         },
-        loading:false,
       }
     case "HIGH_TO_LOW":
       return {
@@ -41,7 +39,6 @@ const mensNewDropProductReduceFun = (state, action) => {
           ...state.filterItems,
           sort:"HighToLow"
         },
-        loading:false,
       }
     case "IN_STOCK":
       return {
@@ -90,11 +87,14 @@ const mensNewDropProductReduceFun = (state, action) => {
       }
    
     case "FILTER_BY_PRODUCT_TAGS":
+      const isproductAlredyExist = state.filterItems.productTags.indexOf(payload)
+      console.log(isproductAlredyExist);
       return {
         ...state,
+    
         filterItems: {
           ...state.filterItems,
-          productTags:payload
+          productTags:isproductAlredyExist>=0?state.filterItems.productTags.filter((ele)=>ele!==payload):[...state.filterItems.productTags,payload]
         },
         loading:false,
       }

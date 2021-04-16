@@ -3,7 +3,7 @@ export const mensNewDrop = [
     id: 1,
     name: "ESSENTIAL OVERSIZED T-SHIRT",
     tag: "t-shirt",
-    price: 250,
+    price: 1000,
     color: "Light Green",
     images: [
       {
@@ -22,7 +22,7 @@ export const mensNewDrop = [
     desc:
       "An unquestionable essential, the Oversized Tee does exactly what it says on the tin. With an oversized fit, and available in a range of colours available, it's a must-have for any, and every, gym bag.",
     inStock: 7,
-    rating: 4.5,
+    rating: 3,
     freeDelivery: true,
     deliveredBy: 7,
     newArrival: true,

@@ -89,12 +89,15 @@ const GymAccessoriesReduceFun = (state, action) => {
         loading:false,
       }
    
-    case "FILTER_BY_PRODUCT_TAGS":
+      case "FILTER_BY_PRODUCT_TAGS":
+      const isproductAlredyExist = state.filterItems.productTags.indexOf(payload)
+      console.log(isproductAlredyExist);
       return {
         ...state,
+    
         filterItems: {
           ...state.filterItems,
-          productTags:payload
+          productTags:isproductAlredyExist>=0?state.filterItems.productTags.filter((ele)=>ele!==payload):[...state.filterItems.productTags,payload]
         },
         loading:false,
       }

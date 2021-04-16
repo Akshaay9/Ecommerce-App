@@ -14,11 +14,11 @@ function Filter() {
     homeScreenProductDispatch,
   } = useMensNewProductListsContext();
 
-console.log("initialHomeScrrenProducts",initialHomeScrrenProducts);
+
   return (
 
     <>
-      <FilterUtility  dispatch={homeScreenProductDispatch} products={initialHomeScrrenProducts} />
+      <FilterUtility  dispatch={homeScreenProductDispatch} products={initialHomeScrrenProducts} filterItems={filterItems} />
       </>
 )
 }
