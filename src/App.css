@@ -893,7 +893,7 @@ input[type="radio"] {
     color: rgb(78, 78, 78);
     display: flex;
   }
-  .filter-tags-mobile li {
+  .filter-tags-mobile li,.filter-tags li {
     width: 11rem !important;
     margin-left: 1.5rem;
   }

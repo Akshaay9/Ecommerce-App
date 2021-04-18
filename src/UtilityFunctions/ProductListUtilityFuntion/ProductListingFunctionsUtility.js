@@ -30,10 +30,6 @@ export const  checkIfTheProductIsInCart = (product,cartItems,cartContextDispatch
               onClick={() =>
                 isItemOnTheCart[0].inCartQty == 1
                    ?
-                  // cartContextDispatch({
-                  //     type: "REMOVE_FROM_CART",
-                  //     payload: product,
-                  //   })
                   removeFromCart(cartContextDispatch,product,toastDispatch)
                   : cartContextDispatch({
                       type: "DECREASE_QTY",

@@ -155,7 +155,7 @@ console.log(filterItems);
             </>
           </h3>
           {showFilter.starSort === "rating-container" && (
-            <div className="filter-heading-sort-rating-container filter-tags-mobile li">
+            <div className="filter-heading-sort-rating-container filter-tags li">
               <li>
                 {" "}
                 <label htmlFor="">4 Star and above</label>{" "}
