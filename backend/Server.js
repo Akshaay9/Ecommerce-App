@@ -9,7 +9,14 @@ app.use(cors());
 
 
 connectToDatabase();
-
+if (process.env.NODE_ENV === "production") {
+    // Set static folderx
+    app.use(express.static("./build"));
+  
+    app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname, "./", "build", "index.html"));
+    });
+  }
 
 app.get("/", () => {
     console.log("yay,,its workking")
