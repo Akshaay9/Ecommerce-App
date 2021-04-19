@@ -11,11 +11,9 @@ app.use(cors());
 connectToDatabase();
 
 
-app.get("/", () => {
-    console.log("yay,,its workking")
-})
+app.get('/', (req, res) => { res.send('Hello from Express!') })
 
-const PORT =  5000;
+const PORT =  process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`<==server started on port==> ${PORT}`.yellow.underline.bold) 
 })
