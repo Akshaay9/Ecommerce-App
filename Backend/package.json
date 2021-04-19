@@ -10,10 +10,12 @@
   "type": "module",
   "scripts": {
     "start": "nodemon Server",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon Server",
     "client": "npm start --prefix ../",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "webpack",
+    "start-server": "nodemon dist/main.js",
+    "watch": "webpack --watch"
   },
   "author": "",
   "license": "ISC",
