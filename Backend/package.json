@@ -12,10 +12,7 @@
     "start": "nodemon Server",
     "server": "nodemon Server",
     "client": "npm start --prefix ../",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "webpack",
-    "start-server": "nodemon dist/main.js",
-    "watch": "webpack --watch"
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",

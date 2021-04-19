@@ -8,10 +8,12 @@ app.use(express.json());
 app.use(cors());
 
 
+
 connectToDatabase();
 
 
 app.get('/', (req, res) => { res.send('Hello from Express!') })
+// app.use(express.static('../build'));
 
 const PORT =  process.env.PORT || 5000;
 app.listen(PORT, () => {
