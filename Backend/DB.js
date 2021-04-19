@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 import config from "config"
-const mongoURI = config.get("mongoURI")
+// const mongoURI = config.get("mongoURI")
 
 const connectToDatabase = async () => {
     try {
