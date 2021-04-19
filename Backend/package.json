@@ -9,6 +9,7 @@
 },
   "type": "module",
   "scripts": {
+    "start": "nodemon Server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon Server",
     "client": "npm start --prefix ../",
