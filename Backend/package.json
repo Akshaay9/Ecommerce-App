@@ -9,10 +9,11 @@
 },
   "type": "module",
   "scripts": {
-    "start": "nodemon Server",
     "server": "nodemon Server",
     "client": "npm start --prefix ../",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import":"node Seeders",
+    "data:delete":"node Seeders -d"
   },
   "author": "",
   "license": "ISC",
