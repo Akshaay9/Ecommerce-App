@@ -1662,7 +1662,7 @@ export const ProductList = [
       },
     
       {
-        id: 158,
+        id: 58,
         name: "Burnlab Flex Gym Gloves for Men and Women",
         tag: "resistance-band-pack",
         price: 1000,
