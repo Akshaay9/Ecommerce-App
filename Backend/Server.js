@@ -4,6 +4,8 @@ import cors from "cors"
 import path from "path";
 import connectToDatabase from "./DB.js";
 import productRoute from "./Routes/ProductRoute.js"
+import UserLoginSignUp from "./Routes/UserLoginSignUp.js"
+
 const app = express()
 app.use(express.json());
 app.use(cors());
@@ -21,7 +23,11 @@ app.listen(PORT, () => {
 
 
 // routes
-app.use("/api/products",productRoute)
+app.use("/api/products", productRoute)
+app.use("/api/users", UserLoginSignUp)
+// app.use("/api/users",)
+
+
 
 
   // custome err handeling
