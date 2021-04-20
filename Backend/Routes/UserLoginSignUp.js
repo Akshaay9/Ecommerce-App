@@ -68,7 +68,12 @@ router
       const user = await User.findOne({ email })
       if (!user) {
         return res.json({error:"user not found please login"})
-      }
+    }
+    const checkPassword = await bcrypt.compare( password,user.password)
+    if (!checkPassword)
+    {
+      return res.status(400).json({errors:[{msg:"Invalid credentials"}]})
+    }
       res.json({
         id: user._id,
         name: user.name,

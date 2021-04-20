@@ -5,6 +5,8 @@ import path from "path";
 import connectToDatabase from "./DB.js";
 import productRoute from "./Routes/ProductRoute.js"
 import UserLoginSignUp from "./Routes/UserLoginSignUp.js"
+import cartRoute from "./Routes/CartRoute.js"
+import CartProductRoutes from "./Routes/CartProductsRoute.js"
 
 const app = express()
 app.use(express.json());
@@ -25,6 +27,9 @@ app.listen(PORT, () => {
 // routes
 app.use("/api/products", productRoute)
 app.use("/api/users", UserLoginSignUp)
+app.use("/api/cart", cartRoute)
+app.use("/api/cartProducts", CartProductRoutes)
+
 // app.use("/api/users",)
 
 
