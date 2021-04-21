@@ -1,6 +1,6 @@
-import config from "config"
+import dotenv from 'dotenv'
 import jwt from "jsonwebtoken"
-
+dotenv.config();
 export default function assignJWT(id) {
-    return jwt.sign({id},config.get("JWT"))
+    return jwt.sign({id},process.env.JWT)
 }
