@@ -1,11 +1,8 @@
 import mongoose from "mongoose"
 import config from "config"
-const mongoURI = config.get("mongoURI")
-
-
 const connectToDatabase = async () => {
     try {
-        await mongoose.connect(mongoURI, { useNewUrlParser: true,
+        await mongoose.connect(config.get("mongoURI"), { useNewUrlParser: true,
             useFindAndModify: false,
             useUnifiedTopology: true,
             useCreateIndex: true 
