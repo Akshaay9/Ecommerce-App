@@ -16,7 +16,7 @@ function YogaProductList() {
   } = useYogaProductListsContext();
 
   useEffect(() => {
-    makeAnAPICall("GET","/api4/products/yogaEquipment",yogaProductDispatch,"LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS" )
+    makeAnAPICall("GET","https://stark-falls-25364.herokuapp.com/api/products/yogaEquipment",yogaProductDispatch,"LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS" )
   }, []);
  
 

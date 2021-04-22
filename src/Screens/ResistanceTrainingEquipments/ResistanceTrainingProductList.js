@@ -16,7 +16,7 @@ function ResistanceTrainingProductList() {
   useEffect(() => {
     makeAnAPICall(
       "GET",
-      "/api3/products/resistanceEquipments",
+      "https://stark-falls-25364.herokuapp.com/api/products/resistanceTrainingEquipment",
       ResistanceProductDispatch,
       "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS"
     );

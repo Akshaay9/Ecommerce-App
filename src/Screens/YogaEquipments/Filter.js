@@ -1,7 +1,5 @@
 import  FilterUtility from "../../UtilityFunctions/Filter/FilterComponent"
 import { useYogaProductListsContext } from '../../Contexts/ProductListContext/YogaEquipmentLists';
-import { mensNewDropProductListAPI } from "../../API/MensNewDropProducts";
-mensNewDropProductListAPI();
 function Filter() {
 
  const {

@@ -1,10 +1,5 @@
 import  FilterUtility from "../../UtilityFunctions/Filter/FilterComponent"
-import React, { useEffect, useState } from "react";
 import { useMensNewProductListsContext } from "../../Contexts/ProductListContext/MensNewDropProductListing";
-import { mensNewDropProductListAPI } from "../../API/MensNewDropProducts";
-
-mensNewDropProductListAPI();
-
 
 function Filter() {
 

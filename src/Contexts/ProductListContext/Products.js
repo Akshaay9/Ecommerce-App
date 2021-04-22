@@ -7,7 +7,7 @@ const { createContext, useContext, useReducer } = require("react");
 export const productsContext = createContext();
 // initial state
 const initialStateOfproducts = {
-  initialProducts: [...homeWorkoutEquipments,...resistanceTrainingEquipment,...yogaEquipment,...gymAccesories],
+  initialProducts: [],
   loading:true,
   filterItems: {
    sort:"",

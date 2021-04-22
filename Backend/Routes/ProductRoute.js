@@ -1,6 +1,9 @@
 import express from "express";
+import { getIndividualProduct } from "../Middlewears/GetIndividualProduct.js";
 import Products from "../Models/ProductsModel.js";
 const router = express.Router();
+
+router.param("productID",getIndividualProduct);
 
 router.get("/mensNewDrop",async (req, res) => {
   const products = await Products.find({"category":"MensNewDrop"});
@@ -31,4 +34,10 @@ router.get("/all",async (req, res) => {
     
   res.json(products);
 });
+
+router.get("/:productID", async (req, res) => {
+  const { singleProduct } = req;
+  res.json(singleProduct)
+})
+
 export default router;

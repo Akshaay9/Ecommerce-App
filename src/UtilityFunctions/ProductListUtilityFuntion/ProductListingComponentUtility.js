@@ -29,7 +29,7 @@ function ProductListingComponentUtility({ products,filterItems }) {
       {filterData(products,filterItems).map((ele) => (
         <div className="card-container" key={ele.id}>
           <div className="card-container-header">
-            <NavLink to={`/products/${ele.id}`}>
+            <NavLink to={`/products/${ele._id}`}>
               <img src={ele.images[0].img} alt="" />
               {ele.newArrival && <span className="cardBadge">New Arrival</span>}
             </NavLink>

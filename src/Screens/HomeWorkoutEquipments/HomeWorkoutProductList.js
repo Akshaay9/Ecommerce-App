@@ -15,7 +15,7 @@ function HomeWorkoutProductList() {
   } = useWorkoutNewProductListsContext();
 
     useEffect(() => {
-          makeAnAPICall("GET","/api2/products/homeWorkout",homeWorkoutDispatch,"LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS" )
+          makeAnAPICall("GET","https://stark-falls-25364.herokuapp.com/api/products/homeWorkout",homeWorkoutDispatch,"LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS" )
     }, []);
   
    

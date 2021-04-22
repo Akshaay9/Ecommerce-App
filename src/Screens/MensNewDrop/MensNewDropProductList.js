@@ -16,7 +16,7 @@ function MensNewDropProductList() {
   } = useMensNewProductListsContext();
 
   useEffect(() => {
-    makeAnAPICall("GET","/api/products/mensNewDrops",homeScreenProductDispatch,"LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS" )
+    makeAnAPICall("GET","https://stark-falls-25364.herokuapp.com/api/products/mensNewdrop",homeScreenProductDispatch,"LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS" )
   }, []);
 
   return (

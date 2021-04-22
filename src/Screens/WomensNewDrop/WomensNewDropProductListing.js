@@ -14,7 +14,7 @@ function WomensNewDropProductListing() {
 
 
   useEffect(() => {
-    makeAnAPICall("GET","/api1/products/womensNewDrop",womensNewProductDispatch,"LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS" )
+    makeAnAPICall("GET","https://stark-falls-25364.herokuapp.com/api/products/womensNewDrop",womensNewProductDispatch,"LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS" )
   }, []);
 
   

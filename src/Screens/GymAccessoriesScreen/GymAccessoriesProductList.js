@@ -15,7 +15,7 @@ function GymAccessoriesProductList() {
   useEffect(() => {
     makeAnAPICall(
       "GET",
-      "/api5/products/gymAccessories",
+      "https://stark-falls-25364.herokuapp.com/api/products/gymAccessories",
       gymAccessoriesDispatch,
       "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS"
     );
