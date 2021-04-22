@@ -1,26 +1,31 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
 import "./App.css";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
-    const [passwordError, setPasswordError] = useState("");
-    
-    useEffect(() => {
-        var re = /\S+@\S+\.\S+/;
-        if (email.length == 0) {
-         setEmailError("This field is required")
-        } else if (!re.test(email)) {
-          setEmailError("Not and valid email")
-        } else {
-          setEmailError("")
-        }
-      }, [email]);
+  const [passwordError, setPasswordError] = useState("");
 
-    
+// grab context
+  const { state: { userInfo }, authDispatch } = useLoginContext()
+ 
+
+
+  useEffect(() => {
+    var re = /\S+@\S+\.\S+/;
+    if (email.length == 0) {
+      setEmailError("This field is required");
+    } else if (!re.test(email)) {
+      setEmailError("Not and valid email");
+    } else {
+      setEmailError("");
+    }
+  }, [email]);
+
   useEffect(() => {
     let special = /[\W]{1,}/;
     if (password.length == 0) {
@@ -40,29 +45,27 @@ function Login() {
     }
   }, [password]);
 
-
-  const loginUSer = async () => {
-  
-    const data = await axios.post(`https://stark-falls-25364.herokuapp.com/api/users`,{
-      "email":"test@gmail.com",
-      "password":"Test98#"
-  } )
-    console.log(data);
-  }
-
-  const loginUser = (e) => {
-    e.preventDefault()
-
-    // makeAnAPICall("GET","https://stark-falls-25364.herokuapp.com/api/users",null,null,dataToBeDispatched,null)
-    loginUSer()
-  
-  }
+  const loginUser = async (e) => {
+    e.preventDefault();
+    const dataToBeSent = {
+      "email":email,
+      "password":password,
+    };
+    makeAnAPICall(
+      "POST",
+      "http://localhost:5000/api/users/login",
+      authDispatch,
+    "USER_LOGGED_SUCCESSFULL",
+      dataToBeSent,
+      null
+    );
     
-    
+  };
+
   return (
     <div className="signup">
       <div className="signup-card">
-        <form onSubmit={(e)=>loginUser(e)}>
+        <form onSubmit={(e) => loginUser(e)}>
           <div className="login-right-top">
             <h2 style={{ color: "black" }}>Log in to your account</h2>
             <p>
@@ -123,15 +126,15 @@ function Login() {
             </div>
             <div className="error-div-input">
               {passwordError !== "" ? (
-                  <p className="error-handler-input error">
-                    {passwordError}
-                    <i class="fas fa-exclamation-circle"></i>
-                  </p>
-                ) : (
-                  <p className="error-handler-input sucess">
-                    Success<i class="fas fa-check-circle"></i>
-                  </p>
-                )}
+                <p className="error-handler-input error">
+                  {passwordError}
+                  <i class="fas fa-exclamation-circle"></i>
+                </p>
+              ) : (
+                <p className="error-handler-input sucess">
+                  Success<i class="fas fa-check-circle"></i>
+                </p>
+              )}
             </div>
           </div>
           <div className="login-right-checkbox">

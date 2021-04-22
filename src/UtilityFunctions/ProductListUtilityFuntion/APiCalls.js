@@ -16,23 +16,27 @@ export const makeAnAPICall = async (
   switch (request) {
     case "GET":
           try {
-          console.log(dataToBeDispatched);
-          const data = await axios.get(url, dataToBeDispatched, config);
-          console.log(data);
-        // if (!dispatch) {
-        //   return data;
-        // }
-        // dispatch({ type: dispatchType, payload: data.data });
+          const data = await axios.get(url);
+        if (!dispatch) {
+          return data;
+        }
+        dispatch({ type: dispatchType, payload: data.data });
       } catch (error) {
         console.log(error);
       }
     case "POST":
-      console.log(dataToBeDispatched, "111");
       try {
+       
         const data = await axios.post(url, dataToBeDispatched, config);
-        console.log(data);
+        dispatch({ type: dispatchType, payload: data.data });
+
+        if (!dispatch || !dispatchType ) {
+          return data.data
+        }
+
       } catch (error) {
-        console.log(error);
+        const errors = error.response.data.errors ?error.response.data.errors:error.response.data
+        console.log(errors);
       }
     default:
       break;

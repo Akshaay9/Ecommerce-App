@@ -1,12 +1,18 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
+import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
 import "./App.css";
 function SignUp() {
+// grab conetxt
+  const { state: { userInfo }, authDispatch } = useLoginContext()
+  console.log(userInfo);
+
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const[password,setPassword]=useState("")
-
   const [inputError, setInputError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -55,14 +61,23 @@ function SignUp() {
     }
 
   }, [password])
+
   const submitUser = async (e) => {
     e.preventDefault()
-    const data = await axios.post(`https://stark-falls-25364.herokuapp.com/api/users`, {
-      "name":"aksahay",
-      "email":"test98@gmail.com",
-      "password":"Test98#"
-  } )
-    console.log(data);
+    const dataToBeSent = {
+      "name":name,
+      "email":email,
+      "password":password,
+    };
+    makeAnAPICall(
+      "POST",
+      "http://localhost:5000/api/users/signup",
+      authDispatch,
+    "USER_REGISTER_SUCCESSFULL",
+      dataToBeSent,
+      null
+    );
+    
   }
 
   return (

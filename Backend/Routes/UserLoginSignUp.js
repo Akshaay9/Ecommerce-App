@@ -7,10 +7,9 @@ import { check, validationResult } from "express-validator";
 import assignJWT from "../Middlewears/AssignJWT.js";
 const router = express.Router();
 
-router
-  .route("/")
-  // user registration
-  .post(
+
+// user registration
+router.post("/signup",
     [
       check("name", "Please enter a name").isLength({ min: 5 }),
       check("email", "Please enter a valid email").matches(
@@ -52,8 +51,20 @@ router
     
     
   // user login
-  .get(async (req, res) => {
-      const {email,password}=req.body
+  router.post("/login", [
+    check("email", "Please enter a name").isLength({ min: 5 }),
+    check("password", "please enter a valid password").matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,15}$/
+    ),
+  ], async (req, res) => {
+      const errors = validationResult(req)
+      if (!errors.isEmpty()) {
+          return res.status(400).json({errors:errors.array()})
+    }
+    
+    const { email, password } = req.body
+    console.log(req.body);
+    console.log(req.body);
       const user = await User.findOne({ email })
       if (!user) {
         return res.status(400).json({error:"user not found please login"})
@@ -63,7 +74,7 @@ router
     {
       return res.status(400).json({errors:[{msg:"Invalid credentials"}]})
     }
-      res.status(200).json({
+      res.json({
         id: user._id,
         name: user.name,
         email: user.email,
