@@ -5,7 +5,7 @@ import { useAllProductsContextContext } from "../../Contexts/SearchAndIndividual
 import {makeAnAPICall} from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls"
 function SearchBarProducts() {
   const {
-    state: { searchResult },
+    state: { searchResult,initialAllProducts },
     allProductsDispatch,
   } = useAllProductsContextContext();
   const [input, setInput] = useState("");
@@ -17,9 +17,9 @@ function SearchBarProducts() {
     }, [])
       // to dispatch all prods
     useEffect(() => {
-    makeAnAPICall("GET","/api6/products/all",allProductsDispatch,"initialAllProducts" )
-  }, []);
-
+    makeAnAPICall("GET","https://stark-falls-25364.herokuapp.com/api/products/search",allProductsDispatch,"initialAllProducts" )
+    }, []);
+  
   useEffect(() => {
     if (input.length > 0) {
       allProductsDispatch({ type: "SEARCH_RESULTS", payload: input });
@@ -44,7 +44,7 @@ function SearchBarProducts() {
           searchResult.map((ele) => (
             <div className="card-container" key={ele.id}>
               <div className="card-container-header">
-                <NavLink to={`/products/${ele.id}`}>
+                <NavLink to={`/products/${ele._id}`}>
                   <img src={ele.images[0].img} alt="" />
                 </NavLink>
                 {/* calling the program so that it  automatiaaly renders ADD to cart button or increase the qty buttons */}
