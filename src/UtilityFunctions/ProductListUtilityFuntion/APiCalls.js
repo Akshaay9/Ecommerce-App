@@ -5,7 +5,12 @@ export const makeAnAPICall = async (request,url,dispatch,dispatchType) => {
         case "GET":
             try {
                 const data = await axios.get(url)
-                dispatch({ type: dispatchType, payload:data.data })
+                if (!dispatch) {
+                    return data
+            }
+                dispatch({ type: dispatchType, payload: data.data })
+             
+              
             } catch (error) {
                console.log(error); 
             }

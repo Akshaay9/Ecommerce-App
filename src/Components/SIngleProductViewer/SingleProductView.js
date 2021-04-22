@@ -4,15 +4,16 @@ import { useWishListContextProvider } from "../../Contexts/WishListContext/WishL
 import { useParams } from "react-router-dom";
 import { useAllProductsContextContext } from "../../Contexts/SearchAndIndividualScreenContext/SearchAndindiScreen";
 import axios from "axios";
+import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
 const todaysDate = new Date();
 
 function SingleProductView() {
-  // context grabber
   const { id } = useParams();
-  const {
-    state: { initialAllProducts },
-    allProductsDispatch,
-  } = useAllProductsContextContext();
+  const [signleProduct, setSingleProduct] = useState([])
+  const [imageSlider, setImageSlider] = useState(0);
+  
+ 
+ 
 
   const {
     state: { cartItems },
@@ -23,23 +24,18 @@ function SingleProductView() {
     state: { wishListItems },
     wishListContextDispatch,
   } = useWishListContextProvider();
-  const [imageSlider, setImageSlider] = useState(0);
+ 
 
   useEffect(() => {
+   
     (async () => {
-      try {
-        const data = await axios.get("/api6/products/all");
-        allProductsDispatch({
-          type: "initialAllProducts",
-          payload: data.data.products,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
+      const singleProduct = await makeAnAPICall("GET", `https://stark-falls-25364.herokuapp.com/api/products/${id}`)
+      setSingleProduct([singleProduct.data]);
+    })()
 
-  const singleProduct = initialAllProducts.filter((ele) => ele.id == id);
+  },[]);
+
+  console.log(signleProduct);
 
   //   carousal
   useEffect(() => {
@@ -132,11 +128,11 @@ function SingleProductView() {
   return (
     <div className="single-product-viewer">
       <div className="single-product-viewer">
-        {singleProduct.length > 0 && (
+        {signleProduct.length > 0 && (
           <div className="single-product-viewer-container">
             <div className="single-product-viewer-container-left">
               <div className="single-product-viewer-images">
-                <img src={singleProduct[0].images[imageSlider].img} alt="" />
+                <img src={signleProduct[0].images[imageSlider].img} alt="" />
                 <i
                   class="fas fa-chevron-right"
                   onClick={() => {
@@ -164,37 +160,37 @@ function SingleProductView() {
                 <span>New</span>
                 <div className="single-prod-desc-row-one">
                   <div className="single-prod-desc-row-one">
-                    <h1> {singleProduct[0].name}</h1>
+                    <h1> {signleProduct[0].name}</h1>
                  
                   </div>
                  
                   <div className="single-prod-desc-row-two">
-                    <h2>{singleProduct[0].price}.00₹</h2>
+                    <h2>{signleProduct[0].price}.00₹</h2>
                   </div>
                 </div>
                 <div className="rating bg-blue">
-                  <h3>{ singleProduct[0].rating}</h3>
+                  <h3>{ signleProduct[0].rating}</h3>
                     </div>
                 <div className="single-product-desc-img-container">
-                  {singleProduct[0].images.map((ele) => (
+                  {signleProduct[0].images.map((ele) => (
                     <div className="single-product-desc-img">
                       <img src={ele.img} alt="" />
                     </div>
                   ))}
                 </div>
                 <div className="single-product-description">
-                  <p>{singleProduct[0].desc}</p>
+                  <p>{signleProduct[0].desc}</p>
                 </div>
               </div>
 
-              {checkIfTheProductIsInCart(singleProduct[0])}
+              {checkIfTheProductIsInCart(signleProduct[0])}
               <button
                 className="btn-secondary btn-secondary-hr-outline-in singleproductpage"
                 onClick={() =>
-                  dispatchBasedOnBroductWishedOrNot(singleProduct[0])
+                  dispatchBasedOnBroductWishedOrNot(signleProduct[0])
                 }
               >
-                {checkIfTheProductIsWished(singleProduct[0])}
+                {checkIfTheProductIsWished(signleProduct[0])}
               </button>
             </div>
           </div>

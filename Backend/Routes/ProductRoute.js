@@ -35,6 +35,13 @@ router.get("/all",async (req, res) => {
   res.json(products);
 });
 
+router.get("/search", async(req, res) => {
+  const data = await Products.find({})
+  
+
+  res.json(data)
+})
+
 router.get("/:productID", async (req, res) => {
   const { singleProduct } = req;
   res.json(singleProduct)
