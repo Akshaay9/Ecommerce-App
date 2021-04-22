@@ -13,6 +13,7 @@ import { GymAccessoriesFunction } from "./Contexts/ProductListContext/GymAccesso
 import { AllProductsContextFun } from "./Contexts/SearchAndIndividualScreenContext/SearchAndindiScreen";
 import { ProductsFunction } from "./Contexts/ProductListContext/Products";
 import { ToastConTextFun } from "./Contexts/ToastContext/ToastContext";
+import { LoginContextFun } from "./Contexts/loginRegistrationContext/loginRegistrationContext";
 
 const container = document.getElementById("root");
 ReactDOM.render(
@@ -48,7 +49,11 @@ ReactDOM.render(
                         <ToastConTextFun>
                           {/* Toast */}
 
-                          <App />
+                          <LoginContextFun>
+                            {/* {Login context} */}
+
+                            <App />
+                            </LoginContextFun>
                           </ToastConTextFun>
                     </AllProductsContextFun>
                   </WishListContextFun>

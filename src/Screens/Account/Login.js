@@ -1,5 +1,7 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
 import "./App.css";
 function Login() {
   const [email, setEmail] = useState("");
@@ -37,12 +39,30 @@ function Login() {
       setPasswordError("");
     }
   }, [password]);
+
+
+  const loginUSer = async () => {
+  
+    const data = await axios.post(`https://stark-falls-25364.herokuapp.com/api/users`,{
+      "email":"test@gmail.com",
+      "password":"Test98#"
+  } )
+    console.log(data);
+  }
+
+  const loginUser = (e) => {
+    e.preventDefault()
+
+    // makeAnAPICall("GET","https://stark-falls-25364.herokuapp.com/api/users",null,null,dataToBeDispatched,null)
+    loginUSer()
+  
+  }
     
     
   return (
     <div className="signup">
       <div className="signup-card">
-        <form>
+        <form onSubmit={(e)=>loginUser(e)}>
           <div className="login-right-top">
             <h2 style={{ color: "black" }}>Log in to your account</h2>
             <p>

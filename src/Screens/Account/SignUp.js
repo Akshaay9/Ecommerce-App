@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./App.css";
@@ -53,7 +54,16 @@ function SignUp() {
       setPasswordError("")
     }
 
-  },[password])
+  }, [password])
+  const submitUser = async (e) => {
+    e.preventDefault()
+    const data = await axios.post(`https://stark-falls-25364.herokuapp.com/api/users`, {
+      "name":"aksahay",
+      "email":"test98@gmail.com",
+      "password":"Test98#"
+  } )
+    console.log(data);
+  }
 
   return (
     <>
@@ -68,7 +78,7 @@ function SignUp() {
         </div>
 
         <div className="login-right-card">
-          <form>
+          <form onSubmit={(e)=>submitUser(e)}>
             <div className="login-right-top">
               <h2 style={{ color: "black" }}>Create your account</h2>
               <p>

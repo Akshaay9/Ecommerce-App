@@ -24,11 +24,11 @@ router
       const { name, email, password } = req.body;
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        return res.json({ errors: errors.array() });
+        return res.status(400).json({ errors: errors.array() });
       }
       const user = await User.findOne({ email });
       if (user) {
-        return res.json({ error: "user alredy exists" });
+        return res.status(400).json({ error: "user alredy exists" });
       }
       const newUser = new User({
         name,
@@ -38,7 +38,7 @@ router
         const salt = await bcrypt.genSalt(10)
         newUser.password = await bcrypt.hash(password, salt)
         const savedUser = await newUser.save()
-        res.json({
+        res.status(200).json({
             id: savedUser._id,
             name: savedUser.name,
             email: savedUser.email,
@@ -52,29 +52,18 @@ router
     
     
   // user login
-  .get( [
-    check("email", "Please enter a valid email").matches(
-      /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
-    ),
-    check("password", "please enter a valid password").matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,15}$/
-    ),
-  ], async (req, res) => {
-      const errors = validationResult(req)
-      if (!errors.isEmpty()) {
-          return res.json({errors:errors.array()})
-      }
+  .get(async (req, res) => {
       const {email,password}=req.body
       const user = await User.findOne({ email })
       if (!user) {
-        return res.json({error:"user not found please login"})
+        return res.status(400).json({error:"user not found please login"})
     }
     const checkPassword = await bcrypt.compare( password,user.password)
     if (!checkPassword)
     {
       return res.status(400).json({errors:[{msg:"Invalid credentials"}]})
     }
-      res.json({
+      res.status(200).json({
         id: user._id,
         name: user.name,
         email: user.email,
