@@ -9,6 +9,7 @@ import UserLoginSignUp from "./Routes/UserLoginSignUp.js";
 import cartRoute from "./Routes/CartRoute.js";
 import WishListRouter from "./Routes/WishListRoute.js"
 import CheckOutRoute from "./Routes/CheckoutRoute.js"
+import ShippingAddressRoute from "./Routes/AddressRoute.js"
 
 const app = express();
 app.use(express.json());
@@ -44,6 +45,7 @@ app.use("/api/users", UserLoginSignUp);
 app.use("/api/cart", cartRoute);
 app.use("/api/wishlist", WishListRouter);
 app.use("/api/checkout", CheckOutRoute);
+app.use("/api/address", ShippingAddressRoute);
 
 // app.use("/api/users",)
 

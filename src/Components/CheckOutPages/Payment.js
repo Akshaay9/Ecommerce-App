@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import CHeckOutNav from "./CheckOutNav";
 import { useNavigate, NavLink } from "react-router-dom";
 function Payment() {
+  const localStoragePaymentInfo = localStorage.getItem("payment") ? JSON.parse(localStorage.getItem("payment")) : {}
+ 
+  const [paymentInfo, setPaymentInfo] = useState({
+  payment:localStoragePaymentInfo.payment||""
+  })
+  
+  console.log(paymentInfo);
+
     let navigate = useNavigate();
     const paymentHandler = (e) => {
-        e.preventDefault()
+      e.preventDefault()
+      localStorage.setItem("payment",JSON.stringify(paymentInfo))
         navigate("/FinalCheckOut")
     }
 
@@ -21,6 +30,8 @@ function Payment() {
                 name="payment"
                 placeholder="enter address"
                 required
+                checked={paymentInfo.payment == "paypal"}
+                onChange={()=>setPaymentInfo({payment:"paypal"})}
               />
               <label htmlFor="">Paypal (Credit and debit card)</label>
             </div>
@@ -30,6 +41,8 @@ function Payment() {
                 name="payment"
                 placeholder="enter City"
                 required
+                checked={paymentInfo.payment == "stripe"}
+                onChange={()=>setPaymentInfo({payment:"stripe"})}
               />
               <label htmlFor="">Stripe</label>
             </div>

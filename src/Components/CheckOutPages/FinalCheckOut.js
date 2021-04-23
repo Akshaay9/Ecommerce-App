@@ -2,20 +2,29 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import CHeckOutNav from "./CheckOutNav";
+import StripeButton from "./StripeButton";
 
 function FinalCheckOut() {
   const {
     state: { cartItems, loading },
     cartContextDispatch,
   } = useCartContextProvider();
+
+  const localStoragePaymentInfo = localStorage.getItem("payment")
+    ? JSON.parse(localStorage.getItem("payment"))
+    : {};
+  const localStorageaddress = localStorage.getItem("address")
+    ? JSON.parse(localStorage.getItem("address"))
+    : {};
+
   return (
     <div style={{ marginBottom: "1rem" }}>
       <CHeckOutNav step2 step3 step4 />
       <div className="shipping-final">
         <div className="shipping-heading right-shopping-final">
           <h2>Your Products</h2>
-          <p>Payment Method : paypal</p>
-          <p>Address : random address...</p>
+          <p>Payment Method : {localStoragePaymentInfo.payment}</p>
+          <p>Address : {localStorageaddress.address}...</p>
           <div className="wishList-components final-cart-items-ship-container">
             {cartItems.length > 0 &&
               cartItems.map((ele) => (
@@ -54,7 +63,13 @@ function FinalCheckOut() {
             )}
             .00₹
           </p>
-          <button>Place order</button>
+
+          <StripeButton
+            totalAmount={cartItems.reduce(
+              (acc, ele) => acc + ele.inCartQty * (ele.productID.price * 1),
+              0
+            )}
+          />
         </div>
       </div>
     </div>

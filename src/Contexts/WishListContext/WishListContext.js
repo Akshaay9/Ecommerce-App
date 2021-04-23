@@ -1,8 +1,7 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 export const wishListContextProvider = createContext()
 const initialState= {
-    wishListItems: localStorage.getItem("wishList-items") ?
-        JSON.parse(localStorage.getItem("wishList-items")) : [],
+    wishListItems:  [],
     loading:false
 }
 
@@ -32,9 +31,7 @@ const initialState= {
 export const WishListContextFun = ({ children }) => {
     const [state, dispatch] = useReducer(wishListContextReducerFun, initialState)
     
-    useEffect(() => {
-        localStorage.setItem("wishList-items", JSON.stringify(state.wishListItems))
-      },[state.wishListItems])
+
 
     return (
         <wishListContextProvider.Provider value={{ state, wishListContextDispatch:dispatch}}>

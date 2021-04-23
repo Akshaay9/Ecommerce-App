@@ -30,7 +30,7 @@ export const makeAnAPICall = async (
           : error.response.data;
         console.log(errors);
       }
-      return
+      return;
     case "GET":
       try {
         const data = await axios.get(url, config);
@@ -45,11 +45,12 @@ export const makeAnAPICall = async (
     case "POST":
       try {
         const data = await axios.post(url, dataToBeDispatched, config);
-        dispatch({ type: dispatchType, payload: data.data });
-
+        console.log(dispatch);
         if (!dispatch || !dispatchType) {
           return data.data;
         }
+        dispatch({ type: dispatchType, payload: data.data });
+       
       } catch (error) {
         const errors = error.response.data.errors
           ? error.response.data.errors
