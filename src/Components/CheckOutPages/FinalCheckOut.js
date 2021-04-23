@@ -1,0 +1,64 @@
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
+import CHeckOutNav from "./CheckOutNav";
+
+function FinalCheckOut() {
+  const {
+    state: { cartItems, loading },
+    cartContextDispatch,
+  } = useCartContextProvider();
+  return (
+    <div style={{ marginBottom: "1rem" }}>
+      <CHeckOutNav step2 step3 step4 />
+      <div className="shipping-final">
+        <div className="shipping-heading right-shopping-final">
+          <h2>Your Products</h2>
+          <p>Payment Method : paypal</p>
+          <p>Address : random address...</p>
+          <div className="wishList-components final-cart-items-ship-container">
+            {cartItems.length > 0 &&
+              cartItems.map((ele) => (
+                <div className="wishlist-component-container final-cart-items-ship">
+                  <NavLink to={`/products/${ele.productID._id}`}>
+                    <div className="wishlist-component-container-left final-cart-items-ship-left">
+                      <div className="cart-component-left-img final-cart-items-ship-left-img">
+                        <img src={ele.productID.images[0].img} alt="" />
+                      </div>
+                      <div className="wishlist-component-container-left-desc">
+                        <h2>{ele.productID.name}</h2>
+                        <h4>
+                          {ele.productID.price}.00₹ X {ele.inCartQty}
+                        </h4>
+                        <p>{ele.productID.desc.slice(0, 200)}....</p>
+                      </div>
+                    </div>
+                  </NavLink>
+                </div>
+              ))}
+          </div>
+        </div>
+
+        <div className="shipping-heading left-shopping-final">
+          <h2>Order Summary</h2>
+          <p>
+            Total Quantity:{" "}
+            {cartItems.reduce((acc, ele) => acc + ele.inCartQty, 0)}
+          </p>
+          <p>Shipping Price: 0.00</p>
+          <p>
+            Total Price :{" "}
+            {cartItems.reduce(
+              (acc, ele) => acc + ele.inCartQty * (ele.productID.price * 1),
+              0
+            )}
+            .00₹
+          </p>
+          <button>Place order</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default FinalCheckOut;

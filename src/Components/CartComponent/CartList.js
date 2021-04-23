@@ -104,8 +104,10 @@ function CartList() {
           <h4 style={{ marginTop: "1rem" }}>
             Sub-Total Quantity :{" "}
             {cartItems.reduce((acc, ele) => acc + ele.inCartQty, 0)}
-          </h4>
-          <button className="btn-primary btn-primary-hr-outline-out checkout-cta">Check Out</button>
+            </h4>
+            <NavLink to="/address">
+              <button className="btn-primary btn-primary-hr-outline-out checkout-cta">Check Out</button>
+              </NavLink>
         </div>
       )}
       </div>

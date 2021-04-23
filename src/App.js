@@ -24,10 +24,13 @@ import { loadCart, WishListItems } from "./UtilityFunctions/CartAndWishListItems
 import { useLoginContext } from "./Contexts/loginRegistrationContext/loginRegistrationContext";
 import { useWishListContextProvider } from "./Contexts/WishListContext/WishListContext";
 import { useCartContextProvider } from "./Contexts/CartContext/CartContext";
+import Address from "./Components/CheckOutPages/Address";
+import Payment from "./Components/CheckOutPages/Payment";
+import FinalCheckOut from "./Components/CheckOutPages/FinalCheckOut";
 
 function App() {
   const [showMobileNavNar, setShowMobileNavBar] = useState(false);
-  const { state: { userInfo }, authDispatch } = useLoginContext()
+  const { state: { userInfo }, } = useLoginContext()
 
   const {
     cartContextDispatch,
@@ -81,6 +84,13 @@ function App() {
 
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+
+               {/* check out */}
+          <Route path="/Address" element={<Address />} />
+          <Route path="/Payment" element={<Payment />} />
+          <Route path="/FinalCheckOut" element={<FinalCheckOut />} />
+     
+          
         </Routes>
       </BrowserRouter>
     </div>
