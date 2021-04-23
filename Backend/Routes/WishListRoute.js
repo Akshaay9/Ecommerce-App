@@ -22,22 +22,27 @@ router
     });
 
     if (isProductAlredyWished.length > 0) {
-      res.status(200).json({ error: "PRoduct alredy wishlisted" });
+      res.status(400).json({ error: "PRoduct alredy wishlisted" });
     } else {
       const newWishListItem = new WishList({
         user: req.user.id,
         productID: singleProduct._id,
       });
       await newWishListItem.save();
-      res.json(newWishListItem);
+      const cart = await WishList.find({ user: req.user.id }).populate(
+        "productID"
+      );
+      res.json(cart);
     }
   })
   .delete(privateRoute, async (req, res) => {
-    await WishList.findOneAndDelete(
+    const deleteItem=await WishList.findOne(
       { user: req.user.id },
       { productID: req.singleProduct._id }
     );
-    return res.json("deleted");
+    await WishList.remove({ productID: deleteItem.productID })
+    const cart = await WishList.find({ user: req.user.id }).populate("productID");
+    res.status(200).json(cart);
   });
 
 export default router;

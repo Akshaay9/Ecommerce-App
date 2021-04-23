@@ -16,11 +16,11 @@ export const makeAnAPICall = async (
   };
   switch (request) {
     case "DELETE":
-      console.log("delete request");
       try {
         const data = await axios.delete(url, config);
+        console.log(data);
         dispatch({ type: dispatchType, payload: data.data });
-      
+
         if (!dispatch || !dispatchType) {
           return data.data;
         }
@@ -30,10 +30,10 @@ export const makeAnAPICall = async (
           : error.response.data;
         console.log(errors);
       }
+      return
     case "GET":
       try {
         const data = await axios.get(url, config);
-        console.log(data.data);
         if (!dispatch) {
           return data;
         }
@@ -41,12 +41,12 @@ export const makeAnAPICall = async (
       } catch (error) {
         console.log(error);
       }
+      return;
     case "POST":
-      console.log(url);
       try {
         const data = await axios.post(url, dataToBeDispatched, config);
         dispatch({ type: dispatchType, payload: data.data });
-      
+
         if (!dispatch || !dispatchType) {
           return data.data;
         }
@@ -56,9 +56,8 @@ export const makeAnAPICall = async (
           : error.response.data;
         console.log(errors);
       }
-
-
+      return;
     default:
-      break;
+      return;
   }
 };

@@ -7,7 +7,7 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
   const {
     state: { cartItems, loading },
   } = useCartContextProvider();
-console.log(cartItems);
+
 
   const {
     state: { wishListItems },

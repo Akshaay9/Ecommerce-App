@@ -6,7 +6,7 @@ import {
 } from "./FilterFunctions";
 
 function FilterUtility({ dispatch, products, filterItems }) {
-  console.log(filterItems);
+
 
   //  to Hide or show dropdow filters
   const [showFilter, setShowFilter] = useState({

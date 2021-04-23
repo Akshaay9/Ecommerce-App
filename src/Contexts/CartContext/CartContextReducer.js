@@ -1,6 +1,5 @@
 export const cartContextReducerFun = (state, action) => {
   const { type, payload } = action;
-  console.log(payload);
   switch (type) {
     case "LOAD_CART_ITEMS":
       return {

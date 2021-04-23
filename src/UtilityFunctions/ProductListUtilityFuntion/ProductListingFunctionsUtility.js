@@ -5,13 +5,13 @@ import { makeAnAPICall } from "./APiCalls"
 
 
 
-const removeFromCart = (cartContextDispatch,product,toastDispatch) => {
-  cartContextDispatch({
-    type: "REMOVE_FROM_CART",
-    payload: product,
-  })
-  setAlert("Product has removed from the cart","danger",toastDispatch)
-}
+// const removeFromCart = (cartContextDispatch,product,toastDispatch) => {
+//   cartContextDispatch({
+//     type: "REMOVE_FROM_CART",
+//     payload: product,
+//   })
+//   setAlert("Product has removed from the cart","danger",toastDispatch)
+// }
 
 
 export const checkIfTheProductIsInCart = (product, cartItems, cartContextDispatch, toastDispatch) => {
@@ -32,25 +32,14 @@ export const checkIfTheProductIsInCart = (product, cartItems, cartContextDispatc
   },token.token) 
   }
   const deleteItem = async (id) => {
-    console.log("deleete item fun");
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": token.token,
-      },
-    };
     await makeAnAPICall(`DELETE`,`http://localhost:5000/api/cart/${id}`,cartContextDispatch,"LOAD_CART_ITEMS",null,token.token) 
-
-    // const data = await axios.delete(`http://localhost:5000/api/cart/${id}`, config)
-    // console.log(data.data);
-    // cartContextDispatch({type:"LOAD_CART_ITEMS",payload:data.data})
   }
+
 
 
 
   const newItems = [...cartItems];
   const isItemOnTheCart = newItems.filter((ele) => ele.productID._id == product._id);
-  console.log(isItemOnTheCart);
     if (isItemOnTheCart.length > 0) {
       return (
         <div className="card-add-to-cart-action">
@@ -105,8 +94,10 @@ export const checkIfTheProductIsInCart = (product, cartItems, cartContextDispatc
       );
 };
   
-export const checkIfTheProductIsWished = (ele,wishListItems) => {
-    const isItemsWished = wishListItems.filter((prod) => prod._id == ele._id);
+export const checkIfTheProductIsWished = (ele, wishListItems) => {
+  console.log(wishListItems)
+
+    const isItemsWished = wishListItems.filter((prod) => prod.productID._id == ele._id);
     let heartColor;
     if (isItemsWished.length > 0) {
       return (heartColor = {
@@ -119,11 +110,12 @@ export const checkIfTheProductIsWished = (ele,wishListItems) => {
     }
 };
 
-  export   const dispatchBasedOnBroductWishedOrNot = (ele,wishListItems,wishListContextDispatch) => {
-    const isItemsWished = wishListItems.filter((prod) => prod._id == ele._id);
+export const dispatchBasedOnBroductWishedOrNot = async (ele, wishListItems, wishListContextDispatch) => {
+  const token = JSON.parse(localStorage.getItem("user_info"))
+    const isItemsWished = wishListItems.filter((prod) => prod.productID._id == ele._id);
     if (isItemsWished.length == 0) {
-      wishListContextDispatch({ type: "ADD_TO_WISHLIST", payload: ele });
+      await makeAnAPICall(`POST`,`http://localhost:5000/api/wishlist/${ele._id}`,wishListContextDispatch,"LOAD_WISHLIST",null,token.token) 
     } else {
-      wishListContextDispatch({ type: "REMOVE_FROM_WISHLIST", payload: ele });
+      await makeAnAPICall(`DELETE`,`http://localhost:5000/api/wishlist/${ele._id}`,wishListContextDispatch,"LOAD_WISHLIST",null,token.token) 
     }
   };

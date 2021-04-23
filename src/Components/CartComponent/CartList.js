@@ -3,12 +3,27 @@ import "./App.css";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { NavLink } from "react-router-dom";
 import cartEmptyIMG from "../../Assets/undraw_empty_cart_co35.svg"
+import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
 function CartList() {
   const {
     state: { cartItems, loading },
     cartContextDispatch,
   } = useCartContextProvider();
-console.log(cartItems);
+  const token = JSON.parse(localStorage.getItem("user_info"))
+
+  const inCreaseQTY = async (id,qty) => {
+    await makeAnAPICall(`POST`,`http://localhost:5000/api/cart/${id}`,cartContextDispatch,"LOAD_CART_ITEMS",{
+      "inCartQty":qty
+  },token.token) 
+  }
+  const decreaseQTY = async (id,qty) => {
+    await makeAnAPICall(`POST`,`http://localhost:5000/api/cart/${id}`,cartContextDispatch,"LOAD_CART_ITEMS",{
+      "inCartQty":qty
+  },token.token) 
+  }
+  const deleteItem = async (id) => {
+    await makeAnAPICall(`DELETE`,`http://localhost:5000/api/cart/${id}`,cartContextDispatch,"LOAD_CART_ITEMS",null,token.token) 
+  }
   return (
     <>
      
@@ -37,14 +52,8 @@ console.log(cartItems);
                 className="btn-secondary btn-secondary-hr-outline-in secondary-disabled btn-cart-cta"
                 onClick={() =>
                   ele.inCartQty == 1
-                    ? cartContextDispatch({
-                        type: "REMOVE_FROM_CART",
-                        payload: ele,
-                      })
-                    : cartContextDispatch({
-                        type: "DECREASE_QTY",
-                        payload: ele,
-                      })
+                    ?  deleteItem(ele.productID._id)
+                  : decreaseQTY(ele.productID._id,ele.inCartQty-1)
                 }
               >
                 -
@@ -56,7 +65,7 @@ console.log(cartItems);
               "
                 disabled={ele.inCartQty === ele.productID.inStock}
                 onClick={() =>
-                  cartContextDispatch({ type: "INCREASE_QTY", payload: ele })
+                  inCreaseQTY(ele.productID._id,ele.inCartQty+1)
                 }
               >
                 +
@@ -66,10 +75,7 @@ console.log(cartItems);
               <button
                 className="btn-secondary btn-secondary-hr-outline-in secondary-disabled btn-cart-cta "
                 onClick={() =>
-                  cartContextDispatch({
-                    type: "REMOVE_FROM_CART",
-                    payload: ele,
-                  })
+                  deleteItem(ele.productID._id)
                 }
               >
                 Remove

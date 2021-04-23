@@ -3,6 +3,7 @@ import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 import { NavLink } from "react-router-dom";
 import emptyWISHLISTimage from "../../Assets/wish.svg";
+import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
 
 function WishLists() {
   const {
@@ -13,11 +14,31 @@ function WishLists() {
     state: { cartItems },
     cartContextDispatch,
   } = useCartContextProvider();
+  const token = JSON.parse(localStorage.getItem("user_info"))
+  
+  const addToCart = async(id) => {
+    await makeAnAPICall(`POST`,`http://localhost:5000/api/cart/${id}`,cartContextDispatch,"LOAD_CART_ITEMS",null,token.token) 
+  }
+  const inCreaseQTY = async (id,qty) => {
+    await makeAnAPICall(`POST`,`http://localhost:5000/api/cart/${id}`,cartContextDispatch,"LOAD_CART_ITEMS",{
+      "inCartQty":qty
+  },token.token) 
+  }
+  const decreaseQTY = async (id,qty) => {
+    await makeAnAPICall(`POST`,`http://localhost:5000/api/cart/${id}`,cartContextDispatch,"LOAD_CART_ITEMS",{
+      "inCartQty":qty
+  },token.token) 
+  }
+  const deleteItem = async (id) => {
+    await makeAnAPICall(`DELETE`,`http://localhost:5000/api/cart/${id}`,cartContextDispatch,"LOAD_CART_ITEMS",null,token.token) 
+  }
 
   // check if the items present in cart
   const checkIfTheProductIsInCart = (product) => {
+    console.log(product);
     const newItems = [...cartItems];
-    const isItemOnTheCart = newItems.filter((ele) => ele._id == product._id);
+    const isItemOnTheCart = newItems.filter((ele) => ele.productID._id == product.productID._id);
+    console.log(newItems);
     if (isItemOnTheCart.length > 0) {
       return (
         <div className="card-add-to-cart">
@@ -35,15 +56,10 @@ function WishLists() {
               className="btn-secondary btn-secondary-hr-outline-in wishlist-cta"
               onClick={() =>
                 isItemOnTheCart[0].inCartQty == 1
-                  ? cartContextDispatch({
-                      type: "REMOVE_FROM_CART",
-                      payload: product,
-                    })
-                  : cartContextDispatch({
-                      type: "DECREASE_QTY",
-                      payload: product,
-                    })
+                  ? deleteItem(product.productID._id)
+                  : decreaseQTY(product.productID._id,isItemOnTheCart[0].inCartQty-1)
               }
+              
             >
               <span>-</span>
             </button>{" "}
@@ -54,7 +70,7 @@ function WishLists() {
               }
               className="btn-secondary btn-secondary-hr-outline-in  wishlist-cta"
               onClick={() =>
-                cartContextDispatch({ type: "INCREASE_QTY", payload: product })
+                inCreaseQTY(product.productID._id,isItemOnTheCart[0].inCartQty+1)
               }
             >
               <span>+</span>
@@ -68,7 +84,7 @@ function WishLists() {
           <button
             className="btn-primary btn-primary-hr-outline-out singleproductpage-cta"
             onClick={() =>
-              cartContextDispatch({ type: "ADD_TO_CART", payload: product })
+              addToCart(product.productID._id)
             }
           >
             Add To Cart
@@ -102,10 +118,7 @@ function WishLists() {
                 <i
                   className="fas fa-trash"
                   onClick={() =>
-                    wishListContextDispatch({
-                      type: "REMOVE_FROM_WISHLIST",
-                      payload: ele,
-                    })
+                    makeAnAPICall(`DELETE`,`http://localhost:5000/api/wishlist/${ele.productID._id}`,wishListContextDispatch,"LOAD_WISHLIST",null,token.token)
                   }
                 ></i>
                 {checkIfTheProductIsInCart(ele)}

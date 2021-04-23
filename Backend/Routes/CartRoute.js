@@ -33,18 +33,19 @@ router
 
       await addToCart.save();
       const cart = await Cart.find({ user: req.user.id }).populate("productID");
-
       res.status(200).json(cart);
     }
   })
 
   .delete(privateRoute, async (req, res) => {
-    await Cart.findOneAndDelete(
+    const deleteItem=await Cart.findOne(
       { user: req.user.id },
       { productID: req.singleProduct._id }
     );
+    await Cart.remove({ productID: deleteItem.productID })
     const cart = await Cart.find({ user: req.user.id }).populate("productID");
-      res.status(200).json(cart);
+    res.status(200).json(cart);
+  
   });
 
 export default router;
