@@ -5,9 +5,7 @@ import { useEffect } from "react"
 
 export const cartContextProvider = createContext();
 const initialStateOfCart = {
-  cartItems: localStorage.getItem("cart-items")
-    ? JSON.parse(localStorage.getItem("cart-items"))
-    : [],
+  cartItems:[],
   loading: false,
 };
 
@@ -17,9 +15,6 @@ export const CartContextFunction = ({ children }) => {
     initialStateOfCart
   );
 
-  useEffect(() => {
-    localStorage.setItem("cart-items",JSON.stringify(state.cartItems))
-  },[state.cartItems])
 
   return (
     <cartContextProvider.Provider

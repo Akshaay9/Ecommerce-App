@@ -47,7 +47,7 @@ function SingleProductView() {
   // check if the items present in cart
   const checkIfTheProductIsInCart = (product) => {
     const newItems = [...cartItems];
-    const isItemOnTheCart = newItems.filter((ele) => ele.id == product.id);
+    const isItemOnTheCart = newItems.filter((ele) => ele._id == product._id);
     if (isItemOnTheCart.length > 0) {
       return (
         <div className="card-add-to-cart">
@@ -108,7 +108,7 @@ function SingleProductView() {
   };
   // wishlist check
   const checkIfTheProductIsWished = (ele) => {
-    const isItemsWished = wishListItems.filter((prod) => prod.id == ele.id);
+    const isItemsWished = wishListItems.filter((prod) => prod._id == ele._id);
     if (isItemsWished.length > 0) {
       return "Remove From WishList";
     } else {
@@ -117,7 +117,7 @@ function SingleProductView() {
   };
   // dispatching wishlist
   const dispatchBasedOnBroductWishedOrNot = (ele) => {
-    const isItemsWished = wishListItems.filter((prod) => prod.id == ele.id);
+    const isItemsWished = wishListItems.filter((prod) => prod._id == ele._id);
     if (isItemsWished.length == 0) {
       wishListContextDispatch({ type: "ADD_TO_WISHLIST", payload: ele });
     } else {
@@ -134,7 +134,7 @@ function SingleProductView() {
               <div className="single-product-viewer-images">
                 <img src={signleProduct[0].images[imageSlider].img} alt="" />
                 <i
-                  class="fas fa-chevron-right"
+                  className="fas fa-chevron-right"
                   onClick={() => {
                     if (imageSlider == 2) {
                       setImageSlider(0);
@@ -144,7 +144,7 @@ function SingleProductView() {
                   }}
                 ></i>
                 <i
-                  class="fas fa-chevron-left"
+                  className="fas fa-chevron-left"
                   onClick={() => {
                     if (imageSlider == 0) {
                       setImageSlider(2);

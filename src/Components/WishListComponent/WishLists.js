@@ -17,7 +17,7 @@ function WishLists() {
   // check if the items present in cart
   const checkIfTheProductIsInCart = (product) => {
     const newItems = [...cartItems];
-    const isItemOnTheCart = newItems.filter((ele) => ele.id == product.id);
+    const isItemOnTheCart = newItems.filter((ele) => ele._id == product._id);
     if (isItemOnTheCart.length > 0) {
       return (
         <div className="card-add-to-cart">
@@ -83,34 +83,35 @@ function WishLists() {
         <img className="emptyWishIMG" src={emptyWISHLISTimage} alt="" />
       )}
       <div className="wishList-components">
-        {wishListItems.map((ele) => (
-          <div className="wishlist-component-container">
-            <NavLink to={`/products/${ele.id}`}>
-              <div className="wishlist-component-container-left">
-                <div className="cart-component-left-img">
-                  <img src={ele.images[0].img} alt="" />
+        {wishListItems.length > 0 &&
+          wishListItems.map((ele) => (
+            <div className="wishlist-component-container">
+              <NavLink to={`/products/${ele.productID._id}`}>
+                <div className="wishlist-component-container-left">
+                  <div className="cart-component-left-img">
+                    <img src={ele.productID.images[0].img} alt="" />
+                  </div>
+                  <div className="wishlist-component-container-left-desc">
+                    <h2>{ele.productID.name}</h2>
+                    <h4>{ele.productID.price}.00₹</h4>
+                    <p>{ele.productID.desc.slice(0, 200)}....</p>
+                  </div>
                 </div>
-                <div className="wishlist-component-container-left-desc">
-                  <h2>{ele.name}</h2>
-                  <h4>{ele.price}.00₹</h4>
-                  <p>{ele.desc}</p>
-                </div>
+              </NavLink>
+              <div className="wishlist-component-container-right">
+                <i
+                  className="fas fa-trash"
+                  onClick={() =>
+                    wishListContextDispatch({
+                      type: "REMOVE_FROM_WISHLIST",
+                      payload: ele,
+                    })
+                  }
+                ></i>
+                {checkIfTheProductIsInCart(ele)}
               </div>
-            </NavLink>
-            <div className="wishlist-component-container-right">
-              <i
-                class="fas fa-trash"
-                onClick={() =>
-                  wishListContextDispatch({
-                    type: "REMOVE_FROM_WISHLIST",
-                    payload: ele,
-                  })
-                }
-              ></i>
-              {checkIfTheProductIsInCart(ele)}
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );

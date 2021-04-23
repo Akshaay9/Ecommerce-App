@@ -42,7 +42,7 @@ function SearchBarProducts() {
       <div className="grid-container">
         {input.length > 0 &&
           searchResult.map((ele) => (
-            <div className="card-container" key={ele.id}>
+            <div className="card-container" key={ele._id}>
               <div className="card-container-header">
                 <NavLink to={`/products/${ele._id}`}>
                   <img src={ele.images[0].img} alt="" />
@@ -55,7 +55,7 @@ function SearchBarProducts() {
                   <h4>{ele.price}.00₹</h4>
                 </div>
                 <div className="card-container-footer-row-two">
-                  <NavLink to={`/products/${ele.id}`}>
+                  <NavLink to={`/products/${ele._id}`}>
                     {" "}
                     <h2>{ele.name}</h2>{" "}
                   </NavLink>

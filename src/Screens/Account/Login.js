@@ -10,10 +10,11 @@ function Login() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-// grab context
-  const { state: { userInfo }, authDispatch } = useLoginContext()
- 
-
+  // grab context
+  const {
+    state: { userInfo },
+    authDispatch,
+  } = useLoginContext();
 
   useEffect(() => {
     var re = /\S+@\S+\.\S+/;
@@ -48,18 +49,17 @@ function Login() {
   const loginUser = async (e) => {
     e.preventDefault();
     const dataToBeSent = {
-      "email":email,
-      "password":password,
+      email: email,
+      password: password,
     };
     makeAnAPICall(
       "POST",
       "http://localhost:5000/api/users/login",
       authDispatch,
-    "USER_LOGGED_SUCCESSFULL",
+      "USER_LOGGED_SUCCESSFULL",
       dataToBeSent,
       null
     );
-    
   };
 
   return (
@@ -104,11 +104,11 @@ function Login() {
               {emailError !== "" ? (
                 <p className="error-handler-input error">
                   {emailError}
-                  <i class="fas fa-exclamation-circle"></i>
+                  <i className="fas fa-exclamation-circle"></i>
                 </p>
               ) : (
                 <p className="error-handler-input sucess">
-                  Success<i class="fas fa-check-circle"></i>
+                  Success<i className="fas fa-check-circle"></i>
                 </p>
               )}
             </div>
@@ -118,7 +118,7 @@ function Login() {
                 type="password"
                 placeholder="Password min 6 char"
                 required
-                minlength="5"
+                minLength="5"
                 value={password}
                 pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$"
                 onChange={(e) => setPassword(e.target.value)}
@@ -128,11 +128,11 @@ function Login() {
               {passwordError !== "" ? (
                 <p className="error-handler-input error">
                   {passwordError}
-                  <i class="fas fa-exclamation-circle"></i>
+                  <i className="fas fa-exclamation-circle"></i>
                 </p>
               ) : (
                 <p className="error-handler-input sucess">
-                  Success<i class="fas fa-check-circle"></i>
+                  Success<i className="fas fa-check-circle"></i>
                 </p>
               )}
             </div>

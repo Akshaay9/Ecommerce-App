@@ -6,8 +6,7 @@ import {
 } from "./FilterFunctions";
 
 function FilterUtility({ dispatch, products, filterItems }) {
-
-console.log(filterItems);
+  console.log(filterItems);
 
   //  to Hide or show dropdow filters
   const [showFilter, setShowFilter] = useState({
@@ -27,8 +26,6 @@ console.log(filterItems);
 
   // get all tags of the cloth
   const setOfAllTheTagsOfProduct = allTheProductTags(products);
-
-
 
   // clear the filyer
   const clearFilter = () => {
@@ -51,7 +48,7 @@ console.log(filterItems);
         <>
           {showFilter.mobileFilter === "" ? (
             <i
-              class="fas fa-chevron-down"
+              className="fas fa-chevron-down"
               style={{ marginTop: "3px", marginLeft: "3px" }}
               onClick={() =>
                 setShowFilter({
@@ -62,7 +59,7 @@ console.log(filterItems);
             ></i>
           ) : (
             <i
-              class="fas fa-chevron-up"
+              className="fas fa-chevron-up"
               style={{ marginTop: "3px", marginLeft: "3px" }}
               onClick={() => setShowFilter({ ...showFilter, mobileFilter: "" })}
             ></i>
@@ -83,7 +80,7 @@ console.log(filterItems);
             <>
               {showFilter.priceSort === "" ? (
                 <i
-                  class="fas fa-chevron-down"
+                  className="fas fa-chevron-down"
                   style={{ marginTop: "3px", marginLeft: "3px" }}
                   onClick={() =>
                     setShowFilter({
@@ -94,7 +91,7 @@ console.log(filterItems);
                 ></i>
               ) : (
                 <i
-                  class="fas fa-chevron-up"
+                  className="fas fa-chevron-up"
                   style={{ marginTop: "3px", marginLeft: "3px" }}
                   onClick={() =>
                     setShowFilter({ ...showFilter, priceSort: "" })
@@ -136,7 +133,7 @@ console.log(filterItems);
             <>
               {showFilter.starSort === "" ? (
                 <i
-                  class="fas fa-chevron-down"
+                  className="fas fa-chevron-down"
                   style={{ marginTop: "3px", marginLeft: "3px" }}
                   onClick={() =>
                     setShowFilter({
@@ -147,7 +144,7 @@ console.log(filterItems);
                 ></i>
               ) : (
                 <i
-                  class="fas fa-chevron-up"
+                  className="fas fa-chevron-up"
                   style={{ marginTop: "3px", marginLeft: "3px" }}
                   onClick={() => setShowFilter({ ...showFilter, starSort: "" })}
                 ></i>
@@ -206,7 +203,7 @@ console.log(filterItems);
             <>
               {showFilter.deliverySort === "" ? (
                 <i
-                  class="fas fa-chevron-down"
+                  className="fas fa-chevron-down"
                   style={{ marginTop: "3px", marginLeft: "3px" }}
                   onClick={() =>
                     setShowFilter({
@@ -217,7 +214,7 @@ console.log(filterItems);
                 ></i>
               ) : (
                 <i
-                  class="fas fa-chevron-up"
+                  className="fas fa-chevron-up"
                   style={{ marginTop: "3px", marginLeft: "3px" }}
                   onClick={() =>
                     setShowFilter({ ...showFilter, deliverySort: "" })
@@ -259,7 +256,7 @@ console.log(filterItems);
             <>
               {showFilter.productTags === "" ? (
                 <i
-                  class="fas fa-chevron-down"
+                  className="fas fa-chevron-down"
                   style={{ marginTop: "3px", marginLeft: "3px" }}
                   onClick={() =>
                     setShowFilter({
@@ -270,7 +267,7 @@ console.log(filterItems);
                 ></i>
               ) : (
                 <i
-                  class="fas fa-chevron-up"
+                  className="fas fa-chevron-up"
                   style={{ marginTop: "3px", marginLeft: "3px" }}
                   onClick={() =>
                     setShowFilter({ ...showFilter, productTags: "" })
@@ -287,10 +284,12 @@ console.log(filterItems);
                   <input
                     type="checkbox"
                     checked={filterItems.productTags.indexOf(ele) >= 0}
-                    onChange={() => dispatch({
-                      type: "FILTER_BY_PRODUCT_TAGS",
-                      payload: ele,
-                    })}
+                    onChange={() =>
+                      dispatch({
+                        type: "FILTER_BY_PRODUCT_TAGS",
+                        payload: ele,
+                      })
+                    }
                   />
                 </li>
               ))}
@@ -304,7 +303,7 @@ console.log(filterItems);
             <>
               {showFilter.priceRange === "" ? (
                 <i
-                  class="fas fa-chevron-down"
+                  className="fas fa-chevron-down"
                   style={{ marginTop: "3px", marginLeft: "3px" }}
                   onClick={() =>
                     setShowFilter({
@@ -315,7 +314,7 @@ console.log(filterItems);
                 ></i>
               ) : (
                 <i
-                  class="fas fa-chevron-up"
+                  className="fas fa-chevron-up"
                   style={{ marginTop: "3px", marginLeft: "3px" }}
                   onClick={() =>
                     setShowFilter({ ...showFilter, priceRange: "" })

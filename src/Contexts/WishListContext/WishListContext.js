@@ -8,6 +8,11 @@ const initialState= {
 
  const wishListContextReducerFun = (state, { type, payload }) => {
     switch (type) {
+        case "LOAD_WISHLIST":
+            return {
+                ...state,
+                wishListItems:payload
+            }
         case "ADD_TO_WISHLIST":
             return {
                 ...state,
@@ -17,7 +22,7 @@ const initialState= {
         
             return {
                 ...state,
-                wishListItems:state.wishListItems.filter((ele)=>ele.id!=payload.id)
+                wishListItems:state.wishListItems.filter((ele)=>ele._id!=payload._id)
             }
         default:
           return state

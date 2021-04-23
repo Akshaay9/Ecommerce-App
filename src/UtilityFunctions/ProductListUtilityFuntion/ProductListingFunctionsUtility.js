@@ -1,4 +1,8 @@
+import axios from "axios"
 import { setAlert } from "../../Contexts/ToastContext/ToastAction"
+import { makeAnAPICall } from "./APiCalls"
+
+
 
 
 const removeFromCart = (cartContextDispatch,product,toastDispatch) => {
@@ -9,15 +13,50 @@ const removeFromCart = (cartContextDispatch,product,toastDispatch) => {
   setAlert("Product has removed from the cart","danger",toastDispatch)
 }
 
-export const  checkIfTheProductIsInCart = (product,cartItems,cartContextDispatch,toastDispatch) => {
+
+export const checkIfTheProductIsInCart = (product, cartItems, cartContextDispatch, toastDispatch) => {
+
+  const token = JSON.parse(localStorage.getItem("user_info"))
+  
+  const addToCart = async(id) => {
+    await makeAnAPICall(`POST`,`http://localhost:5000/api/cart/${id}`,cartContextDispatch,"LOAD_CART_ITEMS",null,token.token) 
+  }
+  const inCreaseQTY = async (id,qty) => {
+    await makeAnAPICall(`POST`,`http://localhost:5000/api/cart/${id}`,cartContextDispatch,"LOAD_CART_ITEMS",{
+      "inCartQty":qty
+  },token.token) 
+  }
+  const decreaseQTY = async (id,qty) => {
+    await makeAnAPICall(`POST`,`http://localhost:5000/api/cart/${id}`,cartContextDispatch,"LOAD_CART_ITEMS",{
+      "inCartQty":qty
+  },token.token) 
+  }
+  const deleteItem = async (id) => {
+    console.log("deleete item fun");
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token.token,
+      },
+    };
+    await makeAnAPICall(`DELETE`,`http://localhost:5000/api/cart/${id}`,cartContextDispatch,"LOAD_CART_ITEMS",null,token.token) 
+
+    // const data = await axios.delete(`http://localhost:5000/api/cart/${id}`, config)
+    // console.log(data.data);
+    // cartContextDispatch({type:"LOAD_CART_ITEMS",payload:data.data})
+  }
+
+
+
   const newItems = [...cartItems];
-    const isItemOnTheCart = newItems.filter((ele) => ele.id == product.id);
+  const isItemOnTheCart = newItems.filter((ele) => ele.productID._id == product._id);
+  console.log(isItemOnTheCart);
     if (isItemOnTheCart.length > 0) {
       return (
         <div className="card-add-to-cart-action">
           {" "}
           <h3>
-            {isItemOnTheCart[0].inCartQty === isItemOnTheCart[0].inStock ? (
+            {isItemOnTheCart[0].inCartQty === isItemOnTheCart[0].productID.inStock ? (
               <span style={{ color: "red" }}>Out Of Stock</span>
             ) : (
               "Quick Add"
@@ -30,11 +69,8 @@ export const  checkIfTheProductIsInCart = (product,cartItems,cartContextDispatch
               onClick={() =>
                 isItemOnTheCart[0].inCartQty == 1
                    ?
-                  removeFromCart(cartContextDispatch,product,toastDispatch)
-                  : cartContextDispatch({
-                      type: "DECREASE_QTY",
-                      payload: product,
-                    })
+                   deleteItem(product._id)
+                  : decreaseQTY(product._id,isItemOnTheCart[0].inCartQty-1)
               }
             >
               <span>-</span>
@@ -42,11 +78,11 @@ export const  checkIfTheProductIsInCart = (product,cartItems,cartContextDispatch
             {isItemOnTheCart[0].inCartQty}{" "}
             <button
               disabled={
-                isItemOnTheCart[0].inCartQty === isItemOnTheCart[0].inStock
+                isItemOnTheCart[0].inCartQty === isItemOnTheCart[0].productID.inStock
               }
               className="btn-secondary btn-secondary-hr-outline-in secondary-disabled"
               onClick={() =>
-                cartContextDispatch({ type: "INCREASE_QTY", payload: product })
+                inCreaseQTY(product._id,isItemOnTheCart[0].inCartQty+1)
               }
             >
               <span>+</span>
@@ -61,7 +97,7 @@ export const  checkIfTheProductIsInCart = (product,cartItems,cartContextDispatch
           <button
             className="btn-primary btn-primary-hr-outline-out"
             onClick={() =>
-            { cartContextDispatch({ type: "ADD_TO_CART", payload: product });setAlert("Product has been Added to cart","success",toastDispatch)}}
+              addToCart(product._id)}
           >
             Add To Cart
           </button>
@@ -70,7 +106,7 @@ export const  checkIfTheProductIsInCart = (product,cartItems,cartContextDispatch
 };
   
 export const checkIfTheProductIsWished = (ele,wishListItems) => {
-    const isItemsWished = wishListItems.filter((prod) => prod.id == ele.id);
+    const isItemsWished = wishListItems.filter((prod) => prod._id == ele._id);
     let heartColor;
     if (isItemsWished.length > 0) {
       return (heartColor = {
@@ -84,7 +120,7 @@ export const checkIfTheProductIsWished = (ele,wishListItems) => {
 };
 
   export   const dispatchBasedOnBroductWishedOrNot = (ele,wishListItems,wishListContextDispatch) => {
-    const isItemsWished = wishListItems.filter((prod) => prod.id == ele.id);
+    const isItemsWished = wishListItems.filter((prod) => prod._id == ele._id);
     if (isItemsWished.length == 0) {
       wishListContextDispatch({ type: "ADD_TO_WISHLIST", payload: ele });
     } else {

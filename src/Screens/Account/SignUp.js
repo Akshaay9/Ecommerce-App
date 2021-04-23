@@ -5,14 +5,16 @@ import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRe
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
 import "./App.css";
 function SignUp() {
-// grab conetxt
-  const { state: { userInfo }, authDispatch } = useLoginContext()
+  // grab conetxt
+  const {
+    state: { userInfo },
+    authDispatch,
+  } = useLoginContext();
   console.log(userInfo);
-
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const[password,setPassword]=useState("")
+  const [password, setPassword] = useState("");
   const [inputError, setInputError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -28,63 +30,55 @@ function SignUp() {
   useEffect(() => {
     var re = /\S+@\S+\.\S+/;
     if (email.length == 0) {
-     setEmailError("This field is required")
+      setEmailError("This field is required");
     } else if (!re.test(email)) {
-      setEmailError("Not and valid email")
+      setEmailError("Not and valid email");
     } else {
-      setEmailError("")
+      setEmailError("");
     }
   }, [email]);
 
   useEffect(() => {
-    let special   = /[\W]{1,}/ ; 
+    let special = /[\W]{1,}/;
     if (password.length == 0) {
-      setPasswordError("this field is required")
+      setPasswordError("this field is required");
+    } else if (password.length < 5) {
+      setPasswordError("passowrd should contain min 6 char");
+    } else if (password.search(/[A-Z]/) < 0) {
+      setPasswordError("password should contain one UpperCase");
+    } else if (password.search(/[a-z]/) < 0) {
+      setPasswordError("password should contain one LowerCase");
+    } else if (password.search(/[0-9]/) < 0) {
+      setPasswordError("password should contain one number");
+    } else if (!special.test(password)) {
+      setPasswordError("password should contain one special char");
+    } else {
+      setPasswordError("");
     }
-    else if (password.length <5) {
-      setPasswordError("passowrd should contain min 6 char")
-    }
-   else  if (password.search(/[A-Z]/) < 0) {
-    setPasswordError("password should contain one UpperCase")
-    }
-   else   if (password.search(/[a-z]/) < 0) {
-    setPasswordError("password should contain one LowerCase")
-    }
-   else    if (password.search(/[0-9]/) < 0) {
-    setPasswordError("password should contain one number")
-    }
-   else       if (!special.test(password)) {
-    setPasswordError("password should contain one special char")
-    }
-    else {
-      setPasswordError("")
-    }
-
-  }, [password])
+  }, [password]);
 
   const submitUser = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const dataToBeSent = {
-      "name":name,
-      "email":email,
-      "password":password,
+      name: name,
+      email: email,
+      password: password,
     };
     makeAnAPICall(
       "POST",
-      "http://localhost:5000/api/users/signup",
+      "https://stark-falls-25364.herokuapp.com/api/users/signup",
       authDispatch,
-    "USER_REGISTER_SUCCESSFULL",
+      "USER_REGISTER_SUCCESSFULL",
       dataToBeSent,
       null
     );
-    
-  }
+  };
 
   return (
     <>
       <div className="login-container">
         <div className="login-left-bottom">
-          <h2>One stop destination for  healthier life.</h2>
+          <h2>One stop destination for healthier life.</h2>
           <ul>
             <li>30 Day return policy </li>
             <li>Fast delivery across the world</li>
@@ -93,17 +87,19 @@ function SignUp() {
         </div>
 
         <div className="login-right-card">
-          <form onSubmit={(e)=>submitUser(e)}>
+          <form onSubmit={(e) => submitUser(e)}>
             <div className="login-right-top">
               <h2 style={{ color: "black" }}>Create your account</h2>
               <p>
                 Have an account alredy ?
-                 <NavLink to="/login">
-                <span style={{ textDecoration: "underline",cursor:"pointer" }}>
-                  {" "}
-                  Log In here
-                </span>
-</NavLink>
+                <NavLink to="/login">
+                  <span
+                    style={{ textDecoration: "underline", cursor: "pointer" }}
+                  >
+                    {" "}
+                    Log In here
+                  </span>
+                </NavLink>
               </p>
             </div>
             <div className="login-right-cta">
@@ -120,7 +116,7 @@ function SignUp() {
                   type="text"
                   placeholder="name"
                   required
-                  minlength="5"
+                  minLength="5"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -138,22 +134,22 @@ function SignUp() {
                 {inputError !== "" ? (
                   <p className="error-handler-input error">
                     {inputError}
-                    <i class="fas fa-exclamation-circle"></i>
+                    <i className="fas fa-exclamation-circle"></i>
                   </p>
                 ) : (
                   <p className="error-handler-input sucess">
-                    Success<i class="fas fa-check-circle"></i>
+                    Success<i className="fas fa-check-circle"></i>
                   </p>
                 )}
 
                 {emailError !== "" ? (
                   <p className="error-handler-input error">
                     {emailError}
-                    <i class="fas fa-exclamation-circle"></i>
+                    <i className="fas fa-exclamation-circle"></i>
                   </p>
                 ) : (
                   <p className="error-handler-input sucess">
-                    Success<i class="fas fa-check-circle"></i>
+                    Success<i className="fas fa-check-circle"></i>
                   </p>
                 )}
               </div>
@@ -163,22 +159,21 @@ function SignUp() {
                   type="password"
                   placeholder="Password min 6 char"
                   required
-                  minlength="5"
+                  minLength="5"
                   value={password}
                   pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$"
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="error-div-input">
-               
                 {passwordError !== "" ? (
                   <p className="error-handler-input error">
                     {passwordError}
-                    <i class="fas fa-exclamation-circle"></i>
+                    <i className="fas fa-exclamation-circle"></i>
                   </p>
                 ) : (
                   <p className="error-handler-input sucess">
-                    Success<i class="fas fa-check-circle"></i>
+                    Success<i className="fas fa-check-circle"></i>
                   </p>
                 )}
               </div>

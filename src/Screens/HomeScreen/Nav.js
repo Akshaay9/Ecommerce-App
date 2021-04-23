@@ -7,6 +7,7 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
   const {
     state: { cartItems, loading },
   } = useCartContextProvider();
+console.log(cartItems);
 
   const {
     state: { wishListItems },
@@ -36,19 +37,22 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
           </NavLink>
           <div className="nav_name">
             <NavLink to="/">
-              <h2> <span style={{color:"blue"}}>Fit</span> Sharkk</h2>
+              <h2>
+                {" "}
+                <span style={{ color: "blue" }}>Fit</span> Sharkk
+              </h2>
             </NavLink>
           </div>
           <div className="nav_hamberger">
             <i
-              class="fas fa-bars"
+              className="fas fa-bars"
               onClick={() => setShowMobileNavBar(!showMobileNavNar)}
             ></i>
           </div>
         </div>
         <div className="nav_center">
           <ul>
-            <NavLink to="/products/mensnewdrop" >
+            <NavLink to="/products/mensnewdrop">
               <li className="hr- hr-underline-left li-bold mens-li">Mens</li>
             </NavLink>
             <NavLink to="/products">
@@ -67,14 +71,14 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
             </div>
           </NavLink>
           <NavLink to="/signup">
-          <div className="nav_logi">
-            <i className="fas fa-user"></i>
-          </div>
+            <div className="nav_logi">
+              <i className="fas fa-user"></i>
+            </div>
           </NavLink>
           <NavLink to="/wishlist">
             <div className="nav_cart">
               <div className="badge badge-skyBlue">
-                <i class="fas fa-heart"></i>
+                <i className="fas fa-heart"></i>
                 {wishListItems.length > 0 && (
                   <span>{wishListItems.length}</span>
                 )}
@@ -84,7 +88,7 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
           <NavLink to="/cart">
             <div className="nav_cart">
               <div className="badgeContainer1 badge-skyBlue">
-                <i class="fas fa-shopping-cart"></i>
+                <i className="fas fa-shopping-cart"></i>
                 {/* <span>1</span> */}
                 {cartItems.length > 0 && <span>{lengthOfCartItems()}</span>}
               </div>
@@ -103,7 +107,6 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
           <div className="nav_login">
             <i className="fas fa-user"></i>
           </div>
-         
         </div>
         <ul>
           <NavLink to="/products/mensnewdrop">
@@ -139,7 +142,6 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
       <div className="shipping-details-update">
         <p>Free Shipping when you spend more than $5</p>
       </div>
-  
     </div>
   );
 }

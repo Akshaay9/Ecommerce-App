@@ -10,10 +10,10 @@ function Footerbottom() {
     </div>
   
       <div className="footer-bottom-righ">
-        <i class="fab fa-twitter"></i>
-        <i class="fab fa-github"></i>
-        <i class="fab fa-linkedin"></i>
-        <i class="fas fa-envelope-square"></i>
+        <i className="fab fa-twitter"></i>
+        <i className="fab fa-github"></i>
+        <i className="fab fa-linkedin"></i>
+        <i className="fas fa-envelope-square"></i>
      
     </div>
   </div>

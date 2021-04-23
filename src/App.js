@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react/no-direct-mutation-state */
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Footer from "./Screens/HomeScreen/Footer";
 import HomeScreen from "./Screens/HomeScreen/Index";
@@ -19,13 +20,35 @@ import Products from "./Screens/ProductScreen/Index";
 import Toast from "./Components/Toast/Toast";
 import Login from "./Screens/Account/Login";
 import SignUp from "./Screens/Account/SignUp";
+import { loadCart, WishListItems } from "./UtilityFunctions/CartAndWishListItems";
+import { useLoginContext } from "./Contexts/loginRegistrationContext/loginRegistrationContext";
+import { useWishListContextProvider } from "./Contexts/WishListContext/WishListContext";
+import { useCartContextProvider } from "./Contexts/CartContext/CartContext";
+
 function App() {
   const [showMobileNavNar, setShowMobileNavBar] = useState(false);
+  const { state: { userInfo }, authDispatch } = useLoginContext()
+
+  const {
+    cartContextDispatch,
+  } = useCartContextProvider();
+
+  const {
+    wishListContextDispatch,
+  } = useWishListContextProvider();
+  
+  useEffect(() => {
+    if (userInfo.token) {
+      loadCart(cartContextDispatch,userInfo)
+      WishListItems(wishListContextDispatch,userInfo)
+    } 
+  },[userInfo])
+
+  
+
 
   return (
-    <div
-      style={showMobileNavNar ? { height: "93.4vh", overflow: "hidden" } : {}}
-    >
+    <div style={showMobileNavNar ? { height: "93.4vh", overflow: "hidden" } : {}}>
       <BrowserRouter>
         <Nav
           showMobileNavNar={showMobileNavNar}
@@ -46,13 +69,16 @@ function App() {
             element={<ResistanceTrainingEquipments />}
           />
           <Route path="/products/yogaequipment" element={<YogaComponent />} />
-        <Route path="/products/gymAccessories" element={<GymAccessoriesComponent />} /> 
+          <Route
+            path="/products/gymAccessories"
+            element={<GymAccessoriesComponent />}
+          />
           <Route path="/cart" element={<CartComponent />} />
           <Route path="/wishlist" element={<WishListComponent />} />
           <Route path="/products/:id" element={<SingleProductViewer />} />
           <Route path="/search" element={<SearchComponent />} />
           {/* account */}
-    
+
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>

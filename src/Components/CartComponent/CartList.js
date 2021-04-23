@@ -8,28 +8,28 @@ function CartList() {
     state: { cartItems, loading },
     cartContextDispatch,
   } = useCartContextProvider();
-
+console.log(cartItems);
   return (
     <>
      
     <div className="cart-component">
         <div className="cart-heading">Your Cart</div>
      { cartItems.length==0 &&  <img className="emptyCartIMG" src={cartEmptyIMG} alt=""/>}
-      {cartItems.map((ele) => (
+      {cartItems.length>0&& cartItems.map((ele) => (
         <div className="cart-componrnt-container">
-          <NavLink to={`/products/${ele.id}`}>
+          <NavLink to={`/products/${ele.productID._id}`}>
             <div className="cart-component-left">
               <div className="cart-component-left-img">
-                <img src={ele.images[0].img} alt="" />
+                <img src={ele.productID.images[0].img} alt="" />
               </div>
               <div className="cart-component-left-desc">
-                <h2>{ele.name}</h2>
-                <h4>{ele.price}.00₹</h4>
+                <h2>{ele.productID.name}</h2>
+                <h4>{ele.productID.price}.00₹</h4>
               </div>
             </div>
           </NavLink>
           <div className="cart-component-mid">
-            {ele.inCartQty === ele.inStock && (
+            {ele.inCartQty === ele.productID.inStock && (
               <span style={{ color: "red" }}>Out Of Stock</span>
             )}
             <div className="cart-component-CTA">
@@ -54,7 +54,7 @@ function CartList() {
                 className="btn-secondary btn-secondary-hr-outline-in secondary-disabled
               btn-cart-cta
               "
-                disabled={ele.inCartQty === ele.inStock}
+                disabled={ele.inCartQty === ele.productID.inStock}
                 onClick={() =>
                   cartContextDispatch({ type: "INCREASE_QTY", payload: ele })
                 }
@@ -77,7 +77,7 @@ function CartList() {
             </div>
           </div>
           <div className="cart-component-right">
-            <h4>Total Price : {ele.inCartQty * ele.price}.00₹</h4>
+            <h4>Total Price : {ele.inCartQty * ele.productID.price}.00₹</h4>
             <h4 style={{ marginTop: "1rem" }}>
               Total Quantity : {ele.inCartQty}
             </h4>
@@ -89,8 +89,8 @@ function CartList() {
           <h4>
             Sub-Total Price :{" "}
             {cartItems.reduce(
-              (acc, ele) => acc + ele.inCartQty * 1 * (ele.price * 1),
-              1
+              (acc, ele) => acc + ele.inCartQty * (ele.productID.price * 1),
+              0
             )}
             .00₹
           </h4>

@@ -3,12 +3,14 @@ import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
 import "./App.css";
 
 function Toast() {
-  const { state: {toast} } = useToastContext();
+  const {
+    state: { toast },
+  } = useToastContext();
   const toastFun = (msg, alertType) => {
     if (alertType === "success")
       return (
         <div className="toast bg-toast-success">
-          <i class="fas fa-check-circle"></i>
+          <i className="fas fa-check-circle"></i>
           <div className="toastInfo">
             <p>{alertType}</p>
             <p>{msg}</p>
@@ -18,7 +20,7 @@ function Toast() {
     else if (alertType == "danger") {
       return (
         <div className="toast bg-toast-danger">
-          <i class="fas fa-exclamation-circle"></i>
+          <i className="fas fa-exclamation-circle"></i>
           <div className="toastInfo">
             <p>{alertType}</p>
             <p>{msg}</p>
