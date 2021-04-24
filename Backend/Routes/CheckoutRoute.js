@@ -4,8 +4,7 @@ import { getIndividualProduct } from "../Middlewears/GetIndividualProduct.js";
 import Checkout from "../Models/CheckOutModel.js";
 const router = express.Router();
 
-router.route("/")
-    .post(privateRoute, async (req, res) => {
+router.post(("/"),privateRoute, async (req, res) => {
     const {
         orderItems,
         paymentMethod,
@@ -25,9 +24,14 @@ router.route("/")
         await checkOutProducts.save()
         res.json(checkOutProducts)
     })
-    .get( privateRoute, async (req, res) => {
+    router.get("/", privateRoute, async (req, res) => {
         const orderedProds = await Checkout.find({ user: req.user.id }).populate("orderItems.productID").populate("address")
         res.json(orderedProds)
+    })
+router.get("/:id", privateRoute, async(req, res) => {
+    const {id}=req.params
+    const singleOrderedProduct = await Checkout.findById(id).populate("orderItems.productID").populate("address")
+    res.status(200).json(singleOrderedProduct)
     })
 
 

@@ -29,19 +29,19 @@ router.post("/signup",
       if (user) {
         return res.status(400).json({ error: "user alredy exists" });
       }
-      const newUser = new User({
+      const newUser =await  User.create({
         name,
         email,
         password,
       });
         const salt = await bcrypt.genSalt(10)
         newUser.password = await bcrypt.hash(password, salt)
-        const savedUser = await newUser.save()
+       await newUser.save()
         res.status(200).json({
-            id: savedUser._id,
-            name: savedUser.name,
-            email: savedUser.email,
-            token:assignJWT(savedUser._id)
+            id: newUser._id,
+            name: newUser.name,
+            email: newUser.email,
+            token:assignJWT(newUser._id)
         })
       }
     

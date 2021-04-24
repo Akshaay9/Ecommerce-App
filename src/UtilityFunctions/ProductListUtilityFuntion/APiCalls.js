@@ -52,10 +52,10 @@ export const makeAnAPICall = async (
         dispatch({ type: dispatchType, payload: data.data });
        
       } catch (error) {
-        const errors = error.response.data.errors
-          ? error.response.data.errors
-          : error.response.data;
-        console.log(errors);
+        // const errors = error.response.data.errors
+        //   ? error.response.data.errors
+        //   : error.response.data;
+        console.log(error.response);
       }
       return;
     default:

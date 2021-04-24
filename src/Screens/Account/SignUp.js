@@ -66,7 +66,7 @@ function SignUp() {
     };
     makeAnAPICall(
       "POST",
-      "https://stark-falls-25364.herokuapp.com/api/users/signup",
+      "http://localhost:5000/api/users/signup",
       authDispatch,
       "USER_REGISTER_SUCCESSFULL",
       dataToBeSent,
