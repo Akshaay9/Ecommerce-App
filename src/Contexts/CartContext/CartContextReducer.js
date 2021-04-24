@@ -11,29 +11,11 @@ export const cartContextReducerFun = (state, action) => {
         ...state,
         cartItems: [...state.cartItems, { ...payload, inCartQty: 1 }],
       };
-    case "INCREASE_QTY":
+    case "CLEAR_CART":
       return {
         ...state,
-        cartItems: state.cartItems.map((ele) =>
-          ele._id == payload._id
-            ? { ...ele, inCartQty: ele.inCartQty + 1 }
-            : ele
-        ),
-      };
-    case "DECREASE_QTY":
-      return {
-        ...state,
-        cartItems: state.cartItems.map((ele) =>
-          ele._id == payload._id
-            ? { ...ele, inCartQty: ele.inCartQty - 1 }
-            : ele
-        ),
-      };
-    case "REMOVE_FROM_CART":
-      return {
-        ...state,
-        cartItems: state.cartItems.filter((ele) => ele._id !== payload._id),
-      };
+        cartItems:[]
+      }
     default:
       return state;
   }

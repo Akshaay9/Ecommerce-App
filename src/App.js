@@ -29,6 +29,7 @@ import Payment from "./Components/CheckOutPages/Payment";
 import FinalCheckOut from "./Components/CheckOutPages/FinalCheckOut";
 import OrderSuccess from "./Components/OrderSuccessPAge/OrderSuccess";
 import LoginModal from "./Components/LoginModal/LoginModal";
+import PrivateRoute from "./PrivateRoute";
 
 function App() {
   const [showMobileNavNar, setShowMobileNavBar] = useState(false);
@@ -88,15 +89,14 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
 
                {/* check out */}
-          <Route path="/Address" element={<Address />} />
-          <Route path="/Payment" element={<Payment />} />
-          <Route path="/FinalCheckOut" element={<FinalCheckOut />} />
+          <PrivateRoute path="/Address" element={<Address />} />
+          <PrivateRoute path="/Payment" element={<Payment />} />
+          <PrivateRoute path="/FinalCheckOut" element={<FinalCheckOut />} />
 
           {/* order success page */}
-          <Route path="/ordersuccess/:id" element={<OrderSuccess/>} />
-          <Route path="/loginmodal" element={<LoginModal/>} />
-    
-          
+          <PrivateRoute path="/ordersuccess/:id" element={<OrderSuccess/>} />
+       
+
         </Routes>
       </BrowserRouter>
     </div>

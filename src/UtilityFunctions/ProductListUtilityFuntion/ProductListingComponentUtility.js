@@ -10,6 +10,7 @@ import { NavLink } from "react-router-dom";
 import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
 import { filterData } from "../Filter/FilterFunctions";
 import LoginModal from "../../Components/LoginModal/LoginModal";
+import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 
 function ProductListingComponentUtility({ products, filterItems }) {
   const [showModal, setSHowModal] = useState(false);
@@ -23,8 +24,13 @@ function ProductListingComponentUtility({ products, filterItems }) {
     state: { wishListItems },
     wishListContextDispatch,
   } = useWishListContextProvider();
+  
+  const {
+    state: { userInfo },
+  } = useLoginContext();
 
   const { toastDispatch } = useToastContext();
+
 
   return (
     <>
@@ -44,7 +50,8 @@ function ProductListingComponentUtility({ products, filterItems }) {
               cartContextDispatch,
               toastDispatch,
               showModal,
-              setSHowModal
+              setSHowModal,
+              userInfo
             )}
           </div>
           <div className="card-container-footer">
@@ -67,7 +74,8 @@ function ProductListingComponentUtility({ products, filterItems }) {
                       ele,
                       wishListItems,
                       wishListContextDispatch,
-                      setSHowModal
+                      setSHowModal,
+                      userInfo
                     )
                   }
                 >

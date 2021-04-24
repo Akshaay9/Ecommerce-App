@@ -12,17 +12,11 @@ const initialState= {
                 ...state,
                 wishListItems:payload
             }
-        case "ADD_TO_WISHLIST":
-            return {
-                ...state,
-                wishListItems:[...state.wishListItems,payload]
-            }
-        case "REMOVE_FROM_WISHLIST":
-        
-            return {
-                ...state,
-                wishListItems:state.wishListItems.filter((ele)=>ele._id!=payload._id)
-            }
+            case "CLEAR_WISHLIST":
+                return {
+                  ...state,
+                  wishListItems:[]
+                }
         default:
           return state
     }

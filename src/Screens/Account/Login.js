@@ -3,18 +3,25 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./App.css";
 function Login() {
+  const navigate = useNavigate();
+  const { state } = useLocation();
+    // grab context
+    const {
+      state: { userInfo },
+      authDispatch,
+    } = useLoginContext();
+  if (userInfo.token) {
+    navigate(state?.from ? state.from : "/products/mensnewdrop");
+  }
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  // grab context
-  const {
-    state: { userInfo },
-    authDispatch,
-  } = useLoginContext();
+
 
   useEffect(() => {
     var re = /\S+@\S+\.\S+/;
@@ -61,6 +68,8 @@ function Login() {
       null
     );
   };
+
+ 
 
   return (
     <div className="signup">

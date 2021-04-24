@@ -1,22 +1,32 @@
 import React, { useState } from "react";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
+import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 import { NavLink } from "react-router-dom";
 
 function Nav({ showMobileNavNar, setShowMobileNavBar }) {
   const {
-    state: { cartItems, loading },
+    state: { cartItems, loading },cartContextDispatch
   } = useCartContextProvider();
 
-
   const {
-    state: { wishListItems },
+    state: { userInfo },
+    authDispatch,
+  } = useLoginContext();
+  const {
+    state: { wishListItems },wishListContextDispatch
   } = useWishListContextProvider();
 
   const lengthOfCartItems = () => {
     const length = cartItems.reduce((acc, ele) => acc + ele.inCartQty, 0);
     return length;
   };
+
+  const logOut = () => {
+    authDispatch({ type: "USER_LOGOUT" })
+    cartContextDispatch({ type: "CLEAR_CART" })
+    wishListContextDispatch({type:"CLEAR_WISHLIST"})
+  }
 
   return (
     <div>
@@ -70,11 +80,28 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
               <i className="fas fa-search"></i>
             </div>
           </NavLink>
-          <NavLink to="/signup">
-            <div className="nav_logi">
-              <i className="fas fa-user"></i>
+
+          {userInfo.token ? (
+            <div className="user-info">
+              <ul className="user-details-nav">
+                <h3>Welcome</h3>
+                <h3>
+                  {userInfo.name} <i className="fas fa-chevron-down"></i>
+                </h3>
+              </ul>
+              <ul className="drop-down-info">
+                <h3>Profile</h3>
+                <h3 onClick={()=>logOut()}>Logout</h3>
+              </ul>
             </div>
-          </NavLink>
+          ) : (
+            <NavLink to="/signup">
+              <div className="nav_logi">
+                <i className="fas fa-user"></i>
+              </div>
+            </NavLink>
+          )}
+
           <NavLink to="/wishlist">
             <div className="nav_cart">
               <div className="badge badge-skyBlue">
@@ -104,9 +131,11 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
       >
         {/* <div className="nav_ul_desktop desktop-hide-it"> */}
         <div className="login">
+          <NavLink to="/login">
           <div className="nav_login">
             <i className="fas fa-user"></i>
           </div>
+          </NavLink>
         </div>
         <ul>
           <NavLink to="/products/mensnewdrop">

@@ -19,7 +19,8 @@ export const checkIfTheProductIsInCart = (
   cartContextDispatch,
   toastDispatch,
   showModal,
-  setSHowModal
+  setSHowModal,
+  userInfo
 ) => {
   const addToCart = async (id) => {
     await makeAnAPICall(
@@ -28,7 +29,7 @@ export const checkIfTheProductIsInCart = (
       cartContextDispatch,
       "LOAD_CART_ITEMS",
       null,
-      token.token
+      userInfo.token
     );
   };
   const inCreaseQTY = async (id, qty) => {
@@ -40,7 +41,7 @@ export const checkIfTheProductIsInCart = (
       {
         inCartQty: qty,
       },
-      token.token
+      userInfo.token
     );
   };
   const decreaseQTY = async (id, qty) => {
@@ -52,7 +53,7 @@ export const checkIfTheProductIsInCart = (
       {
         inCartQty: qty,
       },
-      token.token
+      userInfo.token
     );
   };
   const deleteItem = async (id) => {
@@ -62,13 +63,13 @@ export const checkIfTheProductIsInCart = (
       cartContextDispatch,
       "LOAD_CART_ITEMS",
       null,
-      token.token
+      userInfo.token
     );
   };
 
   // add to cart based on logge din or not
   const addToCartHandlerBasedOnLogin = (id) => {
-    if (token == null) {
+    if (userInfo.token == null) {
       setSHowModal(true)
     } else {
       addToCart(id);
@@ -157,10 +158,11 @@ export const dispatchBasedOnBroductWishedOrNot = async (
   ele,
   wishListItems,
   wishListContextDispatch,
-  setSHowModal
+  setSHowModal,
+  userInfo
 ) => {
   const addToWishHandlerBasedOnLogin = async(id,wishListContextDispatch) => {
-    if (token == null) {
+    if (userInfo.token == null) {
       setSHowModal(true)
     } else {
       await makeAnAPICall(
@@ -169,18 +171,16 @@ export const dispatchBasedOnBroductWishedOrNot = async (
         wishListContextDispatch,
         "LOAD_WISHLIST",
         null,
-        token.token
+        userInfo.token
       );
     }
   };
-  const token = JSON.parse(localStorage.getItem("user_info"));
+ 
   const isItemsWished = wishListItems.filter(
     (prod) => prod.productID._id == ele._id
   );
   if (isItemsWished.length == 0) {
-
     addToWishHandlerBasedOnLogin(ele._id,wishListContextDispatch)
-
   } else {
     await makeAnAPICall(
       `DELETE`,
@@ -188,7 +188,7 @@ export const dispatchBasedOnBroductWishedOrNot = async (
       wishListContextDispatch,
       "LOAD_WISHLIST",
       null,
-      token.token
+      userInfo.token
     );
   }
 };

@@ -4,13 +4,16 @@ import { NavLink } from "react-router-dom";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
 import "./App.css";
+import { useLocation, useNavigate } from "react-router-dom";
 function SignUp() {
+  const navigate = useNavigate();
+  const { state } = useLocation();
   // grab conetxt
   const {
     state: { userInfo },
     authDispatch,
   } = useLoginContext();
-  console.log(userInfo);
+  
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -73,6 +76,10 @@ function SignUp() {
       null
     );
   };
+  if (userInfo.token) {
+    navigate(state?.from ? state.from : "/products/mensnewdrop");
+  }
+
 
   return (
     <>
