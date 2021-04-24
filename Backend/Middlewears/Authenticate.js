@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken"
 import dotenv from 'dotenv'
 dotenv.config();
-import User from "../Models/UserModels.js"
+
 
 export default async function privateRoute(req,res,next) {
   
@@ -10,7 +10,7 @@ export default async function privateRoute(req,res,next) {
             return res.status(400).json("Unauthorized section")
         }
     try {
-        const decoded =  jwt.verify(token, process.env.JWT)
+        const decoded =  jwt.verify(token, "akshay9898askadjmakdjmak")
         req.user=decoded
         next()
     } catch (error) {
