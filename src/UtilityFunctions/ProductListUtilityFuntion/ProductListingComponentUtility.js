@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   checkIfTheProductIsInCart,
   checkIfTheProductIsWished,
@@ -9,8 +9,11 @@ import { useWishListContextProvider } from "../../Contexts/WishListContext/WishL
 import { NavLink } from "react-router-dom";
 import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
 import { filterData } from "../Filter/FilterFunctions";
+import LoginModal from "../../Components/LoginModal/LoginModal";
 
 function ProductListingComponentUtility({ products, filterItems }) {
+  const [showModal, setSHowModal] = useState(false);
+
   const {
     state: { cartItems },
     cartContextDispatch,
@@ -24,6 +27,8 @@ function ProductListingComponentUtility({ products, filterItems }) {
   const { toastDispatch } = useToastContext();
 
   return (
+    <>
+     {showModal && <LoginModal showModal={showModal} setSHowModal={setSHowModal} />}
     <div className="grid-container">
       {filterData(products, filterItems).map((ele) => (
         <div className="card-container" key={ele._id}>
@@ -37,7 +42,9 @@ function ProductListingComponentUtility({ products, filterItems }) {
               ele,
               cartItems,
               cartContextDispatch,
-              toastDispatch
+              toastDispatch,
+              showModal,
+              setSHowModal
             )}
           </div>
           <div className="card-container-footer">
@@ -59,7 +66,8 @@ function ProductListingComponentUtility({ products, filterItems }) {
                     dispatchBasedOnBroductWishedOrNot(
                       ele,
                       wishListItems,
-                      wishListContextDispatch
+                      wishListContextDispatch,
+                      setSHowModal
                     )
                   }
                 >
@@ -70,7 +78,8 @@ function ProductListingComponentUtility({ products, filterItems }) {
           </div>
         </div>
       ))}
-    </div>
+      </div>
+      </>
   );
 }
 

@@ -28,6 +28,7 @@ import Address from "./Components/CheckOutPages/Address";
 import Payment from "./Components/CheckOutPages/Payment";
 import FinalCheckOut from "./Components/CheckOutPages/FinalCheckOut";
 import OrderSuccess from "./Components/OrderSuccessPAge/OrderSuccess";
+import LoginModal from "./Components/LoginModal/LoginModal";
 
 function App() {
   const [showMobileNavNar, setShowMobileNavBar] = useState(false);
@@ -93,7 +94,8 @@ function App() {
 
           {/* order success page */}
           <Route path="/ordersuccess/:id" element={<OrderSuccess/>} />
-     
+          <Route path="/loginmodal" element={<LoginModal/>} />
+    
           
         </Routes>
       </BrowserRouter>

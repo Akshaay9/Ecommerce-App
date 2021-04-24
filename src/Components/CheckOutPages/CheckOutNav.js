@@ -12,7 +12,9 @@ function CHeckOutNav({ step1, step2, step3, step4 }) {
       {/* 1 */}
       <div className="mini-nav">
         {!userInfo.token ? (
-            navigate("/cart")
+          <NavLink to="/login">  <p className="mini-nav ">Sign-In</p></NavLink>
+        
+      
         ) : (
           <p className="mini-nav disabled-mini-nav">Sign-In</p>
         )}
