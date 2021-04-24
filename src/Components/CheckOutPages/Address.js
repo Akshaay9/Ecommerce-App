@@ -30,7 +30,8 @@ function Address() {
           address,
           token.token
         );
-        localStorage.setItem("address", JSON.stringify(address));
+    
+        localStorage.setItem("address", JSON.stringify(data));
         navigate("/Payment");
       } catch (error) {
         console.log(error);

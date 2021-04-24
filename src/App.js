@@ -27,6 +27,7 @@ import { useCartContextProvider } from "./Contexts/CartContext/CartContext";
 import Address from "./Components/CheckOutPages/Address";
 import Payment from "./Components/CheckOutPages/Payment";
 import FinalCheckOut from "./Components/CheckOutPages/FinalCheckOut";
+import OrderSuccess from "./Components/OrderSuccessPAge/OrderSuccess";
 
 function App() {
   const [showMobileNavNar, setShowMobileNavBar] = useState(false);
@@ -89,6 +90,9 @@ function App() {
           <Route path="/Address" element={<Address />} />
           <Route path="/Payment" element={<Payment />} />
           <Route path="/FinalCheckOut" element={<FinalCheckOut />} />
+
+          {/* order success page */}
+          <Route path="/ordersuccess/:id" element={<OrderSuccess/>} />
      
           
         </Routes>

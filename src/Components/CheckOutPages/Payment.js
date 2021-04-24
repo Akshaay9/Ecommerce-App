@@ -8,7 +8,6 @@ function Payment() {
   payment:localStoragePaymentInfo.payment||""
   })
   
-  console.log(paymentInfo);
 
     let navigate = useNavigate();
     const paymentHandler = (e) => {

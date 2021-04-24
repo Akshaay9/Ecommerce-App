@@ -45,7 +45,7 @@ export const makeAnAPICall = async (
     case "POST":
       try {
         const data = await axios.post(url, dataToBeDispatched, config);
-        console.log(dispatch);
+       
         if (!dispatch || !dispatchType) {
           return data.data;
         }

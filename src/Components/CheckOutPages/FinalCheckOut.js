@@ -6,8 +6,7 @@ import StripeButton from "./StripeButton";
 
 function FinalCheckOut() {
   const {
-    state: { cartItems, loading },
-    cartContextDispatch,
+    state: { cartItems}
   } = useCartContextProvider();
 
   const localStoragePaymentInfo = localStorage.getItem("payment")
@@ -16,6 +15,8 @@ function FinalCheckOut() {
   const localStorageaddress = localStorage.getItem("address")
     ? JSON.parse(localStorage.getItem("address"))
     : {};
+  
+
 
   return (
     <div style={{ marginBottom: "1rem" }}>
@@ -65,6 +66,7 @@ function FinalCheckOut() {
           </p>
 
           <StripeButton
+            cartItems={cartItems}
             totalAmount={cartItems.reduce(
               (acc, ele) => acc + ele.inCartQty * (ele.productID.price * 1),
               0

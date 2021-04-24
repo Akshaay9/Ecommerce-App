@@ -8,23 +8,25 @@ router.route("/")
     .post(privateRoute, async (req, res) => {
     const {
         orderItems,
-        shippingAddress,
         paymentMethod,
+        paymentResult,
+        address
     } = req.body
     if (orderItems.length == 0) {
-       return res.status(200).json({error:"No items"})
+       return res.status(400).json({error:"No items"})
         }
         const checkOutProducts = new Checkout({
             user: req.user.id,
-            orderItems,
-            shippingAddress,
-            paymentMethod
+            orderItems:orderItems,
+            address:address,
+            paymentMethod: paymentMethod,
+            paymentResult:paymentResult,
         })
         await checkOutProducts.save()
         res.json(checkOutProducts)
     })
     .get( privateRoute, async (req, res) => {
-        const orderedProds = await Checkout.find({ user: req.user.id }).populate("orderItems.productID")
+        const orderedProds = await Checkout.find({ user: req.user.id }).populate("orderItems.productID").populate("address")
         res.json(orderedProds)
     })
 
