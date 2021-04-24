@@ -6,11 +6,6 @@ export const cartContextReducerFun = (state, action) => {
         ...state,
         cartItems: payload,
       };
-    case "ADD_TO_CART":
-      return {
-        ...state,
-        cartItems: [...state.cartItems, { ...payload, inCartQty: 1 }],
-      };
     case "CLEAR_CART":
       return {
         ...state,

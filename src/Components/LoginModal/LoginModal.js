@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { useNavigate, NavLink } from "react-router-dom";
 
-
-
 function LoginModal({ showModal, setSHowModal }) {
   let navigate = useNavigate();
   const [timer, setTimer] = useState(5);
 
   useEffect(() => {
-    {timer==0 && navigate("/login")}
+    {
+      timer == 0 && navigate("/login");
+    }
     const id = setTimeout(() => {
       setTimer(timer - 1);
     }, 1000);
@@ -18,7 +18,6 @@ function LoginModal({ showModal, setSHowModal }) {
   console.log(showModal);
   return (
     <>
-    
       <div className="modal-container">
         <div className="modal-cta">
           <div className="modal-heading">
@@ -42,8 +41,9 @@ function LoginModal({ showModal, setSHowModal }) {
                   color: "green",
                 }}
               >
-                <NavLink to="/login">log in</NavLink>
-              
+                <NavLink state={{ color: "green" }} to="/login">
+                  log in
+                </NavLink>
               </span>{" "}
               to continue
             </p>
