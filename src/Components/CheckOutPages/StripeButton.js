@@ -7,7 +7,7 @@ import { useNavigate, NavLink } from "react-router-dom";
 const StripeButton = (props) => {
   let navigate = useNavigate();
   const {
-    state: { cartItems },
+    state: { cartItems },cartContextDispatch
   } = useCartContextProvider();
 
   const localStoragePaymentInfo = localStorage.getItem("payment")
@@ -24,8 +24,8 @@ const StripeButton = (props) => {
     };
   });
   const getToken = (token) => {
-    console.log(token);
     updatePaymentAndRedirect(token);
+    deleteCartItems()
   };
   const updatePaymentAndRedirect = async (token) => {
     const finalOrderDetails = {
@@ -50,6 +50,19 @@ const StripeButton = (props) => {
     );
     navigate(`/ordersuccess/${data._id}`);
   };
+
+  const deleteCartItems = async () => {
+   const data= await makeAnAPICall(
+      `DELETE`,
+      `http://localhost:5000/api/deletecart`,
+      null,
+      null,
+      null,
+      auth.token
+    );
+    console.log(data);
+    cartContextDispatch({type:"CLEAR_CART"})
+  }
 
   return (
     <StripeCheckout

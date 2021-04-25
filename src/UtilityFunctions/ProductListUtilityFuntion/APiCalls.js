@@ -19,16 +19,17 @@ export const makeAnAPICall = async (
       try {
         const data = await axios.delete(url, config);
         console.log(data);
-        dispatch({ type: dispatchType, payload: data.data });
-
         if (!dispatch || !dispatchType) {
           return data.data;
         }
+        dispatch({ type: dispatchType, payload: data.data });
+
+      
       } catch (error) {
-        const errors = error.response.data.errors
-          ? error.response.data.errors
-          : error.response.data;
-        console.log(errors);
+        // const errors = error.response.data.errors
+        //   ? error.response.data.errors
+        //   : error.response.data;
+        console.log(error);
       }
       return;
     case "GET":

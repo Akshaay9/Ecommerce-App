@@ -4,6 +4,13 @@ import { useWishListContextProvider } from "../../Contexts/WishListContext/WishL
 import { NavLink } from "react-router-dom";
 import emptyWISHLISTimage from "../../Assets/wish.svg";
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
+import {
+  addToCartHandlerBasedOnLogin,
+  manageQTY,
+  deleteItem,
+} from "../../UtilityFunctions/ProductListUtilityFuntion/CartApiCalls";
+import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
+import { removeFromWishList } from "../../UtilityFunctions/ProductListUtilityFuntion/WishListAPICalls";
 
 function WishLists() {
   const {
@@ -14,30 +21,17 @@ function WishLists() {
     state: { cartItems },
     cartContextDispatch,
   } = useCartContextProvider();
-  const token = JSON.parse(localStorage.getItem("user_info"))
-  
-  const addToCart = async(id) => {
-    await makeAnAPICall(`POST`,`http://localhost:5000/api/cart/${id}`,cartContextDispatch,"LOAD_CART_ITEMS",null,token.token) 
-  }
-  const inCreaseQTY = async (id,qty) => {
-    await makeAnAPICall(`POST`,`http://localhost:5000/api/cart/${id}`,cartContextDispatch,"LOAD_CART_ITEMS",{
-      "inCartQty":qty
-  },token.token) 
-  }
-  const decreaseQTY = async (id,qty) => {
-    await makeAnAPICall(`POST`,`http://localhost:5000/api/cart/${id}`,cartContextDispatch,"LOAD_CART_ITEMS",{
-      "inCartQty":qty
-  },token.token) 
-  }
-  const deleteItem = async (id) => {
-    await makeAnAPICall(`DELETE`,`http://localhost:5000/api/cart/${id}`,cartContextDispatch,"LOAD_CART_ITEMS",null,token.token) 
-  }
+  const {
+    state: { userInfo },
+  } = useLoginContext();
 
   // check if the items present in cart
   const checkIfTheProductIsInCart = (product) => {
     console.log(product);
     const newItems = [...cartItems];
-    const isItemOnTheCart = newItems.filter((ele) => ele.productID._id == product.productID._id);
+    const isItemOnTheCart = newItems.filter(
+      (ele) => ele.productID._id == product.productID._id
+    );
     console.log(newItems);
     if (isItemOnTheCart.length > 0) {
       return (
@@ -56,10 +50,22 @@ function WishLists() {
               className="btn-secondary btn-secondary-hr-outline-in wishlist-cta"
               onClick={() =>
                 isItemOnTheCart[0].inCartQty == 1
-                  ? deleteItem(product.productID._id)
-                  : decreaseQTY(product.productID._id,isItemOnTheCart[0].inCartQty-1)
+                  ? deleteItem(
+                      product.productID._id,
+                      userInfo,
+                      cartContextDispatch,
+                      "LOAD_CART_ITEMS"
+                    )
+                  : manageQTY(
+                      product.productID._id,
+                      userInfo,
+                      cartContextDispatch,
+                      "LOAD_CART_ITEMS",
+                      {
+                        inCartQty: isItemOnTheCart[0].inCartQty - 1,
+                      }
+                    )
               }
-              
             >
               <span>-</span>
             </button>{" "}
@@ -70,7 +76,15 @@ function WishLists() {
               }
               className="btn-secondary btn-secondary-hr-outline-in  wishlist-cta"
               onClick={() =>
-                inCreaseQTY(product.productID._id,isItemOnTheCart[0].inCartQty+1)
+                manageQTY(
+                  product.productID._id,
+                  userInfo,
+                  cartContextDispatch,
+                  "LOAD_CART_ITEMS",
+                  {
+                    inCartQty: isItemOnTheCart[0].inCartQty + 1,
+                  }
+                )
               }
             >
               <span>+</span>
@@ -84,7 +98,13 @@ function WishLists() {
           <button
             className="btn-primary btn-primary-hr-outline-out singleproductpage-cta"
             onClick={() =>
-              addToCart(product.productID._id)
+              addToCartHandlerBasedOnLogin(
+                product.productID._id,
+                userInfo,
+                null,
+                cartContextDispatch,
+                "LOAD_CART_ITEMS"
+              )
             }
           >
             Add To Cart
@@ -118,7 +138,12 @@ function WishLists() {
                 <i
                   className="fas fa-trash"
                   onClick={() =>
-                    makeAnAPICall(`DELETE`,`http://localhost:5000/api/wishlist/${ele.productID._id}`,wishListContextDispatch,"LOAD_WISHLIST",null,token.token)
+                    removeFromWishList(
+                      ele.productID._id,
+                      userInfo,
+                      wishListContextDispatch,
+                      "LOAD_WISHLIST"
+                    )
                   }
                 ></i>
                 {checkIfTheProductIsInCart(ele)}

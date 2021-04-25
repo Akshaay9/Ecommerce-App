@@ -10,6 +10,7 @@ import cartRoute from "./Routes/CartRoute.js";
 import WishListRouter from "./Routes/WishListRoute.js"
 import CheckOutRoute from "./Routes/CheckoutRoute.js"
 import ShippingAddressRoute from "./Routes/AddressRoute.js"
+import DeleteAllCartRoute from "./Routes/DeleteAllCartItems.js"
 
 const app = express();
 app.use(express.json());
@@ -43,6 +44,7 @@ app.listen(PORT, () => {
 app.use("/api/products", productRoute);
 app.use("/api/users", UserLoginSignUp);
 app.use("/api/cart", cartRoute);
+app.use("/api/deletecart", DeleteAllCartRoute);
 app.use("/api/wishlist", WishListRouter);
 app.use("/api/checkout", CheckOutRoute);
 app.use("/api/address", ShippingAddressRoute);

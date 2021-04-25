@@ -5,15 +5,23 @@ import { useParams } from "react-router-dom";
 import { useAllProductsContextContext } from "../../Contexts/SearchAndIndividualScreenContext/SearchAndindiScreen";
 import axios from "axios";
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
+import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
+import {
+  addToCartHandlerBasedOnLogin,
+  deleteItem,
+  manageQTY,
+} from "../../UtilityFunctions/ProductListUtilityFuntion/CartApiCalls";
+import { addToWishHandlerBasedOnLogin, removeFromWishList } from "../../UtilityFunctions/ProductListUtilityFuntion/WishListAPICalls";
 const todaysDate = new Date();
 
 function SingleProductView() {
   const { id } = useParams();
-  const [signleProduct, setSingleProduct] = useState([])
+  const [signleProduct, setSingleProduct] = useState([]);
   const [imageSlider, setImageSlider] = useState(0);
-  
- 
- 
+
+  const {
+    state: { userInfo },
+  } = useLoginContext();
 
   const {
     state: { cartItems },
@@ -24,36 +32,38 @@ function SingleProductView() {
     state: { wishListItems },
     wishListContextDispatch,
   } = useWishListContextProvider();
- 
 
   useEffect(() => {
-   
     (async () => {
-      const singleProduct = await makeAnAPICall("GET", `https://stark-falls-25364.herokuapp.com/api/products/${id}`)
+      const singleProduct = await makeAnAPICall(
+        "GET",
+        `https://stark-falls-25364.herokuapp.com/api/products/${id}`
+      );
       setSingleProduct([singleProduct.data]);
-    })()
+    })();
+  }, []);
 
-  },[]);
+  console.log("signleProducts", signleProduct);
 
-  console.log(signleProduct);
-
-  //   carousal
-  useEffect(() => {
-    const next = (imageSlider + 1) % 3;
-    const id = setTimeout(() => setImageSlider(next), 1400);
-    return () => clearTimeout(id);
-  }, [imageSlider]);
+  // carousal
+  // useEffect(() => {
+  //   const next = (imageSlider + 1) % 3;
+  //   const id = setTimeout(() => setImageSlider(next), 1400);
+  //   return () => clearTimeout(id);
+  // }, [imageSlider]);
 
   // check if the items present in cart
   const checkIfTheProductIsInCart = (product) => {
     const newItems = [...cartItems];
-    const isItemOnTheCart = newItems.filter((ele) => ele._id == product._id);
+    const isItemOnTheCart = newItems.filter(
+      (ele) => ele.productID._id == product._id
+    );
     if (isItemOnTheCart.length > 0) {
       return (
         <div className="card-add-to-cart">
           {" "}
           <h3 style={{ textAlign: "center" }}>
-            {isItemOnTheCart[0].inCartQty === isItemOnTheCart[0].inStock ? (
+            {isItemOnTheCart[0].inCartQty === signleProduct[0].inStock ? (
               <span style={{ color: "red" }}>Out Of Stock</span>
             ) : (
               "Quick Add"
@@ -65,14 +75,21 @@ function SingleProductView() {
               className="btn-secondary btn-secondary-hr-outline-in single-cta"
               onClick={() =>
                 isItemOnTheCart[0].inCartQty == 1
-                  ? cartContextDispatch({
-                      type: "REMOVE_FROM_CART",
-                      payload: product,
-                    })
-                  : cartContextDispatch({
-                      type: "DECREASE_QTY",
-                      payload: product,
-                    })
+                  ? deleteItem(
+                      product._id,
+                      userInfo,
+                      cartContextDispatch,
+                      "LOAD_CART_ITEMS"
+                    )
+                  : manageQTY(
+                      product._id,
+                      userInfo,
+                      cartContextDispatch,
+                      "LOAD_CART_ITEMS",
+                      {
+                        inCartQty: isItemOnTheCart[0].inCartQty - 1,
+                      }
+                    )
               }
             >
               <span>-</span>
@@ -80,11 +97,19 @@ function SingleProductView() {
             {isItemOnTheCart[0].inCartQty}{" "}
             <button
               disabled={
-                isItemOnTheCart[0].inCartQty === isItemOnTheCart[0].inStock
+                isItemOnTheCart[0].inCartQty === signleProduct[0].inStock
               }
               className="btn-secondary btn-secondary-hr-outline-in secondary-disabled single-cta"
               onClick={() =>
-                cartContextDispatch({ type: "INCREASE_QTY", payload: product })
+                manageQTY(
+                  product._id,
+                  userInfo,
+                  cartContextDispatch,
+                  "LOAD_CART_ITEMS",
+                  {
+                    inCartQty: isItemOnTheCart[0].inCartQty + 1,
+                  }
+                )
               }
             >
               <span>+</span>
@@ -98,7 +123,13 @@ function SingleProductView() {
           <button
             className="btn-primary btn-primary-hr-outline-out singleproductpage-cta"
             onClick={() =>
-              cartContextDispatch({ type: "ADD_TO_CART", payload: product })
+              addToCartHandlerBasedOnLogin(
+                product._id,
+                userInfo,
+                null,
+                cartContextDispatch,
+                "LOAD_CART_ITEMS"
+              )
             }
           >
             Add To Cart
@@ -108,7 +139,9 @@ function SingleProductView() {
   };
   // wishlist check
   const checkIfTheProductIsWished = (ele) => {
-    const isItemsWished = wishListItems.filter((prod) => prod._id == ele._id);
+    const isItemsWished = wishListItems.filter(
+      (prod) => prod.productID._id == ele._id
+    );
     if (isItemsWished.length > 0) {
       return "Remove From WishList";
     } else {
@@ -117,11 +150,24 @@ function SingleProductView() {
   };
   // dispatching wishlist
   const dispatchBasedOnBroductWishedOrNot = (ele) => {
-    const isItemsWished = wishListItems.filter((prod) => prod._id == ele._id);
+    const isItemsWished = wishListItems.filter(
+      (prod) => prod.productID._id == ele._id
+    );
     if (isItemsWished.length == 0) {
-      wishListContextDispatch({ type: "ADD_TO_WISHLIST", payload: ele });
+      addToWishHandlerBasedOnLogin(
+        ele._id,
+        userInfo,
+        null,
+        wishListContextDispatch,
+        "LOAD_WISHLIST"
+      );
     } else {
-      wishListContextDispatch({ type: "REMOVE_FROM_WISHLIST", payload: ele });
+      removeFromWishList(
+        ele._id,
+        userInfo,
+        wishListContextDispatch,
+        "LOAD_WISHLIST"
+      );
     }
   };
   // main functon
@@ -161,16 +207,15 @@ function SingleProductView() {
                 <div className="single-prod-desc-row-one">
                   <div className="single-prod-desc-row-one">
                     <h1> {signleProduct[0].name}</h1>
-                 
                   </div>
-                 
+
                   <div className="single-prod-desc-row-two">
                     <h2>{signleProduct[0].price}.00₹</h2>
                   </div>
                 </div>
                 <div className="rating bg-blue">
-                  <h3>{ signleProduct[0].rating}</h3>
-                    </div>
+                  <h3>{signleProduct[0].rating}</h3>
+                </div>
                 <div className="single-product-desc-img-container">
                   {signleProduct[0].images.map((ele) => (
                     <div className="single-product-desc-img">

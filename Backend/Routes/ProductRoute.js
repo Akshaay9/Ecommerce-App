@@ -1,6 +1,7 @@
 import express from "express";
 import { getIndividualProduct } from "../Middlewears/GetIndividualProduct.js";
 import Products from "../Models/ProductsModel.js";
+import Cart from "../Models/CartModel.js"
 const router = express.Router();
 
 router.param("productID",getIndividualProduct);

@@ -90,7 +90,7 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
                 </h3>
               </ul>
               <ul className="drop-down-info">
-                <h3>Profile</h3>
+              <NavLink to="/profile"><h3>Profile</h3></NavLink>  
                 <h3 onClick={()=>logOut()}>Logout</h3>
               </ul>
             </div>

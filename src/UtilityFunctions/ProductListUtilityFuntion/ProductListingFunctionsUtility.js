@@ -2,6 +2,12 @@ import axios from "axios";
 import LoginModal from "../../Components/LoginModal/LoginModal";
 import { setAlert } from "../../Contexts/ToastContext/ToastAction";
 import { makeAnAPICall } from "./APiCalls";
+import {
+  addToCartHandlerBasedOnLogin,
+  deleteItem,
+  manageQTY,
+} from "./CartApiCalls";
+import { addToWishHandlerBasedOnLogin, removeFromWishList } from "./WishListAPICalls";
 
 // const removeFromCart = (cartContextDispatch,product,toastDispatch) => {
 //   cartContextDispatch({
@@ -12,7 +18,6 @@ import { makeAnAPICall } from "./APiCalls";
 // }
 const token = JSON.parse(localStorage.getItem("user_info"));
 
-
 export const checkIfTheProductIsInCart = (
   product,
   cartItems,
@@ -20,63 +25,10 @@ export const checkIfTheProductIsInCart = (
   toastDispatch,
   showModal,
   setSHowModal,
+
   userInfo
 ) => {
-  const addToCart = async (id) => {
-    await makeAnAPICall(
-      `POST`,
-      `http://localhost:5000/api/cart/${id}`,
-      cartContextDispatch,
-      "LOAD_CART_ITEMS",
-      null,
-      userInfo.token
-    );
-  };
-  const inCreaseQTY = async (id, qty) => {
-    await makeAnAPICall(
-      `POST`,
-      `http://localhost:5000/api/cart/${id}`,
-      cartContextDispatch,
-      "LOAD_CART_ITEMS",
-      {
-        inCartQty: qty,
-      },
-      userInfo.token
-    );
-  };
-  const decreaseQTY = async (id, qty) => {
-    await makeAnAPICall(
-      `POST`,
-      `http://localhost:5000/api/cart/${id}`,
-      cartContextDispatch,
-      "LOAD_CART_ITEMS",
-      {
-        inCartQty: qty,
-      },
-      userInfo.token
-    );
-  };
-  const deleteItem = async (id) => {
-    await makeAnAPICall(
-      `DELETE`,
-      `http://localhost:5000/api/cart/${id}`,
-      cartContextDispatch,
-      "LOAD_CART_ITEMS",
-      null,
-      userInfo.token
-    );
-  };
-
-  // add to cart based on logge din or not
-  const addToCartHandlerBasedOnLogin = (id) => {
-    if (userInfo.token == null) {
-      setSHowModal(true)
-    } else {
-      addToCart(id);
-    }
-  };
   // add to wishList based on login
-
 
   const newItems = [...cartItems];
   const isItemOnTheCart = newItems.filter(
@@ -101,8 +53,21 @@ export const checkIfTheProductIsInCart = (
             className="btn-secondary btn-secondary-hr-outline-in"
             onClick={() =>
               isItemOnTheCart[0].inCartQty == 1
-                ? deleteItem(product._id)
-                : decreaseQTY(product._id, isItemOnTheCart[0].inCartQty - 1)
+                ? deleteItem(
+                    product._id,
+                    userInfo,
+                    cartContextDispatch,
+                    "LOAD_CART_ITEMS"
+                  )
+                : manageQTY(
+                    product._id,
+                    userInfo,
+                    cartContextDispatch,
+                    "LOAD_CART_ITEMS",
+                    {
+                      inCartQty: isItemOnTheCart[0].inCartQty - 1,
+                    }
+                  )
             }
           >
             <span>-</span>
@@ -115,7 +80,15 @@ export const checkIfTheProductIsInCart = (
             }
             className="btn-secondary btn-secondary-hr-outline-in secondary-disabled"
             onClick={() =>
-              inCreaseQTY(product._id, isItemOnTheCart[0].inCartQty + 1)
+              manageQTY(
+                product._id,
+                userInfo,
+                cartContextDispatch,
+                "LOAD_CART_ITEMS",
+                {
+                  inCartQty: isItemOnTheCart[0].inCartQty + 1,
+                }
+              )
             }
           >
             <span>+</span>
@@ -129,7 +102,16 @@ export const checkIfTheProductIsInCart = (
         <h3>Quick ADD</h3>
         <button
           className="btn-primary btn-primary-hr-outline-out"
-          onClick={() => addToCartHandlerBasedOnLogin(product._id)}
+          onClick={() =>
+            addToCartHandlerBasedOnLogin(
+              product._id,
+              userInfo,
+              setSHowModal,
+              cartContextDispatch,
+              "LOAD_CART_ITEMS",
+              null
+            )
+          }
         >
           Add To Cart
         </button>
@@ -153,7 +135,6 @@ export const checkIfTheProductIsWished = (ele, wishListItems) => {
   }
 };
 
-
 export const dispatchBasedOnBroductWishedOrNot = async (
   ele,
   wishListItems,
@@ -161,34 +142,23 @@ export const dispatchBasedOnBroductWishedOrNot = async (
   setSHowModal,
   userInfo
 ) => {
-  const addToWishHandlerBasedOnLogin = async(id,wishListContextDispatch) => {
-    if (userInfo.token == null) {
-      setSHowModal(true)
-    } else {
-      await makeAnAPICall(
-        `POST`,
-        `http://localhost:5000/api/wishlist/${id}`,
-        wishListContextDispatch,
-        "LOAD_WISHLIST",
-        null,
-        userInfo.token
-      );
-    }
-  };
- 
   const isItemsWished = wishListItems.filter(
     (prod) => prod.productID._id == ele._id
   );
   if (isItemsWished.length == 0) {
-    addToWishHandlerBasedOnLogin(ele._id,wishListContextDispatch)
-  } else {
-    await makeAnAPICall(
-      `DELETE`,
-      `http://localhost:5000/api/wishlist/${ele._id}`,
+    addToWishHandlerBasedOnLogin(
+      ele._id,
+      userInfo,
+      setSHowModal,
       wishListContextDispatch,
-      "LOAD_WISHLIST",
-      null,
-      userInfo.token
+      "LOAD_WISHLIST"
+    );
+  } else {
+    await removeFromWishList(
+      ele._id,
+      userInfo,
+      wishListContextDispatch,
+      "LOAD_WISHLIST"
     );
   }
 };

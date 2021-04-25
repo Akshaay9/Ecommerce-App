@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, NavLink, useLocation } from "react-router-dom";
 import "./App.css";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 function OrderSuccess() {
+  const { state } = useLocation();
   const auth = JSON.parse(localStorage.getItem("user_info"));
   const {
     state: { userInfo },
@@ -26,13 +27,15 @@ function OrderSuccess() {
         auth.token
       );
       setOrderedProduct([data.data]);
+      
     })();
   }, []);
-  console.log(orderedProduct);
+ 
 
   return (
     <div style={{marginBottom:"2rem"}}>
       {/* top  success */}
+      {state==null &&
       <div className="order-success-top">
         <div className="order-success-top-icon">
           <i class="far fa-check-circle"></i>
@@ -44,7 +47,7 @@ function OrderSuccess() {
           {" "}
           <button>Continue Shopping</button>
         </NavLink>
-      </div>
+      </div>}
 
       {/* row 1 */}
       <div className="order-success-row-one">
