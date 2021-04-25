@@ -7,15 +7,11 @@ import {
   deleteItem,
   manageQTY,
 } from "./CartApiCalls";
-import { addToWishHandlerBasedOnLogin, removeFromWishList } from "./WishListAPICalls";
+import {
+  addToWishHandlerBasedOnLogin,
+  removeFromWishList,
+} from "./WishListAPICalls";
 
-// const removeFromCart = (cartContextDispatch,product,toastDispatch) => {
-//   cartContextDispatch({
-//     type: "REMOVE_FROM_CART",
-//     payload: product,
-//   })
-//   setAlert("Product has removed from the cart","danger",toastDispatch)
-// }
 const token = JSON.parse(localStorage.getItem("user_info"));
 
 export const checkIfTheProductIsInCart = (
@@ -23,9 +19,7 @@ export const checkIfTheProductIsInCart = (
   cartItems,
   cartContextDispatch,
   toastDispatch,
-  showModal,
   setSHowModal,
-
   userInfo
 ) => {
   // add to wishList based on login
@@ -57,16 +51,22 @@ export const checkIfTheProductIsInCart = (
                     product._id,
                     userInfo,
                     cartContextDispatch,
-                    "LOAD_CART_ITEMS"
+                  "LOAD_CART_ITEMS",
+                  toastDispatch,
+                "Product removed from cart"
                   )
                 : manageQTY(
                     product._id,
                     userInfo,
                     cartContextDispatch,
                     "LOAD_CART_ITEMS",
+
                     {
                       inCartQty: isItemOnTheCart[0].inCartQty - 1,
-                    }
+                    },
+      
+                    toastDispatch,
+                    "Product quantity decreased"
                   )
             }
           >
@@ -87,7 +87,10 @@ export const checkIfTheProductIsInCart = (
                 "LOAD_CART_ITEMS",
                 {
                   inCartQty: isItemOnTheCart[0].inCartQty + 1,
-                }
+                },
+      
+                toastDispatch,
+                "Product quantity increased"
               )
             }
           >
@@ -109,7 +112,8 @@ export const checkIfTheProductIsInCart = (
               setSHowModal,
               cartContextDispatch,
               "LOAD_CART_ITEMS",
-              null
+              toastDispatch,
+              "Product added to Cart"
             )
           }
         >
@@ -139,6 +143,7 @@ export const dispatchBasedOnBroductWishedOrNot = async (
   ele,
   wishListItems,
   wishListContextDispatch,
+  toastDispatch,
   setSHowModal,
   userInfo
 ) => {
@@ -151,14 +156,18 @@ export const dispatchBasedOnBroductWishedOrNot = async (
       userInfo,
       setSHowModal,
       wishListContextDispatch,
-      "LOAD_WISHLIST"
+      "LOAD_WISHLIST",
+      toastDispatch,
+      "Product added to wishlist"
     );
   } else {
     await removeFromWishList(
       ele._id,
       userInfo,
       wishListContextDispatch,
-      "LOAD_WISHLIST"
+      "LOAD_WISHLIST",
+      toastDispatch,
+      "Product removed from wishlist"
     );
   }
 };

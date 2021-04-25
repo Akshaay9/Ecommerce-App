@@ -11,6 +11,7 @@ import {
 } from "../../UtilityFunctions/ProductListUtilityFuntion/CartApiCalls";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 import { removeFromWishList } from "../../UtilityFunctions/ProductListUtilityFuntion/WishListAPICalls";
+import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
 
 function WishLists() {
   const {
@@ -24,6 +25,7 @@ function WishLists() {
   const {
     state: { userInfo },
   } = useLoginContext();
+  const { toastDispatch } = useToastContext();
 
   // check if the items present in cart
   const checkIfTheProductIsInCart = (product) => {
@@ -63,7 +65,9 @@ function WishLists() {
                       "LOAD_CART_ITEMS",
                       {
                         inCartQty: isItemOnTheCart[0].inCartQty - 1,
-                      }
+                      },
+                      toastDispatch,
+                      "Product quantity decreased"
                     )
               }
             >
@@ -83,7 +87,9 @@ function WishLists() {
                   "LOAD_CART_ITEMS",
                   {
                     inCartQty: isItemOnTheCart[0].inCartQty + 1,
-                  }
+                  },
+                  toastDispatch,
+                  "Product quantity increased"
                 )
               }
             >
@@ -103,7 +109,9 @@ function WishLists() {
                 userInfo,
                 null,
                 cartContextDispatch,
-                "LOAD_CART_ITEMS"
+                "LOAD_CART_ITEMS",
+                toastDispatch,
+                "Product added to Cart"
               )
             }
           >
@@ -142,7 +150,9 @@ function WishLists() {
                       ele.productID._id,
                       userInfo,
                       wishListContextDispatch,
-                      "LOAD_WISHLIST"
+                      "LOAD_WISHLIST",
+                      toastDispatch,
+                      "Product removed from wishlist"
                     )
                   }
                 ></i>

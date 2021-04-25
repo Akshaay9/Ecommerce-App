@@ -12,9 +12,6 @@ const router = express.Router();
 router.post("/signup",
     [
       check("name", "Please enter a name").isLength({ min: 5 }),
-      check("email", "Please enter a valid email").matches(
-        /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
-      ),
       check("password", "please enter a valid password").matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,15}$/
       ),
@@ -27,7 +24,7 @@ router.post("/signup",
       }
       const user = await User.findOne({ email });
       if (user) {
-        return res.status(400).json({ error: "user alredy exists" });
+        return res.status(400).json({ error: "user alredy exists,Please sign in" });
       }
       const newUser =await  User.create({
         name,
@@ -67,12 +64,12 @@ router.post("/signup",
     console.log(req.body);
       const user = await User.findOne({ email })
       if (!user) {
-        return res.status(400).json({error:"user not found please login"})
+        return res.status(400).json({error:"user not found,please login"})
     }
     const checkPassword = await bcrypt.compare( password,user.password)
     if (!checkPassword)
     {
-      return res.status(400).json({errors:[{msg:"Invalid credentials"}]})
+      return res.status(400).json({error:"invalid credentials"})
     }
       res.json({
         id: user._id,

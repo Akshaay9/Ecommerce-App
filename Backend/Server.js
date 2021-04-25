@@ -61,5 +61,5 @@ app.use((err, req, res, next) => {
 });
 // 404 handling
 app.use("*", function (req, res) {
-  res.status(400).json("Page Not Found");
+  return res.status(400).json({ error: "Page Not Found" });
 });

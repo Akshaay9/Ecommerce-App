@@ -3,7 +3,8 @@ import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 import { NavLink } from "react-router-dom";
-
+import { useToastContext } from "../../Contexts/ToastContext/ToastContext"
+import { setAlert } from "../../Contexts/ToastContext/ToastAction";
 function Nav({ showMobileNavNar, setShowMobileNavBar }) {
   const {
     state: { cartItems, loading },cartContextDispatch
@@ -17,6 +18,8 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
     state: { wishListItems },wishListContextDispatch
   } = useWishListContextProvider();
 
+  const {toastDispatch}=useToastContext()
+
   const lengthOfCartItems = () => {
     const length = cartItems.reduce((acc, ele) => acc + ele.inCartQty, 0);
     return length;
@@ -25,7 +28,8 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
   const logOut = () => {
     authDispatch({ type: "USER_LOGOUT" })
     cartContextDispatch({ type: "CLEAR_CART" })
-    wishListContextDispatch({type:"CLEAR_WISHLIST"})
+    wishListContextDispatch({ type: "CLEAR_WISHLIST" })
+    setAlert("User has been logged out","success",toastDispatch)
   }
 
   return (

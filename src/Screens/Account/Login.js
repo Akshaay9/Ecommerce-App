@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
 import { useLocation, useNavigate } from "react-router-dom";
+import {useToastContext} from "../../Contexts/ToastContext/ToastContext"
 import "./App.css";
 function Login() {
   const navigate = useNavigate();
@@ -12,7 +13,10 @@ function Login() {
     const {
       state: { userInfo },
       authDispatch,
-    } = useLoginContext();
+  } = useLoginContext();
+  
+const {toastDispatch}=useToastContext()
+
   if (userInfo.token) {
     navigate(state?.from ? state.from : "/products/mensnewdrop");
   }
@@ -61,11 +65,13 @@ function Login() {
     };
     makeAnAPICall(
       "POST",
-      "https://stark-falls-25364.herokuapp.com/api/users/login",
+      "http://localhost:5000/api/users/login",
       authDispatch,
       "USER_LOGGED_SUCCESSFULL",
       dataToBeSent,
-      null
+      null,
+      toastDispatch,
+      "Successfully logged in"
     );
   };
 

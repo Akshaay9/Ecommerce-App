@@ -9,6 +9,7 @@ import {
   manageQTY,
 } from "../../UtilityFunctions/ProductListUtilityFuntion/CartApiCalls";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
+import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
 function CartList() {
   const {
     state: { cartItems, loading },
@@ -17,6 +18,7 @@ function CartList() {
   const {
     state: { userInfo },
   } = useLoginContext();
+  const { toastDispatch } = useToastContext();
 
   return (
     <>
@@ -52,7 +54,9 @@ function CartList() {
                             ele.productID._id,
                             userInfo,
                             cartContextDispatch,
-                            "LOAD_CART_ITEMS"
+                            "LOAD_CART_ITEMS",
+                            toastDispatch,
+                            "Product removed from cart"
                           )
                         : manageQTY(
                             ele.productID._id,
@@ -61,7 +65,9 @@ function CartList() {
                             "LOAD_CART_ITEMS",
                             {
                               inCartQty: ele.inCartQty - 1,
-                            }
+                            },
+                            toastDispatch,
+                            "Product quantity decreased"
                           )
                     }
                   >
@@ -81,7 +87,9 @@ function CartList() {
                         "LOAD_CART_ITEMS",
                         {
                           inCartQty: ele.inCartQty + 1,
-                        }
+                        },
+                        toastDispatch,
+                        "Product quantity increased"
                       )
                     }
                   >

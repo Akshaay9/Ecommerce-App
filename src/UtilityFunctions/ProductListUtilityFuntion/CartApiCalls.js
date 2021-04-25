@@ -5,8 +5,11 @@ export const addToCartHandlerBasedOnLogin = async (
   userinfo,
   setSHowModal,
   dispatch,
-  dispatchType
+  dispatchType,
+  toastDispatch,
+  msg
 ) => {
+  console.log(toastDispatch);
   if (userinfo.token == null) {
     setSHowModal(true);
   } else {
@@ -16,7 +19,9 @@ export const addToCartHandlerBasedOnLogin = async (
       dispatch,
       dispatchType,
       null,
-      userinfo.token
+      userinfo.token,
+      toastDispatch,
+  msg
     );
   }
 };
@@ -25,7 +30,9 @@ export const manageQTY = async (
   userinfo,
   dispatch,
   dispatchType,
-  dataToBeDispatched
+  dataToBeDispatched,
+  toastDispatch,
+  msg
 ) => {
   await makeAnAPICall(
     `POST`,
@@ -33,16 +40,21 @@ export const manageQTY = async (
     dispatch,
     dispatchType,
     dataToBeDispatched,
-    userinfo.token
+    userinfo.token,
+    toastDispatch,
+  msg
   );
 };
-export const deleteItem = async (id, userinfo, dispatch, dispatchType) => {
+export const deleteItem = async (id, userinfo, dispatch, dispatchType, toastDispatch,
+  msg) => {
   await makeAnAPICall(
     `DELETE`,
     `http://localhost:5000/api/cart/${id}`,
     dispatch,
     dispatchType,
     null,
-    userinfo.token
+    userinfo.token,
+    toastDispatch,
+  msg
   );
 };

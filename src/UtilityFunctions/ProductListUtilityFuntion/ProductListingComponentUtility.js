@@ -49,9 +49,9 @@ function ProductListingComponentUtility({ products, filterItems }) {
               cartItems,
               cartContextDispatch,
               toastDispatch,
-              showModal,
               setSHowModal,
-              userInfo
+              userInfo,
+            
             )}
           </div>
           <div className="card-container-footer">
@@ -74,6 +74,7 @@ function ProductListingComponentUtility({ products, filterItems }) {
                       ele,
                       wishListItems,
                       wishListContextDispatch,
+                      toastDispatch,
                       setSHowModal,
                       userInfo
                     )

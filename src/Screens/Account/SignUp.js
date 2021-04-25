@@ -5,6 +5,7 @@ import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRe
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
 import "./App.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
 function SignUp() {
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -13,6 +14,7 @@ function SignUp() {
     state: { userInfo },
     authDispatch,
   } = useLoginContext();
+  const {toastDispatch}=useToastContext()
   
 
   const [name, setName] = useState("");
@@ -73,7 +75,9 @@ function SignUp() {
       authDispatch,
       "USER_REGISTER_SUCCESSFULL",
       dataToBeSent,
-      null
+      null,
+      toastDispatch,
+      "Successfully logged in"
     );
   };
   if (userInfo.token) {

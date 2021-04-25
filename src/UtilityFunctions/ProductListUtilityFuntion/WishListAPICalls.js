@@ -5,7 +5,9 @@ export const addToWishHandlerBasedOnLogin = async (
   userinfo,
   setSHowModal,
   dispatch,
-  dispatchType
+  dispatchType,
+  toastDispatch,
+  msg
 ) => {
   if (userinfo.token == null) {
     setSHowModal(true);
@@ -16,7 +18,9 @@ export const addToWishHandlerBasedOnLogin = async (
       dispatch,
       dispatchType,
       null,
-      userinfo.token
+      userinfo.token,
+      toastDispatch,
+      msg
     );
   }
 };
@@ -24,7 +28,9 @@ export const removeFromWishList = async (
   id,
   userinfo,
   dispatch,
-  dispatchType
+  dispatchType,
+  toastDispatch,
+  msg
 ) => {
   await makeAnAPICall(
     `DELETE`,
@@ -32,6 +38,8 @@ export const removeFromWishList = async (
     dispatch,
     dispatchType,
     null,
-    userinfo.token
+    userinfo.token,
+    toastDispatch,
+    msg
   );
 };

@@ -6,12 +6,16 @@ import { useAllProductsContextContext } from "../../Contexts/SearchAndIndividual
 import axios from "axios";
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
+import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
 import {
   addToCartHandlerBasedOnLogin,
   deleteItem,
   manageQTY,
 } from "../../UtilityFunctions/ProductListUtilityFuntion/CartApiCalls";
-import { addToWishHandlerBasedOnLogin, removeFromWishList } from "../../UtilityFunctions/ProductListUtilityFuntion/WishListAPICalls";
+import {
+  addToWishHandlerBasedOnLogin,
+  removeFromWishList,
+} from "../../UtilityFunctions/ProductListUtilityFuntion/WishListAPICalls";
 const todaysDate = new Date();
 
 function SingleProductView() {
@@ -33,6 +37,8 @@ function SingleProductView() {
     wishListContextDispatch,
   } = useWishListContextProvider();
 
+  const { toastDispatch } = useToastContext();
+
   useEffect(() => {
     (async () => {
       const singleProduct = await makeAnAPICall(
@@ -46,11 +52,11 @@ function SingleProductView() {
   console.log("signleProducts", signleProduct);
 
   // carousal
-  // useEffect(() => {
-  //   const next = (imageSlider + 1) % 3;
-  //   const id = setTimeout(() => setImageSlider(next), 1400);
-  //   return () => clearTimeout(id);
-  // }, [imageSlider]);
+  useEffect(() => {
+    const next = (imageSlider + 1) % 3;
+    const id = setTimeout(() => setImageSlider(next), 1400);
+    return () => clearTimeout(id);
+  }, [imageSlider]);
 
   // check if the items present in cart
   const checkIfTheProductIsInCart = (product) => {
@@ -88,7 +94,9 @@ function SingleProductView() {
                       "LOAD_CART_ITEMS",
                       {
                         inCartQty: isItemOnTheCart[0].inCartQty - 1,
-                      }
+                      },
+                      toastDispatch,
+                      "Product quantity decreased"
                     )
               }
             >
@@ -108,7 +116,9 @@ function SingleProductView() {
                   "LOAD_CART_ITEMS",
                   {
                     inCartQty: isItemOnTheCart[0].inCartQty + 1,
-                  }
+                  },
+                  toastDispatch,
+                  "Product quantity increased"
                 )
               }
             >
@@ -128,7 +138,9 @@ function SingleProductView() {
                 userInfo,
                 null,
                 cartContextDispatch,
-                "LOAD_CART_ITEMS"
+                "LOAD_CART_ITEMS",
+                toastDispatch,
+                "Product added to Cart"
               )
             }
           >
@@ -159,14 +171,18 @@ function SingleProductView() {
         userInfo,
         null,
         wishListContextDispatch,
-        "LOAD_WISHLIST"
+        "LOAD_WISHLIST",
+        toastDispatch,
+        "Product added to wishlist"
       );
     } else {
       removeFromWishList(
         ele._id,
         userInfo,
         wishListContextDispatch,
-        "LOAD_WISHLIST"
+        "LOAD_WISHLIST",
+        toastDispatch,
+        "Product removed from wishlist"
       );
     }
   };

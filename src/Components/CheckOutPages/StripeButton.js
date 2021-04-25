@@ -3,11 +3,13 @@ import StripeCheckout from "react-stripe-checkout";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
 import { useNavigate, NavLink } from "react-router-dom";
+import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
 
 const StripeButton = (props) => {
   let navigate = useNavigate();
   const {
-    state: { cartItems },cartContextDispatch
+    state: { cartItems },
+    cartContextDispatch,
   } = useCartContextProvider();
 
   const localStoragePaymentInfo = localStorage.getItem("payment")
@@ -17,6 +19,7 @@ const StripeButton = (props) => {
     ? JSON.parse(localStorage.getItem("address"))
     : {};
   const auth = JSON.parse(localStorage.getItem("user_info"));
+  const { toastDispatch } = useToastContext();
   const orderItems = cartItems.map((ele) => {
     return {
       productID: ele.productID._id,
@@ -25,7 +28,7 @@ const StripeButton = (props) => {
   });
   const getToken = (token) => {
     updatePaymentAndRedirect(token);
-    deleteCartItems()
+    deleteCartItems();
   };
   const updatePaymentAndRedirect = async (token) => {
     const finalOrderDetails = {
@@ -46,13 +49,15 @@ const StripeButton = (props) => {
       null,
       null,
       finalOrderDetails,
-      auth.token
+      auth.token,
+      toastDispatch,
+      "Payment Successfull"
     );
     navigate(`/ordersuccess/${data._id}`);
   };
 
   const deleteCartItems = async () => {
-   const data= await makeAnAPICall(
+    const data = await makeAnAPICall(
       `DELETE`,
       `http://localhost:5000/api/deletecart`,
       null,
@@ -61,8 +66,8 @@ const StripeButton = (props) => {
       auth.token
     );
     console.log(data);
-    cartContextDispatch({type:"CLEAR_CART"})
-  }
+    cartContextDispatch({ type: "CLEAR_CART" });
+  };
 
   return (
     <StripeCheckout

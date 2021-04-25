@@ -7,7 +7,7 @@ const router = express.Router();
 router.post("/", privateRoute, async (req, res) => {
   const { orderItems, paymentMethod, paymentResult, address } = req.body;
   if (orderItems.length == 0) {
-    return res.status(400).json({ error: "No items" });
+    return res.status(400).json({ error: "No items on the cart" });
   }
   const checkOutProducts = new Checkout({
     user: req.user.id,
