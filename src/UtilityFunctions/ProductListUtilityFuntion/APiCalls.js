@@ -55,6 +55,7 @@ export const makeAnAPICall = async (
         // const errors = error.response.data.errors
         //   ? error.response.data.errors
         //   : error.response.data;
+        console.log(error);
         console.log(error.response);
       }
       return;

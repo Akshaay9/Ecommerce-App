@@ -2,6 +2,5 @@ import dotenv from 'dotenv'
 import jwt from "jsonwebtoken"
 dotenv.config();
 export default function assignJWT(id) {
-    
-    return jwt.sign({id},"akshay9898askadjmakdjmak")
+    return jwt.sign({id},process.env.JWT)
 }

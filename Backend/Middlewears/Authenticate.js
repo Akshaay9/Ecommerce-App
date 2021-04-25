@@ -10,7 +10,7 @@ export default async function privateRoute(req,res,next) {
             return res.status(400).json("Unauthorized section")
         }
     try {
-        const decoded =  jwt.verify(token, "akshay9898askadjmakdjmak")
+        const decoded =  jwt.verify(token, process.env.JWT)
         req.user=decoded
         next()
     } catch (error) {
