@@ -23,6 +23,7 @@ function SignUp() {
   const [inputError, setInputError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     if (name.length == 0) {
@@ -64,6 +65,7 @@ function SignUp() {
 
   const submitUser = async (e) => {
     e.preventDefault();
+    setLoader(true)
     const dataToBeSent = {
       name: name,
       email: email,
@@ -77,7 +79,8 @@ function SignUp() {
       dataToBeSent,
       null,
       toastDispatch,
-      "Successfully logged in"
+      "Successfully logged in",
+      setLoader
     );
   };
   if (userInfo.token) {
@@ -194,7 +197,13 @@ function SignUp() {
               <p>I agree with Terms and conditions</p>
             </div>
             <div className="login-final-cta">
-              <button>Sign Up</button>
+            <button disabled={loader} className="black-btn-disable">
+              {loader ? (
+                <i class="fas fa-spinner fa-spin login-spin"></i>
+              ) : (
+                "Log In"
+              )}
+            </button>
             </div>
           </form>
         </div>

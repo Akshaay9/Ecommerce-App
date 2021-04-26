@@ -123,8 +123,18 @@
     color: black;
     background: white;
     border: 1px solid black;
-    cursor: pointer;
+  cursor: pointer;
 }
+.login-spin{
+  padding: 0rem 1.2rem;
+  
+}
+.black-btn-disable:disabled{
+  color: rgb(0, 0, 0);
+  background: rgb(255, 254, 254);
+  cursor: not-allowed;
+}
+
 
 /* sign=== up */
 .signup{

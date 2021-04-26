@@ -8,7 +8,8 @@ export const makeAnAPICall = async (
   dataToBeDispatched,
   token,
   dispatch1,
-  msg
+  msg,
+  setLoader
 ) => {
   const config = {
     headers: {
@@ -20,6 +21,9 @@ export const makeAnAPICall = async (
     case "DELETE":
       try {
         const data = await axios.delete(url, config);
+        if (setLoader) {
+          setLoader(false);
+        }
         if (dispatch != null && msg != null) {
           setAlert(msg, "danger", dispatch1);
         }
@@ -28,6 +32,9 @@ export const makeAnAPICall = async (
         }
         dispatch({ type: dispatchType, payload: data.data });
       } catch (error) {
+        if (setLoader) {
+          setLoader(false);
+        }
         console.log(error.response);
         if (dispatch1 != null) {
           setAlert(error.response.data.error, "danger", dispatch1);
@@ -53,9 +60,11 @@ export const makeAnAPICall = async (
       }
       return;
     case "POST":
-      console.log(dispatch1, msg);
       try {
         const data = await axios.post(url, dataToBeDispatched, config);
+        if (setLoader) {
+          setLoader(false);
+        }
         if (dispatch1) {
           setAlert(msg, "success", dispatch1);
         }
@@ -66,6 +75,9 @@ export const makeAnAPICall = async (
         dispatch({ type: dispatchType, payload: data.data });
       } catch (error) {
         console.log(error);
+        if (setLoader) {
+          setLoader(false);
+        }
         if (dispatch1 != null) {
           setAlert(error.response.data.error, "danger", dispatch1);
         }

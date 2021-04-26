@@ -1,7 +1,3 @@
-import axios from "axios";
-import LoginModal from "../../Components/LoginModal/LoginModal";
-import { setAlert } from "../../Contexts/ToastContext/ToastAction";
-import { makeAnAPICall } from "./APiCalls";
 import {
   addToCartHandlerBasedOnLogin,
   deleteItem,
@@ -12,18 +8,19 @@ import {
   removeFromWishList,
 } from "./WishListAPICalls";
 
-const token = JSON.parse(localStorage.getItem("user_info"));
-
 export const checkIfTheProductIsInCart = (
   product,
   cartItems,
   cartContextDispatch,
   toastDispatch,
   setSHowModal,
-  userInfo
+  userInfo,
+  loader,
+  setLoader,
+  index,
+  ButtonId,
+  setButtonId
 ) => {
-  // add to wishList based on login
-
   const newItems = [...cartItems];
   const isItemOnTheCart = newItems.filter(
     (ele) => ele.productID._id == product._id
@@ -44,16 +41,20 @@ export const checkIfTheProductIsInCart = (
         <div className="card-ad-to-cart-action-qty">
           {" "}
           <button
-            className="btn-secondary btn-secondary-hr-outline-in"
-            onClick={() =>
+            className="btn-secondary btn-secondary-hr-outline-in secondary-disabled"
+            id={index}
+            disabled={loader && index * 1 + 200 == ButtonId}
+            onClick={(e) => {
+              setButtonId(e.target.id * 1 + 200);
               isItemOnTheCart[0].inCartQty == 1
                 ? deleteItem(
                     product._id,
                     userInfo,
                     cartContextDispatch,
-                  "LOAD_CART_ITEMS",
-                  toastDispatch,
-                "Product removed from cart"
+                    "LOAD_CART_ITEMS",
+                    toastDispatch,
+                    "Product removed from cart",
+                    setLoader
                   )
                 : manageQTY(
                     product._id,
@@ -64,22 +65,31 @@ export const checkIfTheProductIsInCart = (
                     {
                       inCartQty: isItemOnTheCart[0].inCartQty - 1,
                     },
-      
+
                     toastDispatch,
-                    "Product quantity decreased"
-                  )
-            }
+                    "Product quantity decreased",
+                    setLoader
+                  );
+            }}
           >
-            <span>-</span>
+            {console.log(loader)}
+            {loader && ButtonId !== null && index + 200 == ButtonId ? (
+              <i class="fas fa-spinner fa-spin btn-spin"></i>
+            ) : (
+             "-"
+            )}
           </button>{" "}
-          {isItemOnTheCart[0].inCartQty}{" "}
+          {isItemOnTheCart[0].inCartQty}
           <button
             disabled={
               isItemOnTheCart[0].inCartQty ===
-              isItemOnTheCart[0].productID.inStock
+                isItemOnTheCart[0].productID.inStock ||
+              (loader && index * 1 == ButtonId)
             }
             className="btn-secondary btn-secondary-hr-outline-in secondary-disabled"
-            onClick={() =>
+            id={index}
+            onClick={(e) => {
+              setButtonId(e.target.id);
               manageQTY(
                 product._id,
                 userInfo,
@@ -88,13 +98,18 @@ export const checkIfTheProductIsInCart = (
                 {
                   inCartQty: isItemOnTheCart[0].inCartQty + 1,
                 },
-      
+
                 toastDispatch,
-                "Product quantity increased"
-              )
-            }
+                "Product quantity increased",
+                setLoader
+              );
+            }}
           >
-            <span>+</span>
+            {loader && ButtonId !== null && index == ButtonId ? (
+              <i class="fas fa-spinner fa-spin btn-spin"></i>
+            ) : (
+              "+"
+            )}
           </button>{" "}
         </div>{" "}
       </div>
@@ -104,8 +119,11 @@ export const checkIfTheProductIsInCart = (
       <div className="card-add-to-cart-action">
         <h3>Quick ADD</h3>
         <button
-          className="btn-primary btn-primary-hr-outline-out"
-          onClick={() =>
+          className="btn-primary btn-primary-hr-outline-out  blue-btn-disable"
+          id={index}
+          disabled={loader && index * 1 == ButtonId}
+          onClick={(e) => {
+            setButtonId(e.target.id);
             addToCartHandlerBasedOnLogin(
               product._id,
               userInfo,
@@ -113,15 +131,23 @@ export const checkIfTheProductIsInCart = (
               cartContextDispatch,
               "LOAD_CART_ITEMS",
               toastDispatch,
-              "Product added to Cart"
-            )
-          }
+              "Product added to Cart",
+              setLoader
+            );
+          }}
         >
-          Add To Cart
+      
+          {loader && ButtonId !== null && index == ButtonId ? (
+            <i class="fas fa-spinner fa-spin login-spin"></i>
+          ) : (
+            "Add To Cart"
+          )}
         </button>
       </div>
     );
 };
+
+// fun 2
 
 export const checkIfTheProductIsWished = (ele, wishListItems) => {
   const isItemsWished = wishListItems.filter(
@@ -138,6 +164,7 @@ export const checkIfTheProductIsWished = (ele, wishListItems) => {
     });
   }
 };
+// fun3
 
 export const dispatchBasedOnBroductWishedOrNot = async (
   ele,
@@ -145,7 +172,8 @@ export const dispatchBasedOnBroductWishedOrNot = async (
   wishListContextDispatch,
   toastDispatch,
   setSHowModal,
-  userInfo
+  userInfo,
+  setLoader
 ) => {
   const isItemsWished = wishListItems.filter(
     (prod) => prod.productID._id == ele._id
@@ -158,7 +186,8 @@ export const dispatchBasedOnBroductWishedOrNot = async (
       wishListContextDispatch,
       "LOAD_WISHLIST",
       toastDispatch,
-      "Product added to wishlist"
+      "Product added to wishlist",
+      setLoader
     );
   } else {
     await removeFromWishList(
@@ -167,7 +196,8 @@ export const dispatchBasedOnBroductWishedOrNot = async (
       wishListContextDispatch,
       "LOAD_WISHLIST",
       toastDispatch,
-      "Product removed from wishlist"
+      "Product removed from wishlist",
+      setLoader
     );
   }
 };

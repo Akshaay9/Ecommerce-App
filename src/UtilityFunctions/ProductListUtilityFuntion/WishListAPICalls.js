@@ -7,11 +7,16 @@ export const addToWishHandlerBasedOnLogin = async (
   dispatch,
   dispatchType,
   toastDispatch,
-  msg
+  msg,
+  setLoader
 ) => {
   if (userinfo.token == null) {
     setSHowModal(true);
   } else {
+    if (setLoader) {
+   setLoader(true)
+ }
+ 
     await makeAnAPICall(
       `POST`,
       `http://localhost:5000/api/wishlist/${id}`,
@@ -20,7 +25,8 @@ export const addToWishHandlerBasedOnLogin = async (
       null,
       userinfo.token,
       toastDispatch,
-      msg
+      msg,
+      setLoader
     );
   }
 };
@@ -30,8 +36,13 @@ export const removeFromWishList = async (
   dispatch,
   dispatchType,
   toastDispatch,
-  msg
+  msg,
+  setLoader
 ) => {
+  if (setLoader)
+  {
+     setLoader(true)
+    }
   await makeAnAPICall(
     `DELETE`,
     `http://localhost:5000/api/wishlist/${id}`,
@@ -40,6 +51,7 @@ export const removeFromWishList = async (
     null,
     userinfo.token,
     toastDispatch,
-    msg
+    msg,
+    setLoader
   );
 };

@@ -4,18 +4,18 @@ import { NavLink } from "react-router-dom";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
 import { useLocation, useNavigate } from "react-router-dom";
-import {useToastContext} from "../../Contexts/ToastContext/ToastContext"
+import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
 import "./App.css";
 function Login() {
   const navigate = useNavigate();
   const { state } = useLocation();
-    // grab context
-    const {
-      state: { userInfo },
-      authDispatch,
+  // grab context
+  const {
+    state: { userInfo },
+    authDispatch,
   } = useLoginContext();
-  
-const {toastDispatch}=useToastContext()
+
+  const { toastDispatch } = useToastContext();
 
   if (userInfo.token) {
     navigate(state?.from ? state.from : "/products/mensnewdrop");
@@ -24,8 +24,7 @@ const {toastDispatch}=useToastContext()
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-
-
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     var re = /\S+@\S+\.\S+/;
@@ -59,6 +58,7 @@ const {toastDispatch}=useToastContext()
 
   const loginUser = async (e) => {
     e.preventDefault();
+    setLoader(true);
     const dataToBeSent = {
       email: email,
       password: password,
@@ -71,11 +71,10 @@ const {toastDispatch}=useToastContext()
       dataToBeSent,
       null,
       toastDispatch,
-      "Successfully logged in"
+      "Successfully logged in",
+      setLoader
     );
   };
-
- 
 
   return (
     <div className="signup">
@@ -157,7 +156,13 @@ const {toastDispatch}=useToastContext()
             <p>I agree with Terms and conditions</p>
           </div>
           <div className="login-final-cta">
-            <button>Sign Up</button>
+            <button disabled={loader} className="black-btn-disable">
+              {loader ? (
+                <i class="fas fa-spinner fa-spin login-spin"></i>
+              ) : (
+                "Log In"
+              )}
+            </button>
           </div>
         </form>
       </div>

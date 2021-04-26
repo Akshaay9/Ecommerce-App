@@ -14,6 +14,8 @@ import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRe
 
 function ProductListingComponentUtility({ products, filterItems }) {
   const [showModal, setSHowModal] = useState(false);
+  const [loader, setLoader] = useState(false);
+  const [ButtonId, setButtonId] = useState(null);
 
   const {
     state: { cartItems },
@@ -24,71 +26,90 @@ function ProductListingComponentUtility({ products, filterItems }) {
     state: { wishListItems },
     wishListContextDispatch,
   } = useWishListContextProvider();
-  
+
   const {
     state: { userInfo },
   } = useLoginContext();
 
   const { toastDispatch } = useToastContext();
 
-
   return (
     <>
-     {showModal && <LoginModal showModal={showModal} setSHowModal={setSHowModal} />}
-    <div className="grid-container">
-      {filterData(products, filterItems).map((ele) => (
-        <div className="card-container" key={ele._id}>
-          <div className="card-container-header">
-            <NavLink to={`/products/${ele._id}`}>
-              <img src={ele.images[0].img} alt="" />
-              {ele.newArrival && <span className="cardBadge">New Arrival</span>}
-            </NavLink>
-            {/* calling the program so that it  automatiaaly renders ADD to cart button or increase the qty buttons */}
-            {checkIfTheProductIsInCart(
-              ele,
-              cartItems,
-              cartContextDispatch,
-              toastDispatch,
-              setSHowModal,
-              userInfo,
-            
-            )}
-          </div>
-          <div className="card-container-footer">
-            <div className="card-container-footer-row-one">
-              <span>New</span>
-              <h4>{ele.price}.00₹</h4>
-            </div>
-            <div className="card-container-footer-row-two">
+      {showModal && (
+        <LoginModal showModal={showModal} setSHowModal={setSHowModal} />
+      )}
+      <div className="grid-container">
+        {filterData(products, filterItems).map((ele, index) => (
+          <div className="card-container" key={ele._id}>
+            <div className="card-container-header">
               <NavLink to={`/products/${ele._id}`}>
-                {" "}
-                <h2>{ele.name}</h2>{" "}
+                <img src={ele.images[0].img} alt="" />
+                {ele.newArrival && (
+                  <span className="cardBadge">New Arrival</span>
+                )}
               </NavLink>
-              <div className="card-container-footer-row-three">
-                <p>{ele.color}</p>
-                <i
-                  className="fas fa-heart wish-heart-icon "
-                  style={checkIfTheProductIsWished(ele, wishListItems)}
-                  onClick={() =>
-                    dispatchBasedOnBroductWishedOrNot(
-                      ele,
-                      wishListItems,
-                      wishListContextDispatch,
-                      toastDispatch,
-                      setSHowModal,
-                      userInfo
-                    )
-                  }
-                >
+              {/* calling the program so that it  automatiaaly renders ADD to cart button or increase the qty buttons */}
+              {checkIfTheProductIsInCart(
+                ele,
+                cartItems,
+                cartContextDispatch,
+                toastDispatch,
+                setSHowModal,
+                userInfo,
+                loader,
+                setLoader,
+                index,
+                ButtonId,
+                setButtonId
+              )}
+            </div>
+            <div className="card-container-footer">
+              <div className="card-container-footer-row-one">
+                <span>New</span>
+                <h4>{ele.price}.00₹</h4>
+              </div>
+              <div className="card-container-footer-row-two">
+                <NavLink to={`/products/${ele._id}`}>
                   {" "}
-                </i>
+                  <h2>{ele.name}</h2>{" "}
+                </NavLink>
+                <div className="card-container-footer-row-three">
+                  <p>{ele.color}</p>
+                  <i
+                    className="wishID-icon"
+                    onClick={(e) => {
+                      setButtonId(e.target.id * 1);
+                      dispatchBasedOnBroductWishedOrNot(
+                        ele,
+                        wishListItems,
+                        wishListContextDispatch,
+                        toastDispatch,
+                        setSHowModal,
+                        userInfo,
+                        setLoader
+                      );
+                    }}
+                  >
+                    {console.log(ButtonId)}
+                    {loader &&
+                    ButtonId !== null &&
+                    index * 1 + 300 == ButtonId ? (
+                      <i class="fas fa-spinner fa-spin wish-spin"></i>
+                    ) : (
+                      <i
+                        className="fas fa-heart wish-heart-icon "
+                        id={index * 1 + 300}
+                        style={checkIfTheProductIsWished(ele, wishListItems)}
+                      ></i>
+                    )}
+                  </i>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
       </div>
-      </>
+    </>
   );
 }
 
