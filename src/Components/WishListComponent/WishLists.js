@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 import { NavLink } from "react-router-dom";
@@ -12,6 +12,10 @@ import {
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 import { removeFromWishList } from "../../UtilityFunctions/ProductListUtilityFuntion/WishListAPICalls";
 import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
+import {
+  checkIfTheProductIsWished,
+  dispatchBasedOnBroductWishedOrNot,
+} from "../../UtilityFunctions/ProductListUtilityFuntion/ProductListingFunctionsUtility";
 
 function WishLists() {
   const {
@@ -26,10 +30,11 @@ function WishLists() {
     state: { userInfo },
   } = useLoginContext();
   const { toastDispatch } = useToastContext();
+  const [loader, setLoader] = useState(false);
+  const [ButtonId, setButtonId] = useState(null);
 
   // check if the items present in cart
-  const checkIfTheProductIsInCart = (product) => {
-    console.log(product);
+  const checkIfTheProductIsInCart = (product, index) => {
     const newItems = [...cartItems];
     const isItemOnTheCart = newItems.filter(
       (ele) => ele.productID._id == product.productID._id
@@ -49,14 +54,20 @@ function WishLists() {
           <div>
             {" "}
             <button
-              className="btn-secondary btn-secondary-hr-outline-in wishlist-cta"
-              onClick={() =>
+              className="btn-secondary btn-secondary-hr-outline-in wishlist-cta  secondary-disabled"
+              id={index}
+              disabled={loader && index * 1 + 200 == ButtonId}
+              onClick={(e) => {
+                setButtonId(e.target.id * 1 + 200);
                 isItemOnTheCart[0].inCartQty == 1
                   ? deleteItem(
                       product.productID._id,
                       userInfo,
                       cartContextDispatch,
-                      "LOAD_CART_ITEMS"
+                      "LOAD_CART_ITEMS",
+                      toastDispatch,
+                      "Product removed from cart",
+                      setLoader
                     )
                   : manageQTY(
                       product.productID._id,
@@ -67,19 +78,26 @@ function WishLists() {
                         inCartQty: isItemOnTheCart[0].inCartQty - 1,
                       },
                       toastDispatch,
-                      "Product quantity decreased"
-                    )
-              }
+                      "Product quantity decreased",
+                      setLoader
+                    );
+              }}
             >
-              <span>-</span>
+              {loader && ButtonId !== null && index + 200 == ButtonId ? (
+                <i class="fas fa-spinner fa-spin btn-spin"></i>
+              ) : (
+                "-"
+              )}
             </button>{" "}
             {isItemOnTheCart[0].inCartQty}{" "}
             <button
               disabled={
                 isItemOnTheCart[0].inCartQty === isItemOnTheCart[0].inStock
               }
-              className="btn-secondary btn-secondary-hr-outline-in  wishlist-cta"
-              onClick={() =>
+              className="btn-secondary btn-secondary-hr-outline-in  wishlist-cta secondary-disabled"
+              id={index}
+              onClick={(e) => {
+                setButtonId(e.target.id);
                 manageQTY(
                   product.productID._id,
                   userInfo,
@@ -89,11 +107,16 @@ function WishLists() {
                     inCartQty: isItemOnTheCart[0].inCartQty + 1,
                   },
                   toastDispatch,
-                  "Product quantity increased"
-                )
-              }
+                  "Product quantity increased",
+                  setLoader
+                );
+              }}
             >
-              <span>+</span>
+              {loader && ButtonId !== null && index == ButtonId ? (
+                <i class="fas fa-spinner fa-spin btn-spin"></i>
+              ) : (
+                "+"
+              )}
             </button>{" "}
           </div>{" "}
         </div>
@@ -102,8 +125,11 @@ function WishLists() {
       return (
         <div className="card-add-to-cart singleProductPage">
           <button
-            className="btn-primary btn-primary-hr-outline-out singleproductpage-cta"
-            onClick={() =>
+            id={index}
+            className="btn-primary btn-primary-hr-outline-out singleproductpage-cta blue-btn-disable"
+            disabled={loader && index * 1 == ButtonId}
+            onClick={(e) => {
+              setButtonId(e.target.id);
               addToCartHandlerBasedOnLogin(
                 product.productID._id,
                 userInfo,
@@ -111,11 +137,16 @@ function WishLists() {
                 cartContextDispatch,
                 "LOAD_CART_ITEMS",
                 toastDispatch,
-                "Product added to Cart"
-              )
-            }
+                "Product added to Cart",
+                setLoader
+              );
+            }}
           >
-            Add To Cart
+            {loader && ButtonId !== null && index == ButtonId ? (
+              <i class="fas fa-spinner fa-spin login-spin"></i>
+            ) : (
+              "Add To Cart"
+            )}
           </button>
         </div>
       );
@@ -128,7 +159,7 @@ function WishLists() {
       )}
       <div className="wishList-components">
         {wishListItems.length > 0 &&
-          wishListItems.map((ele) => (
+          wishListItems.map((ele, index) => (
             <div className="wishlist-component-container">
               <NavLink to={`/products/${ele.productID._id}`}>
                 <div className="wishlist-component-container-left">
@@ -144,19 +175,33 @@ function WishLists() {
               </NavLink>
               <div className="wishlist-component-container-right">
                 <i
-                  className="fas fa-trash"
-                  onClick={() =>
-                    removeFromWishList(
-                      ele.productID._id,
-                      userInfo,
+                  className="wishID-icon"
+                  onClick={(e) => {
+                    setButtonId(e.target.id * 1);
+                    dispatchBasedOnBroductWishedOrNot(
+                      ele.productID,
+                      wishListItems,
                       wishListContextDispatch,
-                      "LOAD_WISHLIST",
                       toastDispatch,
-                      "Product removed from wishlist"
-                    )
-                  }
-                ></i>
-                {checkIfTheProductIsInCart(ele)}
+                      null,
+                      userInfo,
+                      setLoader
+                    );
+                  }}
+                >
+                  {loader &&
+                  ButtonId !== null &&
+                  index * 1 + 300 == ButtonId ? (
+                    <i class="fas fa-spinner fa-spin wish-spin"></i>
+                  ) : (
+                    <i
+                      className="fas fa-trash "
+                      id={index * 1 + 300}
+                      style={checkIfTheProductIsWished(ele, wishListItems)}
+                    ></i>
+                  )}
+                </i>
+                {checkIfTheProductIsInCart(ele, index)}
               </div>
             </div>
           ))}

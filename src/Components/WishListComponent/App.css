@@ -48,6 +48,15 @@
   justify-content: space-evenly;
   align-items: center;
 }
+.card-add-to-cart h3{
+  font-size: 1.2rem;
+  font-family: var(--font-sans-serif);
+  line-height: 2rem;
+  color: rgb(68, 68, 68);
+  margin: 0px 0px 0.3rem;
+  padding-right: 0px;
+padding-bottom: 1rem;
+}
 .wishlist-component-container-right i {
   flex: 0.1;
 }
@@ -82,10 +91,11 @@
   
 }
 .fa-trash {
-  color: #504f4f;
+  /* color: #000000 !important; */
+  padding-bottom: .1rem;
 }
 .fa-trash:hover {
-  color: #474646;
+  color: #070606 !important;
   transition: all 100ms ease-in-out;
   transform: scale(1.2);
 }

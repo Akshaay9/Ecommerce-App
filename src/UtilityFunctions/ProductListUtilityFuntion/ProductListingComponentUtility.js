@@ -90,7 +90,7 @@ function ProductListingComponentUtility({ products, filterItems }) {
                       );
                     }}
                   >
-                    {console.log(ButtonId)}
+                    
                     {loader &&
                     ButtonId !== null &&
                     index * 1 + 300 == ButtonId ? (

@@ -21,10 +21,14 @@ export const checkIfTheProductIsInCart = (
   ButtonId,
   setButtonId
 ) => {
+
+ 
   const newItems = [...cartItems];
   const isItemOnTheCart = newItems.filter(
     (ele) => ele.productID._id == product._id
   );
+
+ 
 
   if (isItemOnTheCart.length > 0) {
     return (
@@ -72,7 +76,7 @@ export const checkIfTheProductIsInCart = (
                   );
             }}
           >
-            {console.log(loader)}
+            
             {loader && ButtonId !== null && index + 200 == ButtonId ? (
               <i class="fas fa-spinner fa-spin btn-spin"></i>
             ) : (

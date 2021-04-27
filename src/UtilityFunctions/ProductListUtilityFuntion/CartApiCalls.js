@@ -11,7 +11,7 @@ export const addToCartHandlerBasedOnLogin = async (
   setLoader
 ) => {
  
-  if (userinfo.token == null) {
+  if (userinfo.token == null && setSHowModal) {
     setSHowModal(true);
   } else {
     if (setLoader)
