@@ -1,13 +1,11 @@
 import express from "express";
 import User from "../Models/UserModels.js";
-import jwt from "jsonwebtoken";
-import config from "config";
 import bcrypt from "bcryptjs";
 import { check, validationResult } from "express-validator";
 import assignJWT from "../Middlewears/AssignJWT.js";
 const router = express.Router();
 
-
+import privateRoute from "../Middlewears/Authenticate.js";
 // user registration
 router.post("/signup",
     [
@@ -60,8 +58,7 @@ router.post("/signup",
     }
     
     const { email, password } = req.body
-    console.log(req.body);
-    console.log(req.body);
+   
       const user = await User.findOne({ email })
       if (!user) {
         return res.status(400).json({error:"user not found,please login"})
@@ -79,5 +76,26 @@ router.post("/signup",
     })
       
   });
+
+
+  // router update password
+
+router.post("/:id", privateRoute, async (req, res) => {
+  const { password,updatePass } = req.body
+  const {id}=req.params
+  const user = await User.findById(id)
+  const checkPassword =await bcrypt.compare(password, user.password)
+  if (!checkPassword) {
+    return res.status(400).json({error:"invalid user password"})
+  }
+  else {
+    const salt = await bcrypt.genSalt(10)
+    const newPassword= await bcrypt.hash(updatePass, salt);
+    user.password = newPassword
+    await user.save()
+    return res.status(200).json({msg:"pass updates"})
+  }
+  
+  })
 
 export default router;

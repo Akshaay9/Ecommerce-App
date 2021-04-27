@@ -47,6 +47,10 @@ function OrderSuccess() {
           {" "}
           <button>Continue Shopping</button>
         </NavLink>
+        <NavLink to="/profile">
+          {" "}
+          <button>Got to profile</button>
+        </NavLink>
       </div>}
 
       {/* row 1 */}

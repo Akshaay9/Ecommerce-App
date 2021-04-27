@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
+import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
 import "./App.css";
 function UserProfile() {
@@ -10,12 +11,17 @@ function UserProfile() {
     password: "",
     confirmPassword: "",
   });
+  const [passwordError, setPasswordError] = useState("");
+  const [updatePasswordError, setUpdatePasswordError] = useState("");
   const [orderedDetails, setOrderedDetails] = useState([]);
+  const [loader, setLoader] = useState(false);
 
   // UseContext
   const {
     state: { userInfo },
   } = useLoginContext();
+  const { toastDispatch } = useToastContext();
+
 
   useEffect(() => {
     (async () => {
@@ -31,22 +37,75 @@ function UserProfile() {
     })();
   }, []);
 
-  const data = () => {
-    {
-      /* {orderedDetails.length > 0 &&
-              orderedDetails.orderItems.reduce(
-                (acc, ele) => acc + ele.inCartQty * (ele.productID.price * 1),
-                0
-              )} */
+   useEffect(() => {
+    let special = /[\W]{1,}/;
+    if (password.password.length == 0) {
+      setPasswordError("this field is required");
+    } else if (password.password.length < 5) {
+      setPasswordError("passowrd should contain min 6 char");
+    } else if (password.password.search(/[A-Z]/) < 0) {
+      setPasswordError("password should contain one UpperCase");
+    } else if (password.password.search(/[a-z]/) < 0) {
+      setPasswordError("password should contain one LowerCase");
+    } else if (password.password.search(/[0-9]/) < 0) {
+      setPasswordError("password should contain one number");
+    } else if (!special.test(password.password)) {
+      setPasswordError("password should contain one special char");
+    } else {
+      setPasswordError("");
     }
-    orderedDetails.length > 0 && orderedDetails.reduce((acc, ele) => acc);
-  };
-  console.log(orderedDetails);
+   }, [password.password]);
+  
+   useEffect(() => {
+    let special = /[\W]{1,}/;
+    if (password.confirmPassword.length == 0) {
+      setUpdatePasswordError("this field is required");
+    } else if (password.confirmPassword.length < 5) {
+      setUpdatePasswordError("passowrd should contain min 6 char");
+    } else if (password.confirmPassword.search(/[A-Z]/) < 0) {
+      setUpdatePasswordError("password should contain one UpperCase");
+    } else if (password.confirmPassword.search(/[a-z]/) < 0) {
+      setUpdatePasswordError("password should contain one LowerCase");
+    } else if (password.confirmPassword.search(/[0-9]/) < 0) {
+      setUpdatePasswordError("password should contain one number");
+    } else if (!special.test(password.confirmPassword)) {
+      setUpdatePasswordError("password should contain one special char");
+      
+    }
+    else if (password.password==password.confirmPassword) {
+      setUpdatePasswordError("Both password are same");
+      }
+    else {
+      setUpdatePasswordError("");
+    }
+  }, [password.confirmPassword]);
+
+  const updatePassowrd=(e)=>{
+    e.preventDefault()
+    const updatePass = {
+      "password": password.password,
+      "updatePass":password.confirmPassword
+    }
+    setLoader(true);
+    makeAnAPICall(
+      "POST",
+      `http://localhost:5000/api/users/${userInfo.id}`,
+      null,
+      null,
+      updatePass,
+      userInfo.token,
+      toastDispatch,
+      "Successfully Changed password",
+      setLoader
+    );
+
+  }
+  
 
   return (
     <div className="user-profile">
       <div className="profile-left">
-        <form>
+        <form onSubmit={(e) => updatePassowrd(e)}>
           <h2>Update Profile</h2>
 
           <label htmlFor="">Password</label>
@@ -61,6 +120,16 @@ function UserProfile() {
               setPassword({ ...password, password: e.target.value })
             }
           />
+              {passwordError !== "" ? (
+                <p className="error-handler-input error">
+                  {passwordError}
+                  <i className="fas fa-exclamation-circle"></i>
+                </p>
+              ) : (
+                <p className="error-handler-input sucess">
+                  Success<i className="fas fa-check-circle"></i>
+                </p>
+              )}
           <label htmlFor="">Confirm Password</label>
           <input
             type="password"
@@ -73,8 +142,25 @@ function UserProfile() {
               setPassword({ ...password, confirmPassword: e.target.value })
             }
           />
+              {updatePasswordError !== "" ? (
+                <p className="error-handler-input error">
+                  {updatePasswordError}
+                  <i className="fas fa-exclamation-circle"></i>
+                </p>
+              ) : (
+                <p className="error-handler-input sucess">
+                  Success<i className="fas fa-check-circle"></i>
+                </p>
+              )}
+       
 
-          <button>Update Profile</button>
+              <button disabled={loader} className="black-btn-disable">
+              {loader ? (
+                <i class="fas fa-spinner fa-spin login-spin"></i>
+              ) : (
+                "Update Password"
+              )}
+            </button>
         </form>
       </div>
 
