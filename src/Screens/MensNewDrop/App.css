@@ -122,7 +122,7 @@
 .btn-secondary-hr-outline-in span {
   font-size: 1.2rem;
 }
-.secondary-disabled{
+.secondary-width{
   width: 3rem !important;
 }
 .secondary-disabled:disabled {

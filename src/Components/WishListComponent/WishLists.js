@@ -39,7 +39,7 @@ function WishLists() {
     const isItemOnTheCart = newItems.filter(
       (ele) => ele.productID._id == product.productID._id
     );
-    console.log(newItems);
+    
     if (isItemOnTheCart.length > 0) {
       return (
         <div className="card-add-to-cart">
@@ -197,7 +197,6 @@ function WishLists() {
                     <i
                       className="fas fa-trash "
                       id={index * 1 + 300}
-                      style={checkIfTheProductIsWished(ele, wishListItems)}
                     ></i>
                   )}
                 </i>

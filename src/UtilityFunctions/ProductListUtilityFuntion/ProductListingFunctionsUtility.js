@@ -45,7 +45,7 @@ export const checkIfTheProductIsInCart = (
         <div className="card-ad-to-cart-action-qty">
           {" "}
           <button
-            className="btn-secondary btn-secondary-hr-outline-in secondary-disabled"
+            className="btn-secondary btn-secondary-hr-outline-in secondary-disabled secondary-width"
             id={index}
             disabled={loader && index * 1 + 200 == ButtonId}
             onClick={(e) => {
@@ -90,7 +90,7 @@ export const checkIfTheProductIsInCart = (
                 isItemOnTheCart[0].productID.inStock ||
               (loader && index * 1 == ButtonId)
             }
-            className="btn-secondary btn-secondary-hr-outline-in secondary-disabled"
+            className="btn-secondary btn-secondary-hr-outline-in secondary-disabled secondary-width"
             id={index}
             onClick={(e) => {
               setButtonId(e.target.id);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { NavLink } from "react-router-dom";
@@ -19,6 +19,8 @@ function CartList() {
     state: { userInfo },
   } = useLoginContext();
   const { toastDispatch } = useToastContext();
+  const [loader, setLoader] = useState(false);
+  const [ButtonId, setButtonId] = useState(null);
 
   return (
     <>
@@ -28,7 +30,7 @@ function CartList() {
           <img className="emptyCartIMG" src={cartEmptyIMG} alt="" />
         )}
         {cartItems.length > 0 &&
-          cartItems.map((ele) => (
+          cartItems.map((ele, index) => (
             <div className="cart-componrnt-container">
               <NavLink to={`/products/${ele.productID._id}`}>
                 <div className="cart-component-left">
@@ -48,7 +50,10 @@ function CartList() {
                 <div className="cart-component-CTA">
                   <button
                     className="btn-secondary btn-secondary-hr-outline-in secondary-disabled btn-cart-cta"
-                    onClick={() =>
+                    id={index}
+                    disabled={loader && index * 1 + 200 == ButtonId}
+                    onClick={(e) => {
+                      setButtonId(e.target.id * 1 + 200);
                       ele.inCartQty == 1
                         ? deleteItem(
                             ele.productID._id,
@@ -56,7 +61,8 @@ function CartList() {
                             cartContextDispatch,
                             "LOAD_CART_ITEMS",
                             toastDispatch,
-                            "Product removed from cart"
+                          "Product removed from cart",
+                          setLoader
                           )
                         : manageQTY(
                             ele.productID._id,
@@ -67,11 +73,16 @@ function CartList() {
                               inCartQty: ele.inCartQty - 1,
                             },
                             toastDispatch,
-                            "Product quantity decreased"
-                          )
-                    }
+                          "Product quantity decreased",
+                          setLoader
+                          );
+                    }}
                   >
-                    -
+                    {loader && ButtonId !== null && index + 200 == ButtonId ? (
+                      <i class="fas fa-spinner fa-spin btn-spin"></i>
+                    ) : (
+                      "-"
+                    )}
                   </button>
                   <span>{ele.inCartQty}</span>
                   <button
@@ -79,7 +90,9 @@ function CartList() {
               btn-cart-cta
               "
                     disabled={ele.inCartQty === ele.productID.inStock}
-                    onClick={() =>
+                    id={index}
+                    onClick={(e) => {
+                      setButtonId(e.target.id);
                       manageQTY(
                         ele.productID._id,
                         userInfo,
@@ -89,26 +102,41 @@ function CartList() {
                           inCartQty: ele.inCartQty + 1,
                         },
                         toastDispatch,
-                        "Product quantity increased"
-                      )
-                    }
+                        "Product quantity increased",
+                        setLoader
+                      );
+                    }}
                   >
-                    +
+                    {loader && ButtonId !== null && index == ButtonId ? (
+                      <i class="fas fa-spinner fa-spin btn-spin"></i>
+                    ) : (
+                      "+"
+                    )}
                   </button>
                 </div>
                 <div className="cart-component-CTA-bottom">
                   <button
+                    id={index + 400}
+                    disabled={loader && index * 1 + 400 == ButtonId}
                     className="btn-secondary btn-secondary-hr-outline-in secondary-disabled btn-cart-cta "
-                    onClick={() =>
+                    onClick={(e) => {
+                      setButtonId(e.target.id);
                       deleteItem(
                         ele.productID._id,
                         userInfo,
                         cartContextDispatch,
-                        "LOAD_CART_ITEMS"
-                      )
-                    }
+                        "LOAD_CART_ITEMS",
+                        toastDispatch,
+                        "Product Removed to Cart",
+                        setLoader
+                      );
+                    }}
                   >
-                    Remove
+                    {loader && ButtonId !== null && index + 400 == ButtonId ? (
+                      <i class="fas fa-spinner fa-spin login-spin"></i>
+                    ) : (
+                      "Remove from Cart"
+                    )}
                   </button>
                 </div>
               </div>
