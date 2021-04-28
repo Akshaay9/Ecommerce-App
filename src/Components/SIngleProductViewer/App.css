@@ -123,8 +123,9 @@
   margin-bottom: 7rem;
 }
 .single-cta {
-  padding: 0.1rem 1.3rem !important;
- 
+  padding: 0.3rem 1.6rem !important;
+  text-align:center;
+ /* width: .4rem !important */
 }
 
 @media screen and (max-width: 700px) {

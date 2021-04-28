@@ -16,12 +16,16 @@ import {
   addToWishHandlerBasedOnLogin,
   removeFromWishList,
 } from "../../UtilityFunctions/ProductListUtilityFuntion/WishListAPICalls";
+import LoginModal from "../LoginModal/LoginModal";
 const todaysDate = new Date();
 
 function SingleProductView() {
   const { id } = useParams();
   const [signleProduct, setSingleProduct] = useState([]);
   const [imageSlider, setImageSlider] = useState(0);
+  const [showModal, setSHowModal] = useState(false);
+  const [loader, setLoader] = useState(false);
+  const [ButtonId, setButtonId] = useState(null);
 
   const {
     state: { userInfo },
@@ -59,7 +63,7 @@ function SingleProductView() {
   }, [imageSlider]);
 
   // check if the items present in cart
-  const checkIfTheProductIsInCart = (product) => {
+  const checkIfTheProductIsInCart = (product, index) => {
     const newItems = [...cartItems];
     const isItemOnTheCart = newItems.filter(
       (ele) => ele.productID._id == product._id
@@ -78,37 +82,52 @@ function SingleProductView() {
           <div className="card-ad-to-cart-action-qty">
             {" "}
             <button
-              className="btn-secondary btn-secondary-hr-outline-in single-cta"
-              onClick={() =>
+              className="btn-secondary btn-secondary-hr-outline-in single-cta "
+              id={index + 2}
+              onClick={(e) => {
+                setButtonId(e.target.id);
                 isItemOnTheCart[0].inCartQty == 1
                   ? deleteItem(
                       product._id,
                       userInfo,
                       cartContextDispatch,
-                      "LOAD_CART_ITEMS"
+                      "LOAD_CART_ITEMS",
+                      toastDispatch,
+                      "Product removed from cart",
+                      setLoader
                     )
                   : manageQTY(
                       product._id,
                       userInfo,
                       cartContextDispatch,
                       "LOAD_CART_ITEMS",
+
                       {
                         inCartQty: isItemOnTheCart[0].inCartQty - 1,
                       },
+
                       toastDispatch,
-                      "Product quantity decreased"
-                    )
-              }
+                      "Product quantity decreased",
+                      setLoader
+                    );
+              }}
             >
-              <span>-</span>
+              {loader && ButtonId !== null && index + 2 == ButtonId ? (
+                <i class="fas fa-spinner fa-spin btn-spin"></i>
+              ) : (
+                "-"
+              )}
             </button>{" "}
-            {isItemOnTheCart[0].inCartQty}{" "}
+          <p style={{width:".2rem"}}>{isItemOnTheCart[0].inCartQty}{" "}</p>  
             <button
               disabled={
-                isItemOnTheCart[0].inCartQty === signleProduct[0].inStock
+                isItemOnTheCart[0].inCartQty === signleProduct[0].inStock ||
+                (loader && index * 1 + 1 == ButtonId)
               }
-              className="btn-secondary btn-secondary-hr-outline-in secondary-disabled single-cta"
-              onClick={() =>
+              className="btn-secondary btn-secondary-hr-outline-in secondary-disabled single-cta "
+              id={index + 1}
+              onClick={(e) => {
+                setButtonId(e.target.id);
                 manageQTY(
                   product._id,
                   userInfo,
@@ -117,12 +136,18 @@ function SingleProductView() {
                   {
                     inCartQty: isItemOnTheCart[0].inCartQty + 1,
                   },
+
                   toastDispatch,
-                  "Product quantity increased"
-                )
-              }
+                  "Product quantity increased",
+                  setLoader
+                );
+              }}
             >
-              <span>+</span>
+              {loader && ButtonId !== null && index + 1 == ButtonId ? (
+                <i class="fas fa-spinner fa-spin btn-spin"></i>
+              ) : (
+                "+"
+              )}
             </button>{" "}
           </div>{" "}
         </div>
@@ -132,25 +157,33 @@ function SingleProductView() {
         <div className="card-add-to-cart singleProductPage">
           <button
             className="btn-primary btn-primary-hr-outline-out singleproductpage-cta"
-            onClick={() =>
+            id={index}
+            disabled={loader && index * 1 == ButtonId}
+            onClick={(e) => {
+              setButtonId(e.target.id);
               addToCartHandlerBasedOnLogin(
                 product._id,
                 userInfo,
-                null,
+                setSHowModal,
                 cartContextDispatch,
                 "LOAD_CART_ITEMS",
                 toastDispatch,
-                "Product added to Cart"
-              )
-            }
+                "Product added to Cart",
+                setLoader
+              );
+            }}
           >
-            Add To Cart
+            {loader && ButtonId !== null && index == ButtonId ? (
+              <i class="fas fa-spinner fa-spin login-spin"></i>
+            ) : (
+              "Add To Cart"
+            )}
           </button>
         </div>
       );
   };
   // wishlist check
-  const checkIfTheProductIsWished = (ele) => {
+  const checkIfTheProductIsWished = (ele, index) => {
     const isItemsWished = wishListItems.filter(
       (prod) => prod.productID._id == ele._id
     );
@@ -161,103 +194,121 @@ function SingleProductView() {
     }
   };
   // dispatching wishlist
-  const dispatchBasedOnBroductWishedOrNot = (ele) => {
+  const dispatchBasedOnBroductWishedOrNot = (ele, index) => {
     const isItemsWished = wishListItems.filter(
       (prod) => prod.productID._id == ele._id
     );
     if (isItemsWished.length == 0) {
+      setButtonId(index);
       addToWishHandlerBasedOnLogin(
         ele._id,
         userInfo,
-        null,
+        setSHowModal,
         wishListContextDispatch,
         "LOAD_WISHLIST",
         toastDispatch,
-        "Product added to wishlist"
+        "Product added to wishlist",
+        setLoader,
+       
       );
     } else {
+      setButtonId(index);
       removeFromWishList(
         ele._id,
         userInfo,
         wishListContextDispatch,
         "LOAD_WISHLIST",
         toastDispatch,
-        "Product removed from wishlist"
+        "Product removed from wishlist",
+        setLoader,
       );
     }
   };
   // main functon
   return (
-    <div className="single-product-viewer">
+    <>
+      {showModal && (
+        <LoginModal showModal={showModal} setSHowModal={setSHowModal} />
+      )}
       <div className="single-product-viewer">
-        {signleProduct.length > 0 && (
-          <div className="single-product-viewer-container">
-            <div className="single-product-viewer-container-left">
-              <div className="single-product-viewer-images">
-                <img src={signleProduct[0].images[imageSlider].img} alt="" />
-                <i
-                  className="fas fa-chevron-right"
-                  onClick={() => {
-                    if (imageSlider == 2) {
-                      setImageSlider(0);
-                    } else {
-                      setImageSlider(imageSlider + 1);
-                    }
-                  }}
-                ></i>
-                <i
-                  className="fas fa-chevron-left"
-                  onClick={() => {
-                    if (imageSlider == 0) {
-                      setImageSlider(2);
-                    } else {
-                      setImageSlider(imageSlider - 1);
-                    }
-                  }}
-                ></i>
+        <div className="single-product-viewer">
+          {signleProduct.length > 0 && (
+            <div className="single-product-viewer-container">
+              <div className="single-product-viewer-container-left">
+                <div className="single-product-viewer-images">
+                  <img src={signleProduct[0].images[imageSlider].img} alt="" />
+                  <i
+                    className="fas fa-chevron-right"
+                    onClick={() => {
+                      if (imageSlider == 2) {
+                        setImageSlider(0);
+                      } else {
+                        setImageSlider(imageSlider + 1);
+                      }
+                    }}
+                  ></i>
+                  <i
+                    className="fas fa-chevron-left"
+                    onClick={() => {
+                      if (imageSlider == 0) {
+                        setImageSlider(2);
+                      } else {
+                        setImageSlider(imageSlider - 1);
+                      }
+                    }}
+                  ></i>
+                </div>
               </div>
-            </div>
-            <div className="single-product-viewer-container-right">
-              <div className="single-product-desc">
-                <span>New</span>
-                <div className="single-prod-desc-row-one">
+              <div className="single-product-viewer-container-right">
+                <div className="single-product-desc">
+                  <span>New</span>
                   <div className="single-prod-desc-row-one">
-                    <h1> {signleProduct[0].name}</h1>
-                  </div>
-
-                  <div className="single-prod-desc-row-two">
-                    <h2>{signleProduct[0].price}.00₹</h2>
-                  </div>
-                </div>
-                <div className="rating bg-blue">
-                  <h3>{signleProduct[0].rating}</h3>
-                </div>
-                <div className="single-product-desc-img-container">
-                  {signleProduct[0].images.map((ele) => (
-                    <div className="single-product-desc-img">
-                      <img src={ele.img} alt="" />
+                    <div className="single-prod-desc-row-one">
+                      <h1> {signleProduct[0].name}</h1>
                     </div>
-                  ))}
-                </div>
-                <div className="single-product-description">
-                  <p>{signleProduct[0].desc}</p>
-                </div>
-              </div>
 
-              {checkIfTheProductIsInCart(signleProduct[0])}
-              <button
-                className="btn-secondary btn-secondary-hr-outline-in singleproductpage"
-                onClick={() =>
-                  dispatchBasedOnBroductWishedOrNot(signleProduct[0])
-                }
-              >
-                {checkIfTheProductIsWished(signleProduct[0])}
-              </button>
+                    <div className="single-prod-desc-row-two">
+                      <h2>{signleProduct[0].price}.00₹</h2>
+                    </div>
+                  </div>
+                  <div className="rating bg-blue">
+                    <h3>{signleProduct[0].rating}</h3>
+                  </div>
+                  <div className="single-product-desc-img-container">
+                    {signleProduct[0].images.map((ele) => (
+                      <div className="single-product-desc-img">
+                        <img src={ele.img} alt="" />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="single-product-description">
+                    <p>{signleProduct[0].desc}</p>
+                  </div>
+                </div>
+
+                {checkIfTheProductIsInCart(signleProduct[0], 5)}
+                <button
+                  disabled={loader && ButtonId==300}
+                  className="btn-secondary btn-secondary-hr-outline-in singleproductpage secondary-disabled "
+                  id={400}
+                  onClick={() =>
+                    dispatchBasedOnBroductWishedOrNot(signleProduct[0], 300)
+                  }
+                >
+                  {loader &&
+                  ButtonId !== null &&
+                   300 == ButtonId ? (
+                    <i class="fas fa-spinner fa-spin"></i>
+                  ) : (
+                    checkIfTheProductIsWished(signleProduct[0], 300)
+                  )}
+                </button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

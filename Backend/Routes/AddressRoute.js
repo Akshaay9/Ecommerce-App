@@ -7,7 +7,6 @@ router.route("/")
     .post(privateRoute, async (req, res) => {
         const { address, city, postalCode, country } = req.body
         const data = await Address.findOne({ user: req.user.id })
-        console.log(data);
         if (data == null) {
             const newAddress = await  new Address({
                 user: req.user.id,

@@ -49,7 +49,9 @@ function CartList() {
                 )}
                 <div className="cart-component-CTA">
                   <button
-                    className="btn-secondary btn-secondary-hr-outline-in secondary-disabled btn-cart-cta"
+                    className="btn-secondary btn-secondary-hr-outline-in secondary-disabled
+              btn-cart-cta secondary-width
+              "
                     id={index}
                     disabled={loader && index * 1 + 200 == ButtonId}
                     onClick={(e) => {
@@ -87,9 +89,9 @@ function CartList() {
                   <span>{ele.inCartQty}</span>
                   <button
                     className="btn-secondary btn-secondary-hr-outline-in secondary-disabled
-              btn-cart-cta
+              btn-cart-cta secondary-width
               "
-                    disabled={ele.inCartQty === ele.productID.inStock}
+                    disabled={ele.inCartQty === ele.productID.inStock || loader && index * 1 == ButtonId}
                     id={index}
                     onClick={(e) => {
                       setButtonId(e.target.id);
