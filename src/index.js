@@ -14,6 +14,7 @@ import { AllProductsContextFun } from "./Contexts/SearchAndIndividualScreenConte
 import { ProductsFunction } from "./Contexts/ProductListContext/Products";
 import { ToastConTextFun } from "./Contexts/ToastContext/ToastContext";
 import { LoginContextFun } from "./Contexts/loginRegistrationContext/loginRegistrationContext";
+import { AddressContextFun } from "./Contexts/AddressContext/AddressContext";
 
 const container = document.getElementById("root");
 ReactDOM.render(
@@ -37,28 +38,33 @@ ReactDOM.render(
                 <ProductsFunction>
                   {/* products category */}
 
-                <CartContextFunction>
-                  {/* {Cart Context} */}
+                  <CartContextFunction>
+                    {/* {Cart Context} */}
 
-                  <WishListContextFun>
-                    {/* {WishList Context} */}
+                    <WishListContextFun>
+                      {/* {WishList Context} */}
 
-                    <AllProductsContextFun>
+                      <AllProductsContextFun>
                         {/* All products for search and single view */}
-                        
+
                         <ToastConTextFun>
                           {/* Toast */}
 
                           <LoginContextFun>
                             {/* {Login context} */}
 
-                            <App />
-                            </LoginContextFun>
-                          </ToastConTextFun>
-                    </AllProductsContextFun>
-                  </WishListContextFun>
+                            <AddressContextFun>
+                              {/* {Address COntext} */}
+
+
+                              <App />
+                            </AddressContextFun>
+                          </LoginContextFun>
+                        </ToastConTextFun>
+                      </AllProductsContextFun>
+                    </WishListContextFun>
                   </CartContextFunction>
-                  </ProductsFunction>
+                </ProductsFunction>
               </GymAccessoriesFunction>
             </YogaProductListsFunction>
           </ResistanceProductListsFunction>

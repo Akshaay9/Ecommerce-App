@@ -21,10 +21,11 @@ export const makeAnAPICall = async (
     case "DELETE":
       try {
         const data = await axios.delete(url, config);
+
         if (setLoader) {
           setLoader(false);
         }
-        if (dispatch != null && msg != null) {
+        if (dispatch1 != null && msg != null) {
           setAlert(msg, "danger", dispatch1);
         }
         if (!dispatch || !dispatchType) {
@@ -41,10 +42,13 @@ export const makeAnAPICall = async (
         }
       }
       return;
+
+    // get
+
     case "GET":
       try {
         const data = await axios.get(url, config);
-        if (dispatch != null && msg != null) {
+        if (dispatch1 != null && msg != null) {
           setAlert(msg, "success", dispatch1);
         }
         if (!dispatch) {
@@ -65,7 +69,7 @@ export const makeAnAPICall = async (
         if (setLoader) {
           setLoader(false);
         }
-        if (dispatch1) {
+        if (dispatch1 != null && msg != null) {
           setAlert(msg, "success", dispatch1);
         }
 

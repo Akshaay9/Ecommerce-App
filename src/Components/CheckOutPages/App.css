@@ -72,12 +72,45 @@ margin-bottom: 1rem;
   border: none;
   padding: .6rem 0rem;
   border: 1px solid black;
+  width: 100% !important;
 }
+
 .shipping-address-container button:hover{
   color: black;
     background: white;
     border: 1px solid black;
     cursor: pointer;
+}
+.singleAdress{
+  
+  display: flex;
+  align-items: center;
+}
+.singleAdress label{
+  /* border: 1px solid red; */
+  flex: .9;
+
+}
+.singleAdress label p{
+  /* text-align: center; */
+  margin-left: 2rem;
+  font-family: sans-serif;
+}
+.singleAdress label span{
+  padding-right: .5rem;
+  color: #727374;
+}
+.singleAdress-icons i{
+  color: #727374;
+  padding-right: 1rem;
+}
+.singleAdress-icons i:hover{
+  color: #020202;
+  cursor: pointer;
+}
+ .fa-edit:hover{
+   transform: scale(1.2);
+   transition: all 100ms ease-in-out;
 }
 
 

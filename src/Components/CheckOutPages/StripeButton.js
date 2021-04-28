@@ -18,6 +18,10 @@ const StripeButton = (props) => {
   const localStorageaddress = localStorage.getItem("address")
     ? JSON.parse(localStorage.getItem("address"))
     : {};
+
+  console.log(localStorageaddress);
+  console.log(localStorageaddress._id);
+  
   const auth = JSON.parse(localStorage.getItem("user_info"));
   const { toastDispatch } = useToastContext();
   const orderItems = cartItems.map((ele) => {

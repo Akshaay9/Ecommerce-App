@@ -1,42 +1,72 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CHeckOutNav from "./CheckOutNav";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink, Navigate } from "react-router-dom";
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
+import { useAddressContext } from "../../Contexts/AddressContext/AddressContext";
+import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 function Address() {
+  const {
+    state: { userInfo },
+  } = useLoginContext();
+
+  const {
+    state: { userAddress },
+    addressDispatch,
+  } = useAddressContext();
+
   let navigate = useNavigate();
 
-  const localStorageaddress = localStorage.getItem("address")
-    ? JSON.parse(localStorage.getItem("address"))
-    : {};
-  const token = JSON.parse(localStorage.getItem("user_info"));
-  const [address, setAddress] = useState({
-    address: localStorageaddress.address || "",
-    city: localStorageaddress.city || "",
-    postalCode: localStorageaddress.postalCode || "",
-    country: localStorageaddress.country || "",
-  });
+ 
 
-  const adressHandler = async (e) => {
-    e.preventDefault()
-    if (localStorageaddress.address) {
-      navigate("/Payment");
-    } else {
+ 
+
+  const [selectAddress, setSelectAddress] = useState(
+    localStorage.getItem("address")?JSON.parse(localStorage.getItem("address")):""
+  );
+  console.log(selectAddress)
+
+
+  useEffect(() => {
+    (async () => {
       try {
-        const data = await makeAnAPICall(
-          `POST`,
-          `http://localhost:5000/api/address`,
+        await makeAnAPICall(
+          "GET",
+          `http://localhost:5000/api/address/`,
+          addressDispatch,
+          "LOAD_ADDRESS",
+          null,
+          userInfo.token,
           null,
           null,
-          address,
-          token.token
+          null
         );
-    
-        localStorage.setItem("address", JSON.stringify(data));
-        navigate("/Payment");
       } catch (error) {
         console.log(error);
       }
-    }
+    })();
+  }, []);
+
+  const deleteAddress = async (id) => {
+    try {
+      await makeAnAPICall(
+        "DELETE",
+        `http://localhost:5000/api/address/${id}`,
+        addressDispatch,
+        "LOAD_ADDRESS",
+        null,
+        userInfo.token,
+        null,
+        null,
+        null
+      );
+    } catch (error) {}
+  };
+
+  const adressHandler = async (e) => {
+    e.preventDefault();
+    console.log("hey");
+    localStorage.setItem("address", JSON.stringify(selectAddress));
+    navigate("/payment");
   };
   return (
     <div>
@@ -44,44 +74,53 @@ function Address() {
       <div className="shipping-address-container">
         <h2>Shipping</h2>
         <form onSubmit={(e) => adressHandler(e)}>
-          <label htmlFor="">Address</label>
-          <input
-            type="text"
-            placeholder="enter address"
-            required
-            value={address.address}
-            onChange={(e) =>
-              setAddress({ ...address, address: e.target.value })
-            }
-          />
-          <label htmlFor="">City</label>
-          <input
-            type="text"
-            placeholder="enter City"
-            required
-            value={address.city}
-            onChange={(e) => setAddress({ ...address, city: e.target.value })}
-          />
-          <label htmlFor="">Postal Code</label>
-          <input
-            type="number"
-            placeholder="enter Postal Code"
-            required
-            value={address.postalCode}
-            onChange={(e) => setAddress({ ...address, postalCode: e.target.value })}
-          />
-          <label htmlFor="">Country</label>
-          <input
-            type="text"
-            placeholder="enter Country"
-            required
-            value={address.country}
-            onChange={(e) =>
-              setAddress({ ...address, country: e.target.value })
-            }
-          />
-          <button>Continue</button>
+          {userAddress.map((ele) => (
+            <div className="singleAdress" key={ele._id}>
+              {/* {console.log(parseInt(selectAddress._id) === parseInt(ele._id))}
+              {console.log(ele._id)} */}
+             
+              <input
+                type="radio"
+                name="address"
+                required
+                checked={parseInt(selectAddress._id) == parseInt(ele._id)}
+                onChange={() => setSelectAddress(ele)}
+              />
+              <label htmlFor="">
+                <p>
+                  {" "}
+                  <span>address:</span> {ele.address}
+                </p>
+                <p>
+                  <span>City:</span>
+                  {ele.city}
+                </p>
+                <p>
+                  <span>Postal Code:</span>
+                  {ele.postalCode}
+                </p>
+                <p>
+                  <span>country:</span>
+                  {ele.country}
+                </p>
+              </label>
+              <div className="singleAdress-icons">
+                {" "}
+                <i
+                  class="fas fa-trash"
+                  onClick={() => deleteAddress(ele._id)}
+                ></i>
+                <NavLink to={`/updateAddress/${ele._id}`}>
+                  <i class="fas fa-edit"></i>
+                </NavLink>
+              </div>
+            </div>
+          ))}
+          {userAddress.length > 0 && <button>Continue</button>}
         </form>
+        <NavLink to={`/updateAddress`} state={{ from: "newAddress" }}>
+          <button>Add New Address</button>
+        </NavLink>
       </div>
     </div>
   );

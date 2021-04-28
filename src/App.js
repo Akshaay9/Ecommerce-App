@@ -20,7 +20,10 @@ import Products from "./Screens/ProductScreen/Index";
 import Toast from "./Components/Toast/Toast";
 import Login from "./Screens/Account/Login";
 import SignUp from "./Screens/Account/SignUp";
-import { loadCart, WishListItems } from "./UtilityFunctions/CartAndWishListItems";
+import {
+  loadCart,
+  WishListItems,
+} from "./UtilityFunctions/CartAndWishListItems";
 import { useLoginContext } from "./Contexts/loginRegistrationContext/loginRegistrationContext";
 import { useWishListContextProvider } from "./Contexts/WishListContext/WishListContext";
 import { useCartContextProvider } from "./Contexts/CartContext/CartContext";
@@ -31,31 +34,29 @@ import OrderSuccess from "./Components/OrderSuccessPAge/OrderSuccess";
 import LoginModal from "./Components/LoginModal/LoginModal";
 import PrivateRoute from "./PrivateRoute";
 import UserProfile from "./Components/UserProfile/UserProfile";
+import UpdateAddress from "./Components/CheckOutPages/UpdateAddress";
 
 function App() {
   const [showMobileNavNar, setShowMobileNavBar] = useState(false);
-  const { state: { userInfo }, } = useLoginContext()
-
   const {
-    cartContextDispatch,
-  } = useCartContextProvider();
+    state: { userInfo },
+  } = useLoginContext();
 
-  const {
-    wishListContextDispatch,
-  } = useWishListContextProvider();
-  
+  const { cartContextDispatch } = useCartContextProvider();
+
+  const { wishListContextDispatch } = useWishListContextProvider();
+
   useEffect(() => {
     if (userInfo.token) {
-      loadCart(cartContextDispatch,userInfo)
-      WishListItems(wishListContextDispatch,userInfo)
-    } 
-  },[userInfo])
-
-  
-
+      loadCart(cartContextDispatch, userInfo);
+      WishListItems(wishListContextDispatch, userInfo);
+    }
+  }, [userInfo]);
 
   return (
-    <div style={showMobileNavNar ? { height: "93.4vh", overflow: "hidden" } : {}}>
+    <div
+      style={showMobileNavNar ? { height: "93.4vh", overflow: "hidden" } : {}}
+    >
       <BrowserRouter>
         <Nav
           showMobileNavNar={showMobileNavNar}
@@ -84,23 +85,29 @@ function App() {
           <Route path="/wishlist" element={<WishListComponent />} />
           <Route path="/products/:id" element={<SingleProductViewer />} />
           <Route path="/search" element={<SearchComponent />} />
-          {/* account */}
 
+          {/* account */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
 
-               {/* check out */}
+          {/* check out */}
           <PrivateRoute path="/Address" element={<Address />} />
+          <PrivateRoute
+            path="/updateAddress/"
+            element={<UpdateAddress />}
+          />
+          <PrivateRoute
+            path="/updateAddress/:id"
+            element={<UpdateAddress />}
+          />
           <PrivateRoute path="/Payment" element={<Payment />} />
           <PrivateRoute path="/FinalCheckOut" element={<FinalCheckOut />} />
 
           {/* order success page */}
           <PrivateRoute path="/ordersuccess/:id" element={<OrderSuccess />} />
-          
+
           {/* user profile */}
           <PrivateRoute path="/profile" element={<UserProfile />} />
-       
-
         </Routes>
       </BrowserRouter>
     </div>

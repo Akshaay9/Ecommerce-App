@@ -2,7 +2,7 @@ import React from "react";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 import { useNavigate, NavLink } from "react-router-dom";
 import "./App.css";
-function CHeckOutNav({ step1, step2, step3, step4 }) {
+function CHeckOutNav({ step1, step2, step3, step4,updateAddress }) {
   let navigate = useNavigate();
   const {
     state: { userInfo },
@@ -24,10 +24,10 @@ function CHeckOutNav({ step1, step2, step3, step4 }) {
           !userInfo.token ? (
             navigate("/login")
           ) : (
-            <NavLink to="/address"><p>Shipping</p></NavLink>
+            <NavLink to="/address"><p>{updateAddress?"Update shipping":"shipping"}</p></NavLink>
           )
         ) : (
-          <p className="mini-nav disabled-mini-nav">Shipping</p>
+          <p className="mini-nav disabled-mini-nav"> Shipping</p>
         )}
       </div>
       <div className="mini-nav">
