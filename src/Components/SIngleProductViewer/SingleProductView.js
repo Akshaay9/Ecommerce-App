@@ -3,8 +3,8 @@ import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 import { useParams } from "react-router-dom";
 import { useAllProductsContextContext } from "../../Contexts/SearchAndIndividualScreenContext/SearchAndindiScreen";
-import axios from "axios";
-import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
+
+import { makeAnAPICall } from "../../APiCalls";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
 import {
@@ -75,7 +75,7 @@ function SingleProductView() {
         <div className="card-add-to-cart">
           {" "}
           <h3 style={{ textAlign: "center" }}>
-            {isItemOnTheCart[0].inCartQty === signleProduct[0].inStock ? (
+            {isItemOnTheCart[0].inCartQty === product.inStock ? (
               <span style={{ color: "red" }}>Out Of Stock</span>
             ) : (
               "Quick Add"
@@ -123,7 +123,7 @@ function SingleProductView() {
             <p style={{ width: ".2rem" }}>{isItemOnTheCart[0].inCartQty} </p>
             <button
               disabled={
-                isItemOnTheCart[0].inCartQty === signleProduct[0].inStock ||
+                isItemOnTheCart[0].inCartQty === product.inStock ||
                 (loader && index * 1 + 1 == ButtonId)
               }
               className="btn-secondary btn-secondary-hr-outline-in secondary-disabled single-cta "
@@ -296,6 +296,9 @@ function SingleProductView() {
                 </div>
 
                 {checkIfTheProductIsInCart(signleProduct[0], 5)}
+                {/* {checkIfTheProductIsInCart(
+                
+                )} */}
                 <button
                   disabled={loader && ButtonId == 300}
                   className="btn-secondary btn-secondary-hr-outline-in singleproductpage secondary-disabled "

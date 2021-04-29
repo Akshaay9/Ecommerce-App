@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CHeckOutNav from "./CheckOutNav";
 import { useNavigate, NavLink, Navigate } from "react-router-dom";
-import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
+import { makeAnAPICall } from "../../APiCalls";
 import { useAddressContext } from "../../Contexts/AddressContext/AddressContext";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
@@ -32,7 +32,7 @@ function Address() {
       try {
         await makeAnAPICall(
           "GET",
-          `http://localhost:5000/api/address/`,
+          `https://stark-falls-25364.herokuapp.com/api/address/`,
           addressDispatch,
           "LOAD_ADDRESS",
           null,
@@ -52,7 +52,7 @@ function Address() {
 setLoader(true)
       await makeAnAPICall(
         "DELETE",
-        `http://localhost:5000/api/address/${id}`,
+        `https://stark-falls-25364.herokuapp.com/api/address/${id}`,
         addressDispatch,
         "LOAD_ADDRESS",
         null,

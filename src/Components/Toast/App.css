@@ -1,12 +1,28 @@
 .toast {
   position: fixed;
-  width: 20rem !important;
-  min-width: 20rem !important;
   right: 5%;
   z-index: 10;
   bottom: 9%;
   animation: toastAnimation 300ms ease-in-out;
 }
+.toast-fitt{
+  width: 17rem !important;
+  min-width: 15rem !important;
+  min-width: 1rem;
+  padding: 0rem !important;
+
+}
+.bg-toast-danger{
+  border-left: 7px solid red;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+.bg-toast-success{
+  border-left: 7px solid green;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
 @keyframes toastAnimation {
   from {
     opacity: 0;
@@ -17,3 +33,12 @@
     bottom: 9%;
   }
 }
+/* @media screen and (max-width: 43.25rem) {
+  .toast {
+    position: fixed;
+    right: 5%;
+    z-index: 10;
+    bottom: 15%;
+    animation: toastAnimation 300ms ease-in-out;
+  }
+} */

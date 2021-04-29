@@ -9,7 +9,7 @@ function Toast() {
   const toastFun = (msg, alertType) => {
     if (alertType === "success")
       return (
-        <div className="toast bg-toast-success">
+        <div className="toast toast-fitt bg-toast-success">
           <i className="fas fa-check-circle"></i>
           <div className="toastInfo">
             <p>{alertType}</p>
@@ -19,7 +19,7 @@ function Toast() {
       );
     else if (alertType == "danger") {
       return (
-        <div className="toast bg-toast-danger">
+        <div className="toast toast-fitt bg-toast-danger">
           <i className="fas fa-exclamation-circle"></i>
           <div className="toastInfo">
             <p>{alertType}</p>

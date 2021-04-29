@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
-import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
+import { makeAnAPICall } from "../../APiCalls";
 import "./App.css";
 function UserProfile() {
   // useState
@@ -27,7 +27,7 @@ function UserProfile() {
     (async () => {
       const data = await makeAnAPICall(
         `GET`,
-        `http://localhost:5000/api/checkout/all`,
+        `https://stark-falls-25364.herokuapp.com/api/checkout/all`,
         null,
         null,
         null,
@@ -89,7 +89,7 @@ function UserProfile() {
     setLoader(true);
     makeAnAPICall(
       "POST",
-      `http://localhost:5000/api/users/${userInfo.id}`,
+      `https://stark-falls-25364.herokuapp.com/api/${userInfo.id}`,
       null,
       null,
       updatePass,

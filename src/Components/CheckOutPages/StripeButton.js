@@ -1,7 +1,7 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
-import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
+import { makeAnAPICall } from "../../APiCalls";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
 
@@ -51,7 +51,7 @@ const StripeButton = (props) => {
 
     const data = await makeAnAPICall(
       `POST`,
-      `http://localhost:5000/api/checkout`,
+      `https://stark-falls-25364.herokuapp.com/api/checkout`,
       null,
       null,
       finalOrderDetails,
@@ -66,7 +66,7 @@ const StripeButton = (props) => {
   const deleteCartItems = async () => {
     const data = await makeAnAPICall(
       `DELETE`,
-      `http://localhost:5000/api/deletecart`,
+      `https://stark-falls-25364.herokuapp.com/api/deletecart`,
       null,
       null,
       null,

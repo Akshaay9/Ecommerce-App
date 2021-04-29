@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAllProductsContextContext } from "../../Contexts/SearchAndIndividualScreenContext/SearchAndindiScreen";
-import {makeAnAPICall} from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls"
+import {makeAnAPICall} from "../../APiCalls"
 function SearchBarProducts() {
   const {
     state: { searchResult,initialAllProducts },

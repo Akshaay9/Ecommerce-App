@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setAlert } from "../../Contexts/ToastContext/ToastAction";
+import { setAlert } from "./Contexts/ToastContext/ToastAction";
 export const makeAnAPICall = async (
   request,
   url,

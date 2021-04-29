@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
-import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
+import { makeAnAPICall } from "../../APiCalls";
 import "./App.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
@@ -73,7 +73,7 @@ function SignUp() {
     };
     makeAnAPICall(
       "POST",
-      "http://localhost:5000/api/users/signup",
+      "https://stark-falls-25364.herokuapp.com/api/signup",
       authDispatch,
       "USER_REGISTER_SUCCESSFULL",
       dataToBeSent,

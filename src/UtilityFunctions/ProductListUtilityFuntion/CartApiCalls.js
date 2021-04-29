@@ -1,4 +1,4 @@
-import { makeAnAPICall } from "./APiCalls";
+import { makeAnAPICall } from "../../APiCalls";
 
 export const addToCartHandlerBasedOnLogin = async (
   id,
@@ -20,7 +20,7 @@ export const addToCartHandlerBasedOnLogin = async (
       }
     await makeAnAPICall(
       `POST`,
-      `http://localhost:5000/api/cart/${id}`,
+      `https://stark-falls-25364.herokuapp.com/api/cart/${id}`,
       dispatch,
       dispatchType,
       null,
@@ -47,7 +47,7 @@ export const manageQTY = async (
 
   await makeAnAPICall(
     `POST`,
-    `http://localhost:5000/api/cart/${id}`,
+    `https://stark-falls-25364.herokuapp.com/api/cart/${id}`,
     dispatch,
     dispatchType,
     dataToBeDispatched,
@@ -73,7 +73,7 @@ export const deleteItem = async (
 
   await makeAnAPICall(
     `DELETE`,
-    `http://localhost:5000/api/cart/${id}`,
+    `https://stark-falls-25364.herokuapp.com/api/cart/${id}`,
     dispatch,
     dispatchType,
     null,

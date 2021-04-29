@@ -3,7 +3,7 @@ import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 import { NavLink } from "react-router-dom";
 import emptyWISHLISTimage from "../../Assets/wish.svg";
-import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
+import { makeAnAPICall } from "../../APiCalls";
 import {
   addToCartHandlerBasedOnLogin,
   manageQTY,
@@ -54,7 +54,7 @@ function WishLists() {
           <div>
             {" "}
             <button
-              className="btn-secondary btn-secondary-hr-outline-in wishlist-cta  secondary-disabled"
+              className="btn-secondary btn-secondary-hr-outline-in wishlist-cta  secondary-disabled "
               id={index}
               disabled={loader && index * 1 + 200 == ButtonId}
               onClick={(e) => {

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useWomensNewProductListsContext } from "../../Contexts/ProductListContext/WomensNewDropProductListing";
 import CatalogMagic from "../../Skeleton-loader/ProductListingLoader";
 import MobileSkeletonLoader from "../../Skeleton-loader/ProductListingLoaderMobile";
-import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
+import { makeAnAPICall } from "../../APiCalls";
 import ProductListingComponentUtility from "../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility";
 
 function WomensNewDropProductListing() {

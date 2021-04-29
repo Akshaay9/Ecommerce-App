@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useMensNewProductListsContext } from "../../Contexts/ProductListContext/MensNewDropProductListing";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
-import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
+import { makeAnAPICall } from "../../APiCalls";
 import ProductListingComponentUtility from "../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility";
 import CatalogMagic from "../../Skeleton-loader/ProductListingLoader";
 import MobileSkeletonLoader from "../../Skeleton-loader/ProductListingLoaderMobile";

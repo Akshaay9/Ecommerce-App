@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CHeckOutNav from "./CheckOutNav";
 import { useNavigate, useLocation, NavLink, useParams } from "react-router-dom";
-import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
+import { makeAnAPICall } from "../../APiCalls";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 import { useAddressContext } from "../../Contexts/AddressContext/AddressContext";
 import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
@@ -18,10 +18,10 @@ function UpdateAddress() {
 
   const url = () => {
     if (id == undefined) {
-      return `http://localhost:5000/api/address`
+      return `https://stark-falls-25364.herokuapp.com/api/address`
     }
     else
-      return `http://localhost:5000/api/address/${id}`
+      return `https://stark-falls-25364.herokuapp.com/api/address/${id}`
   }
 
   const [address, setAddress] = useState({
@@ -36,7 +36,7 @@ function UpdateAddress() {
       try {
         const data = await makeAnAPICall(
           "GET",
-          `http://localhost:5000/api/address/${id}`,
+          `https://stark-falls-25364.herokuapp.com/api/${id}`,
           null,
           null,
           null,

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect } from 'react'
 import { useWorkoutNewProductListsContext } from '../../Contexts/ProductListContext/HomeWorkoutProductListing';
-import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls"
+import { makeAnAPICall } from "../../APiCalls";
 import ProductListingComponentUtility from '../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility';
 import CatalogMagic from "../../Skeleton-loader/ProductListingLoader";
 import MobileSkeletonLoader from "../../Skeleton-loader/ProductListingLoaderMobile";

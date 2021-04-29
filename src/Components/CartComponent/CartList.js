@@ -3,7 +3,7 @@ import "./App.css";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { NavLink } from "react-router-dom";
 import cartEmptyIMG from "../../Assets/undraw_empty_cart_co35.svg";
-import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
+import { makeAnAPICall } from "../../APiCalls";
 import {
   deleteItem,
   manageQTY,

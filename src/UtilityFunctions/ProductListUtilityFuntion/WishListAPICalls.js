@@ -1,4 +1,4 @@
-import { makeAnAPICall } from "./APiCalls";
+import { makeAnAPICall } from "../../APiCalls";
 
 export const addToWishHandlerBasedOnLogin = async (
   id,
@@ -19,7 +19,7 @@ export const addToWishHandlerBasedOnLogin = async (
  
     await makeAnAPICall(
       `POST`,
-      `http://localhost:5000/api/wishlist/${id}`,
+      `https://stark-falls-25364.herokuapp.com/api/wishlist/${id}`,
       dispatch,
       dispatchType,
       null,
@@ -45,7 +45,7 @@ export const removeFromWishList = async (
     }
   await makeAnAPICall(
     `DELETE`,
-    `http://localhost:5000/api/wishlist/${id}`,
+    `https://stark-falls-25364.herokuapp.com/api/wishlist/${id}`,
     dispatch,
     dispatchType,
     null,

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
-import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
+import { makeAnAPICall } from "../../APiCalls";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
 import "./App.css";
@@ -65,7 +65,7 @@ function Login() {
     };
     makeAnAPICall(
       "POST",
-      "http://localhost:5000/api/users/login",
+      "https://stark-falls-25364.herokuapp.com/api/users/login",
       authDispatch,
       "USER_LOGGED_SUCCESSFULL",
       dataToBeSent,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
+import { makeAnAPICall } from "../../APiCalls";
 import { useParams, NavLink, useLocation } from "react-router-dom";
 import "./App.css";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
@@ -20,7 +20,7 @@ function OrderSuccess() {
     (async () => {
       const data = await makeAnAPICall(
         `GET`,
-        `http://localhost:5000/api/checkout/${id}`,
+        `https://stark-falls-25364.herokuapp.com/api/checkout/${id}`,
         null,
         null,
         null,
