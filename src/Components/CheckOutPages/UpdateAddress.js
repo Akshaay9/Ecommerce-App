@@ -4,15 +4,17 @@ import { useNavigate, useLocation, NavLink, useParams } from "react-router-dom";
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 import { useAddressContext } from "../../Contexts/AddressContext/AddressContext";
+import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
 function UpdateAddress() {
   let navigate = useNavigate();
-  const { state } = useLocation();
+  const { toastDispatch } = useToastContext();
   const {
     state: { userInfo },
   } = useLoginContext();
   const { addressDispatch } = useAddressContext();
 
   const { id } = useParams();
+  const [loader, setLoader] = useState(false);
 
   const url = () => {
     if (id == undefined) {
@@ -58,6 +60,7 @@ function UpdateAddress() {
 
   const adressHandler = async (e) => {
     e.preventDefault();
+    setLoader(true);
     try {
       const data = await makeAnAPICall(
         "POST",
@@ -66,9 +69,9 @@ function UpdateAddress() {
         "LOAD_ADDRESS",
         address,
         userInfo.token,
-        null,
-        null,
-        null
+        toastDispatch,
+        "Successfully updated address",
+        setLoader
       );
       console.log(data);
       navigate("/Address");
@@ -120,7 +123,11 @@ function UpdateAddress() {
               setAddress({ ...address, country: e.target.value })
             }
           />
-          <button>{ id?"Update Address":"Add new Address"}</button>
+          <button> {loader ? (
+                <i class="fas fa-spinner fa-spin login-spin"></i>
+              ) : (
+                "Update Address"
+              )}</button>
         </form>
       </div>
     </div>

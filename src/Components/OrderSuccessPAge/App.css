@@ -98,7 +98,7 @@ flex: .9;
 
 .right-order-sucess-row-two{
     border-top: none;
-    width: 57%;
+    width: 55.5%;
   margin-left: 8.5rem;
 }
 
@@ -139,4 +139,12 @@ flex: .9;
         margin-left: 0rem !important
       /* margin-left: 8.5rem; */
     }
+    /* row three */
+.right-order-sucess-row-three{
+    border-right: 1px solid var(--line-color);
+    border-left: 1px solid var(--line-color);
+    width: 90%;
+    margin-left: 1rem !important;
+    margin-bottom: 8rem;
+}
 }

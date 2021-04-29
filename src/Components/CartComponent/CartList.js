@@ -34,12 +34,13 @@ function CartList() {
             <div className="cart-componrnt-container">
               <NavLink to={`/products/${ele.productID._id}`}>
                 <div className="cart-component-left">
-                  <div className="cart-component-left-img">
+                  <div className="cart-component-left-img modified-cart-img">
                     <img src={ele.productID.images[0].img} alt="" />
                   </div>
                   <div className="cart-component-left-desc">
                     <h2>{ele.productID.name}</h2>
                     <h4>{ele.productID.price}.00₹</h4>
+                    <p>{ele.productID.desc.slice(0, 130)}....</p>
                   </div>
                 </div>
               </NavLink>

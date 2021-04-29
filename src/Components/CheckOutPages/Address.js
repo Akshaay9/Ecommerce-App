@@ -4,6 +4,7 @@ import { useNavigate, NavLink, Navigate } from "react-router-dom";
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
 import { useAddressContext } from "../../Contexts/AddressContext/AddressContext";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
+import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
 function Address() {
   const {
     state: { userInfo },
@@ -15,16 +16,16 @@ function Address() {
   } = useAddressContext();
 
   let navigate = useNavigate();
-
- 
-
- 
+  const { toastDispatch } = useToastContext();
+  const [loader, setLoader] = useState(false);
+  const [ButtonId, setButtonId] = useState(null);
 
   const [selectAddress, setSelectAddress] = useState(
-    localStorage.getItem("address")?JSON.parse(localStorage.getItem("address")):""
+    localStorage.getItem("address")
+      ? JSON.parse(localStorage.getItem("address"))
+      : ""
   );
-  console.log(selectAddress)
-
+  console.log(selectAddress);
 
   useEffect(() => {
     (async () => {
@@ -48,6 +49,7 @@ function Address() {
 
   const deleteAddress = async (id) => {
     try {
+setLoader(true)
       await makeAnAPICall(
         "DELETE",
         `http://localhost:5000/api/address/${id}`,
@@ -55,9 +57,9 @@ function Address() {
         "LOAD_ADDRESS",
         null,
         userInfo.token,
-        null,
-        null,
-        null
+        toastDispatch,
+        "Successfully Deleted address",
+        setLoader
       );
     } catch (error) {}
   };
@@ -74,11 +76,11 @@ function Address() {
       <div className="shipping-address-container">
         <h2>Shipping</h2>
         <form onSubmit={(e) => adressHandler(e)}>
-          {userAddress.map((ele) => (
+          {userAddress.map((ele, index) => (
             <div className="singleAdress" key={ele._id}>
               {/* {console.log(parseInt(selectAddress._id) === parseInt(ele._id))}
               {console.log(ele._id)} */}
-             
+
               <input
                 type="radio"
                 name="address"
@@ -107,9 +109,20 @@ function Address() {
               <div className="singleAdress-icons">
                 {" "}
                 <i
-                  class="fas fa-trash"
-                  onClick={() => deleteAddress(ele._id)}
-                ></i>
+                  className="wishID-icon"
+                  onClick={(e) => {
+                    setButtonId(e.target.id * 1);
+                    deleteAddress(ele._id);
+                  }}
+                >
+                  {loader &&
+                  ButtonId !== null &&
+                  index * 1  == ButtonId ? (
+                    <i class="fas fa-spinner fa-spin wish-spin"></i>
+                  ) : (
+                    <i className="fas fa-trash " id={index * 1}></i>
+                  )}
+                </i>
                 <NavLink to={`/updateAddress/${ele._id}`}>
                   <i class="fas fa-edit"></i>
                 </NavLink>

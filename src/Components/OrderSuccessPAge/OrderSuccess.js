@@ -62,7 +62,7 @@ function OrderSuccess() {
           <p>
             Address : {address},{city},{country},{postalCode}
           </p>
-          {orderedProduct.length > 0 && !orderedProduct.isDelivered==true? <div className="alert alert-danger">Product not delivered</div>: <div className="alert alert-success">Product  delivered</div>}
+          {orderedProduct.length > 0 && !orderedProduct.isDelivered==true? <div className="alert alert-danger">Product not yet delivered</div>: <div className="alert alert-success">Product  delivered</div>}
          
         </div>
         <div className="order-success-row-one-right">

@@ -196,6 +196,15 @@ margin-bottom: 1rem;
   margin-bottom: 0rem;
   padding-bottom: 0rem;
 }
+/* loader */
+.spinner img{
+  position: fixed;
+  /* border: 1px solid red; */
+  top: 29%;
+  width: 9%;
+  left: 40%;
+}
+
 
 
 

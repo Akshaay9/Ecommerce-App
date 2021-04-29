@@ -35,6 +35,7 @@ const StripeButton = (props) => {
     deleteCartItems();
   };
   const updatePaymentAndRedirect = async (token) => {
+    props.setLoader(true)
     const finalOrderDetails = {
       orderItems: orderItems,
       address: localStorageaddress._id,
@@ -46,6 +47,7 @@ const StripeButton = (props) => {
         email_address: token.email,
       },
     };
+    
 
     const data = await makeAnAPICall(
       `POST`,
@@ -57,6 +59,7 @@ const StripeButton = (props) => {
       toastDispatch,
       "Payment Successfull"
     );
+    props.setLoader(false)
     navigate(`/ordersuccess/${data._id}`);
   };
 
