@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 import { useGymAccessoriesContext } from "../../Contexts/ProductListContext/GymAccessories";
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
 import ProductListingComponentUtility from "../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility";
+import CatalogMagic from "../../Skeleton-loader/ProductListingLoader";
+import MobileSkeletonLoader from "../../Skeleton-loader/ProductListingLoaderMobile";
 
 function GymAccessoriesProductList() {
   // grabbing Context API
@@ -22,10 +24,20 @@ function GymAccessoriesProductList() {
   }, []);
 
   return (
-    <ProductListingComponentUtility
-      filterItems={filterItems}
-      products={initialGymAccessories}
-    />
+    <>
+      {loading && (
+        <>
+          <div className="desktop-skeleton-loader">{<CatalogMagic />}</div>
+          <div className="mobile-skeleton-loader">
+            {<MobileSkeletonLoader />}
+          </div>
+        </>
+      )}
+      <ProductListingComponentUtility
+        filterItems={filterItems}
+        products={initialGymAccessories}
+      />
+    </>
   );
 }
 

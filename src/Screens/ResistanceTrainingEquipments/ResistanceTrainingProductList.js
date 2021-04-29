@@ -3,15 +3,15 @@ import React, { useEffect } from "react";
 import { useResistanceProductListsContext } from "../../Contexts/ProductListContext/ResistanceTrainingProductListing";
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls";
 import ProductListingComponentUtility from "../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility";
-
+import CatalogMagic from "../../Skeleton-loader/ProductListingLoader";
+import MobileSkeletonLoader from "../../Skeleton-loader/ProductListingLoaderMobile";
 
 function ResistanceTrainingProductList() {
   // grabbing context API
   const {
-    state: { initialResistanceProducts, loading,filterItems},
+    state: { initialResistanceProducts, loading, filterItems },
     ResistanceProductDispatch,
   } = useResistanceProductListsContext();
-
 
   useEffect(() => {
     makeAnAPICall(
@@ -23,7 +23,20 @@ function ResistanceTrainingProductList() {
   }, []);
 
   return (
-    <ProductListingComponentUtility filterItems={filterItems} products={ initialResistanceProducts}/>
+    <>
+      {loading && (
+        <>
+          <div className="desktop-skeleton-loader">{<CatalogMagic />}</div>
+          <div className="mobile-skeleton-loader">
+            {<MobileSkeletonLoader />}
+          </div>
+        </>
+      )}
+      <ProductListingComponentUtility
+        filterItems={filterItems}
+        products={initialResistanceProducts}
+      />
+    </>
   );
 }
 

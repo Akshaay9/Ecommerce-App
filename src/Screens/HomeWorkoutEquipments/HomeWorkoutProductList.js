@@ -3,6 +3,8 @@ import React, { useEffect } from 'react'
 import { useWorkoutNewProductListsContext } from '../../Contexts/ProductListContext/HomeWorkoutProductListing';
 import { makeAnAPICall } from "../../UtilityFunctions/ProductListUtilityFuntion/APiCalls"
 import ProductListingComponentUtility from '../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility';
+import CatalogMagic from "../../Skeleton-loader/ProductListingLoader";
+import MobileSkeletonLoader from "../../Skeleton-loader/ProductListingLoaderMobile";
 
 
 
@@ -19,8 +21,19 @@ function HomeWorkoutProductList() {
     }, []);
   
    
-    return (
+  return (
+    <>
+        {loading && (
+        <>
+          <div className="desktop-skeleton-loader">{<CatalogMagic />}</div>
+          <div className="mobile-skeleton-loader">
+            {<MobileSkeletonLoader />}
+          </div>
+        </>
+      )}
+      
     <ProductListingComponentUtility filterItems={filterItems} products={initialHomeWorkoutProducts} />
+    </>
     )
 }
 

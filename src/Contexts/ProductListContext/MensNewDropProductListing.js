@@ -23,6 +23,7 @@ const mensNewDropProductReduceFun = (state, action) => {
       return {
         ...state, 
         initialHomeScrrenProducts: payload,
+        loading: false,
       };
     case "LOW_TO_HIGH":
       return {

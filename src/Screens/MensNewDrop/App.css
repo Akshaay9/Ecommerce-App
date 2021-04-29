@@ -77,6 +77,7 @@
   /* color: red !important; */
 }
 
+
 @keyframes hooverAddToCartAnimation {
   0% {
     opacity: 0;
@@ -146,6 +147,11 @@ margin: 0rem;
   color: red;
   font-size: 1.1rem;
 }
+/* skeleton loader */
+.mobile-skeleton-loader{
+  display: none !important
+}
+
 @media screen and (max-width: 43.25rem) {
   .card-container-header img {
     width: 100%;
@@ -155,4 +161,12 @@ margin: 0rem;
   .card-container-header:hover .card-add-to-cart-action {
     display: none !important;
   }
+  /* skeleton loader */
+.mobile-skeleton-loader{
+  display: block !important
+}
+.desktop-skeleton-loader{
+  display: none !important
+}
+
 }

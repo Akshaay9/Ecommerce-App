@@ -17,7 +17,8 @@ import {
   removeFromWishList,
 } from "../../UtilityFunctions/ProductListUtilityFuntion/WishListAPICalls";
 import LoginModal from "../LoginModal/LoginModal";
-const todaysDate = new Date();
+import MobileSkeletonLoader from "../../Skeleton-loader/ProductListingLoaderMobile";
+import AmazonLoader from "../../Skeleton-loader/SingleProductView";
 
 function SingleProductView() {
   const { id } = useParams();
@@ -25,6 +26,7 @@ function SingleProductView() {
   const [imageSlider, setImageSlider] = useState(0);
   const [showModal, setSHowModal] = useState(false);
   const [loader, setLoader] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [ButtonId, setButtonId] = useState(null);
 
   const {
@@ -45,15 +47,15 @@ function SingleProductView() {
 
   useEffect(() => {
     (async () => {
+      setLoading(true);
       const singleProduct = await makeAnAPICall(
         "GET",
         `https://stark-falls-25364.herokuapp.com/api/products/${id}`
       );
       setSingleProduct([singleProduct.data]);
+      setLoading(false);
     })();
   }, []);
-
-  console.log("signleProducts", signleProduct);
 
   // carousal
   useEffect(() => {
@@ -118,7 +120,7 @@ function SingleProductView() {
                 "-"
               )}
             </button>{" "}
-          <p style={{width:".2rem"}}>{isItemOnTheCart[0].inCartQty}{" "}</p>  
+            <p style={{ width: ".2rem" }}>{isItemOnTheCart[0].inCartQty} </p>
             <button
               disabled={
                 isItemOnTheCart[0].inCartQty === signleProduct[0].inStock ||
@@ -208,8 +210,7 @@ function SingleProductView() {
         "LOAD_WISHLIST",
         toastDispatch,
         "Product added to wishlist",
-        setLoader,
-       
+        setLoader
       );
     } else {
       setButtonId(index);
@@ -220,13 +221,21 @@ function SingleProductView() {
         "LOAD_WISHLIST",
         toastDispatch,
         "Product removed from wishlist",
-        setLoader,
+        setLoader
       );
     }
   };
   // main functon
   return (
     <>
+      {loading && (
+        <>
+          <div className="desktop-skeleton-loader load">{<AmazonLoader />}</div>
+          <div className="mobile-skeleton-loader">
+            {<MobileSkeletonLoader />}
+          </div>
+        </>
+      )}
       {showModal && (
         <LoginModal showModal={showModal} setSHowModal={setSHowModal} />
       )}
@@ -288,16 +297,14 @@ function SingleProductView() {
 
                 {checkIfTheProductIsInCart(signleProduct[0], 5)}
                 <button
-                  disabled={loader && ButtonId==300}
+                  disabled={loader && ButtonId == 300}
                   className="btn-secondary btn-secondary-hr-outline-in singleproductpage secondary-disabled "
                   id={400}
                   onClick={() =>
                     dispatchBasedOnBroductWishedOrNot(signleProduct[0], 300)
                   }
                 >
-                  {loader &&
-                  ButtonId !== null &&
-                   300 == ButtonId ? (
+                  {loader && ButtonId !== null && 300 == ButtonId ? (
                     <i class="fas fa-spinner fa-spin"></i>
                   ) : (
                     checkIfTheProductIsWished(signleProduct[0], 300)
