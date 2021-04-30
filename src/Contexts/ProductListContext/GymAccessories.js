@@ -113,7 +113,7 @@ const GymAccessoriesReduceFun = (state, action) => {
     case "CLEAR_FILTERS":
       return {
         ...state,
-        loading:true,
+      
         filterItems: {
          
             sort:"",
