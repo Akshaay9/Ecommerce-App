@@ -11,6 +11,10 @@ const addressReducerFun = (state, { type, payload }) => {
       return {
         userAddress: payload,
       };
+    case "CLEAR_ADDRESS":
+      return {
+        userAddress: [],
+      };
 
     default:
       break;

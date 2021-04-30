@@ -49,7 +49,7 @@ function Address() {
 
   const deleteAddress = async (id) => {
     try {
-setLoader(true)
+      setLoader(true);
       await makeAnAPICall(
         "DELETE",
         `https://stark-falls-25364.herokuapp.com/api/address/${id}`,
@@ -106,21 +106,23 @@ setLoader(true)
                   {ele.country}
                 </p>
               </label>
-              <div className="singleAdress-icons">
+              <div className="singleAdress-icons"
+              
+              >
                 {" "}
                 <i
-                  className="wishID-icon"
                   onClick={(e) => {
                     setButtonId(e.target.id * 1);
                     deleteAddress(ele._id);
                   }}
                 >
-                  {loader &&
-                  ButtonId !== null &&
-                  index * 1  == ButtonId ? (
-                    <i class="fas fa-spinner fa-spin wish-spin"></i>
+                  {loader && ButtonId !== null && index * 1 + 300 == ButtonId ? (
+                    <i class="fas fa-spinner"></i>
                   ) : (
-                    <i className="fas fa-trash " id={index * 1}></i>
+                    <i
+                      className="fas fa-trash "
+                      id={index * 1 + 300}
+                    ></i>
                   )}
                 </i>
                 <NavLink to={`/updateAddress/${ele._id}`}>

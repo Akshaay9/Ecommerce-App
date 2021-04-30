@@ -24,6 +24,8 @@ const loginContextReuducerFun = (state, { type, payload }) => {
     case "USER_REGISTER_FAIL":
     case "USER_LOGOUT":
       localStorage.removeItem("user_info");
+      localStorage.removeItem("payment");
+      localStorage.removeItem("address");
       return {
         ...state,
         userInfo: [],

@@ -36,7 +36,7 @@ function UpdateAddress() {
       try {
         const data = await makeAnAPICall(
           "GET",
-          `https://stark-falls-25364.herokuapp.com/api/${id}`,
+          `https://stark-falls-25364.herokuapp.com/api/address/${id}`,
           null,
           null,
           null,

@@ -1,37 +1,33 @@
 import express from "express";
 import colors from "colors";
 import cors from "cors";
-import dotenv from 'dotenv'
-import path from 'path'
+import dotenv from "dotenv";
+import path from "path";
 import connectToDatabase from "./DB.js";
 import productRoute from "./Routes/ProductRoute.js";
 import UserLoginSignUp from "./Routes/UserLoginSignUp.js";
 import cartRoute from "./Routes/CartRoute.js";
-import WishListRouter from "./Routes/WishListRoute.js"
-import CheckOutRoute from "./Routes/CheckoutRoute.js"
-import ShippingAddressRoute from "./Routes/AddressRoute.js"
-import DeleteAllCartRoute from "./Routes/DeleteAllCartItems.js"
+import WishListRouter from "./Routes/WishListRoute.js";
+import CheckOutRoute from "./Routes/CheckoutRoute.js";
+import ShippingAddressRoute from "./Routes/AddressRoute.js";
+import DeleteAllCartRoute from "./Routes/DeleteAllCartItems.js";
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 dotenv.config();
-const __dirname = path.resolve()
+const __dirname = path.resolve();
 
 connectToDatabase();
-  app.get('/', (req, res) => {
-    res.send('API is running....')
-  })
-
+app.get("/", (req, res) => {
+  res.send("API is running....");
+});
 
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`.yellow.underline.bold.inverse);
 });
-
-
-
 
 // routes
 app.use("/api/products", productRoute);

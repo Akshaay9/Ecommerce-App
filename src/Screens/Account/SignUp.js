@@ -73,7 +73,7 @@ function SignUp() {
     };
     makeAnAPICall(
       "POST",
-      "https://stark-falls-25364.herokuapp.com/api/signup",
+      "https://stark-falls-25364.herokuapp.com/api/users/signup",
       authDispatch,
       "USER_REGISTER_SUCCESSFULL",
       dataToBeSent,
@@ -140,7 +140,7 @@ function SignUp() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                  pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                 />
               </div>
               {/* {errors} */}

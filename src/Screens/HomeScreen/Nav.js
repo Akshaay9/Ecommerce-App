@@ -3,11 +3,13 @@ import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 import { NavLink } from "react-router-dom";
-import { useToastContext } from "../../Contexts/ToastContext/ToastContext"
+import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
 import { setAlert } from "../../Contexts/ToastContext/ToastAction";
+import { useAddressContext } from "../../Contexts/AddressContext/AddressContext";
 function Nav({ showMobileNavNar, setShowMobileNavBar }) {
   const {
-    state: { cartItems, loading },cartContextDispatch
+    state: { cartItems, loading },
+    cartContextDispatch,
   } = useCartContextProvider();
 
   const {
@@ -15,10 +17,15 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
     authDispatch,
   } = useLoginContext();
   const {
-    state: { wishListItems },wishListContextDispatch
+    state: { wishListItems },
+    wishListContextDispatch,
   } = useWishListContextProvider();
+  const {
+    state: { userAddress },
+    addressDispatch,
+  } = useAddressContext();
 
-  const {toastDispatch}=useToastContext()
+  const { toastDispatch } = useToastContext();
 
   const lengthOfCartItems = () => {
     const length = cartItems.reduce((acc, ele) => acc + ele.inCartQty, 0);
@@ -26,11 +33,12 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
   };
 
   const logOut = () => {
-    authDispatch({ type: "USER_LOGOUT" })
-    cartContextDispatch({ type: "CLEAR_CART" })
-    wishListContextDispatch({ type: "CLEAR_WISHLIST" })
-    setAlert("User has been logged out","success",toastDispatch)
-  }
+    authDispatch({ type: "USER_LOGOUT" });
+    cartContextDispatch({ type: "CLEAR_CART" });
+    wishListContextDispatch({ type: "CLEAR_WISHLIST" });
+    addressDispatch({ type: "CLEAR_ADDRESS" });
+    setAlert("User has been logged out", "success", toastDispatch);
+  };
 
   return (
     <div>
@@ -86,7 +94,7 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
           </NavLink>
 
           {userInfo.token ? (
-            <div className="user-info">
+            <div className="user-info nav_logi">
               <ul className="user-details-nav">
                 <h3>Welcome</h3>
                 <h3>
@@ -94,8 +102,10 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
                 </h3>
               </ul>
               <ul className="drop-down-info">
-              <NavLink to="/profile"><h3>Profile</h3></NavLink>  
-                <h3 onClick={()=>logOut()}>Logout</h3>
+                <NavLink to="/profile">
+                  <h3>Profile</h3>
+                </NavLink>
+                <h3 onClick={() => logOut()}>Logout</h3>
               </ul>
             </div>
           ) : (
@@ -133,15 +143,52 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
           showMobileNavNar ? "show_nav" : ""
         }`}
       >
-        {/* <div className="nav_ul_desktop desktop-hide-it"> */}
-        <div className="login">
+        {/* <div className="login">
           <NavLink to="/login">
-          <div className="nav_login">
-            <i className="fas fa-user"></i>
-          </div>
+            <div
+              className="nav_login"
+              onClick={() => setShowMobileNavBar(false)}
+            >
+              <i className="fas fa-user"></i>
+            </div>
           </NavLink>
-        </div>
+        </div> */}
+        {/* <div className="nav_mobile_top">
+          <ul>
+            <h3>Welcome : {userInfo.name}</h3>
+          </ul>
+          <NavLink to="/profile">
+            <h3>Profile</h3>
+          </NavLink>
+          <h3 onClick={() => logOut()}>Logout</h3>
+        </div> */}
+
         <ul>
+          {userInfo.token ? (
+            <li className="nav_mobile_top">
+              {" "}
+              <h3>
+                Welcome : {userInfo.name}{" "}
+                <i className="fas fa-chevron-down"></i>
+              </h3>
+              <NavLink to="/profile">
+                <h3 onClick={() => setShowMobileNavBar(false)}>Profile</h3>
+              </NavLink>
+              <li onClick={() => { logOut();setShowMobileNavBar(false)}}>Logout</li>
+            </li>
+          ) : (
+            <li>
+              <NavLink to="/login">
+                <div
+                  className="nav_login"
+                  onClick={() => setShowMobileNavBar(false)}
+                >
+                  <i className="fas fa-user"></i>
+                </div>
+              </NavLink>
+            </li>
+          )}
+
           <NavLink to="/products/mensnewdrop">
             {" "}
             <li onClick={() => setShowMobileNavBar(false)}>Mens</li>

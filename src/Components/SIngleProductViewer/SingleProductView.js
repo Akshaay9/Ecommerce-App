@@ -84,8 +84,11 @@ function SingleProductView() {
           <div className="card-ad-to-cart-action-qty">
             {" "}
             <button
-              className="btn-secondary btn-secondary-hr-outline-in single-cta "
+              className="btn-secondary btn-secondary-hr-outline-in single-cta secondary-disabled "
               id={index + 2}
+              disabled={
+                (loader && index * 1 + 2 == ButtonId)
+              }
               onClick={(e) => {
                 setButtonId(e.target.id);
                 isItemOnTheCart[0].inCartQty == 1

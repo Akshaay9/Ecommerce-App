@@ -89,7 +89,7 @@ function UserProfile() {
     setLoader(true);
     makeAnAPICall(
       "POST",
-      `https://stark-falls-25364.herokuapp.com/api/${userInfo.id}`,
+      `https://stark-falls-25364.herokuapp.com/api/users/${userInfo.id}`,
       null,
       null,
       updatePass,
@@ -130,7 +130,7 @@ function UserProfile() {
                   Success<i className="fas fa-check-circle"></i>
                 </p>
               )}
-          <label htmlFor="">Confirm Password</label>
+          <label htmlFor="">Update Password</label>
           <input
             type="password"
             placeholder="Password min 6 char"

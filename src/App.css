@@ -594,6 +594,16 @@ input[type="radio"] {
   .show_nav {
     transform: translateX(0%) !important;
   }
+  .nav_mobile_top h3,.nav_mobile_top li{
+text-align: center;
+padding: 0.4rem 0rem; 
+  }
+ 
+
+
+
+
+
   .nav_ul_desktop .login {
     height: 2rem;
     margin: auto;

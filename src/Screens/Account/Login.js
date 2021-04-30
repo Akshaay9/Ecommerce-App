@@ -95,11 +95,11 @@ function Login() {
             </p>
           </div>
           <div className="login-right-cta">
-            <button className="loign-cta-goole"> login in with google</button>
+            {/* <button className="loign-cta-goole"> login in with google</button>
             <button className="loign-cta-facebook">
               {" "}
               login in with Facebook
-            </button>
+            </button> */}
             <p className="login-right-micro-info"> or login in email </p>
           </div>
           <div className="login-right-inputs">
@@ -110,7 +110,7 @@ function Login() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
               />
             </div>
             {/* {errors} */}
