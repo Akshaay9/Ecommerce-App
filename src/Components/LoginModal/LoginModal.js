@@ -15,7 +15,7 @@ function LoginModal({ showModal, setSHowModal }) {
     }, 1000);
     return () => clearTimeout(id);
   }, [timer]);
-  console.log(showModal);
+  
   return (
     <>
       <div className="modal-container">

@@ -63,3 +63,20 @@
   border: 1px solid black;
   cursor: pointer;
 }
+@media screen and (max-width: 700px) {
+  .modal-container {
+    width: 110%;
+    height: 150vh;
+    position: fixed;
+    z-index: 2900;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+}
