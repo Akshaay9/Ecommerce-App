@@ -79,7 +79,7 @@ const StripeButton = (props) => {
   return (
     <StripeCheckout
       label="Place your order"
-      name="Joe Shop"
+      name="AKshay's Shop"
       billingAddress
       shippingAddress
       image="https://i.ibb.co/3BmghZC/Screenshot-3.png"

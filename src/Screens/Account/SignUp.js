@@ -117,11 +117,11 @@ function SignUp() {
               </p>
             </div>
             <div className="login-right-cta">
-              <button className="loign-cta-goole"> Sign up with google</button>
+              {/* <button className="loign-cta-goole"> Sign up with google</button>
               <button className="loign-cta-facebook">
                 {" "}
                 Sign up with Facebook
-              </button>
+              </button> */}
               <p className="login-right-micro-info"> or sign up email </p>
             </div>
             <div className="login-right-inputs">
@@ -201,7 +201,7 @@ function SignUp() {
               {loader ? (
                 <i class="fas fa-spinner fa-spin login-spin"></i>
               ) : (
-                "Log In"
+                "Sign Up"
               )}
             </button>
             </div>
