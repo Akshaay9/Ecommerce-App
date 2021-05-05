@@ -219,4 +219,9 @@
     flex: 0.9;
     margin: 0.6rem 0rem;
   }
+  .single-cta {
+    padding: 0.3rem 1rem !important;
+    text-align: center;
+    /* width: .4rem !important */
+  }
 }

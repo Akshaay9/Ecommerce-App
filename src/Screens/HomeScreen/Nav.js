@@ -65,11 +65,15 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
               </h2>
             </NavLink>
           </div>
-          <div className="nav_hamberger">
-            <i
-              className="fas fa-bars"
-              onClick={() => setShowMobileNavBar(!showMobileNavNar)}
-            ></i>
+          <div
+            className={`hamberger desktop-hide-it ${
+              showMobileNavNar ? "rotateHam" : ""
+            }`}
+            onClick={() => setShowMobileNavBar(!showMobileNavNar)}
+          >
+            <div className="ham1"></div>
+            <div className="ham2"></div>
+            <div className="ham3"></div>
           </div>
         </div>
         <div className="nav_center">
@@ -174,7 +178,14 @@ function Nav({ showMobileNavNar, setShowMobileNavBar }) {
               <NavLink to="/profile">
                 <h3 onClick={() => setShowMobileNavBar(false)}>Profile</h3>
               </NavLink>
-              <li onClick={() => { logOut();setShowMobileNavBar(false)}}>Logout</li>
+              <li
+                onClick={() => {
+                  logOut();
+                  setShowMobileNavBar(false);
+                }}
+              >
+                Logout
+              </li>
             </li>
           ) : (
             <li>
