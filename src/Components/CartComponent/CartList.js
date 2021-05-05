@@ -64,8 +64,8 @@ function CartList() {
                             cartContextDispatch,
                             "LOAD_CART_ITEMS",
                             toastDispatch,
-                          "Product removed from cart",
-                          setLoader
+                            "Product removed from cart",
+                            setLoader
                           )
                         : manageQTY(
                             ele.productID._id,
@@ -76,8 +76,8 @@ function CartList() {
                               inCartQty: ele.inCartQty - 1,
                             },
                             toastDispatch,
-                          "Product quantity decreased",
-                          setLoader
+                            "Product quantity decreased",
+                            setLoader
                           );
                     }}
                   >
@@ -92,7 +92,10 @@ function CartList() {
                     className="btn-secondary btn-secondary-hr-outline-in secondary-disabled
               btn-cart-cta secondary-width
               "
-                    disabled={ele.inCartQty === ele.productID.inStock || loader && index * 1 == ButtonId}
+                    disabled={
+                      ele.inCartQty === ele.productID.inStock ||
+                      (loader && index * 1 == ButtonId)
+                    }
                     id={index}
                     onClick={(e) => {
                       setButtonId(e.target.id);
@@ -166,6 +169,17 @@ function CartList() {
               Sub-Total Quantity :{" "}
               {cartItems.reduce((acc, ele) => acc + ele.inCartQty, 0)}
             </h4>
+            <div className="cart-component-finalDetials-delivery">
+              <p>
+              <i class="fas fa-truck"></i> You are eligible for fast delivery
+            </p>
+            <p>
+              {" "}
+              <i class="far fa-check-square"></i>Price displayed here is
+              inclusive of taxes
+            </p>
+            </div>
+            
             <NavLink to="/address">
               <button className="btn-primary btn-primary-hr-outline-out checkout-cta">
                 Check Out

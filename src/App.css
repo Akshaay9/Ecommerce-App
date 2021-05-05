@@ -385,6 +385,7 @@ opacity: 0;
 .filter {
   display: flex;
   justify-content: space-evenly;
+  padding-top: .8rem;
 }
 .fa-chevron-up:before,.fa-chevron-down:before{
 margin-left: .5rem;
@@ -888,21 +889,23 @@ padding: 0.4rem 0rem;
     display: none;
     padding: 1rem;
   }
+  
   .filter-heading-sort-prices-container li {
     z-index: 199;
     background-color: white;
-    margin-left: 1.7rem;
+    margin-left: 1rem;
     width: 100%;
   }
   .filter-heading-sort-rating-container li {
     background-color: white;
-    margin-left: 1.7rem;
+    margin-left: -2rem;
+   
     width: 100%;
   }
   .filter-heading-sort-delivery-container li {
     z-index: 599 !important;
     background-color: white;
-    margin-left: 1.2rem;
+    margin-left: 1rem;
     width: 100%;
  
   }
@@ -926,7 +929,7 @@ padding: 0.4rem 0rem;
   }
   .filter-tags-mobile li,.filter-tags li {
     width: 11rem !important;
-    margin-left: 1.5rem;
+    margin-left: -2rem;
   }
   .filter-heading-sort-priceRange-contsiner input {
     margin-left: 2rem;
