@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { useWishListContextProvider } from "../../Contexts/WishListContext/WishListContext";
 import { useParams } from "react-router-dom";
-import { useAllProductsContextContext } from "../../Contexts/SearchAndIndividualScreenContext/SearchAndindiScreen";
 
 import { makeAnAPICall } from "../../APiCalls";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
@@ -19,7 +18,7 @@ import {
 import LoginModal from "../LoginModal/LoginModal";
 import MobileSkeletonLoader from "../../Skeleton-loader/ProductListingLoaderMobile";
 import AmazonLoader from "../../Skeleton-loader/SingleProductView";
-
+import Rating from "@material-ui/lab/Rating";
 function SingleProductView() {
   const { id } = useParams();
   const [signleProduct, setSingleProduct] = useState([]);
@@ -86,9 +85,7 @@ function SingleProductView() {
             <button
               className="btn-secondary btn-secondary-hr-outline-in single-cta secondary-disabled "
               id={index + 2}
-              disabled={
-                (loader && index * 1 + 2 == ButtonId)
-              }
+              disabled={loader && index * 1 + 2 == ButtonId}
               onClick={(e) => {
                 setButtonId(e.target.id);
                 isItemOnTheCart[0].inCartQty == 1
@@ -273,23 +270,40 @@ function SingleProductView() {
               </div>
               <div className="single-product-viewer-container-right">
                 <div className="single-product-desc">
-                  <span>New</span>
+                  <span className="new">New</span>
                   <div className="single-prod-desc-row-one">
                     <div className="single-prod-desc-row-one">
                       <h1> {signleProduct[0].name}</h1>
                     </div>
+                  </div>
+                  <div className="rati">
+                    <Rating
+                      name="half-rating-read"
+                      defaultValue={signleProduct[0].rating}
+                      precision={0.5}
+                      readOnly
+                      style={{ color: "blue" }}
+                    />{" "}
+                    <span className="reviews-span">(12 reviews)</span>
+                  </div>
 
-                    <div className="single-prod-desc-row-two">
-                      <h2>{signleProduct[0].price}.00₹</h2>
-                    </div>
+                  <div className="single-product-price">
+                    <h2>Rs.{signleProduct[0].price}.00</h2>
+                    <h3>
+                      Rs.{signleProduct[0].price + signleProduct[0].price * 0.3}
+                    </h3>
+                    <h4>(30%Off)</h4>
+                    <span>Inclusive of all taxes</span>
                   </div>
-                  <div className="rating bg-blue">
-                    <h3>{signleProduct[0].rating}</h3>
-                  </div>
+
                   <div className="single-product-desc-img-container">
-                    {signleProduct[0].images.map((ele) => (
+                    {signleProduct[0].images.map((ele, index) => (
                       <div className="single-product-desc-img">
-                        <img src={ele.img} alt="" />
+                        <img
+                          src={ele.img}
+                          alt=""
+                          onClick={() => setImageSlider(index)}
+                        />
                       </div>
                     ))}
                   </div>
