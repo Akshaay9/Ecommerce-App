@@ -4,8 +4,8 @@ import ContentLoader from 'react-content-loader'
 const AmazonLoader = props => {
   return (
     <ContentLoader
-      height={440}
-      width={1260}
+      height={640}
+      width={1460}
       primaryColor="#d9d9d9"
       secondaryColor="#ecebeb"
       {...props}
@@ -13,7 +13,7 @@ const AmazonLoader = props => {
       <rect x="710" y="40" rx="0" ry="0" width="95" height="10" />
       <rect x="710" y="320" rx="0" ry="0" width="95" height="30" />
       <rect x="710" y="80" rx="0" ry="0" width="1370" height="225" />
-      <rect x="10" y="40" rx="0" ry="0" width="470" height="325" />
+      <rect x="70" y="40" rx="0" ry="0" width="470" height="325" />
       <rect x="710" y="63" rx="0" ry="0" width="72" height="4" />
       <rect x="710" y="5" rx="5" ry="5" width="75" height="20" />
      

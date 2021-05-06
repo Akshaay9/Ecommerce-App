@@ -111,7 +111,6 @@ const mensNewDropProductReduceFun = (state, action) => {
     case "CLEAR_FILTERS":
       return {
         ...state,
-        loading:false,
         filterItems: {
          
             sort:"",

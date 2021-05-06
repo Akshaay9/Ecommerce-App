@@ -170,12 +170,12 @@ function CartList() {
               {cartItems.reduce((acc, ele) => acc + ele.inCartQty, 0)}
             </h4>
             <div className="cart-component-finalDetials-delivery">
-              <p>
-              <i class="fas fa-truck"></i> You are eligible for fast delivery
+              <p style={{color:"green"}}>
+              <i style={{color:"green"}} class="fas fa-truck"></i> You are eligible for fast delivery
             </p>
-            <p>
+            <p  style={{color:"rgb(189, 30, 30)"}}>
               {" "}
-              <i class="far fa-check-square"></i>Price displayed here is
+                <i style={{ color: "rgb(189, 30, 30)" }} class="far fa-check-square"></i>Price displayed here is
               inclusive of taxes
             </p>
             </div>
