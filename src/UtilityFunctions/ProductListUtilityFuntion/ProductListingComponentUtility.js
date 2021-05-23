@@ -36,7 +36,7 @@ function ProductListingComponentUtility({ products, filterItems }) {
   return (
     <>
       {showModal && (
-        <LoginModal showModal={showModal} setSHowModal={setSHowModal} />
+        <LoginModal setSHowModal={setSHowModal} />
       )}
       <div className="grid-container">
         {filterData(products, filterItems).map((ele, index) => (

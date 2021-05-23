@@ -5,7 +5,7 @@ const AmazonLoader = props => {
   return (
     <ContentLoader
       height={640}
-      width={1460}
+      width={1260}
       primaryColor="#d9d9d9"
       secondaryColor="#ecebeb"
       {...props}
