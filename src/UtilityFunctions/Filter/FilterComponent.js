@@ -400,7 +400,7 @@ function FilterUtility({ dispatch, products, filterItems }) {
           )}
         </div>
         <div className="button-filter">
-          <h3 className="filter-heading-sort-priceRange">
+       
             <button
               style={{ borderRadius: "0px" }}
               className="btn-secondary btn-secondary-hr-outline-in clear-filter-btn"
@@ -408,7 +408,7 @@ function FilterUtility({ dispatch, products, filterItems }) {
             >
               Clear Filter
             </button>
-          </h3>
+  
         </div>
       </div>
     </>
