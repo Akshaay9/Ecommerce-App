@@ -61,7 +61,7 @@ padding-bottom: 1rem;
   flex: 0.1;
 }
 .wishlist-component-container-right button {
-  padding: 0.1rem 0.7rem;
+  padding: .4rem 1.5rem;
 }
 .wishlist-component-container-left-desc {
   margin: auto auto;
@@ -106,11 +106,14 @@ padding-bottom: 1rem;
 
 @media screen and (max-width: 700px) {
   .wishlist-component-container {
-    width: 80%;
+    width: 95%;
     margin: auto;
     border: 1px solid var(--line-height);
     display: grid;
     grid-template-columns: 1fr;
+    margin-bottom: 1rem;
+    grid-row-gap: 0px !important;
+    margin-bottom: 2rem;
   }
   .wishlist-component-container-left {
     display: block;
@@ -120,12 +123,15 @@ padding-bottom: 1rem;
   }
   .wishList-heading {
     margin-top: 5rem;
+    width: 95%;
   }
   .wishlist-component-container-right {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+   border-top: none;
+   
   }
   .emptyWishIMG {
     width: 90%;

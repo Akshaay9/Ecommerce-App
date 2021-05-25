@@ -6,8 +6,6 @@ import {
 } from "./FilterFunctions";
 
 function FilterUtility({ dispatch, products, filterItems }) {
-
-
   //  to Hide or show dropdow filters
   const [showFilter, setShowFilter] = useState({
     priceSort: "",
@@ -43,7 +41,19 @@ function FilterUtility({ dispatch, products, filterItems }) {
 
   return (
     <>
-      <div className="filter-mobile-heading">
+      <div
+        className="filter-mobile-heading"
+        onClick={() => {
+          {
+            showFilter.mobileFilter === ""
+              ? setShowFilter({
+                  ...showFilter,
+                  mobileFilter: "price-container",
+                })
+              : setShowFilter({ ...showFilter, mobileFilter: "" });
+          }
+        }}
+      >
         <h3>Filters</h3>
         <>
           {showFilter.mobileFilter === "" ? (
@@ -75,7 +85,17 @@ function FilterUtility({ dispatch, products, filterItems }) {
         <h3 className="filter-heading">Filters : </h3>
         {/* price filter */}
         <ul>
-          <h3 className="filter-heading-sort-prices">
+          <h3
+            className="filter-heading-sort-prices"
+            onClick={() => {
+              showFilter.priceSort === ""
+                ? setShowFilter({
+                    ...showFilter,
+                    priceSort: "price-container",
+                  })
+                : setShowFilter({ ...showFilter, priceSort: "" });
+            }}
+          >
             Sort By Price
             <>
               {showFilter.priceSort === "" ? (
@@ -128,7 +148,17 @@ function FilterUtility({ dispatch, products, filterItems }) {
 
         {/* Rating Filter */}
         <ul>
-          <h3 className="filter-heading-sort-rating">
+          <h3
+            className="filter-heading-sort-rating"
+            onClick={() => {
+              showFilter.starSort === ""
+                ? setShowFilter({
+                    ...showFilter,
+                    starSort: "rating-container",
+                  })
+                : setShowFilter({ ...showFilter, starSort: "" });
+            }}
+          >
             Sort By Rating{" "}
             <>
               {showFilter.starSort === "" ? (
@@ -198,7 +228,17 @@ function FilterUtility({ dispatch, products, filterItems }) {
         </ul>
         {/* Product Delivery Filter */}
         <ul>
-          <h3 className="filter-heading-sort-delivery">
+          <h3
+            className="filter-heading-sort-delivery"
+            onClick={() => {
+              showFilter.deliverySort === ""
+                ? setShowFilter({
+                    ...showFilter,
+                    deliverySort: "delivery-container",
+                  })
+                : setShowFilter({ ...showFilter, deliverySort: "" });
+            }}
+          >
             Product Delivery{" "}
             <>
               {showFilter.deliverySort === "" ? (
@@ -251,7 +291,17 @@ function FilterUtility({ dispatch, products, filterItems }) {
 
         {/* Product Tags Filter */}
         <ul>
-          <h3 className="filter-heading-sort-delivery">
+          <h3
+            className="filter-heading-sort-delivery"
+            onClick={() => {
+              showFilter.productTags === ""
+                ? setShowFilter({
+                    ...showFilter,
+                    productTags: "productTag-container",
+                  })
+                : setShowFilter({ ...showFilter, productTags: "" });
+            }}
+          >
             Products{" "}
             <>
               {showFilter.productTags === "" ? (
@@ -298,7 +348,17 @@ function FilterUtility({ dispatch, products, filterItems }) {
         </ul>
 
         <div className="priceRange">
-          <h3 className="filter-heading-sort-priceRange">
+          <h3
+            className="filter-heading-sort-priceRange"
+            onClick={() => {
+              showFilter.priceRange === ""
+                ? setShowFilter({
+                    ...showFilter,
+                    priceRange: "input-contsiner",
+                  })
+                : setShowFilter({ ...showFilter, priceRange: "" });
+            }}
+          >
             Price Range{" "}
             <>
               {showFilter.priceRange === "" ? (
