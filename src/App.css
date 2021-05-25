@@ -598,7 +598,7 @@ input[type="radio"] {
 @media screen and (max-width: 43.25rem) {
   * {
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-    /* overflow-x: hidden; */
+   
   }
   body{
     overflow-x: hidden;
