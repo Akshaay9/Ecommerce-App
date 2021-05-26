@@ -420,7 +420,8 @@ margin-left: .5rem;
 /* .filter-heading-sort-priceRange :hover, */
   .filter-heading-sort-priceRange:hover
   {
-  background-color: #4e4e4e59;
+  background-color: #4e4e4e1f;
+  border-radius: .3rem;
   
   }
   li{
@@ -628,11 +629,6 @@ input[type="radio"] {
 text-align: center;
 padding: 0.4rem 0rem; 
   }
- 
-
-
-
-
 
   .nav_ul_desktop .login {
     height: 2rem;
