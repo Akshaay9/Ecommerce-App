@@ -1,6 +1,7 @@
 /* eslint-disable react/no-direct-mutation-state */
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import axios from "axios";
 import Footer from "./Screens/HomeScreen/Footer";
 import HomeScreen from "./Screens/HomeScreen/Index";
 import Nav from "./Screens/HomeScreen/Nav";
@@ -53,6 +54,14 @@ function App() {
     }
   }, [userInfo]);
 
+  useEffect(() => {
+    (async () => {
+      const initialPing = await axios.get(
+        `https://stark-falls-25364.herokuapp.com/`
+      );
+    })();
+  }, []);
+
   return (
     <div
       style={showMobileNavNar ? { height: "93.4vh", overflow: "hidden" } : {}}
@@ -92,14 +101,8 @@ function App() {
 
           {/* check out */}
           <PrivateRoute path="/Address" element={<Address />} />
-          <PrivateRoute
-            path="/updateAddress/"
-            element={<UpdateAddress />}
-          />
-          <PrivateRoute
-            path="/updateAddress/:id"
-            element={<UpdateAddress />}
-          />
+          <PrivateRoute path="/updateAddress/" element={<UpdateAddress />} />
+          <PrivateRoute path="/updateAddress/:id" element={<UpdateAddress />} />
           <PrivateRoute path="/Payment" element={<Payment />} />
           <PrivateRoute path="/FinalCheckOut" element={<FinalCheckOut />} />
 

@@ -19,6 +19,7 @@ dotenv.config();
 const __dirname = path.resolve();
 
 connectToDatabase();
+
 app.get("/", (req, res) => {
   res.send("API is running....");
 });
