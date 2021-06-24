@@ -20,6 +20,12 @@
   top: 1%;
   /* border: 1px solid red; */
 }
+.imgaeheight img{
+  object-fit: cover;
+  width: 100%;
+  height: 25rem !important;
+   /* border: 1px solid red; */
+}
 .card-container-footer-row-one {
   font-family: var(--font-sans-serif);
   display: flex;

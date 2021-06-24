@@ -12,7 +12,11 @@ import { filterData } from "../Filter/FilterFunctions";
 import LoginModal from "../../Components/LoginModal/LoginModal";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 
-function ProductListingComponentUtility({ products, filterItems }) {
+function ProductListingComponentUtility({
+  products,
+  filterItems,
+  imgaeheight,
+}) {
   const [showModal, setSHowModal] = useState(false);
   const [loader, setLoader] = useState(false);
   const [ButtonId, setButtonId] = useState(null);
@@ -35,13 +39,11 @@ function ProductListingComponentUtility({ products, filterItems }) {
 
   return (
     <>
-      {showModal && (
-        <LoginModal setSHowModal={setSHowModal} />
-      )}
+      {showModal && <LoginModal setSHowModal={setSHowModal} />}
       <div className="grid-container">
         {filterData(products, filterItems).map((ele, index) => (
           <div className="card-container" key={ele._id}>
-            <div className="card-container-header">
+            <div className={`card-container-header ${imgaeheight}`}>
               <NavLink to={`/products/${ele._id}`}>
                 <img src={ele.images[0].img} alt="" />
                 {ele.newArrival && (
@@ -90,7 +92,6 @@ function ProductListingComponentUtility({ products, filterItems }) {
                       );
                     }}
                   >
-                    
                     {loader &&
                     ButtonId !== null &&
                     index * 1 + 300 == ButtonId ? (

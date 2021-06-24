@@ -20,6 +20,8 @@ function ProductScreenList() {
     );
   }, []);
 
+  let imgaeheight = "imgaeheight";
+
   return (
     <>
       {loading && (
@@ -31,6 +33,7 @@ function ProductScreenList() {
         </>
       )}
       <ProductListingComponentUtility
+        imgaeheight={imgaeheight}
         products={initialProducts}
         filterItems={filterItems}
       />
