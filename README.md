@@ -33,4 +33,11 @@ authentication.</li>
   <h3>Deployment</h3>
   <h5>Front End</h5> <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white"/>
    <h5>Backend End</h5> <img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white"/>
+   
+  <h3>Images</h3>
+  <img src="https://i.ibb.co/qC8n253/shopping.png"/>
+  <img src="https://nimbus-screenshots.s3.amazonaws.com/s/69158d58ddff3d0e99763f617f1769ad.png"/>
+  <img src="https://nimbus-screenshots.s3.amazonaws.com/s/10b687ff8344f4471b0bce2dafb4a1a8.png"/>
+  <img src="https://nimbus-screenshots.s3.amazonaws.com/s/d90ca64a155bca05016250b6e444bbdf.png"/>
+  
   
