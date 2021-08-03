@@ -1,5 +1,4 @@
-
-.login-container{
+.login-container {
   height: 82.7vh;
   display: flex;
   align-items: center;
@@ -14,7 +13,6 @@
   color: white;
   background-color: black;
 }
-
 
 .login-left-bottom h2 {
   font-size: 2rem;
@@ -76,68 +74,72 @@
   color: rgb(119, 123, 128);
 }
 .login-right-inpute-row-one input {
-  padding: 0.6rem .2rem;
+  padding: 0.6rem 0.2rem;
   margin-left: 1.7rem;
   border: none;
   outline: none;
   border: 1px solid rgb(201, 197, 197);
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   border-radius: 5px;
 }
-.login-right-inpute-row-two input{
-    padding: 0.6rem 6.6rem;
-    margin-left: 1.7rem;
-    border: none;
-    outline: none;
-    border: 1px solid rgb(201, 197, 197);
-    margin-bottom: 1.2rem;
-    border-radius: 5px;
+.login-right-inpute-row-two input {
+  padding: 0.6rem 6.6rem;
+  margin-left: 1.7rem;
+  border: none;
+  outline: none;
+  border: 1px solid rgb(201, 197, 197);
+  margin-bottom: 1.2rem;
+  border-radius: 5px;
 }
-.login-right-checkbox{
-    display: flex;
-    margin-left: 1.7rem;
-    align-items: center;
+.login-right-checkbox {
+  display: flex;
+  margin-left: 1.7rem;
+  align-items: center;
 }
-.login-right-checkbox p{
-    margin-left: 1rem;
-    padding: 0.5rem 0rem;
-    font-size: 13px;
-    color: rgb(119, 123, 128);
+.login-right-checkbox p {
+  margin-left: 1rem;
+  padding: 0.5rem 0rem;
+  font-size: 13px;
+  color: rgb(119, 123, 128);
 }
-.login-final-cta button{
-    margin-left: 1.7rem;
-    margin-top: 0.6rem;
-    margin-bottom: 0.6rem;
-    border-radius: 5px;
-    font-family: sans-serif;
-    font-weight: 550;
-    background-color: black;
-    color: white;
-    outline: none;
-    border: none;
-    padding: 1rem 10.2rem;
-    margin-bottom: 1rem;
-    border: 1px solid black;
+.login-final-cta button,
+.guest-btn {
+  margin-left: 1.7rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+  border-radius: 5px;
+  font-family: sans-serif;
+  font-weight: 550;
+  background-color: black;
+  color: white;
+  outline: none;
+  border: none;
+  padding: 0.7rem 10.2rem;
+  margin-bottom: 1rem;
+  border: 1px solid black;
 }
-.login-final-cta button:hover{
-    color: black;
-    background: white;
-    border: 1px solid black;
+.guest-btn {
+  padding: 0.8rem 0rem !important;
+  width: 83%;
+}
+.login-final-cta button:hover,
+.guest-btn:hover {
+  color: black;
+  background: white;
+  border: 1px solid black;
   cursor: pointer;
 }
-.login-spin{
+.login-spin {
   padding: 0rem 1.2rem;
-  
 }
-.black-btn-disable:disabled{
+.black-btn-disable:disabled {
   color: rgb(0, 0, 0);
   background: rgb(255, 254, 254);
   cursor: not-allowed;
 }
 
-
 /* sign=== up */
-.signup{
+.signup {
   width: 100%;
   height: 82.5vh;
   background: url(https://images.unsplash.com/photo-1534258936925-c58bed479fcb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDJ8fGd5bXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60);
@@ -156,48 +158,44 @@
   /* -o-filter: blur(5px); */
   /* -ms-filter: blur(5px); */
   /* filter: blur(5px); */
-
-
 }
-.signup{
+.signup {
   color: white;
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.signup-card{
+.signup-card {
   background-color: white;
-width: 33%;
-border-radius: 12px;
-border-top-left-radius: 3rem;
-
-
+  width: 33%;
+  border-radius: 12px;
+  border-top-left-radius: 3rem;
 }
-.login-input-email input{
+.login-input-email input {
   padding: 0.6rem 6.6rem;
 }
 /* error handlers */
-.error-div-input{
-display: flex;
-justify-content: space-around;
-margin-bottom: .5rem;
+.error-div-input {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0.5rem;
 }
-.error-handler-input{
+.error-handler-input {
   font-size: 13px;
 }
-.error{
+.error {
   color: red;
 }
-.sucess{
+.sucess {
   color: green;
 }
-.fa-exclamation-circle,.fa-check-circle{
-  margin-left: .5rem;
+.fa-exclamation-circle,
+.fa-check-circle {
+  margin-left: 0.5rem;
 }
 
 /*  */
-
 
 input:optional {
   border-color: gray;
@@ -217,42 +215,38 @@ input:required:focus:valid {
 input:focus:invalid {
   background: url("https://www.flaticon.com/svg/vstatic/svg/1828/1828843.svg?token=exp=1618463445~hmac=13132351f29c82dd61cd177844221aac")
     no-repeat 95% 50%;
-  border:1px solid red;
+  border: 1px solid red;
   background-size: 25px;
 }
 
-
 @media screen and (max-width: 1000px) {
-    .login-container{
-        margin-top: 4rem;
-        justify-content: center;
-        align-items: center;
-        height: 120vh;
-    }
-    .signup{
-      height: 120vh;
-    }
- .login-left-bottom{
-     display: none;
- }   
-  .login-right-card {
-      position: relative;
-      justify-content: space-between;
-      width: 98%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-evenly;
-    /* height: 30rem; */
-   
+  .login-container {
+    margin-top: 4rem;
+    justify-content: center;
+    align-items: center;
+    height: 120vh;
   }
-  .signup-card{
+  .signup {
+    height: 120vh;
+  }
+  .login-left-bottom {
+    display: none;
+  }
+  .login-right-card {
+    position: relative;
+    justify-content: space-between;
+    width: 98%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    /* height: 30rem; */
+  }
+  .signup-card {
     background-color: white;
-  width: 98%;
-  border-radius: 12px;
-  border-top-left-radius: 3rem;
-  
-  
+    width: 98%;
+    border-radius: 12px;
+    border-top-left-radius: 3rem;
   }
   .login-right-card {
     color: black;
@@ -262,7 +256,7 @@ input:focus:invalid {
     border-radius: 12px;
   }
   .login-right-inpute-row-one input {
-    padding: 0.6rem .8rem;
+    padding: 0.6rem 0.8rem;
     margin-left: 1.7rem;
     border: none;
     outline: none;
@@ -270,16 +264,13 @@ input:focus:invalid {
     margin-bottom: 1.2rem;
     border-radius: 5px;
   }
-  .login-right-inpute-row-two input{
+  .login-right-inpute-row-two input {
     padding: 0.6rem 4rem !important;
-  
   }
-  .login-final-cta button{
-    padding: .5rem 7rem;
+  .login-final-cta button {
+    padding: 0.5rem 7rem;
   }
-  .signup-card{
-   margin-top: 4rem;
-  
+  .signup-card {
+    margin-top: 4rem;
   }
- 
 }

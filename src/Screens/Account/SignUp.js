@@ -24,6 +24,7 @@ function SignUp() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [loader, setLoader] = useState(false);
+  const [loader1, setLoader1] = useState(false);
 
   useEffect(() => {
     if (name.length == 0) {
@@ -86,6 +87,24 @@ function SignUp() {
   if (userInfo.token) {
     navigate(state?.from ? state.from : "/products/mensnewdrop");
   }
+  const guestUserLogin = () => {
+    setLoader1(true);
+    const dataToBeSent = {
+      email: "test@gmail.com",
+      password: "Test98#",
+    };
+    makeAnAPICall(
+      "POST",
+      "https://stark-falls-25364.herokuapp.com/api/users/login",
+      authDispatch,
+      "USER_LOGGED_SUCCESSFULL",
+      dataToBeSent,
+      null,
+      toastDispatch,
+      "Successfully logged in",
+      setLoader1
+    );
+  };
 
 
   return (
@@ -197,7 +216,7 @@ function SignUp() {
               <p>I agree with Terms and conditions</p>
             </div>
             <div className="login-final-cta">
-            <button disabled={loader} className="black-btn-disable">
+            <button disabled={loader || loader1} className="black-btn-disable">
               {loader ? (
                 <i class="fas fa-spinner fa-spin login-spin"></i>
               ) : (
@@ -206,9 +225,20 @@ function SignUp() {
             </button>
             </div>
           </form>
+          <button 
+        onClick={()=>guestUserLogin()}
+          disabled={loader || loader1}
+          className="black-btn-disable guest-btn"
+        >
+          {loader1 ? (
+            <i class="fas fa-spinner fa-spin login-spin"></i>
+          ) : (
+            "Enter as Guest user"
+          )}
+        </button>
         </div>
       </div>
-      {/* <Footerbottom/>  */}
+   
     </>
   );
 }
