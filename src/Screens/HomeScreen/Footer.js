@@ -1,23 +1,34 @@
-import React from 'react'
-
+import React from "react";
 function Footer() {
-    return (
-        <div>
-            <div className="footer">
-                <div className="footer-left">
-                    <p className="footer-p-font">© 2021 | Fit-Shaark Limited | All Rights Reserved @Akshay | About me</p>
-                </div>
-                <div className="footer-right-container">
-                <div className="footer-right">
-                    <i class="fab fa-twitter"></i>
-                    <i class="fab fa-github"></i>
-                    <i class="fab fa-linkedin"></i>
-                    <i class="fas fa-envelope-square"></i>
-                    </div>
-                    </div>
-            </div>
-        </div>
-    )
+  return (
+    <div className="footer-fit">
+      <div className="footer-bottom-left">
+        <p className="footer-bottom-p-font">
+          © 2021 | Fit-Shaark Limited | All Rights Reserved @Akshay |  <a href="https://akshayportfoloio98.netlify.app/"> About me</a>
+        </p>
+      </div>
+
+      <div className="footer-bottom-righ">
+        <a href="https://twitter.com/Kshy_nair">
+          {" "}
+          <i className="fab fa-twitter"></i>
+        </a>
+        <a href="https://github.com/akshaay9">
+          {" "}
+          <i className="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/akshay-a7">
+          {" "}
+          <i className="fab fa-linkedin"></i>
+        </a>
+
+        <a href="mailto:nair.akshay98@gmail.com">
+          {" "}
+          <i className="fas fa-envelope-square"></i>
+        </a>
+      </div>
+    </div>
+  );
 }
 
-export default Footer
+export default Footer;

@@ -1,0 +1,57 @@
+.products-bg {
+  background-image: url(https://cdn.shopify.com/s/files/1/1367/5201/files/Mens_Bodybuilding_Desktop_70df0dc1-b3f4-42f1-bf85-cf9f6dec8f01_1440x.jpg?v=1620986267);
+  height: 84vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    /* justify-content:center */
+}
+.product-bg-heading{
+    color:white;
+    font-family: sans-serif;
+    margin: 10rem 0rem 0rem 3rem;
+    /* border: 1px solid red; */
+}
+.product-bg-heading h1{
+    margin: 0px;
+    font-family: var(--font-sans-serif);
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+.product-bg-heading h3{
+    margin: 0px;
+    font-family: var(--font-sans-serif);
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 700;
+}
+@media screen and (max-width: 43.25rem) {
+    .products-bg {
+        background-image: url(https://cdn.shopify.com/s/files/1/1367/5201/files/Mens_Bodybuilding_Mobile_ca8559e8-e75a-4082-a0f0-926d18ba6888_720x.jpg?v=1620986284);
+        height: 20rem;
+          background-repeat: no-repeat;
+          background-position: top;
+          background-size: cover;
+          max-width: 100%;
+          display: flex;
+          align-items: center;
+          /* justify-content:center */
+      }
+      .product-bg-heading h1{
+        margin: 0px;
+        font-family: var(--font-sans-serif);
+        text-transform: uppercase;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+    .product-bg-heading h3{
+        margin: 0px;
+        font-family: var(--font-sans-serif);
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        font-weight: 700;
+    }
+}

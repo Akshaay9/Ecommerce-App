@@ -1,0 +1,276 @@
+.login-container {
+  height: 82.7vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-image: url(https://i.ibb.co/CmQFTZq/imageedit-2-2209545119.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: white;
+  background-color: black;
+}
+
+.login-left-bottom h2 {
+  font-size: 2rem;
+  width: 80%;
+  font-family: var(--font-sans-serif);
+  line-height: 2.5rem;
+  margin: 0px 0px 0.3rem;
+  padding-right: 0px;
+  color: rgb(187, 187, 75);
+}
+.login-left-bottom ul li {
+  list-style: circle !important;
+}
+.login-left-bottom ul li {
+  font-family: sans-serif;
+  line-height: 2rem;
+}
+.login-right-card {
+  width: 33%;
+  color: black;
+  background-color: white;
+  font-family: sans-serif;
+  border-radius: 12px;
+}
+.login-right-top h2 {
+  font-size: 1.5rem;
+  font-family: var(--font-sans-serif);
+  line-height: 2rem;
+  padding: 1.5rem 0rem 0.5rem 1.5rem;
+  font-weight: 600;
+}
+.login-right-top p {
+  color: rgb(119, 123, 128);
+  font-size: 14px;
+  padding: 0rem 0rem 0.5rem 1.5rem;
+}
+.login-right-cta button {
+  outline: none;
+  border: none;
+  background-color: white;
+  color: black;
+  border: 1px solid red;
+  padding: 0.6rem 1rem;
+  margin-left: 1.7rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+  border-radius: 5px;
+  font-family: sans-serif;
+  font-weight: 550;
+  cursor: pointer;
+}
+.loign-cta-facebook {
+  border: 1px solid blue !important;
+}
+.login-right-micro-info {
+  text-align: center;
+  padding: 0.5rem 0rem;
+  font-size: 13px;
+  color: rgb(119, 123, 128);
+}
+.login-right-inpute-row-one input {
+  padding: 0.6rem 0.2rem;
+  margin-left: 1.7rem;
+  border: none;
+  outline: none;
+  border: 1px solid rgb(201, 197, 197);
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+}
+.login-right-inpute-row-two input {
+  padding: 0.6rem 6.6rem;
+  margin-left: 1.7rem;
+  border: none;
+  outline: none;
+  border: 1px solid rgb(201, 197, 197);
+  margin-bottom: 1.2rem;
+  border-radius: 5px;
+}
+.login-right-checkbox {
+  display: flex;
+  margin-left: 1.7rem;
+  align-items: center;
+}
+.login-right-checkbox p {
+  margin-left: 1rem;
+  padding: 0.5rem 0rem;
+  font-size: 13px;
+  color: rgb(119, 123, 128);
+}
+.login-final-cta button,
+.guest-btn {
+  margin-left: 1.7rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+  border-radius: 5px;
+  font-family: sans-serif;
+  font-weight: 550;
+  background-color: black;
+  color: white;
+  outline: none;
+  border: none;
+  padding: 0.7rem 10.2rem;
+  margin-bottom: 1rem;
+  border: 1px solid black;
+}
+.guest-btn {
+  padding: 0.8rem 0rem !important;
+  width: 83%;
+}
+.login-final-cta button:hover,
+.guest-btn:hover {
+  color: black;
+  background: white;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.login-spin {
+  padding: 0rem 1.2rem;
+}
+.black-btn-disable:disabled {
+  color: rgb(0, 0, 0);
+  background: rgb(255, 254, 254);
+  cursor: not-allowed;
+}
+
+/* sign=== up */
+.signup {
+  width: 100%;
+  height: 82.5vh;
+  background: url(https://images.unsplash.com/photo-1534258936925-c58bed479fcb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDJ8fGd5bXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  color: white;
+  background-color: black;
+  /* -webkit-filter: blur(5px); */
+  /* -moz-filter: blur(5px); */
+  /* -o-filter: blur(5px); */
+  /* -ms-filter: blur(5px); */
+  /* filter: blur(5px); */
+}
+.signup {
+  color: white;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.signup-card {
+  background-color: white;
+  width: 33%;
+  border-radius: 12px;
+  border-top-left-radius: 3rem;
+}
+.login-input-email input {
+  padding: 0.6rem 6.6rem;
+}
+/* error handlers */
+.error-div-input {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0.5rem;
+}
+.error-handler-input {
+  font-size: 13px;
+}
+.error {
+  color: red;
+}
+.sucess {
+  color: green;
+}
+.fa-exclamation-circle,
+.fa-check-circle {
+  margin-left: 0.5rem;
+}
+
+/*  */
+
+input:optional {
+  border-color: gray;
+}
+
+input:required:valid {
+  border: 1px solid green !important;
+}
+
+input:required:focus:valid {
+  background: url("https://www.flaticon.com/svg/vstatic/svg/845/845646.svg?token=exp=1618463396~hmac=aa4060e40e24a633ace3236a6f966a0e")
+    no-repeat 95% 50%;
+  border-color: var(--primary-color);
+  background-size: 25px;
+}
+
+input:focus:invalid {
+  background: url("https://www.flaticon.com/svg/vstatic/svg/1828/1828843.svg?token=exp=1618463445~hmac=13132351f29c82dd61cd177844221aac")
+    no-repeat 95% 50%;
+  border: 1px solid red;
+  background-size: 25px;
+}
+
+@media screen and (max-width: 1000px) {
+  .login-container {
+    margin-top: 4rem;
+    justify-content: center;
+    align-items: center;
+    height: 120vh;
+  }
+  .signup {
+    height: 120vh;
+  }
+  .login-left-bottom {
+    display: none;
+  }
+  .login-right-card {
+    position: relative;
+    justify-content: space-between;
+    width: 98%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    /* height: 30rem; */
+  }
+  .signup-card {
+    background-color: white;
+    width: 98%;
+    border-radius: 12px;
+    border-top-left-radius: 3rem;
+  }
+  .login-right-card {
+    color: black;
+    background-color: white;
+    padding-right: 0rem;
+    font-family: sans-serif;
+    border-radius: 12px;
+  }
+  .login-right-inpute-row-one input {
+    padding: 0.6rem 0.8rem;
+    margin-left: 1.7rem;
+    border: none;
+    outline: none;
+    border: 1px solid rgb(201, 197, 197);
+    margin-bottom: 1.2rem;
+    border-radius: 5px;
+  }
+  .login-right-inpute-row-two input {
+    padding: 0.6rem 4rem !important;
+  }
+  .login-final-cta button {
+    padding: 0.5rem 7rem;
+  }
+  .signup-card {
+    margin-top: 4rem;
+  }
+}

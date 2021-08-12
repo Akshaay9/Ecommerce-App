@@ -1,6 +1,7 @@
 import React from "react";
 import img from "../../Assets/HomeScreenAssests/homeScreenMobile.jpg";
 import imgTwo from "../../Assets/HomeScreenAssests/homeScreenImageTwo.jpg";
+import { NavLink } from "react-router-dom";
 function HomeScreenHeroBanner() {
   return (
     <div>
@@ -16,9 +17,12 @@ function HomeScreenHeroBanner() {
           <h1>New Drops</h1>
           <h3>In Adapt & Critical</h3>
           <div className="hero-banner-call-to-action-btns">
-          
-            <button className="btn btn-homescreen-white">Show Womens</button>
-            <button className="btn btn-homescreen-grey">Show mens</button>
+            <NavLink to="/products/womensnewdrop">
+              <button className="btn btn-homescreen-white">Show Womens</button>
+            </NavLink>
+            <NavLink to="/products/mensnewdrop">
+              <button className="btn btn-homescreen-grey">Show mens</button>
+            </NavLink>
           </div>
         </div>
       </div>
@@ -32,11 +36,11 @@ function HomeScreenHeroBanner() {
         <img className="img-mobile" src={imgTwo} alt="" />
 
         <div className="hero-banner-call-to-action hero-two-CTA">
-          <h1>Home Zone</h1>
-          <h3>Our Comfiest fits</h3>
+          <h1>Home Workouts</h1>
           <div className="hero-banner-call-to-action-btns">
-            <button className="btn btn-homescreen-white">Show Womens</button>
-            <button className="btn btn-homescreen-grey">Show mens</button>
+            <NavLink to="/products/homeworkout">
+              <button className="btn btn-homescreen-grey">Show Now</button>
+            </NavLink>
           </div>
         </div>
       </div>
@@ -51,7 +55,9 @@ function HomeScreenHeroBanner() {
           <div className="hero-banner-call-to-action hero-three-one-CTA">
             <h1>Resistace Training</h1>
             <div className="hero-banner-call-to-action-btns">
-              <button className="btn btn-homescreen-white">Shop Now</button>
+              <NavLink to="/products/resistancetrainingequipment">
+                <button className="btn btn-homescreen-white btn-rBanner-show">Shop Now</button>
+              </NavLink>
             </div>
           </div>
         </>
@@ -64,7 +70,34 @@ function HomeScreenHeroBanner() {
           <div className="hero-banner-call-to-action hero-three-two-CTA">
             <h1>Yoga</h1>
             <div className="hero-banner-call-to-action-btns">
-              <button className="btn btn-homescreen-grey">Shop Now</button>
+              <NavLink to="/products/yogaequipment">
+                <button className="btn btn-homescreen-grey
+               ">Shop Now</button>
+              </NavLink>
+            </div>
+          </div>
+        </>
+      </div>
+      <div className="hero-banner-four">
+        <>
+          <img
+            className="gym-accessories-desktop"
+            src="https://cdn.shopify.com/s/files/1/1367/5201/files/DUAL_GENDER_HOME_WORKOUT_1440x.jpg?v=1615366281"
+            alt=""
+          />
+          <img
+            className="gym-accessories-mobile"
+            src="https://cdn.shopify.com/s/files/1/1367/5201/files/Amended_Home_Workout_MobileArtboard_10_640x.jpg?v=1615366300"
+            alt=""
+          />
+
+          <div className="hero-banner-call-to-action hero-four-CTA">
+            <h1>Gym Accessories</h1>
+            <div className="hero-banner-call-to-action-btns">
+              <NavLink to="products/gymAccessories">
+              
+              <button className="btn btn-homescreen-white">Shop Now</button>
+</NavLink>
             </div>
           </div>
         </>
