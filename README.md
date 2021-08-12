@@ -2,7 +2,7 @@
 <p>One stop destination for a healthier life</p>
 <ul>
   <li>30 Day return policy</li>
-  <li>Fast delivery across the world</li>
+  <li>Fast delivery across the world.</li>
   <li>Invite your friends to get rewards</li>
 </ul>
 <p>Website is deployed live on :- https://fitt-sharkk-v1.netlify.app/</p>
