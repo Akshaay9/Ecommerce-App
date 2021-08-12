@@ -5,7 +5,7 @@
   <li>Fast delivery across the world</li>
   <li>Invite your friends to get rewards</li>
 </ul>
-<p>Website is deployed live on - https://fitt-sharkk-v1.netlify.app/</p>
+<p>Website is deployed live on :- https://fitt-sharkk-v1.netlify.app/</p>
 
 <h3>Features</h3>
 <ul>
