@@ -6,10 +6,12 @@ import Nav from './Nav'
 function Index() {
     return (
         <>
+            
            
 
             {/* Home scrren banners */}
             <HomeScreenHeroBanner />
+            <Footer/>
           
         </>
     )
