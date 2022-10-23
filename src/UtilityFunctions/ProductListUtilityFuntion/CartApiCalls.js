@@ -1,4 +1,5 @@
 import { makeAnAPICall } from "../../APiCalls";
+import { BE_URL } from "../../const";
 
 export const addToCartHandlerBasedOnLogin = async (
   id,
@@ -10,17 +11,15 @@ export const addToCartHandlerBasedOnLogin = async (
   msg,
   setLoader
 ) => {
- 
   if (userinfo.token == null && setSHowModal) {
     setSHowModal(true);
   } else {
-    if (setLoader)
-    {
-       setLoader(true)
-      }
+    if (setLoader) {
+      setLoader(true);
+    }
     await makeAnAPICall(
       `POST`,
-      `https://stark-falls-25364.herokuapp.com/api/cart/${id}`,
+      `${BE_URL}/api/cart/${id}`,
       dispatch,
       dispatchType,
       null,
@@ -39,7 +38,7 @@ export const manageQTY = async (
   dataToBeDispatched,
   toastDispatch,
   msg,
-  setLoader,
+  setLoader
 ) => {
   if (setLoader != null) {
     setLoader(true);
@@ -47,7 +46,7 @@ export const manageQTY = async (
 
   await makeAnAPICall(
     `POST`,
-    `https://stark-falls-25364.herokuapp.com/api/cart/${id}`,
+    `${BE_URL}/api/cart/${id}`,
     dispatch,
     dispatchType,
     dataToBeDispatched,
@@ -66,14 +65,13 @@ export const deleteItem = async (
   msg,
   setLoader
 ) => {
-  if (setLoader)
-  {
-     setLoader(true)
-    }
+  if (setLoader) {
+    setLoader(true);
+  }
 
   await makeAnAPICall(
     `DELETE`,
-    `https://stark-falls-25364.herokuapp.com/api/cart/${id}`,
+    `${BE_URL}/api/cart/${id}`,
     dispatch,
     dispatchType,
     null,

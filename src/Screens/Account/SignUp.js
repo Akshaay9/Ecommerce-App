@@ -6,6 +6,8 @@ import { makeAnAPICall } from "../../APiCalls";
 import "./App.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
+import { BE_URL } from "../../const";
+
 function SignUp() {
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -14,8 +16,7 @@ function SignUp() {
     state: { userInfo },
     authDispatch,
   } = useLoginContext();
-  const {toastDispatch}=useToastContext()
-  
+  const { toastDispatch } = useToastContext();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -66,7 +67,7 @@ function SignUp() {
 
   const submitUser = async (e) => {
     e.preventDefault();
-    setLoader(true)
+    setLoader(true);
     const dataToBeSent = {
       name: name,
       email: email,
@@ -74,7 +75,7 @@ function SignUp() {
     };
     makeAnAPICall(
       "POST",
-      "https://stark-falls-25364.herokuapp.com/api/users/signup",
+      `${BE_URL}/api/users/signup`,
       authDispatch,
       "USER_REGISTER_SUCCESSFULL",
       dataToBeSent,
@@ -95,7 +96,7 @@ function SignUp() {
     };
     makeAnAPICall(
       "POST",
-      "https://stark-falls-25364.herokuapp.com/api/users/login",
+      `${BE_URL}/api/users/login`,
       authDispatch,
       "USER_LOGGED_SUCCESSFULL",
       dataToBeSent,
@@ -105,7 +106,6 @@ function SignUp() {
       setLoader1
     );
   };
-
 
   return (
     <>
@@ -216,29 +216,31 @@ function SignUp() {
               <p>I agree with Terms and conditions</p>
             </div>
             <div className="login-final-cta">
-            <button disabled={loader || loader1} className="black-btn-disable">
-              {loader ? (
-                <i class="fas fa-spinner fa-spin login-spin"></i>
-              ) : (
-                "Sign Up"
-              )}
-            </button>
+              <button
+                disabled={loader || loader1}
+                className="black-btn-disable"
+              >
+                {loader ? (
+                  <i class="fas fa-spinner fa-spin login-spin"></i>
+                ) : (
+                  "Sign Up"
+                )}
+              </button>
             </div>
           </form>
-          <button 
-        onClick={()=>guestUserLogin()}
-          disabled={loader || loader1}
-          className="black-btn-disable guest-btn"
-        >
-          {loader1 ? (
-            <i class="fas fa-spinner fa-spin login-spin"></i>
-          ) : (
-            "Enter as Guest user"
-          )}
-        </button>
+          <button
+            onClick={() => guestUserLogin()}
+            disabled={loader || loader1}
+            className="black-btn-disable guest-btn"
+          >
+            {loader1 ? (
+              <i class="fas fa-spinner fa-spin login-spin"></i>
+            ) : (
+              "Enter as Guest user"
+            )}
+          </button>
         </div>
       </div>
-   
     </>
   );
 }

@@ -5,6 +5,7 @@ import { makeAnAPICall } from "../../APiCalls";
 import { useAddressContext } from "../../Contexts/AddressContext/AddressContext";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
+import { BE_URL } from "../../const";
 function Address() {
   const {
     state: { userInfo },
@@ -32,7 +33,7 @@ function Address() {
       try {
         await makeAnAPICall(
           "GET",
-          `https://stark-falls-25364.herokuapp.com/api/address/`,
+          `${BE_URL}/api/address/`,
           addressDispatch,
           "LOAD_ADDRESS",
           null,
@@ -52,7 +53,7 @@ function Address() {
       setLoader(true);
       await makeAnAPICall(
         "DELETE",
-        `https://stark-falls-25364.herokuapp.com/api/address/${id}`,
+        `${BE_URL}/api/address/${id}`,
         addressDispatch,
         "LOAD_ADDRESS",
         null,
@@ -106,9 +107,7 @@ function Address() {
                   {ele.country}
                 </p>
               </label>
-              <div className="singleAdress-icons"
-              
-              >
+              <div className="singleAdress-icons">
                 {" "}
                 <i
                   onClick={(e) => {
@@ -116,13 +115,12 @@ function Address() {
                     deleteAddress(ele._id);
                   }}
                 >
-                  {loader && ButtonId !== null && index * 1 + 300 == ButtonId ? (
+                  {loader &&
+                  ButtonId !== null &&
+                  index * 1 + 300 == ButtonId ? (
                     <i class="fas fa-spinner"></i>
                   ) : (
-                    <i
-                      className="fas fa-trash "
-                      id={index * 1 + 300}
-                    ></i>
+                    <i className="fas fa-trash " id={index * 1 + 300}></i>
                   )}
                 </i>
                 <NavLink to={`/updateAddress/${ele._id}`}>

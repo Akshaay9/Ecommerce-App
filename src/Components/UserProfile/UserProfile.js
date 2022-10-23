@@ -4,6 +4,8 @@ import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRe
 import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
 import { makeAnAPICall } from "../../APiCalls";
 import "./App.css";
+import { BE_URL } from "../../const";
+
 function UserProfile() {
   // useState
 
@@ -22,12 +24,11 @@ function UserProfile() {
   } = useLoginContext();
   const { toastDispatch } = useToastContext();
 
-
   useEffect(() => {
     (async () => {
       const data = await makeAnAPICall(
         `GET`,
-        `https://stark-falls-25364.herokuapp.com/api/checkout/all`,
+        `${BE_URL}/api/checkout/all`,
         null,
         null,
         null,
@@ -37,7 +38,7 @@ function UserProfile() {
     })();
   }, []);
 
-   useEffect(() => {
+  useEffect(() => {
     let special = /[\W]{1,}/;
     if (password.password.length == 0) {
       setPasswordError("this field is required");
@@ -54,9 +55,9 @@ function UserProfile() {
     } else {
       setPasswordError("");
     }
-   }, [password.password]);
-  
-   useEffect(() => {
+  }, [password.password]);
+
+  useEffect(() => {
     let special = /[\W]{1,}/;
     if (password.confirmPassword.length == 0) {
       setUpdatePasswordError("this field is required");
@@ -70,26 +71,23 @@ function UserProfile() {
       setUpdatePasswordError("password should contain one number");
     } else if (!special.test(password.confirmPassword)) {
       setUpdatePasswordError("password should contain one special char");
-      
-    }
-    else if (password.password==password.confirmPassword) {
+    } else if (password.password == password.confirmPassword) {
       setUpdatePasswordError("Both password are same");
-      }
-    else {
+    } else {
       setUpdatePasswordError("");
     }
   }, [password.confirmPassword]);
 
-  const updatePassowrd=(e)=>{
-    e.preventDefault()
+  const updatePassowrd = (e) => {
+    e.preventDefault();
     const updatePass = {
-      "password": password.password,
-      "updatePass":password.confirmPassword
-    }
+      password: password.password,
+      updatePass: password.confirmPassword,
+    };
     setLoader(true);
     makeAnAPICall(
       "POST",
-      `https://stark-falls-25364.herokuapp.com/api/users/${userInfo.id}`,
+      `${BE_URL}/api/users/${userInfo.id}`,
       null,
       null,
       updatePass,
@@ -98,9 +96,7 @@ function UserProfile() {
       "Successfully Changed password",
       setLoader
     );
-
-  }
-  
+  };
 
   return (
     <div className="user-profile">
@@ -120,16 +116,16 @@ function UserProfile() {
               setPassword({ ...password, password: e.target.value })
             }
           />
-              {passwordError !== "" ? (
-                <p className="error-handler-input error">
-                  {passwordError}
-                  <i className="fas fa-exclamation-circle"></i>
-                </p>
-              ) : (
-                <p className="error-handler-input sucess">
-                  Success<i className="fas fa-check-circle"></i>
-                </p>
-              )}
+          {passwordError !== "" ? (
+            <p className="error-handler-input error">
+              {passwordError}
+              <i className="fas fa-exclamation-circle"></i>
+            </p>
+          ) : (
+            <p className="error-handler-input sucess">
+              Success<i className="fas fa-check-circle"></i>
+            </p>
+          )}
           <label htmlFor="">Update Password</label>
           <input
             type="password"
@@ -142,25 +138,24 @@ function UserProfile() {
               setPassword({ ...password, confirmPassword: e.target.value })
             }
           />
-              {updatePasswordError !== "" ? (
-                <p className="error-handler-input error">
-                  {updatePasswordError}
-                  <i className="fas fa-exclamation-circle"></i>
-                </p>
-              ) : (
-                <p className="error-handler-input sucess">
-                  Success<i className="fas fa-check-circle"></i>
-                </p>
-              )}
-       
+          {updatePasswordError !== "" ? (
+            <p className="error-handler-input error">
+              {updatePasswordError}
+              <i className="fas fa-exclamation-circle"></i>
+            </p>
+          ) : (
+            <p className="error-handler-input sucess">
+              Success<i className="fas fa-check-circle"></i>
+            </p>
+          )}
 
-              <button disabled={loader} className="black-btn-disable">
-              {loader ? (
-                <i class="fas fa-spinner fa-spin login-spin"></i>
-              ) : (
-                "Update Password"
-              )}
-            </button>
+          <button disabled={loader} className="black-btn-disable">
+            {loader ? (
+              <i class="fas fa-spinner fa-spin login-spin"></i>
+            ) : (
+              "Update Password"
+            )}
+          </button>
         </form>
       </div>
 
@@ -220,7 +215,10 @@ function UserProfile() {
                   </p>
                 </div>
                 <div className="product-details further-details">
-                  <NavLink  state={{ from: "profile" }} to={`/ordersuccess/${ele._id}`}>
+                  <NavLink
+                    state={{ from: "profile" }}
+                    to={`/ordersuccess/${ele._id}`}
+                  >
                     {" "}
                     <p>View Details</p>
                   </NavLink>

@@ -6,6 +6,8 @@ import { makeAnAPICall } from "../../APiCalls";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
 import "./App.css";
+import { BE_URL } from "../../const";
+
 function Login() {
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -66,7 +68,7 @@ function Login() {
     };
     makeAnAPICall(
       "POST",
-      "https://stark-falls-25364.herokuapp.com/api/users/login",
+      `${BE_URL}/api/users/login`,
       authDispatch,
       "USER_LOGGED_SUCCESSFULL",
       dataToBeSent,
@@ -85,7 +87,7 @@ function Login() {
     };
     makeAnAPICall(
       "POST",
-      "https://stark-falls-25364.herokuapp.com/api/users/login",
+      `${BE_URL}/api/users/login`,
       authDispatch,
       "USER_LOGGED_SUCCESSFULL",
       dataToBeSent,
@@ -185,8 +187,8 @@ function Login() {
             </button>
           </div>
         </form>
-        <button 
-        onClick={()=>guestUserLogin()}
+        <button
+          onClick={() => guestUserLogin()}
           disabled={loader || loader1}
           className="black-btn-disable guest-btn"
         >

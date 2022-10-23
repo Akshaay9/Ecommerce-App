@@ -5,6 +5,7 @@ import { makeAnAPICall } from "../../APiCalls";
 import ProductListingComponentUtility from "../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility";
 import CatalogMagic from "../../Skeleton-loader/ProductListingLoader";
 import MobileSkeletonLoader from "../../Skeleton-loader/ProductListingLoaderMobile";
+import { BE_URL } from "../../const";
 
 function GymAccessoriesProductList() {
   // grabbing Context API
@@ -17,7 +18,7 @@ function GymAccessoriesProductList() {
   useEffect(() => {
     makeAnAPICall(
       "GET",
-      "https://stark-falls-25364.herokuapp.com/api/products/gymAccessories",
+      `${BE_URL}/api/products/gymAccessories`,
       gymAccessoriesDispatch,
       "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS"
     );
