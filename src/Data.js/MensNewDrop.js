@@ -121,15 +121,15 @@ export const mensNewDrop = [
     images: [
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/ArrivalSST-ShirtBlackGreyCamoGMST5638.A-Edit_ZH_ZH_885x.jpg?v=1613989664",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/BoldReactSsSlimT-ShirtBlackA2A9M-BBBB2_551384c9-6f0a-49c6-84b2-ac243f78b5ee_885x.jpg?v=1665514340",
       },
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/ArrivalSST-ShirtBlackGreyCamoGMST5638.C-Edit_ZH_ZH_290x.jpg?v=1613989664",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/BoldReactSsSlimT-ShirtBlackA2A9M-BBBB1_49d20b2d-234c-439c-b65f-4296188faeed_438x.jpg?v=1665514340",
       },
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/ArrivalSST-ShirtBlackGreyCamoGMST5638.B-Edit_ZH_ZH_290x.jpg?v=1613989664",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/BoldReactSsSlimT-ShirtBlackA2A9M-BBBB4_6a843c1f-fac0-4b01-852a-bac3c9c94597_438x.jpg?v=16655143404",
       },
     ],
     desc:
@@ -149,11 +149,11 @@ export const mensNewDrop = [
     images: [
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/APOLLOMUSCLEFITSST-SHIRTSPORTSRED.A-Edit_AS_885x.jpg?v=1613989635",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/BoldReactSsSlimT-ShirtNavyA2A9M-UBCY920_cd39e6bc-4c6d-4524-9bca-ba21e0932777_290x.jpg?v=1665514343",
       },
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/APOLLOMUSCLEFITSST-SHIRTSPORTSRED.B-Edit_AS_290x.jpg?v=1613989635",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/BoldReactSsSlimT-ShirtNavyA2A9M-UBCY923_68a2003e-79f8-4c0c-8a71-881ee159fdfe_438x.jpg?v=1665514343",
       },
       {
         img:
@@ -206,15 +206,15 @@ export const mensNewDrop = [
     images: [
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/CRESTSWEATZIPUPHOODIEBLACK.A-Edit_ZH_885x.jpg?v=1600271914",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/BoldReactHoodieNavyA2A7F-UBCY1_e78069ce-d054-4429-87e8-a795149a2abd_438x.jpg?v=1665514337",
       },
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/https://cdn.shopify.com/s/files/1/1367/5207/products/CRESTSWEATZIPUPHOODIEBLACK.C-Edit_ZH_290x.jpg?v=1600271914.C-Edit_ZH_bddca51d-eccf-4fb8-a54d-287c90d0c396_290x.jpg?v=1607946413",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/BoldReactHoodieNavyA2A7F-UBCY2_8805fcea-20e4-4b6e-bbf7-6d42679dc878_438x.jpg?v=1665514337",
       },
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/CRESTSWEATZIPUPHOODIEBLACK.B-Edit_ZH_290x.jpg?v=1600271914",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/BoldReactHoodieNavyA2A7F-UBCY_6a8c1889-fade-435d-8002-bc89c3d2b9d3_290x.jpg?v=1665514337",
       },
     ],
     desc:
@@ -290,15 +290,15 @@ export const mensNewDrop = [
     images: [
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/CriticalPantsBlack2GMBT4252.A-Edit_AS_885x.jpg?v=1614251515",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/Speed52In1Short_M_BlackA1A9HA1A9H-BBBB.A1-Edit_BK_885x.jpg?v=1649327499",
       },
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/CriticalPantsBlack2GMBT4252.C-Edit_AS_290x.jpg?v=1614251515",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/Speed5_2In1Short_M_BlackA1A9H_A1A9H-BBBB45-Edit_BK_438x.jpg?v=16493275005",
       },
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/CriticalPantsBlack2GMBT4252.B-Edit_AS_290x.jpg?v=1614251515",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/Speed5_2In1Short_M_BlackA1A9H_A1A9H-BBBB54-Edit_BK_438x.jpg?v=1649327500",
       },
     ],
     desc:

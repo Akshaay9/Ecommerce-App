@@ -121,7 +121,7 @@ export const yogaEquipment = [
       images: [
         {
           img:
-            "https://cdn.shopify.com/s/files/1/0477/1358/3267/products/Templatecoloredfinal2_180x.jpg?v=1601889286",
+            "https://images-na.ssl-images-amazon.com/images/I/91jBz%2BvY4fL._SL1500_.jpg",
         },
         {
           img:

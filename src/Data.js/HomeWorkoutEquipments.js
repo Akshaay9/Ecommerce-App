@@ -8,15 +8,15 @@ export const homeWorkoutEquipments = [
     images: [
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/MediumGluteBand-WashedBlueGARB35730261.D1-Edit_ZH_ZH_885x.jpg?v=1614172680",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/StudioMat-RoseBrownI1A4K-NBH1_885x.jpg?v=1663055422",
       },
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/MediumGluteBand-WashedBlueGARB35730262.D2-Edit_ZH_ZH_290x.jpg?v=1614172680",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/StudioMat-RoseBrownI1A4K-NBH11_885x.jpg?v=1663055422",
       },
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/MediumGluteBand-WashedBlueGARB35730263.D3-Edit_ZH_ZH_290x.jpg?v=1614172680",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/StudioMat-RoseBrownI1A4K-NBH1_885x.jpg?v=1663055422",
       },
     ],
     desc:
@@ -92,15 +92,15 @@ export const homeWorkoutEquipments = [
     images: [
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/LongMediumGluteBandsWashedBluePrintGARB5407.A-Edit_BK_cdc3e4f5-4c24-4002-aaf8-3e6d4eb9fd9a_885x.jpg?v=1613989984",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/KneeSleeves3mmCoreOliveI1A7Z-EBF1_885x.jpg?v=16655135864",
       },
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/LongMediumGluteBandsWashedBluePrintGARB5407.B-Edit_BK_290x.jpg?v=1613989984",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/KneeSleeves3mmCoreOliveI1A7Z-EBF11_438x.jpg?v=1665513586",
       },
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/LongMediumGluteBandsWashedBluePrintGARB5407.C-Edit_BK_290x.jpg?v=1613989984",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/KneeSleeves3mmCoreOliveI1A7Z-EBF1146_438x.jpg?v=1665513586",
       },
     ],
     desc:
@@ -121,15 +121,15 @@ export const homeWorkoutEquipments = [
     images: [
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/LongLightGluteBandsLightGreyGARB5406.A-Edit_BK_885x.jpg?v=1613989979",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/WristStrapsBlackI1A3Y1.D1_GB_EDIT_ZH_ea554d92-d7e5-4ebb-81a3-600f44b1daa0_885x.jpg?v=1629925071",
       },
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/LongLightGluteBandsLightGreyGARB5406.D3-Edit_BK_290x.jpg?v=1613989979",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/WristStrapsBlackI1A3Y29.C_GB_EDIT_ZH_5b5fd88c-5ae2-4ad8-be3c-777f7de65724_290x.jpg?v=1629925071",
       },
       {
         img:
-          "https://cdn.shopify.com/s/files/1/1367/5207/products/LongLightGluteBandsLightGreyGARB5406.B-Edit_BK_290x.jpg?v=16139899794",
+          "https://cdn.shopify.com/s/files/1/1367/5201/products/WristStrapsBlackI1A3Y52.D3_GB_EDIT_ZH_d8ce7ae3-ebc2-4298-ad28-c493771b25d6_438x.jpg?v=1629925071",
       },
     ],
     desc:
