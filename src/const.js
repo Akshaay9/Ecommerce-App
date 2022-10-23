@@ -1,1 +1,1 @@
-export const BE_URL = "https://stark-falls-25364.herokuapp.com";
+export const BE_URL = "https://ecommerceproject.akshaynair5.repl.co";
