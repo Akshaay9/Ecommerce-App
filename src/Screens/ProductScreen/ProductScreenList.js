@@ -4,6 +4,8 @@ import { makeAnAPICall } from "../../APiCalls";
 import ProductListingComponentUtility from "../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility";
 import CatalogMagic from "../../Skeleton-loader/ProductListingLoader";
 import MobileSkeletonLoader from "../../Skeleton-loader/ProductListingLoaderMobile";
+import { BE_URL } from "../../const";
+
 
 function ProductScreenList() {
   const {
@@ -14,7 +16,7 @@ function ProductScreenList() {
   useEffect(() => {
     makeAnAPICall(
       "GET",
-      "https://stark-falls-25364.herokuapp.com/api/products/all",
+      `${BE_URL}/api/products/all`,
       productsDispatch,
       "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS"
     );

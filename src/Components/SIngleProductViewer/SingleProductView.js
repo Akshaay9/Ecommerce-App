@@ -19,6 +19,8 @@ import LoginModal from "../LoginModal/LoginModal";
 import MobileSkeletonLoader from "../../Skeleton-loader/ProductListingLoaderMobile";
 import AmazonLoader from "../../Skeleton-loader/SingleProductView";
 import Rating from "@material-ui/lab/Rating";
+import { BE_URL } from "../../const";
+
 function SingleProductView() {
   const { id } = useParams();
   const [signleProduct, setSingleProduct] = useState([]);
@@ -49,7 +51,7 @@ function SingleProductView() {
       setLoading(true);
       const singleProduct = await makeAnAPICall(
         "GET",
-        `https://stark-falls-25364.herokuapp.com/api/products/${id}`
+        `${BE_URL}/api/products/${id}`
       );
       setSingleProduct([singleProduct.data]);
       setLoading(false);

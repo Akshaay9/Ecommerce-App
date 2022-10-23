@@ -36,6 +36,7 @@ import LoginModal from "./Components/LoginModal/LoginModal";
 import PrivateRoute from "./PrivateRoute";
 import UserProfile from "./Components/UserProfile/UserProfile";
 import UpdateAddress from "./Components/CheckOutPages/UpdateAddress";
+import { BE_URL } from "./const";
 
 function App() {
   const [showMobileNavNar, setShowMobileNavBar] = useState(false);
@@ -56,9 +57,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const initialPing = await axios.get(
-        `https://stark-falls-25364.herokuapp.com/`
-      );
+      await axios.get(`${BE_URL}/`);
     })();
   }, []);
 

@@ -2,24 +2,31 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAllProductsContextContext } from "../../Contexts/SearchAndIndividualScreenContext/SearchAndindiScreen";
-import {makeAnAPICall} from "../../APiCalls"
+import { makeAnAPICall } from "../../APiCalls";
+import { BE_URL } from "../../const";
+
 function SearchBarProducts() {
   const {
-    state: { searchResult,initialAllProducts },
+    state: { searchResult, initialAllProducts },
     allProductsDispatch,
   } = useAllProductsContextContext();
   const [input, setInput] = useState("");
 
-// useRef focus
-    const inputEl = useRef(null)
-    useEffect(() => {
-        inputEl.current.focus()
-    }, [])
-      // to dispatch all prods
-    useEffect(() => {
-    makeAnAPICall("GET","https://stark-falls-25364.herokuapp.com/api/products/search",allProductsDispatch,"initialAllProducts" )
-    }, []);
-  
+  // useRef focus
+  const inputEl = useRef(null);
+  useEffect(() => {
+    inputEl.current.focus();
+  }, []);
+  // to dispatch all prods
+  useEffect(() => {
+    makeAnAPICall(
+      "GET",
+      `${BE_URL}/api/products/search`,
+      allProductsDispatch,
+      "initialAllProducts"
+    );
+  }, []);
+
   useEffect(() => {
     if (input.length > 0) {
       allProductsDispatch({ type: "SEARCH_RESULTS", payload: input });
@@ -27,18 +34,16 @@ function SearchBarProducts() {
       allProductsDispatch({ type: "CLEAR_SEARCH", payload: input });
     }
   }, [input]);
-    
- 
 
   return (
     <div>
-          <input
-              className="search-comp-input"
-              type="text"
-             
+      <input
+        className="search-comp-input"
+        type="text"
         value={input}
-              onChange={(e) => setInput(e.target.value)}
-              ref={inputEl }/>
+        onChange={(e) => setInput(e.target.value)}
+        ref={inputEl}
+      />
       <div className="grid-container">
         {input.length > 0 &&
           searchResult.map((ele) => (

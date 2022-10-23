@@ -5,6 +5,7 @@ import CatalogMagic from "../../Skeleton-loader/ProductListingLoader";
 import MobileSkeletonLoader from "../../Skeleton-loader/ProductListingLoaderMobile";
 import { makeAnAPICall } from "../../APiCalls";
 import ProductListingComponentUtility from "../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility";
+import { BE_URL } from "../../const";
 
 function WomensNewDropProductListing() {
   const {
@@ -15,7 +16,7 @@ function WomensNewDropProductListing() {
   useEffect(() => {
     makeAnAPICall(
       "GET",
-      "https://stark-falls-25364.herokuapp.com/api/products/womensNewDrop",
+      `${BE_URL}/api/products/womensNewDrop`,
       womensNewProductDispatch,
       "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS"
     );

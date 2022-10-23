@@ -1,4 +1,5 @@
 import { makeAnAPICall } from "../../APiCalls";
+import { BE_URL } from "../../const";
 
 export const addToWishHandlerBasedOnLogin = async (
   id,
@@ -14,12 +15,12 @@ export const addToWishHandlerBasedOnLogin = async (
     setSHowModal(true);
   } else {
     if (setLoader) {
-   setLoader(true)
- }
- 
+      setLoader(true);
+    }
+
     await makeAnAPICall(
       `POST`,
-      `https://stark-falls-25364.herokuapp.com/api/wishlist/${id}`,
+      `${BE_URL}/api/wishlist/${id}`,
       dispatch,
       dispatchType,
       null,
@@ -39,13 +40,12 @@ export const removeFromWishList = async (
   msg,
   setLoader
 ) => {
-  if (setLoader)
-  {
-     setLoader(true)
-    }
+  if (setLoader) {
+    setLoader(true);
+  }
   await makeAnAPICall(
     `DELETE`,
-    `https://stark-falls-25364.herokuapp.com/api/wishlist/${id}`,
+    `${BE_URL}/api/wishlist/${id}`,
     dispatch,
     dispatchType,
     null,

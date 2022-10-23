@@ -5,6 +5,7 @@ import { makeAnAPICall } from "../../APiCalls";
 import { useLoginContext } from "../../Contexts/loginRegistrationContext/loginRegistrationContext";
 import { useAddressContext } from "../../Contexts/AddressContext/AddressContext";
 import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
+import { BE_URL } from "../../const";
 function UpdateAddress() {
   let navigate = useNavigate();
   const { toastDispatch } = useToastContext();
@@ -17,12 +18,10 @@ function UpdateAddress() {
   const [loader, setLoader] = useState(false);
 
   const url = () => {
-    if (id == undefined) {
-      return `https://stark-falls-25364.herokuapp.com/api/address`
-    }
-    else
-      return `https://stark-falls-25364.herokuapp.com/api/address/${id}`
-  }
+    if (id === undefined) {
+      return `${BE_URL}/api/address`;
+    } else return `${BE_URL}/api/address/${id}`;
+  };
 
   const [address, setAddress] = useState({
     address: "",
@@ -36,7 +35,7 @@ function UpdateAddress() {
       try {
         const data = await makeAnAPICall(
           "GET",
-          `https://stark-falls-25364.herokuapp.com/api/address/${id}`,
+          `${BE_URL}/api/address/${id}`,
           null,
           null,
           null,
@@ -123,11 +122,14 @@ function UpdateAddress() {
               setAddress({ ...address, country: e.target.value })
             }
           />
-          <button> {loader ? (
-                <i class="fas fa-spinner fa-spin login-spin"></i>
-              ) : (
-                "Update Address"
-              )}</button>
+          <button>
+            {" "}
+            {loader ? (
+              <i class="fas fa-spinner fa-spin login-spin"></i>
+            ) : (
+              "Update Address"
+            )}
+          </button>
         </form>
       </div>
     </div>

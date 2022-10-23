@@ -4,6 +4,7 @@ import { useCartContextProvider } from "../../Contexts/CartContext/CartContext";
 import { makeAnAPICall } from "../../APiCalls";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useToastContext } from "../../Contexts/ToastContext/ToastContext";
+import { BE_URL } from "../../const";
 
 const StripeButton = (props) => {
   let navigate = useNavigate();
@@ -21,7 +22,7 @@ const StripeButton = (props) => {
 
   console.log(localStorageaddress);
   console.log(localStorageaddress._id);
-  
+
   const auth = JSON.parse(localStorage.getItem("user_info"));
   const { toastDispatch } = useToastContext();
   const orderItems = cartItems.map((ele) => {
@@ -35,7 +36,7 @@ const StripeButton = (props) => {
     deleteCartItems();
   };
   const updatePaymentAndRedirect = async (token) => {
-    props.setLoader(true)
+    props.setLoader(true);
     const finalOrderDetails = {
       orderItems: orderItems,
       address: localStorageaddress._id,
@@ -47,11 +48,10 @@ const StripeButton = (props) => {
         email_address: token.email,
       },
     };
-    
 
     const data = await makeAnAPICall(
       `POST`,
-      `https://stark-falls-25364.herokuapp.com/api/checkout`,
+      `${BE_URL}/api/checkout`,
       null,
       null,
       finalOrderDetails,
@@ -59,14 +59,14 @@ const StripeButton = (props) => {
       toastDispatch,
       "Payment Successfull"
     );
-    props.setLoader(false)
+    props.setLoader(false);
     navigate(`/ordersuccess/${data._id}`);
   };
 
   const deleteCartItems = async () => {
     const data = await makeAnAPICall(
       `DELETE`,
-      `https://stark-falls-25364.herokuapp.com/api/deletecart`,
+      `${BE_URL}/api/deletecart`,
       null,
       null,
       null,

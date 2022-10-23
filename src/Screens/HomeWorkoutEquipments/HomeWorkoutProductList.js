@@ -1,29 +1,31 @@
-import axios from 'axios';
-import React, { useEffect } from 'react'
-import { useWorkoutNewProductListsContext } from '../../Contexts/ProductListContext/HomeWorkoutProductListing';
+import axios from "axios";
+import React, { useEffect } from "react";
+import { useWorkoutNewProductListsContext } from "../../Contexts/ProductListContext/HomeWorkoutProductListing";
 import { makeAnAPICall } from "../../APiCalls";
-import ProductListingComponentUtility from '../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility';
+import ProductListingComponentUtility from "../../UtilityFunctions/ProductListUtilityFuntion/ProductListingComponentUtility";
 import CatalogMagic from "../../Skeleton-loader/ProductListingLoader";
 import MobileSkeletonLoader from "../../Skeleton-loader/ProductListingLoaderMobile";
-
-
+import { BE_URL } from "../../const";
 
 function HomeWorkoutProductList() {
-    
- // grabbing context API
- const {
+  // grabbing context API
+  const {
     state: { initialHomeWorkoutProducts, loading, filterItems },
     homeWorkoutDispatch,
   } = useWorkoutNewProductListsContext();
 
-    useEffect(() => {
-          makeAnAPICall("GET","https://stark-falls-25364.herokuapp.com/api/products/homeWorkout",homeWorkoutDispatch,"LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS" )
-    }, []);
-  
-   
+  useEffect(() => {
+    makeAnAPICall(
+      "GET",
+      `${BE_URL}/api/products/homeWorkout`,
+      homeWorkoutDispatch,
+      "LOAD_MENS_NEW_DROP_SCREEN_PRODUCTS"
+    );
+  }, []);
+
   return (
     <>
-        {loading && (
+      {loading && (
         <>
           <div className="desktop-skeleton-loader">{<CatalogMagic />}</div>
           <div className="mobile-skeleton-loader">
@@ -31,10 +33,13 @@ function HomeWorkoutProductList() {
           </div>
         </>
       )}
-      
-    <ProductListingComponentUtility filterItems={filterItems} products={initialHomeWorkoutProducts} />
+
+      <ProductListingComponentUtility
+        filterItems={filterItems}
+        products={initialHomeWorkoutProducts}
+      />
     </>
-    )
+  );
 }
 
-export default HomeWorkoutProductList
+export default HomeWorkoutProductList;
