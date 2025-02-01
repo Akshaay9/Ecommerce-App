@@ -1,18 +1,21 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+package.json
 node_modules
 /node_modules
 /.pnp
 .pnp.js
 node_modules
 /node_modules
+/Backend/.env
 
 # testing
 /coverage
 
 # production
 /build
+.env
 
 # misc
 .env
@@ -25,3 +28,4 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+Backend/.env
