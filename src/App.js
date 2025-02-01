@@ -45,7 +45,6 @@ function App() {
   } = useLoginContext();
 
   const { cartContextDispatch } = useCartContextProvider();
-
   const { wishListContextDispatch } = useWishListContextProvider();
 
   useEffect(() => {
@@ -99,17 +98,23 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
 
           {/* check out */}
-          <PrivateRoute path="/Address" element={<Address />} />
-          <PrivateRoute path="/updateAddress/" element={<UpdateAddress />} />
-          <PrivateRoute path="/updateAddress/:id" element={<UpdateAddress />} />
-          <PrivateRoute path="/Payment" element={<Payment />} />
-          <PrivateRoute path="/FinalCheckOut" element={<FinalCheckOut />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/address" element={<Address />} />
+            <Route path="/updateAddress" element={<UpdateAddress />} />
+            <Route path="/updateAddress/:id" element={<UpdateAddress />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/finalCheckout" element={<FinalCheckOut />} />
+          </Route>
 
           {/* order success page */}
-          <PrivateRoute path="/ordersuccess/:id" element={<OrderSuccess />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/ordersuccess/:id" element={<OrderSuccess />} />
+          </Route>
 
           {/* user profile */}
-          <PrivateRoute path="/profile" element={<UserProfile />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/profile" element={<UserProfile />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

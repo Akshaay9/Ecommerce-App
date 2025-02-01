@@ -1,1 +1,1 @@
-export const BE_URL = "https://ecommerceproject.akshaynair5.repl.co";
+export const BE_URL = "https://ecommerce-app-ltut.onrender.com";
