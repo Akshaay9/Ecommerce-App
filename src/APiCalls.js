@@ -65,7 +65,7 @@ export const makeAnAPICall = async (
       return;
     case "POST":
       try {
-        const data = await axios.post(url, dataToBeDispatched, config);
+        const data = await axios.post(url, dataToBeDispatched || {}, config);
         if (setLoader) {
           setLoader(false);
         }
